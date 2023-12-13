@@ -1,0 +1,15 @@
+/home/joao/CEPEDI/dotnet/DOTNET-BASICO/.net-Basico-CEPEDI/Semana3/PI-003/bin/Debug/net7.0/PI-003
+/home/joao/CEPEDI/dotnet/DOTNET-BASICO/.net-Basico-CEPEDI/Semana3/PI-003/bin/Debug/net7.0/PI-003.deps.json
+/home/joao/CEPEDI/dotnet/DOTNET-BASICO/.net-Basico-CEPEDI/Semana3/PI-003/bin/Debug/net7.0/PI-003.runtimeconfig.json
+/home/joao/CEPEDI/dotnet/DOTNET-BASICO/.net-Basico-CEPEDI/Semana3/PI-003/bin/Debug/net7.0/PI-003.dll
+/home/joao/CEPEDI/dotnet/DOTNET-BASICO/.net-Basico-CEPEDI/Semana3/PI-003/bin/Debug/net7.0/PI-003.pdb
+/home/joao/CEPEDI/dotnet/DOTNET-BASICO/.net-Basico-CEPEDI/Semana3/PI-003/obj/Debug/net7.0/PI-003.csproj.AssemblyReference.cache
+/home/joao/CEPEDI/dotnet/DOTNET-BASICO/.net-Basico-CEPEDI/Semana3/PI-003/obj/Debug/net7.0/PI-003.GeneratedMSBuildEditorConfig.editorconfig
+/home/joao/CEPEDI/dotnet/DOTNET-BASICO/.net-Basico-CEPEDI/Semana3/PI-003/obj/Debug/net7.0/PI-003.AssemblyInfoInputs.cache
+/home/joao/CEPEDI/dotnet/DOTNET-BASICO/.net-Basico-CEPEDI/Semana3/PI-003/obj/Debug/net7.0/PI-003.AssemblyInfo.cs
+/home/joao/CEPEDI/dotnet/DOTNET-BASICO/.net-Basico-CEPEDI/Semana3/PI-003/obj/Debug/net7.0/PI-003.csproj.CoreCompileInputs.cache
+/home/joao/CEPEDI/dotnet/DOTNET-BASICO/.net-Basico-CEPEDI/Semana3/PI-003/obj/Debug/net7.0/PI-003.dll
+/home/joao/CEPEDI/dotnet/DOTNET-BASICO/.net-Basico-CEPEDI/Semana3/PI-003/obj/Debug/net7.0/refint/PI-003.dll
+/home/joao/CEPEDI/dotnet/DOTNET-BASICO/.net-Basico-CEPEDI/Semana3/PI-003/obj/Debug/net7.0/PI-003.pdb
+/home/joao/CEPEDI/dotnet/DOTNET-BASICO/.net-Basico-CEPEDI/Semana3/PI-003/obj/Debug/net7.0/PI-003.genruntimeconfig.cache
+/home/joao/CEPEDI/dotnet/DOTNET-BASICO/.net-Basico-CEPEDI/Semana3/PI-003/obj/Debug/net7.0/ref/PI-003.dll

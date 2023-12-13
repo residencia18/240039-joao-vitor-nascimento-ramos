@@ -1,0 +1,15 @@
+/home/joao/CEPEDI/dotnet/DOTNET-BASICO/.net-Basico-CEPEDI/AvalicaoIndividual/Consultorio/obj/Debug/net7.0/Consultorio.csproj.AssemblyReference.cache
+/home/joao/CEPEDI/dotnet/DOTNET-BASICO/.net-Basico-CEPEDI/AvalicaoIndividual/Consultorio/obj/Debug/net7.0/Consultorio.GeneratedMSBuildEditorConfig.editorconfig
+/home/joao/CEPEDI/dotnet/DOTNET-BASICO/.net-Basico-CEPEDI/AvalicaoIndividual/Consultorio/obj/Debug/net7.0/Consultorio.AssemblyInfoInputs.cache
+/home/joao/CEPEDI/dotnet/DOTNET-BASICO/.net-Basico-CEPEDI/AvalicaoIndividual/Consultorio/obj/Debug/net7.0/Consultorio.AssemblyInfo.cs
+/home/joao/CEPEDI/dotnet/DOTNET-BASICO/.net-Basico-CEPEDI/AvalicaoIndividual/Consultorio/obj/Debug/net7.0/Consultorio.csproj.CoreCompileInputs.cache
+/home/joao/CEPEDI/dotnet/DOTNET-BASICO/.net-Basico-CEPEDI/AvalicaoIndividual/Consultorio/bin/Debug/net7.0/Consultorio
+/home/joao/CEPEDI/dotnet/DOTNET-BASICO/.net-Basico-CEPEDI/AvalicaoIndividual/Consultorio/bin/Debug/net7.0/Consultorio.deps.json
+/home/joao/CEPEDI/dotnet/DOTNET-BASICO/.net-Basico-CEPEDI/AvalicaoIndividual/Consultorio/bin/Debug/net7.0/Consultorio.runtimeconfig.json
+/home/joao/CEPEDI/dotnet/DOTNET-BASICO/.net-Basico-CEPEDI/AvalicaoIndividual/Consultorio/bin/Debug/net7.0/Consultorio.dll
+/home/joao/CEPEDI/dotnet/DOTNET-BASICO/.net-Basico-CEPEDI/AvalicaoIndividual/Consultorio/bin/Debug/net7.0/Consultorio.pdb
+/home/joao/CEPEDI/dotnet/DOTNET-BASICO/.net-Basico-CEPEDI/AvalicaoIndividual/Consultorio/obj/Debug/net7.0/Consultorio.dll
+/home/joao/CEPEDI/dotnet/DOTNET-BASICO/.net-Basico-CEPEDI/AvalicaoIndividual/Consultorio/obj/Debug/net7.0/refint/Consultorio.dll
+/home/joao/CEPEDI/dotnet/DOTNET-BASICO/.net-Basico-CEPEDI/AvalicaoIndividual/Consultorio/obj/Debug/net7.0/Consultorio.pdb
+/home/joao/CEPEDI/dotnet/DOTNET-BASICO/.net-Basico-CEPEDI/AvalicaoIndividual/Consultorio/obj/Debug/net7.0/Consultorio.genruntimeconfig.cache
+/home/joao/CEPEDI/dotnet/DOTNET-BASICO/.net-Basico-CEPEDI/AvalicaoIndividual/Consultorio/obj/Debug/net7.0/ref/Consultorio.dll
