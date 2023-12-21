@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+:root {
+  --corBackgroundPrimaria: #0a0a4d;
+  --corBackgroundSecundaria: #eaeaea;
+  --corTextoPrimaria: #000;
+  --corTextoSecundaria: #f1f1f1;
+  --corBordasPrimaria: #a3a3a3;
+  --corBackgroundTerciaria: #87c3f8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url(https://www.designi.com.br/images/preview/10506781.jpg);
+}
+
+.head {
+  height: 8%;
+  background-color: var(--corBackgroundPrimaria);
+  background: linear-gradient(
+    150deg,
+    rgb(104, 167, 194) 0%,
+    rgb(20, 70, 132) 20%,
+    rgb(104, 167, 194) 100%
+  );
+  color: var(--corTextoSecundaria);
+  font-family: "Times New Roman", Times, serif;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
+  padding-left: 15px;
+  padding-bottom: px;
+  border-radius: 5px 5px 0 0;
+}

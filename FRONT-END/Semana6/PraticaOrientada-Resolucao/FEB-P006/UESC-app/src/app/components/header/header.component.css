@@ -1,0 +1,13 @@
+.header {
+  width: 95%;
+  max-width: 1000px;
+  margin: 10px auto;
+  height: 30vh;
+  background-image: url("../../../assets/image.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  border-radius: 10px;
+}
