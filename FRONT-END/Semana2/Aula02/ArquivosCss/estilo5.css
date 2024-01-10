@@ -1,0 +1,42 @@
+h2 , h5 {
+    color:rgb(172, 172, 25)
+}
+
+.Roupas{
+    color:blue;
+}
+
+.caixa > .moveis{
+    color:blue;
+}
+
+.lista > li{
+    color:rgb(139, 90, 29)
+}
+
+.lista > li.usada{
+    color:purple;
+    font-weight: bold;
+}
+
+.moveis > li.usada{
+    color:rgb(44, 250, 44);
+    font-weight: bold;
+}
+
+.caixa{
+    color:rgb(94, 202, 216)
+}
+
+.caixa ul{
+    color:rgb(139, 90, 29)
+}
+
+.moveis > li{
+    color:rgb(139, 90, 29)
+}
+
+
+
+
+

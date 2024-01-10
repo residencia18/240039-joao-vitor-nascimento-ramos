@@ -1,0 +1,11 @@
+.botao{
+    display: flex;
+}
+
+.botao:hover{
+    cursor:pointer;
+}
+
+.input{
+    display: inline-flex;
+}

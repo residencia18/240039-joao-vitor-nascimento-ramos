@@ -1,0 +1,26 @@
+.title{
+    text-align: center;
+    border-radius: 4px;
+    border: 1px;
+    font-style: italic;
+}
+
+h1,h3{
+    color:black;
+    text-align: center;
+    font-style: italic;
+}
+
+*{
+    background-color: #aaa;
+}
+
+link{
+    text-align: center;
+}
+
+#div1{
+    border: 2px;
+    border: black;
+    border-radius: 2px;
+}

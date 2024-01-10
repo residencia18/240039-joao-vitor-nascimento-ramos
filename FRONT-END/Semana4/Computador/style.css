@@ -1,0 +1,19 @@
+.botao{
+    width: 100px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+
+}
+.botao span{
+    text-align: center;
+}
+
+.botao:hover{
+    cursor:pointer;
+}
+
+.form{
+    display: grid;
+    gap: 2px;
+}

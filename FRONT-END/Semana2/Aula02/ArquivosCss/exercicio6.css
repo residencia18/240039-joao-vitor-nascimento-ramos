@@ -1,0 +1,49 @@
+img{
+    width: 100px;
+    height: 100px;
+    border: 10px;
+}
+
+.cicle{
+    border: 10px;
+    border-radius:25px;
+}
+
+#quadrado{
+    background-color: purple;
+
+}
+
+#circulo{
+    background-color: purple;
+    border-radius: 50px;
+    top: 20px;
+}
+
+#quadradoExtern{
+    background-color: red;
+    top: 30px;
+}
+
+#cicleInterno{
+    background-color: yellow;
+    width: 50px;
+    height: 50px;
+    left: 5px;
+    top:10px
+}
+
+#retangulo{
+    width: 200px;
+    height: 20px;
+    background-color: darkgray;
+    top: 40px;
+}
+
+
+div{
+    width: 100px;
+    height: 100px;
+    top:10px;
+    position: relative; 
+}

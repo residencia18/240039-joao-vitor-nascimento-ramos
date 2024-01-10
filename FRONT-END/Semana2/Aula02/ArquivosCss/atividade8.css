@@ -1,0 +1,21 @@
+*{
+    background-color: black;
+}
+
+@media (max-width:500px){
+    *{
+        background-color: green;
+    }
+}
+
+@media (min-width:500px) and (max-width:800px){
+    *{
+        background-color: blue;
+    }
+}
+
+@media (min-width:800px){
+    *{
+        background-color: aquamarine;
+    }
+}

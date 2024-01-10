@@ -1,0 +1,29 @@
+.nomeColor{
+    font-style: italic;
+}
+
+img{
+    height: 100px;
+    width: 100px;
+
+}
+
+#amarelo{
+    color:yellow
+}
+
+#vermelho{
+    color: red;
+}
+
+#azul{
+    color:blue
+}
+
+#marron{
+    color:rgb(71, 42, 18)
+}
+
+#violeta{
+    color:violet
+}

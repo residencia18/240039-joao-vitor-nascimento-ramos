@@ -1,0 +1,23 @@
+#caixa-externa{
+    background-color: purple
+}
+
+.caixa{
+    background-color: blue;
+    padding: 15px;
+}
+
+p{
+    background-color: green;
+    margin: 0px;
+    padding: 0px;
+}
+
+.caixa-interna{
+    background-color: black;
+    padding: 1px;
+}
+
+.texto-branco{
+    color:aquamarine
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escopo de variaveis</title>
+</head>
+<body>
+
+    <script>
+        alert(saudacao);
+        var saudacao = "Olá todo mundo";
+
+        alert(saudacao2);
+        let saudacao2 = "Ola todo mundo 2";
+        const numeroIP = "127.0.0.1";
+
+        function teste(saudacao,saudacao2){
+            var testeDentroFuncao = "Teste dentro da função";
+            alert(saudacao);
+            alert(saudacao2);
+        }
+
+        alert(testeDentroFuncao);
+
+        teste("Olá","Olá2")
+
+        function teste2(){
+            let numeroIP = "192.168.0.15";
+            alert(numeroIP);
+        }
+
+        teste2();
+
+
+    </script>
+    
+</body>
+</html>
