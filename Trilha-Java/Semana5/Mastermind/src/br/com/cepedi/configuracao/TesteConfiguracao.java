@@ -2,6 +2,7 @@ package br.com.cepedi.configuracao;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
@@ -27,11 +28,14 @@ class TesteConfiguracao {
 		
 		//TestaTamanhoSenha
 		testArmazenaTamanhoSenha(config);
+		testSenhaValorNegativo(config);
 		testTamanhoSenhaMaiorAlfabeto(config);
 		
 		//Max tentativas
 		testArmazenaMaxTentativas(config);
-		testTentivasMaiorQueSim(config);
+		testMaxTentativasNegativo(config);
+		testMaxTentativasZero(config);
+		testMaxTentativasUm(config);
 		
 	}
 	
@@ -235,6 +239,17 @@ class TesteConfiguracao {
 		assertEquals(config.getNome(),nome);
 	}
 	
+	void testSenhaValorNegativo(Configuracao config) {
+		int tam = -1;
+		try {
+			config.setTamanhoSenha(tam);
+		} catch (Exception e) {
+			assertEquals("O tamanho da senha deve ser maior ou igual a 1", e.getMessage());
+		}
+		//o tamanho da senha não pode ter sido aceito
+		assertNotEquals(tam, config.getTamanhoSenha());
+	}
+	
 	void testArmazenaTamanhoSenha(Configuracao config) {
 		int tamanhoSenha = 2;
 		try{
@@ -247,7 +262,12 @@ class TesteConfiguracao {
 		
 	}
 	
-	void testTamanhoSenhaMaiorAlfabeto(Configuracao config) {
+	void testTamanhoSenhaMaiorAlfabeto(Configuracao config)  {
+		try {
+			config.setAlfabeto("ABCD");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		int tamanhoSenha = 18;
 		try {
 			config.setTamanhoSenha(tamanhoSenha);
@@ -264,13 +284,35 @@ class TesteConfiguracao {
 		try{
 			config.setMaxTentativas(MaxTentativas);
 		}catch(Exception e) {
-			fail("gerou uma exceção valida");
+			fail("não deveria gerar numero de tentativas");
 		}
 		
 		assertEquals(config.getMaxTentativas(),MaxTentativas);
 	}
 	
-	void testTentivasMaiorQueSim(Configuracao config){
+	void testMaxTentativasNegativo(Configuracao config){
+		int MaxTentativas = -1;
+		try{
+			config.setMaxTentativas(MaxTentativas);
+		}catch(Exception e) {
+			assertEquals("numero de tentativas deve ser maior que 1",e.getMessage());
+		}
+		
+		assertFalse(config.getMaxTentativas()==MaxTentativas);
+	}
+	
+	void testMaxTentativasZero(Configuracao config){
+		int MaxTentativas = 0;
+		try{
+			config.setMaxTentativas(MaxTentativas);
+		}catch(Exception e) {
+			assertEquals("numero de tentativas deve ser maior que 1",e.getMessage());
+		}
+		
+		assertFalse(config.getMaxTentativas()==MaxTentativas);
+	}
+	
+	void testMaxTentativasUm(Configuracao config) {
 		int MaxTentativas = 1;
 		try{
 			config.setMaxTentativas(MaxTentativas);

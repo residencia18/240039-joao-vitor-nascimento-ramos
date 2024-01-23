@@ -10,6 +10,12 @@ public class Configuracao {
 	private String nome;
 	private int tamanhoSenha;
 	private int maxTentativas;
+	
+	
+
+	public Configuracao() {
+
+	}
 
 	public String getAlfabeto() {
 		return alfabeto;
@@ -65,6 +71,8 @@ public class Configuracao {
 	public void setTamanhoSenha(int tamanhoSenha) {
 		if(tamanhoSenha > alfabeto.length()) {
             throw new IllegalArgumentException("o tamanho da senha deve ser menor ou igual ao tamanho do alfabeto"); 
+		}else if (tamanhoSenha <1) {
+			throw new IllegalArgumentException("O tamanho da senha deve ser maior ou igual a 1");
 		}
 		this.tamanhoSenha = tamanhoSenha;
 	}
@@ -89,6 +97,14 @@ public class Configuracao {
     private String removerAcentos(String str) {
         return Normalizer.normalize(str, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
     }
+
+	@Override
+	public String toString() {
+		return "Configuracao [alfabeto=" + alfabeto + ", nome=" + nome + ", tamanhoSenha=" + tamanhoSenha
+				+ ", maxTentativas=" + maxTentativas + "]";
+	}
+    
+    
 
 
 	
