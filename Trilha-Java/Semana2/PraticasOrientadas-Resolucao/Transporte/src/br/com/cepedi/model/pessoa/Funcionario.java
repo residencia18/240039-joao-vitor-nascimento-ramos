@@ -21,6 +21,11 @@ public abstract class Funcionario extends Pessoa {
     }
 
     public void setSalario(String salario) throws SalarioFuncionarioInvalidoException {
+    	
+    	if(salario==null) {
+            throw new SalarioFuncionarioInvalidoException();
+    	}
+    	
         try {
             BigDecimal salarioDecimal = new BigDecimal(salario);
             if (!VerificacoesFuncionario.VerificaSalario(salarioDecimal)) {

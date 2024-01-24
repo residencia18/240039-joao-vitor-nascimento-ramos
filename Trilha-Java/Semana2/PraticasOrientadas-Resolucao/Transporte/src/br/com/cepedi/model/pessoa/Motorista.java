@@ -20,7 +20,7 @@ public class Motorista extends Funcionario{
 	}
 
 	public void setCNH(String CNH) throws CNHMotoristaInvalidaException {
-		if(!VerificacoesMotorista.verificaCNH(CNH)) {
+		if(CNH==null || !VerificacoesMotorista.verificaCNH(CNH)) {
 			throw new CNHMotoristaInvalidaException();
 		}
 		this.CNH = CNH;

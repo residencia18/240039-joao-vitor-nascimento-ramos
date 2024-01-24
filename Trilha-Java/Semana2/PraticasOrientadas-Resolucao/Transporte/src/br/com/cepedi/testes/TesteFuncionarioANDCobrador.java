@@ -16,6 +16,7 @@ class TesteFuncionarioANDCobrador {
 		testArmazenaCobrador();
 		testSalarioNegativo();
 		testSalarioFormatoInvalido();
+		testSalarioNulo();
 	}
 	
 	public void testArmazenaCobrador() {
@@ -37,6 +38,18 @@ class TesteFuncionarioANDCobrador {
 		
 		try {
 			cobrador = new Cobrador("Caio","098.609.325-49","-2");			
+		}catch(Exception e ) {
+			assertEquals("Salário inválido. Deve ser maior do que R$ 0.0",e.getMessage());
+		}
+		
+		assertNull(cobrador);
+	}
+	
+	public void testSalarioNulo() {
+		Cobrador cobrador=null;
+		
+		try {
+			cobrador = new Cobrador("Caio","098.609.325-49",null);			
 		}catch(Exception e ) {
 			assertEquals("Salário inválido. Deve ser maior do que R$ 0.0",e.getMessage());
 		}
