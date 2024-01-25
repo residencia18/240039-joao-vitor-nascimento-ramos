@@ -1,7 +1,6 @@
 package br.com.cepedi.model.pessoa;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-
+import br.com.cepedi.exceptions.cartaoPassagem.TipoDePassagemInvalidoException;
 import br.com.cepedi.exceptions.passageiro.CartaoInvalidoException;
 import br.com.cepedi.exceptions.pessoa.CPFPessoaInvalidoException;
 import br.com.cepedi.exceptions.pessoa.NomePessoaInvalidoException;
@@ -14,6 +13,12 @@ public class Passageiro extends Pessoa{
 	public Passageiro(String nome, String CPF, CartaoPassagem cartao) throws NomePessoaInvalidoException, CPFPessoaInvalidoException, CartaoInvalidoException {
 		super(nome, CPF);
 		setCartao(cartao);
+	}
+	
+	public Passageiro(String nome, String CPF , int cartao) throws CartaoInvalidoException, TipoDePassagemInvalidoException, NomePessoaInvalidoException, CPFPessoaInvalidoException {
+		super(nome, CPF);
+		setCartao(new CartaoPassagem(cartao));
+
 	}
 	
 	@Override

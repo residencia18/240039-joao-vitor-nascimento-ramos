@@ -2,6 +2,7 @@ package br.com.cepedi.testes;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -15,11 +16,14 @@ class TesteListaVeiculos {
 	@Test
 	void test() {
 		testeInsereNaLista();
+		insereDoisVeiculos();
 		testeInsereVeiculoNulo();
 		testeInsereRepetido();
 		deletarVeiculoExistente();
 		deletarVeiculoNulo();
 		deletarVeiculoForaDaLista();
+		buscarVeiculoNaLista();
+		buscarVeiculoForaDaLista();
 	}
 	
 	public void testeInsereNaLista() {
@@ -27,26 +31,39 @@ class TesteListaVeiculos {
 		Veiculo veiculo;
 		try {
 			veiculo = new Veiculo("Mobi","GFD-4578","Fiat");
-			listaVeiculos.adicionarVeiculo(veiculo);
+			listaVeiculos.adicionar(veiculo);
 		}catch(Exception e ) {
 			fail("Não deve cair nesse catch");
 		}
 		
 		System.out.println();
 		
-		assertFalse(listaVeiculos.getListaDeVeiculos().isEmpty());
-			
+		assertFalse(listaVeiculos.isEmpty());
+			 
 	}
 	
+	public void insereDoisVeiculos(){
+		ListaVeiculos listaVeiculos = new ListaVeiculos();
+		Veiculo v1= null , v2 = null;
+		try {
+			v1 = new Veiculo("Mobi","GFD-4578","Fiat");
+			v2 = new Veiculo("Palio","GFD-4579","Fiat");
+			listaVeiculos.adicionar(v1);
+			listaVeiculos.adicionar(v2);
+		}catch(Exception e ) {
+			assertEquals("Essa placa já foi cadastrada.",e.getMessage());
+		}
+
+	}
 	public void testeInsereVeiculoNulo() {
 		ListaVeiculos listaVeiculos = new ListaVeiculos();
 		try {
-			listaVeiculos.adicionarVeiculo(null);
+			listaVeiculos.adicionar(null);
 		}catch(Exception e ) {
 			assertEquals("Tentativa de inserir um valor nulo",e.getMessage());
 		}
 		
-		assertTrue(listaVeiculos.getListaDeVeiculos().size()==0);
+		assertTrue(listaVeiculos.size()==0);
 	}
 	
 	public void testeInsereRepetido() {
@@ -55,13 +72,13 @@ class TesteListaVeiculos {
 		try {
 			v1 = new Veiculo("Mobi","GFD-4578","Fiat");
 			v2 = new Veiculo("Palio","GFD-4578","Fiat");
-			listaVeiculos.adicionarVeiculo(v1);
-			listaVeiculos.adicionarVeiculo(v2);
+			listaVeiculos.adicionar(v1);
+			listaVeiculos.adicionar(v2);
 		}catch(Exception e ) {
 			assertEquals("Essa placa já foi cadastrada.",e.getMessage());
 		}
 				
-		assertTrue(listaVeiculos.getListaDeVeiculos().size()==1);
+		assertTrue(listaVeiculos.size()==1);
 	}
 	
 	public void deletarVeiculoExistente() {
@@ -70,14 +87,14 @@ class TesteListaVeiculos {
 		try {
 			v1 = new Veiculo("Mobi","GFD-4578","Fiat");
 			v2 = new Veiculo("Palio","GFD-4579","Fiat");
-			listaVeiculos.adicionarVeiculo(v1);
-			listaVeiculos.adicionarVeiculo(v2);
-			listaVeiculos.deletarVeiculo("GFD-4578");
+			listaVeiculos.adicionar(v1);
+			listaVeiculos.adicionar(v2);
+			listaVeiculos.deletar("GFD-4578");
 		}catch(Exception e ) {
 			fail("Não deve cair no catch");
 		}
 		
-		assertTrue(listaVeiculos.getListaDeVeiculos().size()==1);
+		assertTrue(listaVeiculos.size()==1);
 				
 	}
 
@@ -88,14 +105,14 @@ class TesteListaVeiculos {
 		try {
 			v1 = new Veiculo("Mobi","GFD-4578","Fiat");
 			v2 = new Veiculo("Palio","GFD-4579","Fiat");
-			listaVeiculos.adicionarVeiculo(v1);
-			listaVeiculos.adicionarVeiculo(v2);
-			listaVeiculos.deletarVeiculo(null);
+			listaVeiculos.adicionar(v1);
+			listaVeiculos.adicionar(v2);
+			listaVeiculos.deletar(null);
 		}catch(Exception e ) {
 			assertEquals("Foi inserida uma placa nula na busca",e.getMessage());
 		}
 		
-		assertTrue(listaVeiculos.getListaDeVeiculos().size()==2);
+		assertTrue(listaVeiculos.size()==2);
 				
 	}
 	
@@ -105,15 +122,45 @@ class TesteListaVeiculos {
 		try {
 			v1 = new Veiculo("Mobi","GFD-4578","Fiat");
 			v2 = new Veiculo("Palio","GFD-4579","Fiat");
-			listaVeiculos.adicionarVeiculo(v1);
-			listaVeiculos.adicionarVeiculo(v2);
-			listaVeiculos.deletarVeiculo("KCY-7521");
+			listaVeiculos.adicionar(v1);
+			listaVeiculos.adicionar(v2);
+			listaVeiculos.deletar("KCY-7521");
 		}catch(Exception e ) {
 			assertEquals("Veiculo não encontrado",e.getMessage());
 		}
 		
-		assertTrue(listaVeiculos.getListaDeVeiculos().size()==2);
+		assertTrue(listaVeiculos.size()==2);
 				
+	}
+	
+	public void buscarVeiculoNaLista() {
+		ListaVeiculos listaVeiculos = new ListaVeiculos();
+		Veiculo veiculo = null;
+		Veiculo veiculo2 = null;
+		try {
+			veiculo = new Veiculo("Mobi","GFD-4578","Fiat");
+			listaVeiculos.adicionar(veiculo);
+			veiculo2 = listaVeiculos.buscar("GFD-4578");
+		}catch(Exception e ) {
+			fail("Não deve cair nesse catch");
+		}
+		
+		assertEquals(veiculo,veiculo2);
+	}
+	
+	public void buscarVeiculoForaDaLista() {
+		ListaVeiculos listaVeiculos = new ListaVeiculos();
+		Veiculo veiculo = null;
+		Veiculo veiculo2 = null;
+		try {
+			veiculo = new Veiculo("Mobi","GFD-4578","Fiat");
+			listaVeiculos.adicionar(veiculo);
+			veiculo2 = listaVeiculos.buscar("GFD-4585");
+		}catch(Exception e ) {
+			assertEquals("Veiculo não encontrado",e.getMessage());
+		}
+		
+		assertNotEquals(veiculo,veiculo2);
 	}
 	
 }

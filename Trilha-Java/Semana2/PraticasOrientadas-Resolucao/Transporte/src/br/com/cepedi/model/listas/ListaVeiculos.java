@@ -6,20 +6,15 @@ import br.com.cepedi.exceptions.listaVeiculos.PlacaJaCadastradaException;
 import br.com.cepedi.exceptions.listaVeiculos.VeiculoNaoEncontrado;
 import br.com.cepedi.model.veiculo.Veiculo;
 
-public class ListaVeiculos {
+public class ListaVeiculos extends ArrayList<Veiculo>{
 	
-	ArrayList<Veiculo> listaDeVeiculos;
 
 	public ListaVeiculos() {
 		super();
-		listaDeVeiculos = new ArrayList<>();
 	}
 
-	public ArrayList<Veiculo> getListaDeVeiculos() {
-		return listaDeVeiculos;
-	}
 	
-	public void adicionarVeiculo(Veiculo veiculo) throws PlacaJaCadastradaException {
+	public void adicionar(Veiculo veiculo) throws PlacaJaCadastradaException {
 		
 		if(veiculo==null) {
 			throw new NullPointerException("Tentativa de inserir um valor nulo");
@@ -28,17 +23,17 @@ public class ListaVeiculos {
 		if(placaJaCadastrada(veiculo.getPlaca())) {
 			throw new PlacaJaCadastradaException();
 		}
-		this.listaDeVeiculos.add(veiculo);
+		add(veiculo);
 		
 	}
 	
-	public Veiculo buscarVeiculo(String placa) throws VeiculoNaoEncontrado {
+	public Veiculo buscar(String placa) throws VeiculoNaoEncontrado {
 		
 		if(placa==null) {
 			throw new NullPointerException("Foi inserida uma placa nula na busca");
 		}
 		
-		for(Veiculo v : listaDeVeiculos) {
+		for(Veiculo v : this) {
 			if(v.getPlaca().equals(placa)) {
 				return v;
 			}
@@ -46,15 +41,15 @@ public class ListaVeiculos {
 		throw new VeiculoNaoEncontrado();
 	}
 	
-	public void deletarVeiculo(String placa) throws VeiculoNaoEncontrado{
+	public void deletar(String placa) throws VeiculoNaoEncontrado{
 		
 		if(placa==null) {
 			throw new NullPointerException("Foi inserida uma placa nula na busca");
 		}
 		
-		for(Veiculo v : listaDeVeiculos) {
+		for(Veiculo v : this) {
 			if(v.getPlaca().equals(placa)) {
-				this.listaDeVeiculos.remove(v);
+				this.remove(v);
 				return;
 			}
 		}
@@ -62,7 +57,7 @@ public class ListaVeiculos {
 	}
 	
 	private boolean placaJaCadastrada(String placa){
-		for(Veiculo v : listaDeVeiculos) {
+		for(Veiculo v : this) {
 			if(v.getPlaca().equals(placa)) {
 				return true;
 			}
