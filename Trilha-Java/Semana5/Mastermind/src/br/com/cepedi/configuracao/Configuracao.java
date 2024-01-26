@@ -4,6 +4,8 @@ import java.text.Normalizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import br.com.cepedi.utils.Util;
+
 public class Configuracao {
 	
 	private String alfabeto;
@@ -11,10 +13,9 @@ public class Configuracao {
 	private int tamanhoSenha;
 	private int maxTentativas;
 	
-	
 
 	public Configuracao() {
-
+		
 	}
 
 	public String getAlfabeto() {
@@ -25,15 +26,10 @@ public class Configuracao {
 		if(alfabeto==null || alfabeto.length()<=1)  {
             throw new IllegalArgumentException("o alfabeto deve possuir mais de 1 caracter"); 
 		}
-		for(int i = 0 ; i < alfabeto.length()-1 ; i++) {
-			for(int j = i+1 ; j < alfabeto.length() ; j++) {
-				if(alfabeto.charAt(i)==alfabeto.charAt(j)) {
-		            throw new IllegalArgumentException("Não podem haver caracteres repetidos no alfabeto"); 
-				}
-			}
-			
+		if(!Util.caracterRepetido(alfabeto)) {	
+			alfabeto = alfabeto.toUpperCase();
+			this.alfabeto= alfabeto;
 		}
-		this.alfabeto= alfabeto;
 	}
 
 	public String getNome() {
@@ -81,16 +77,12 @@ public class Configuracao {
     	
         String strSemAcentos = removerAcentos(str);
 
-        // Expressão regular para verificar se há pelo menos um dígito ou caractere especial
         String regex = ".*[\\d\\W_].*";
 
-        // Compilar a expressão regular
         Pattern pattern = Pattern.compile(regex);
 
-        // Criar um matcher para a string de entrada
         Matcher matcher = pattern.matcher(strSemAcentos);
 
-        // Verificar se há correspondências
         return matcher.matches();
     }
 	
