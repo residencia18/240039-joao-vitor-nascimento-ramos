@@ -1,0 +1,16 @@
+SELECT * FROM `Empregado` WHERE Genero LIKE 'F'
+
+
+SELECT nome FROM `Empregado` WHERE Genero LIKE 'M'
+
+
+SELECT CPF FROM `Empregado` WHERE Genero LIKE 'F' AND Salario > 5000
+
+SELECT * FROM Empregado WHERE Salario > (SELECT Salario	
+                                         	FROM Empregado WHERE NOME LIKE 'Tico')
+                                            
+
+SELECT Nome, max(salario) FROM Empregado ;
+
+SELECT nome from Empregado WHERE Salario = (SELECT max(Salario) FROM Empregado);
+
