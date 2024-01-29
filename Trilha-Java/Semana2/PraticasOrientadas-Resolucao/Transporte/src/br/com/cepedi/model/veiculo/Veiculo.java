@@ -42,12 +42,11 @@ public class Veiculo {
 		return montadora;
 	}
 
-
-
 	@Override
 	public String toString() {
-		return "[modelo=" + modelo + ", placa=" + placa + ", montadora=" + montadora + "]";
+		return "Veiculo [id=" + id + ", modelo=" + modelo + ", placa=" + placa + ", montadora=" + montadora + "]";
 	}
+
 
 	public void setId(int id) {
 		this.id = id;

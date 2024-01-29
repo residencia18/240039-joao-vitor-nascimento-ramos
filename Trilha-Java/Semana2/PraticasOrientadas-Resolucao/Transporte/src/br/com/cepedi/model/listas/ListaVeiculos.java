@@ -50,6 +50,7 @@ public class ListaVeiculos extends ArrayList<Veiculo>{
 		for(Veiculo v : this) {
 			if(v.getPlaca().equals(placa)) {
 				this.remove(v);
+				System.out.println("Veiculo Excluido com sucesso!");
 				return;
 			}
 		}

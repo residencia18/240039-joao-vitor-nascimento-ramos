@@ -64,6 +64,7 @@ public class ListaTrajetos extends ArrayList<Trajeto>{
 		}
 	}
 	
+	
 	private boolean trajetoJaCadastrado(Trajeto trajeto) {
 		for(Trajeto t : this) {
 			if(trajetoIgual(t,trajeto)) {

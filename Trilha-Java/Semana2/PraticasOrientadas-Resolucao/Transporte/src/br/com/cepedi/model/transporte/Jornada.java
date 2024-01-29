@@ -1,12 +1,12 @@
 package br.com.cepedi.model.transporte;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 import br.com.cepedi.model.listas.ListaTrajetos;
 import br.com.cepedi.model.pessoa.Cobrador;
 import br.com.cepedi.model.pessoa.Motorista;
 import br.com.cepedi.model.veiculo.Veiculo;
-import br.com.cepedi.verificacoes.pessoa.VerificacoesPessoa;
 
 public class Jornada {
 	
@@ -26,6 +26,7 @@ public class Jornada {
 		setMotorista(motorista);
 		setNome(nome);
 		setDataInicio(dataInicio);
+		trajetos = new ListaTrajetos();
 		qtdIDsGerados++;
 		id = qtdIDsGerados;
 	}
@@ -36,8 +37,19 @@ public class Jornada {
 		setMotorista(motorista);
 		setNome(nome);
 		setDataInicio(dataInicio);
+		trajetos = new ListaTrajetos();
 		qtdIDsGerados++;
 		id = qtdIDsGerados;
+	}
+	
+	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public Veiculo getVeiculo() {
@@ -112,11 +124,28 @@ public class Jornada {
 		return "Jornada [id=" + id + ", veiculo=" + veiculo + ", trajetos=" + trajetos + ", cobrador=" + cobrador
 				+ ", motorista=" + motorista + ", nome=" + nome + ", dataInicio=" + dataInicio + "]";
 	}
-	
-	
-	
-	
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(cobrador, dataInicio, motorista, nome, trajetos, veiculo);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Jornada other = (Jornada) obj;
+		return Objects.equals(cobrador, other.cobrador) && Objects.equals(dataInicio, other.dataInicio)
+				&& Objects.equals(motorista, other.motorista) && Objects.equals(nome, other.nome)
+				&& Objects.equals(trajetos, other.trajetos) && Objects.equals(veiculo, other.veiculo);
+	}
+
+
+	
 	
 	
 
