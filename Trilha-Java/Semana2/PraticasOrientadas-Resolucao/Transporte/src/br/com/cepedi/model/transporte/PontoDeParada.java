@@ -38,8 +38,10 @@ public class PontoDeParada {
 
 	@Override
 	public String toString() {
-		return "[id=" + id + ", nome=" + nome + "]";
+		return "PontoDeParada [id=" + id + ", nome=" + nome + "]";
 	}
+
+
 	
 	
 	

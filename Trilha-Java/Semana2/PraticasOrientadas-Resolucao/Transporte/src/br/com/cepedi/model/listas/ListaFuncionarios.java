@@ -7,6 +7,7 @@ import br.com.cepedi.exceptions.listaFuncionarios.FuncionarioNaoEncontrado;
 import br.com.cepedi.exceptions.listaVeiculos.VeiculoNaoEncontrado;
 import br.com.cepedi.model.pessoa.Funcionario;
 import br.com.cepedi.model.pessoa.Motorista;
+import br.com.cepedi.model.pessoa.Passageiro;
 import br.com.cepedi.model.veiculo.Veiculo;
 
 public class ListaFuncionarios extends ArrayList<Funcionario>{
@@ -59,6 +60,12 @@ public class ListaFuncionarios extends ArrayList<Funcionario>{
 			}
 		}
 		throw new FuncionarioNaoEncontrado();
+	}
+	
+	public void mostraTodos() {
+		for(Funcionario p : this) {
+			System.out.println(p);
+		}
 	}
 	
 	

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import br.com.cepedi.exceptions.listaPassageiros.PassageiroJaCadastrado;
 import br.com.cepedi.exceptions.listaPassageiros.PassageiroNaoEncontrado;
 import br.com.cepedi.model.pessoa.Passageiro;
+import br.com.cepedi.model.transporte.PontoDeParada;
 
 public class ListaPassageiros extends ArrayList<Passageiro>{
 	
@@ -55,6 +56,13 @@ public class ListaPassageiros extends ArrayList<Passageiro>{
 			}
 		}
 		throw new PassageiroNaoEncontrado();
+	}
+	
+	
+	public void mostraTodos() {
+		for(Passageiro p : this) {
+			System.out.println(p);
+		}
 	}
 	
 	

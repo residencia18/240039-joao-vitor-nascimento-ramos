@@ -56,6 +56,13 @@ public class ListaVeiculos extends ArrayList<Veiculo>{
 		throw new VeiculoNaoEncontrado();
 	}
 	
+	
+	public void mostraTodos() {
+		for(Veiculo v : this) {
+			System.out.println(v);
+		}
+	}
+	
 	private boolean placaJaCadastrada(String placa){
 		for(Veiculo v : this) {
 			if(v.getPlaca().equals(placa)) {

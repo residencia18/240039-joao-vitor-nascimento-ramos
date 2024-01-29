@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import br.com.cepedi.exceptions.listaTrechos.TrechoJaCadastrado;
 import br.com.cepedi.exceptions.listaTrechos.TrechoNaoEncontrado;
 import br.com.cepedi.model.transporte.Trecho;
+import br.com.cepedi.model.veiculo.Veiculo;
 
 public class ListaTrechos extends ArrayList<Trecho> {
 	
@@ -53,6 +54,12 @@ public class ListaTrechos extends ArrayList<Trecho> {
 		}
 		
 		throw new TrechoNaoEncontrado();
+	}
+	
+	public void mostraTodos() {
+		for(Trecho v : this) {
+			System.out.println(v);
+		}
 	}
 	
 	

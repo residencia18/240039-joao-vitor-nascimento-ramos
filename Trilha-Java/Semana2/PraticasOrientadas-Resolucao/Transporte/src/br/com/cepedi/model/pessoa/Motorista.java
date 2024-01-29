@@ -28,7 +28,7 @@ public class Motorista extends Funcionario{
 
 	@Override
 	public String toString() {
-		return "[ID= " + id + "\nNome= " + nome + "\nCPF= " + CPF + "\nSalário= " + salario.toString() + "\nCNH=" + CNH + "]";
+		return "[MOTORISTA - ID= " + id + "\nNome= " + nome + "\nCPF= " + CPF + "\nSalário= " + salario.toString() + "\nCNH=" + CNH + "]";
 	}
 	
 	

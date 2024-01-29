@@ -7,6 +7,7 @@ import br.com.cepedi.exceptions.listaPontosDeParada.PontoJaCadastrado;
 import br.com.cepedi.exceptions.listaPontosDeParada.PontoNaoEncontrado;
 import br.com.cepedi.model.pessoa.Funcionario;
 import br.com.cepedi.model.transporte.PontoDeParada;
+import br.com.cepedi.model.transporte.Trajeto;
 
 public class ListaPontosDeParada extends ArrayList<PontoDeParada>{
 	
@@ -60,6 +61,12 @@ public class ListaPontosDeParada extends ArrayList<PontoDeParada>{
 		
 
 		throw new PontoNaoEncontrado();
+	}
+	
+	public void mostraTodos() {
+		for(PontoDeParada p : this) {
+			System.out.println(p);
+		}
 	}
 	
 	

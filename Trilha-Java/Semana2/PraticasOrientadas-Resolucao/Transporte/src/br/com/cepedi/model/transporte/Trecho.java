@@ -63,6 +63,9 @@ public class Trecho {
 	public String toString() {
 		return "Trecho [id=" + id + ", origem=" + origem + ", destino=" + destino + ", minutos=" + minutos + "]";
 	}
+
+
+
 	
 	
 	

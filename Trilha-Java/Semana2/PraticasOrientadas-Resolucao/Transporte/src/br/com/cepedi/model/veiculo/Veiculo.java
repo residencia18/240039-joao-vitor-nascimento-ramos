@@ -23,11 +23,6 @@ public class Veiculo {
 		this.id = numeroDeVeiculos;
 	}
 	
-	public Veiculo() {
-		super();
-		numeroDeVeiculos++;
-		this.id = numeroDeVeiculos;
-	}
 
 
 	public int getId() {
