@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import br.com.cepedi.model.listas.ListaEmbarques;
 import br.com.cepedi.model.listas.ListaFuncionarios;
+import br.com.cepedi.model.listas.ListaJornadaTrajetoHorario;
 import br.com.cepedi.model.listas.ListaJornadas;
 import br.com.cepedi.model.listas.ListaPassageiros;
 import br.com.cepedi.model.listas.ListaPontosDeParada;
@@ -23,6 +24,7 @@ public abstract class MenuPrincipalController {
 		ListaVeiculos listaVeiculos = new ListaVeiculos();
 		ListaTrajetos listaTrajetos = new ListaTrajetos();
 		ListaEmbarques listaEmbarques = new ListaEmbarques();
+		ListaJornadaTrajetoHorario listaJornadaTrajetoHorario = new ListaJornadaTrajetoHorario();
 		
 		int escolha;
 		
@@ -50,7 +52,7 @@ public abstract class MenuPrincipalController {
 				MenuTrajetosController.selecionarAcao(sc, listaTrajetos, listaTrechos);
 				break;
 			case 7:
-				MenuJornadasController.selecionarAcao(sc, listaJornadas, listaFuncionarios, listaTrajetos , listaVeiculos);
+				MenuJornadasController.selecionarAcao(sc, listaJornadas, listaFuncionarios, listaTrajetos , listaVeiculos,listaJornadaTrajetoHorario);
 				break;
 			case 8:
 				MenuEmbarquesController.selecionarAcao(sc, listaPassageiros, listaJornadas, listaEmbarques);

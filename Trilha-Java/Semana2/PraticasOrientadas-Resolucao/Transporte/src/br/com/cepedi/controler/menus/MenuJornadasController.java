@@ -5,32 +5,36 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 import br.com.cepedi.exceptions.listaFuncionarios.FuncionarioNaoEncontrado;
+import br.com.cepedi.exceptions.listaJornadaTrajetoHorario.JornadaTrajetoHorarioException;
 import br.com.cepedi.exceptions.listaTrajetos.TrajetoJaCadastrado;
 import br.com.cepedi.exceptions.listaTrajetos.TrajetoNaoEncontrado;
 import br.com.cepedi.exceptions.listaVeiculos.VeiculoNaoEncontrado;
 import br.com.cepedi.model.listas.ListaFuncionarios;
+import br.com.cepedi.model.listas.ListaJornadaTrajetoHorario;
 import br.com.cepedi.model.listas.ListaJornadas;
 import br.com.cepedi.model.listas.ListaTrajetos;
 import br.com.cepedi.model.listas.ListaVeiculos;
 import br.com.cepedi.model.pessoa.Cobrador;
 import br.com.cepedi.model.pessoa.Motorista;
 import br.com.cepedi.model.transporte.Jornada;
+import br.com.cepedi.model.transporte.JornadaTrajetoHorario;
 import br.com.cepedi.model.transporte.Trajeto;
 import br.com.cepedi.model.veiculo.Veiculo;
-import br.com.cepedi.view.MenuCRUDView;
+import br.com.cepedi.view.MenuJornadasView;
 
 public abstract class MenuJornadasController {
 	
-	public static void selecionarAcao(Scanner sc, ListaJornadas jornadas , ListaFuncionarios funcionarios , ListaTrajetos trajetos ,  ListaVeiculos veiculos) {
+	public static void selecionarAcao(Scanner sc, ListaJornadas jornadas , ListaFuncionarios funcionarios ,
+			ListaTrajetos trajetos ,  ListaVeiculos veiculos , ListaJornadaTrajetoHorario listaJornadaTrajetoHorario) {
 
 		int escolha;
 		
 		do {
-			escolha = MenuCRUDView.selecionaAcao(sc);
+			escolha = MenuJornadasView.selecionaAcao(sc);
 			
 			switch(escolha) {
 			case 1:
-				cadastra(sc,jornadas,funcionarios,trajetos, veiculos);
+				cadastra(sc,jornadas,funcionarios,trajetos, veiculos , listaJornadaTrajetoHorario);
 				break;
 			case 2:
 				mostra(sc,jornadas);
@@ -41,6 +45,12 @@ public abstract class MenuJornadasController {
 			case 4:
 				exclui(sc,jornadas);
 				break;
+			case 5:
+				mostraHorariosTrajetos(listaJornadaTrajetoHorario);
+				break;
+			case 6:
+				mostrarHorariosPorJornada(sc, listaJornadaTrajetoHorario , jornadas);
+				break;
 			case 0:
 				break;
 			
@@ -48,7 +58,8 @@ public abstract class MenuJornadasController {
 		}while(escolha!=0);
 	}
 	
-	private static void cadastra(Scanner sc, ListaJornadas jornadas , ListaFuncionarios funcionarios , ListaTrajetos trajetos , ListaVeiculos veiculos) {
+	private static void cadastra(Scanner sc, ListaJornadas jornadas , ListaFuncionarios funcionarios , ListaTrajetos trajetos
+			, ListaVeiculos veiculos , ListaJornadaTrajetoHorario listaJornadaTrajetoHorario) {
 		
 	    String escolhaContinue = "";
 	    Jornada jornada = null;
@@ -71,6 +82,12 @@ public abstract class MenuJornadasController {
 	    } while (true);
 
 	    preencheTrajetos(sc, jornadas, trajetos, jornada);
+	    try {	    	
+	    	armazenaHorarios(jornada,listaJornadaTrajetoHorario);
+	    }catch(Exception e) {
+	    	System.out.println(e.getMessage());
+	    	System.out.println("Não foi possivel armazenar os horarios de cada trajeto");
+	    }
 		
 	}
 
@@ -184,7 +201,7 @@ public abstract class MenuJornadasController {
 
 	private static String decideSeTemCobrador(Scanner sc) {
 		String escolhaCobrador;
-		System.out.println("Deseja inserir um cobrador ? ( 0 para não, qualquer outra tecla para sim");
+		System.out.println("Deseja inserir um cobrador ? ( 0 para não, qualquer outra tecla para sim)");
 		escolhaCobrador = sc.nextLine();
 		return escolhaCobrador;
 	}
@@ -333,5 +350,46 @@ public abstract class MenuJornadasController {
 			break;
 		}while(true);
 	}
+	
+	private static void armazenaHorarios(Jornada jornada , ListaJornadaTrajetoHorario listaJornadaTrajetoHorario) throws JornadaTrajetoHorarioException {
+		int minutosPassados = 0;
+		LocalDateTime horarioInicio = jornada.getDataInicio();
+		
+		for(Trajeto trajeto : jornada.getTrajetos()) {
+			minutosPassados += trajeto.tempoDeTodosTrechos();
+			JornadaTrajetoHorario jth = new JornadaTrajetoHorario(jornada,trajeto,horarioInicio.plusMinutes(minutosPassados));
+			listaJornadaTrajetoHorario.adiciona(jth);
+		}
+	}
+	
+	private static void mostraHorariosTrajetos(ListaJornadaTrajetoHorario listaJornadaTrajetoHorario) {
+		listaJornadaTrajetoHorario.mostraTodos();
+	}
+	
+	private static void mostrarHorariosPorJornada(Scanner sc , ListaJornadaTrajetoHorario listaJornadaTrajetoHorario , ListaJornadas jornadas) {
+		int idJornada;
+		Jornada jornada;
+		
+		try {
+			System.out.println("Digite o id da jornada");
+			idJornada = Integer.parseInt(sc.nextLine());
+			jornada = jornadas.buscar(idJornada);
+			listaJornadaTrajetoHorario.mostrarPorJornada(jornada);
+		}catch(Exception e ) {
+			System.out.println(e.getMessage());
+		}
 
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
