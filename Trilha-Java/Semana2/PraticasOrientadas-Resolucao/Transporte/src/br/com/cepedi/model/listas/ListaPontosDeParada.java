@@ -55,6 +55,7 @@ public class ListaPontosDeParada extends ArrayList<PontoDeParada>{
 		for(PontoDeParada p : this) {
 			if(p.getNome().equals(nome)) {
 				this.remove(p);
+				System.out.println("Ponto de parada excluido com sucesso!");
 				return;
 			}
 		}

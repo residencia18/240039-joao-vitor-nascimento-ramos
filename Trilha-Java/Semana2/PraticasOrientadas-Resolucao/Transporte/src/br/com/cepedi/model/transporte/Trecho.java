@@ -1,5 +1,7 @@
 package br.com.cepedi.model.transporte;
 
+import java.util.Objects;
+
 public class Trecho {
 	
 	
@@ -63,6 +65,28 @@ public class Trecho {
 	public String toString() {
 		return "Trecho [id=" + id + ", origem=" + origem + ", destino=" + destino + ", minutos=" + minutos + "]";
 	}
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(destino, minutos, origem);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Trecho other = (Trecho) obj;
+		return Objects.equals(destino, other.destino) && minutos == other.minutos
+				&& Objects.equals(origem, other.origem);
+	}
+	
+	
 
 
 

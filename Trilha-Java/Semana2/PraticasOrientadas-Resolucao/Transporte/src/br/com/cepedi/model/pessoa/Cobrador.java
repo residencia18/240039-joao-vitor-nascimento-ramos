@@ -12,7 +12,7 @@ public class Cobrador extends Funcionario{
 
 	@Override
 	public String toString() {
-		return "[COBRADOR - ID= " + id + "\nNome= " + nome + "\nCPF= " + CPF + "\nSalário= " + salario.toString() +"]";
+		return "[COBRADOR - ID= " + id + " Nome= " + nome + " CPF= " + CPF + " Salário= " + salario.toString() +"]";
 	}
 	
 	

@@ -22,6 +22,15 @@ public class Trajeto {
 		id = qntdIDsGerados;
 		trechos = new ListaTrechos();
 	}
+	
+	public Trajeto() {
+		super();
+
+		qntdIDsGerados++;
+		id = qntdIDsGerados;
+		trechos = new ListaTrechos();
+	}
+
 
 	
 	
@@ -69,18 +78,19 @@ public class Trajeto {
 		this.nome = nome;
 	}
 	
-	public void adicionaTrecho(Trecho trecho) throws TrechoJaCadastrado {
+	public void adiciona(Trecho trecho) throws TrechoJaCadastrado {
 		String novoNome;
 		if(trecho==null) {
 			throw new IllegalArgumentException("O trecho não pode ser nulo");
 		}
 		this.trechos.adiciona(trecho);
+		System.out.println("Trecho adicionado com sucesso!");
 		novoNome = this.trechos.get(0).getOrigem().getNome()+"-" + this.trechos.get(trechos.size()-1).getDestino().getNome();
 		setNome(novoNome);
 
 	}
 	
-	public void removeTrecho(Trecho trecho) {
+	public void remove(Trecho trecho) {
 		if(trechos.remove(trecho)) {
 			System.out.println("Trecho removido com sucesso!");
 		}else {
@@ -96,7 +106,7 @@ public class Trajeto {
 		return tempoTotal;
 	}
 	
-	public String listaTodosOsTrechos() {
+	public String listaTodos() {
 		String saida = "";
 		for(Trecho trecho : trechos) {
 			saida += trecho.toString()+"\n";
@@ -104,11 +114,11 @@ public class Trajeto {
 		return saida;
 	}
 	
-	public void mostraTodosOsTrechos() {
+	public void mostraTodos() {
 		if(trechos.isEmpty()) {
 			System.out.println("Trajeto vazio");
 		}
-		System.out.println(this.listaTodosOsTrechos());
+		System.out.println(this.listaTodos());
 	}
 
 

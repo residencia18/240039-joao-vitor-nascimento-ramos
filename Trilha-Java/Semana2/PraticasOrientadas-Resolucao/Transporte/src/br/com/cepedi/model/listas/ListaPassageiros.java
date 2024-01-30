@@ -52,6 +52,7 @@ public class ListaPassageiros extends ArrayList<Passageiro>{
 		for(Passageiro p : this) {
 			if(p.getCPF().replaceAll("[^0-9]", "").equals(cpf.replaceAll("[^0-9]", ""))) {
 				this.remove(p);
+				System.out.println("Passageiro excluido com sucesso!");
 				return;
 			}
 		}

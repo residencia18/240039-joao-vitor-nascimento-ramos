@@ -42,8 +42,8 @@ class TesteListaTrajetos {
 			Trecho t2 = new Trecho(p2,p3,20);
 			Trecho t3 = new Trecho(p1,p3,50);
 
-			trajeto.adicionaTrecho(t1);
-			trajeto.adicionaTrecho(t2);
+			trajeto.adiciona(t1);
+			trajeto.adiciona(t2);
 			
 			lt.adiciona(trajeto);
 			
@@ -67,9 +67,9 @@ class TesteListaTrajetos {
 			Trecho t2 = new Trecho(p2,p3,20);
 			Trecho t3 = new Trecho(p1,p3,50);
 
-			trajeto.adicionaTrecho(t1);
-			trajeto.adicionaTrecho(t2);
-			trajeto2.adicionaTrecho(t3);
+			trajeto.adiciona(t1);
+			trajeto.adiciona(t2);
+			trajeto2.adiciona(t3);
 			
 			lt.adiciona(trajeto);
 			lt.adiciona(trajeto2);
@@ -106,10 +106,10 @@ class TesteListaTrajetos {
 			Trecho t2 = new Trecho(p2,p3,20);
 			Trecho t3 = new Trecho(p1,p3,50);
 
-			trajeto.adicionaTrecho(t1);
-			trajeto.adicionaTrecho(t2);
-			trajeto2.adicionaTrecho(t1);
-			trajeto2.adicionaTrecho(t2);
+			trajeto.adiciona(t1);
+			trajeto.adiciona(t2);
+			trajeto2.adiciona(t1);
+			trajeto2.adiciona(t2);
 			
 			lt.adiciona(trajeto);
 			lt.adiciona(trajeto2);
@@ -134,9 +134,9 @@ class TesteListaTrajetos {
 			Trecho t2 = new Trecho(p2,p3,20);
 			Trecho t3 = new Trecho(p1,p3,50);
 
-			trajeto.adicionaTrecho(t1);
-			trajeto.adicionaTrecho(t2);
-			trajeto2.adicionaTrecho(t3);
+			trajeto.adiciona(t1);
+			trajeto.adiciona(t2);
+			trajeto2.adiciona(t3);
 			
 			lt.adiciona(trajeto);
 			lt.adiciona(trajeto2);
@@ -163,9 +163,9 @@ class TesteListaTrajetos {
 			Trecho t2 = new Trecho(p2,p3,20);
 			Trecho t3 = new Trecho(p1,p3,50);
 
-			trajeto.adicionaTrecho(t1);
-			trajeto.adicionaTrecho(t2);
-			trajeto2.adicionaTrecho(t3);
+			trajeto.adiciona(t1);
+			trajeto.adiciona(t2);
+			trajeto2.adiciona(t3);
 			
 			lt.adiciona(trajeto);
 			lt.adiciona(trajeto2);
@@ -192,9 +192,9 @@ class TesteListaTrajetos {
 			Trecho t2 = new Trecho(p2,p3,20);
 			Trecho t3 = new Trecho(p1,p3,50);
 
-			trajeto.adicionaTrecho(t1);
-			trajeto.adicionaTrecho(t2);
-			trajeto2.adicionaTrecho(t3);
+			trajeto.adiciona(t1);
+			trajeto.adiciona(t2);
+			trajeto2.adiciona(t3);
 			
 			lt.adiciona(trajeto);
 			lt.adiciona(trajeto2);
@@ -221,9 +221,9 @@ class TesteListaTrajetos {
 			Trecho t2 = new Trecho(p2,p3,20);
 			Trecho t3 = new Trecho(p1,p3,50);
 
-			trajeto.adicionaTrecho(t1);
-			trajeto.adicionaTrecho(t2);
-			trajeto2.adicionaTrecho(t3);
+			trajeto.adiciona(t1);
+			trajeto.adiciona(t2);
+			trajeto2.adiciona(t3);
 			
 			lt.adiciona(trajeto);
 			lt.adiciona(trajeto2);
@@ -251,9 +251,9 @@ class TesteListaTrajetos {
 			Trecho t2 = new Trecho(p2,p3,20);
 			Trecho t3 = new Trecho(p1,p3,50);
 
-			trajeto.adicionaTrecho(t1);
-			trajeto.adicionaTrecho(t2);
-			trajeto2.adicionaTrecho(t3);
+			trajeto.adiciona(t1);
+			trajeto.adiciona(t2);
+			trajeto2.adiciona(t3);
 			
 			lt.adiciona(trajeto);
 			lt.adiciona(trajeto2);
@@ -283,9 +283,9 @@ class TesteListaTrajetos {
 			Trecho t2 = new Trecho(p2,p3,20);
 			Trecho t3 = new Trecho(p1,p3,50);
 
-			trajeto.adicionaTrecho(t1);
-			trajeto.adicionaTrecho(t2);
-			trajeto2.adicionaTrecho(t3);
+			trajeto.adiciona(t1);
+			trajeto.adiciona(t2);
+			trajeto2.adiciona(t3);
 			
 			lt.adiciona(trajeto);
 			lt.adiciona(trajeto2);

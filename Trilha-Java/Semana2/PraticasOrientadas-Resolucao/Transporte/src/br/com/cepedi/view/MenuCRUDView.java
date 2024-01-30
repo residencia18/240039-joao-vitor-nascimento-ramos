@@ -26,7 +26,7 @@ public abstract class MenuCRUDView {
 	}
 	
 	private static void mostraMenu() {
-		System.out.println("-----MENU VEICULOS-----");
+		System.out.println("-----MENU GESTÃO SECUNDARIO-----");
 		System.out.println("1 - Cadastra");
 		System.out.println("2 - Busca");
 		System.out.println("3 - Lista Todos");

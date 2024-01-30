@@ -56,6 +56,7 @@ public class ListaFuncionarios extends ArrayList<Funcionario>{
 		for(Funcionario f : this) {
 			if(f.getCPF().replaceAll("[^0-9]", "").equals(cpf.replaceAll("[^0-9]", ""))) {
 				this.remove(f);
+				System.out.println("Funcionario excluido com sucesso!");
 				return;
 			}
 		}

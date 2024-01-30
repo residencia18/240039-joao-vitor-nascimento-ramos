@@ -48,6 +48,7 @@ public class ListaJornadas extends ArrayList<Jornada>{
 		for(Jornada j : this) {
 			if(j.getId()==id) {
 				remove(j);
+				System.out.println("Jornada excluida com sucesso!");
 				return;
 			}
 		}

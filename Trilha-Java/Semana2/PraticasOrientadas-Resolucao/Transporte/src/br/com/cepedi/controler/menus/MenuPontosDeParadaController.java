@@ -2,13 +2,13 @@ package br.com.cepedi.controler.menus;
 
 import java.util.Scanner;
 
-import br.com.cepedi.model.listas.ListaVeiculos;
-import br.com.cepedi.model.veiculo.Veiculo;
+import br.com.cepedi.model.listas.ListaPontosDeParada;
+import br.com.cepedi.model.transporte.PontoDeParada;
 import br.com.cepedi.view.MenuCRUDView;
 
-public abstract class MenuVeiculosController {
+public abstract class MenuPontosDeParadaController {
 	
-	public static void selecionarAcao(Scanner sc, ListaVeiculos veiculos) {
+	public static void selecionarAcao(Scanner sc, ListaPontosDeParada listaPontosDeParada) {
 
 		int escolha;
 		
@@ -17,16 +17,16 @@ public abstract class MenuVeiculosController {
 			
 			switch(escolha) {
 			case 1:
-				cadastra(sc,veiculos);
+				cadastra(sc,listaPontosDeParada);
 				break;
 			case 2:
-				mostra(sc,veiculos);
+				mostra(sc,listaPontosDeParada);
 				break;
 			case 3:
-				listaTodos(veiculos);
+				listaTodos(listaPontosDeParada);
 				break;
 			case 4:
-				exclui(sc,veiculos);
+				exclui(sc,listaPontosDeParada);
 				break;
 			case 0:
 				break;
@@ -35,21 +35,16 @@ public abstract class MenuVeiculosController {
 		}while(escolha!=0);
 	}
 	
-	private static void cadastra(Scanner sc , ListaVeiculos veiculos) {
-		
-		Veiculo veiculo = null;
-		String modelo = null, placa = null ,montadora = null;
+	private static void cadastra(Scanner sc , ListaPontosDeParada listaPontosDeParada) {
+		PontoDeParada ponto = null;
+		String nome;
 		String escolhaContinue = "";
 		do {
 			try {
-				System.out.println("Digite o nome do modelo do veiculo");
-				modelo = sc.nextLine();
-				System.out.println("Digite a placa do veiculo");
-				placa = sc.nextLine();
-				System.out.println("Digite o nome da montadora do veiculo");
-				montadora = sc.nextLine();
-				veiculo =  new Veiculo(modelo,placa,montadora);
-				veiculos.adicionar(veiculo);
+				System.out.println("Insira o nome do ponto de parada ");
+				nome = sc.nextLine();
+				ponto = new PontoDeParada(nome);
+				listaPontosDeParada.adiciona(ponto);
 			}catch(Exception e ) {
 				System.out.println(e.getMessage());
 				System.out.println("Deseja tentar o cadastro novamente (0 - para parar , qualquer outra tecla para continuar) ");
@@ -59,21 +54,21 @@ public abstract class MenuVeiculosController {
 				}
 				continue;
 			}
-			System.out.println("Veiculo cadastrado com sucesso!");
+			System.out.println("Ponto de parada cadastrado com sucesso!");
 			break;
 			
 		}while(true);
 	}
 	
-	private static void mostra(Scanner sc , ListaVeiculos veiculos) {
-		Veiculo veiculo = null;
-		String placa;
+	private static void mostra(Scanner sc , ListaPontosDeParada listaPontosDeParada) {
+		PontoDeParada ponto = null;
+		String nome;
 		String escolhaContinue = "";
 		do {
 			try {
-				System.out.println("Digite a placa do veiculo que deseja buscar");
-				placa = sc.nextLine();
-				veiculo = veiculos.buscar(placa);
+				System.out.println("Digite o nome do ponto que deseja buscar");
+				nome = sc.nextLine();
+				ponto = listaPontosDeParada.buscar(nome);
 			}catch(Exception e ) {
 				System.out.println(e.getMessage());
 				System.out.println("Deseja tentar a busca novamente (0 - para parar , qualquer outra tecla para continuar) ");
@@ -84,24 +79,25 @@ public abstract class MenuVeiculosController {
 				continue;
 			}
 			
-			System.out.println(veiculo);
+			System.out.println(ponto);
 			break;
 			
 		}while(true);
 	}
 	
-	private static void listaTodos(ListaVeiculos veiculos) {
-		veiculos.mostraTodos();
+	private static void listaTodos(ListaPontosDeParada listaPontosDeParada) {
+		listaPontosDeParada.mostraTodos();
 	}
 	
-	private static void exclui(Scanner sc , ListaVeiculos veiculos) {
-		String placa;
+	private static void exclui(Scanner sc , ListaPontosDeParada listaPontosDeParada) {
+		PontoDeParada ponto = null;
+		String nome= null;
 		String escolhaContinue = "";
 		do {
 			try {
-				System.out.println("Digite a placa do veiculo que deseja buscar");
-				placa = sc.nextLine();
-				veiculos.deletar(placa);
+				System.out.println("Digite o nome do ponto que deseja excluir");
+				nome = sc.nextLine();
+				listaPontosDeParada.deletar(nome);
 			}catch(Exception e ) {
 				System.out.println(e.getMessage());
 				System.out.println("Deseja tentar a exclusão novamente (0 - para parar , qualquer outra tecla para continuar) ");
@@ -116,5 +112,6 @@ public abstract class MenuVeiculosController {
 			
 		}while(true);
 	}
+	
 
 }

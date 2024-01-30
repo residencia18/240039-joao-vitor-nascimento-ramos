@@ -2,13 +2,13 @@ package br.com.cepedi.controler.menus;
 
 import java.util.Scanner;
 
-import br.com.cepedi.model.listas.ListaVeiculos;
-import br.com.cepedi.model.veiculo.Veiculo;
+import br.com.cepedi.model.listas.ListaPassageiros;
+import br.com.cepedi.model.pessoa.Passageiro;
 import br.com.cepedi.view.MenuCRUDView;
 
-public abstract class MenuVeiculosController {
+public abstract class MenuPassageirosController {
 	
-	public static void selecionarAcao(Scanner sc, ListaVeiculos veiculos) {
+	public static void selecionarAcao(Scanner sc, ListaPassageiros passageiros) {
 
 		int escolha;
 		
@@ -17,16 +17,16 @@ public abstract class MenuVeiculosController {
 			
 			switch(escolha) {
 			case 1:
-				cadastra(sc,veiculos);
+				cadastra(sc,passageiros);
 				break;
 			case 2:
-				mostra(sc,veiculos);
+				mostra(sc,passageiros);
 				break;
 			case 3:
-				listaTodos(veiculos);
+				listaTodos(passageiros);
 				break;
 			case 4:
-				exclui(sc,veiculos);
+				exclui(sc,passageiros);
 				break;
 			case 0:
 				break;
@@ -35,21 +35,22 @@ public abstract class MenuVeiculosController {
 		}while(escolha!=0);
 	}
 	
-	private static void cadastra(Scanner sc , ListaVeiculos veiculos) {
+	private static void cadastra(Scanner sc , ListaPassageiros passageiros) {
 		
-		Veiculo veiculo = null;
-		String modelo = null, placa = null ,montadora = null;
+		Passageiro passageiro = null;
+		String nome = null, cpf= null;
+		int numCartao = 0;
 		String escolhaContinue = "";
 		do {
 			try {
-				System.out.println("Digite o nome do modelo do veiculo");
-				modelo = sc.nextLine();
-				System.out.println("Digite a placa do veiculo");
-				placa = sc.nextLine();
-				System.out.println("Digite o nome da montadora do veiculo");
-				montadora = sc.nextLine();
-				veiculo =  new Veiculo(modelo,placa,montadora);
-				veiculos.adicionar(veiculo);
+				System.out.println("Digite o nome do passageiro");
+				nome = sc.nextLine();
+				System.out.println("Digite o cpf do passageiro");
+				cpf = sc.nextLine();
+				System.out.println("Qual Cartão usa ? (1 - Transporte , 2 - Estudantil , 3 - Idoso)");
+				numCartao = Integer.parseInt(sc.nextLine());
+				passageiro = new Passageiro(nome,cpf,numCartao);
+				passageiros.adiciona(passageiro);
 			}catch(Exception e ) {
 				System.out.println(e.getMessage());
 				System.out.println("Deseja tentar o cadastro novamente (0 - para parar , qualquer outra tecla para continuar) ");
@@ -59,21 +60,21 @@ public abstract class MenuVeiculosController {
 				}
 				continue;
 			}
-			System.out.println("Veiculo cadastrado com sucesso!");
+			System.out.println("Passageiro cadastrado com sucesso!");
 			break;
 			
 		}while(true);
 	}
 	
-	private static void mostra(Scanner sc , ListaVeiculos veiculos) {
-		Veiculo veiculo = null;
-		String placa;
+	private static void mostra(Scanner sc , ListaPassageiros passageiros) {
+		Passageiro passageiro = null;
+		String cpf= null;
 		String escolhaContinue = "";
 		do {
 			try {
-				System.out.println("Digite a placa do veiculo que deseja buscar");
-				placa = sc.nextLine();
-				veiculo = veiculos.buscar(placa);
+				System.out.println("Digite o cpf do passageiro que deseja buscar");
+				cpf = sc.nextLine();
+				passageiro = passageiros.buscar(cpf);
 			}catch(Exception e ) {
 				System.out.println(e.getMessage());
 				System.out.println("Deseja tentar a busca novamente (0 - para parar , qualquer outra tecla para continuar) ");
@@ -84,24 +85,24 @@ public abstract class MenuVeiculosController {
 				continue;
 			}
 			
-			System.out.println(veiculo);
+			System.out.println(passageiro);
 			break;
 			
 		}while(true);
 	}
 	
-	private static void listaTodos(ListaVeiculos veiculos) {
-		veiculos.mostraTodos();
+	private static void listaTodos( ListaPassageiros passageiros) {
+		passageiros.mostraTodos();
 	}
 	
-	private static void exclui(Scanner sc , ListaVeiculos veiculos) {
-		String placa;
+	private static void exclui(Scanner sc ,  ListaPassageiros passageiros) {
+		String cpf= null;
 		String escolhaContinue = "";
 		do {
 			try {
 				System.out.println("Digite a placa do veiculo que deseja buscar");
-				placa = sc.nextLine();
-				veiculos.deletar(placa);
+				cpf = sc.nextLine();
+				passageiros.deletar(cpf);
 			}catch(Exception e ) {
 				System.out.println(e.getMessage());
 				System.out.println("Deseja tentar a exclusão novamente (0 - para parar , qualquer outra tecla para continuar) ");

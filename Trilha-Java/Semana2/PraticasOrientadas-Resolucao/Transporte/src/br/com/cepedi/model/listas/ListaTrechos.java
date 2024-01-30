@@ -49,6 +49,7 @@ public class ListaTrechos extends ArrayList<Trecho> {
 		for(Trecho t : this) {
 			if(t.getOrigem().getNome().equals(origem) && t.getDestino().getNome().equals(destino)) {
 				this.remove(t);
+				System.out.println("Trecho excluido com sucesso!");
 				return;
 			}
 		}

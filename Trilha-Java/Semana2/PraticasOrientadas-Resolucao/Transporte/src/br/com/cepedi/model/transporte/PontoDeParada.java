@@ -25,6 +25,9 @@ public class PontoDeParada {
 		if(nome==null) {
 			throw new NullPointerException("Foi inserido um nome nulo");
 		}
+		if(nome.isEmpty()) {
+			throw new IllegalArgumentException("Foi inserido um nome vazio");
+		}
 		this.nome = nome;
 	}
 

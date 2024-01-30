@@ -33,26 +33,25 @@ public abstract class MenuPrincipalController {
 				MenuVeiculosController.selecionarAcao(sc, listaVeiculos);
 				break;
 			case 2:
-				//menu Passageiros;
+				MenuPassageirosController.selecionarAcao(sc, listaPassageiros);
 				break;
 			case 3:
-				//menu Funcionarios;
+				MenuFuncionariosController.selecionarAcao(sc, listaFuncionarios);
 				break;
 			case 4:
-				//menu Pontos de parada;
+				MenuPontosDeParadaController.selecionarAcao(sc, listaPontosDeParada);
 				break;
 			case 5:
-				//menu Trechos;
+				MenuTrechosController.selecionarAcao(sc, listaPontosDeParada , listaTrechos);
 				break;
 			case 6:
-				//menu Trajetos;
+				MenuTrajetosController.selecionarAcao(sc, listaTrajetos, listaTrechos);
 				break;
 			case 7:
-				//menu Jornadas;
+				MenuJornadasController.selecionarAcao(sc, listaJornadas, listaFuncionarios, listaTrajetos , listaVeiculos);
 				break;
 			case 0:
-				//sair;
-					break;
+				break;
 				
 			}
 		}while(escolha!=0);

@@ -49,6 +49,7 @@ public class ListaTrajetos extends ArrayList<Trajeto>{
 		for(Trajeto t : this) {
 			if(t.getId()==id) {
 				this.remove(t);
+				System.out.println("Trajeto excluido com sucesso!");
 				return;
 			}
 		}
@@ -76,6 +77,7 @@ public class ListaTrajetos extends ArrayList<Trajeto>{
 
 	private boolean trajetoIgual(Trajeto t1 , Trajeto t2) {
 		int tamanhoTrajetosT1 = t1.getTrechos().size();
+		int qtdIguais=0;
 		
 		
 		if(tamanhoTrajetosT1!=t2.getTrechos().size()) {
@@ -85,11 +87,11 @@ public class ListaTrajetos extends ArrayList<Trajeto>{
 		
 		for(int i = 0 ; i < tamanhoTrajetosT1 ; i++) {
 			if(t1.getTrechos().get(i).equals(t2.getTrechos().get(i))) {
-				return false;
+				qtdIguais++;
 			}
 		}
 		
-		return true;
+		return qtdIguais==tamanhoTrajetosT1;
 	}
 	
 	
