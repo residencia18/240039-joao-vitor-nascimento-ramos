@@ -1,4 +1,4 @@
-package br.com.cepedi.controler.menus;
+package br.com.cepedi.controller.menus;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -381,15 +381,5 @@ public abstract class MenuJornadasController {
 
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }

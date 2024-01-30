@@ -1,18 +1,22 @@
-package br.com.cepedi.controler.menus;
+package br.com.cepedi.controller.menus;
 
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
-import br.com.cepedi.exceptions.listaTrajetos.TrajetoJaCadastrado;
 import br.com.cepedi.exceptions.listaTrechos.TrechoNaoEncontrado;
+import br.com.cepedi.model.listas.ListaPontosDeParada;
 import br.com.cepedi.model.listas.ListaTrajetos;
 import br.com.cepedi.model.listas.ListaTrechos;
+import br.com.cepedi.model.transporte.Checkpoint;
+import br.com.cepedi.model.transporte.PontoDeParada;
 import br.com.cepedi.model.transporte.Trajeto;
 import br.com.cepedi.model.transporte.Trecho;
 import br.com.cepedi.view.MenuCRUDView;
 
 public abstract class MenuTrajetosController {
 	
-	public static void selecionarAcao(Scanner sc, ListaTrajetos trajetos , ListaTrechos trechos) {
+	public static void selecionarAcao(Scanner sc, ListaTrajetos trajetos , ListaTrechos trechos, ListaPontosDeParada pontos) {
 
 		int escolha;
 		
@@ -21,7 +25,7 @@ public abstract class MenuTrajetosController {
 			
 			switch(escolha) {
 			case 1:
-				cadastra(sc,trajetos,trechos);
+				cadastra(sc,trajetos,trechos , pontos);
 				break;
 			case 2:
 				mostra(sc,trajetos);
@@ -39,11 +43,11 @@ public abstract class MenuTrajetosController {
 		}while(escolha!=0);
 	}
 	
-	private static void cadastra(Scanner sc, ListaTrajetos trajetos, ListaTrechos trechos) {
+	private static void cadastra(Scanner sc, ListaTrajetos trajetos, ListaTrechos trechos , ListaPontosDeParada pontos) {
 	    Trajeto trajeto = null;
 	    Trecho trecho = null;
 	    String escolhaContinue = "";
-
+	    Checkpoint checkpoint;
 	    do {
 	        try {
 	            trecho = buscaDados(sc, trechos);
@@ -67,6 +71,8 @@ public abstract class MenuTrajetosController {
 	        if (escolhaContinue.equals("0")) {
 	            try {
 	            	trajetos.adiciona(trajeto);
+	                checkpoint = defineCheckpoint(sc,trajeto,pontos);
+	                trajeto.setCheckpoint(checkpoint);
 	    	        System.out.println("Trajeto cadastrado com sucesso!");
 	                break;
 	            } catch (Exception e) {
@@ -81,6 +87,13 @@ public abstract class MenuTrajetosController {
 	                System.out.println("Deseja tentar a busca novamente (0 - para parar, qualquer outra tecla para continuar) ");
 	                escolhaContinue = sc.nextLine();
 	                if (escolhaContinue.equals("0")) {
+	                	try {
+
+	                	}catch(Exception ee ) {
+	                		System.out.println(ee.getMessage());
+	                		continue;
+	                	}
+
 	                    return;
 	                }
 	                continue;
@@ -89,6 +102,39 @@ public abstract class MenuTrajetosController {
 	    } while (true);
 	    
 
+	}
+	
+	private static Checkpoint defineCheckpoint(Scanner sc , Trajeto trajeto , ListaPontosDeParada pontos) {
+		int idPonto;
+		Checkpoint checkpoint;
+		PontoDeParada ponto;
+		String escolhaContinue;
+		int tempoDeslocamento;
+
+		do {
+			System.out.println("Defina o checkpoint do trajeto");
+			System.out.println("As opcoes são : ");
+			listaPontosDeParada(trajeto);
+			try {
+				System.out.println("Insira o id do ponto");
+				idPonto = Integer.parseInt(sc.nextLine());
+				ponto = pontos.buscar(idPonto);
+				checkpoint = new Checkpoint(ponto);
+				tempoDeslocamento = tempoAteOCheckpoint(trajeto,checkpoint);
+				checkpoint.setHoraChegada(tempoDeslocamento);
+				return checkpoint;
+			} catch (Exception e) {
+                System.out.println(e.getMessage());
+                System.out.println("Deseja tentar a busca novamente (0 - para parar, qualquer outra tecla para continuar) ");
+                escolhaContinue = sc.nextLine();
+                if (escolhaContinue.equals("0")) {
+                    return null; 
+                }
+                continue;
+            }
+		} while (true);
+
+		
 	}
 
 
@@ -155,6 +201,46 @@ public abstract class MenuTrajetosController {
 			
 			break;
 		}while(true);
+	}
+	
+	private static void listaPontosDeParada(Trajeto trajeto) {
+		Set<PontoDeParada> pontos = new HashSet<>();
+		for(Trecho trecho : trajeto.getTrechos()) {
+			pontos.add(trecho.getOrigem());
+			pontos.add(trecho.getDestino());
+		}
+		
+		for(PontoDeParada ponto : pontos) {
+			System.out.println(ponto);
+		}
+	}
+	
+	private static PontoDeParada buscaPontoPorID(int id , Trajeto trajeto) {
+
+		for(Trecho trecho : trajeto.getTrechos()) {
+			if(trecho.getOrigem().getId()==id) {
+				return trecho.getOrigem();
+			}else if(trecho.getDestino().getId()==id) {
+				return trecho.getDestino();
+			}
+		}
+		
+		return null;
+	}
+	
+	private static int tempoAteOCheckpoint(Trajeto trajeto , Checkpoint checkpoint) {
+		int tempo = 0;
+		for(Trecho trecho : trajeto.getTrechos()) {
+			if(trecho.getOrigem()==checkpoint.getPonto()) {
+				return tempo;
+			}else if(trecho.getDestino()==checkpoint.getPonto()) {
+				tempo += trecho.getMinutos();
+				return tempo;
+			}else {
+				tempo+=trecho.getMinutos();
+			}
+		}
+		return tempo;
 	}
 
 }

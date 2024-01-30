@@ -1,4 +1,4 @@
-package br.com.cepedi.controler.menus;
+package br.com.cepedi.controller.menus;
 
 import java.util.Scanner;
 

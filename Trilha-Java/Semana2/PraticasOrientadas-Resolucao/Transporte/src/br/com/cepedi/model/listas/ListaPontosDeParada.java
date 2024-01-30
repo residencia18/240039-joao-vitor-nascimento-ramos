@@ -44,6 +44,21 @@ public class ListaPontosDeParada extends ArrayList<PontoDeParada>{
 		throw new PontoNaoEncontrado();
 	}
 	
+	public PontoDeParada buscar(int id) throws PontoNaoEncontrado {
+		
+		if(id < 1) {
+			throw new NullPointerException("Foi inserido um id inválido");
+		}
+		
+		for(PontoDeParada p : this) {
+			if(p.getId()==id) {
+				return p;
+			}
+		}
+		
+		throw new PontoNaoEncontrado();
+	}
+	
 	
 	public void deletar(String nome) throws PontoNaoEncontrado{
 		

@@ -1,4 +1,4 @@
-package br.com.cepedi.controler.menus;
+package br.com.cepedi.controller.menus;
 
 import java.math.BigDecimal;
 import java.util.Scanner;

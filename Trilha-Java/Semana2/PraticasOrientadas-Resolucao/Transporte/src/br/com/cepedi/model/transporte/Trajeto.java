@@ -15,7 +15,10 @@ public class Trajeto {
 	LocalDateTime inicio;
 	ListaTrechos trechos;
 	String nome;
+	Checkpoint checkpoint;
 	
+
+
 	public Trajeto(LocalDateTime inicio) {
 		super();
 		setInicio(inicio);
@@ -33,7 +36,16 @@ public class Trajeto {
 	}
 
 	
+	public Checkpoint getCheckpoint() {
+		return checkpoint;
+	}
 
+	public void setCheckpoint(Checkpoint checkpoint) {
+		if(checkpoint==null) {
+			throw new IllegalArgumentException("Tentativo de inserir valor nulo !");
+		}
+		this.checkpoint = checkpoint;
+	}
 	
 	
 	public String getNome() {
@@ -90,9 +102,14 @@ public class Trajeto {
 		}
 		this.trechos.adiciona(trecho);
 		System.out.println("Trecho adicionado com sucesso!");
+		defineNome();
+
+	}
+
+	private void defineNome() {
+		String novoNome;
 		novoNome = this.trechos.get(0).getOrigem().getNome()+"-" + this.trechos.get(trechos.size()-1).getDestino().getNome();
 		setNome(novoNome);
-
 	}
 	
 	public void remove(Trecho trecho) {
@@ -128,9 +145,12 @@ public class Trajeto {
 
 
 
+
+
 	@Override
 	public String toString() {
-		return "Trajeto [id=" + id + ", inicio=" + inicio + ", trechos=" + trechos + ", nome=" + nome + "]";
+		return "Trajeto [id=" + id + ", inicio=" + inicio + ", trechos=" + trechos + ", nome=" + nome + ", checkpoint="
+				+ checkpoint + "]";
 	}
 
 	@Override

@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 public class Checkpoint {
 	
 	private PontoDeParada ponto;
-	private LocalDateTime horaChegada;
+	private int tempoParaChegar;
 	
 	
 	public Checkpoint(PontoDeParada ponto) {
@@ -15,7 +15,7 @@ public class Checkpoint {
 	
 	@Override
 	public String toString() {
-		return "Checkpoint [ponto=" + ponto + ", horaChegada=" + horaChegada + "]";
+		return "Checkpoint [ponto=" + ponto + ", tempoParaChegar=" + tempoParaChegar + "]";
 	}
 
 	public PontoDeParada getPonto() {
@@ -30,17 +30,17 @@ public class Checkpoint {
 	}
 
 
-	public LocalDateTime getHoraChegada() {
-		return horaChegada;
+	public int getHoraChegada() {
+		return tempoParaChegar;
 	}
 
 
-	public void setHoraChegada(LocalDateTime horaChegada) {
-		if(horaChegada==null) {
-			throw new NullPointerException("Foi inserido uma hora nula");
+	public void setHoraChegada(int horaChegadaMinutos) {
+		if(horaChegadaMinutos<0) {
+			throw new IllegalArgumentException("Foi inserido um tempo negativo");
 		}
 		
-		this.horaChegada = horaChegada;
+		this.tempoParaChegar = horaChegadaMinutos;
 	}
 
 	

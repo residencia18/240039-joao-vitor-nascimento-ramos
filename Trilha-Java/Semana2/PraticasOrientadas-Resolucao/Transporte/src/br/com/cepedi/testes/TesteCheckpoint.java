@@ -49,12 +49,11 @@ class TesteCheckpoint {
 		try {
 			p1 = new PontoDeParada("Ferradas");
 			c1 = new Checkpoint(p1);	
-			c1.setHoraChegada(null);
+			c1.setHoraChegada(-1);
 		}catch(Exception e ) {
-			assertEquals("Foi inserido uma hora nula",e.getMessage());
+			assertEquals("Foi inserido um tempo negativo",e.getMessage());
 		}
-		
-		assertNull(c1.getHoraChegada());
+	
 		
 	}
 

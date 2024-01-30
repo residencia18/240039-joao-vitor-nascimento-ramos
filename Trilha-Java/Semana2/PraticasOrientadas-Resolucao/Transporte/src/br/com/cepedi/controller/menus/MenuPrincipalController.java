@@ -1,4 +1,4 @@
-package br.com.cepedi.controler.menus;
+package br.com.cepedi.controller.menus;
 
 import java.util.Scanner;
 
@@ -49,7 +49,7 @@ public abstract class MenuPrincipalController {
 				MenuTrechosController.selecionarAcao(sc, listaPontosDeParada , listaTrechos);
 				break;
 			case 6:
-				MenuTrajetosController.selecionarAcao(sc, listaTrajetos, listaTrechos);
+				MenuTrajetosController.selecionarAcao(sc, listaTrajetos, listaTrechos ,listaPontosDeParada);
 				break;
 			case 7:
 				MenuJornadasController.selecionarAcao(sc, listaJornadas, listaFuncionarios, listaTrajetos , listaVeiculos,listaJornadaTrajetoHorario);
