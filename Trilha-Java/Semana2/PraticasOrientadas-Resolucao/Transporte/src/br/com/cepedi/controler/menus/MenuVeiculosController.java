@@ -1,5 +1,6 @@
 package br.com.cepedi.controler.menus;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import br.com.cepedi.model.listas.ListaVeiculos;

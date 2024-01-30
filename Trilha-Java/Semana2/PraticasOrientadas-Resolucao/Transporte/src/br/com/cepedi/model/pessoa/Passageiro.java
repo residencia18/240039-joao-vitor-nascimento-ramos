@@ -23,7 +23,7 @@ public class Passageiro extends Pessoa{
 	
 	@Override
 	public String toString() {
-		return "[ID= " + id + " Nome= " + nome + " CPF= " + CPF + "]";
+		return "[ID= " + id + " Nome= " + nome + " CPF= " + CPF + " cartao= " + cartao + "]";
 	}
 
 	public CartaoPassagem getCartao() {

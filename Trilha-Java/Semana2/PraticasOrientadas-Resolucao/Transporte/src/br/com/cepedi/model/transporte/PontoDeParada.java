@@ -1,5 +1,7 @@
 package br.com.cepedi.model.transporte;
 
+import java.util.Objects;
+
 public class PontoDeParada {
 	
 	public static int qtdPontosParada = 0;
@@ -42,6 +44,23 @@ public class PontoDeParada {
 	@Override
 	public String toString() {
 		return "PontoDeParada [id=" + id + ", nome=" + nome + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(nome);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PontoDeParada other = (PontoDeParada) obj;
+		return Objects.equals(nome, other.nome);
 	}
 
 

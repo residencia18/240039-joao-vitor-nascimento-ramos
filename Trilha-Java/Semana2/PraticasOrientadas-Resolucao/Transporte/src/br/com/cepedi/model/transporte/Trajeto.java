@@ -2,6 +2,7 @@ package br.com.cepedi.model.transporte;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import br.com.cepedi.exceptions.listaTrechos.TrechoJaCadastrado;
 import br.com.cepedi.model.listas.ListaTrechos;
@@ -31,6 +32,7 @@ public class Trajeto {
 		trechos = new ListaTrechos();
 	}
 
+	
 
 	
 	
@@ -62,10 +64,13 @@ public class Trajeto {
 	    }
 	    this.inicio = inicio;
 	}
-	public ArrayList<Trecho> getTrechos() {
+
+	
+
+
+	public ListaTrechos getTrechos() {
 		return trechos;
 	}
-
 
 	public void setNome(String nome) {
 		if(nome==null) {
@@ -127,6 +132,27 @@ public class Trajeto {
 	public String toString() {
 		return "Trajeto [id=" + id + ", inicio=" + inicio + ", trechos=" + trechos + ", nome=" + nome + "]";
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(inicio, nome, trechos);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Trajeto other = (Trajeto) obj;
+		return Objects.equals(inicio, other.inicio) && Objects.equals(nome, other.nome)
+				&& Objects.equals(trechos, other.trechos);
+	}
+	
+	
+	
 	
 	
 	

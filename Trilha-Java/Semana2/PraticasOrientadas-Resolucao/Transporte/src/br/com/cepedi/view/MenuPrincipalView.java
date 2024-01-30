@@ -11,7 +11,7 @@ public abstract class MenuPrincipalView {
 			mostraMenu();
 			try {
 				op = Integer.parseInt(sc.nextLine());
-				if(op < 0 || op > 7) {
+				if(op < 0 || op > 8) {
 					throw new IllegalArgumentException("Escolha inválida");
 				}
 			}catch(Exception e) {
@@ -20,7 +20,7 @@ public abstract class MenuPrincipalView {
 			}
 			
 			
-		}while(op < 0 || op > 7);
+		}while(op < 0 || op > 8);
 		
 		return op;
 	}
@@ -34,6 +34,7 @@ public abstract class MenuPrincipalView {
 		System.out.println("5 - Menu Trechos");
 		System.out.println("6 - Menu Trajetos");
 		System.out.println("7 - Menu Jornadas");
+		System.out.println("8 - Menu Embarque");
 		System.out.println("0 - Sair");
 	}
 

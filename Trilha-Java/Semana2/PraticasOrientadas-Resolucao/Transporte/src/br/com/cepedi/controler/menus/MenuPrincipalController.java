@@ -2,6 +2,7 @@ package br.com.cepedi.controler.menus;
 
 import java.util.Scanner;
 
+import br.com.cepedi.model.listas.ListaEmbarques;
 import br.com.cepedi.model.listas.ListaFuncionarios;
 import br.com.cepedi.model.listas.ListaJornadas;
 import br.com.cepedi.model.listas.ListaPassageiros;
@@ -10,7 +11,6 @@ import br.com.cepedi.model.listas.ListaTrajetos;
 import br.com.cepedi.model.listas.ListaTrechos;
 import br.com.cepedi.model.listas.ListaVeiculos;
 import br.com.cepedi.view.MenuPrincipalView;
-import br.com.cepedi.view.MenuCRUDView;
 
 public abstract class MenuPrincipalController {
 	
@@ -22,6 +22,8 @@ public abstract class MenuPrincipalController {
 		ListaTrechos listaTrechos = new ListaTrechos();
 		ListaVeiculos listaVeiculos = new ListaVeiculos();
 		ListaTrajetos listaTrajetos = new ListaTrajetos();
+		ListaEmbarques listaEmbarques = new ListaEmbarques();
+		
 		int escolha;
 		
 		do {
@@ -49,6 +51,9 @@ public abstract class MenuPrincipalController {
 				break;
 			case 7:
 				MenuJornadasController.selecionarAcao(sc, listaJornadas, listaFuncionarios, listaTrajetos , listaVeiculos);
+				break;
+			case 8:
+				MenuEmbarquesController.selecionarAcao(sc, listaPassageiros, listaJornadas, listaEmbarques);
 				break;
 			case 0:
 				break;

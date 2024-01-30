@@ -1,10 +1,11 @@
 package br.com.cepedi.controler.menus;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 import br.com.cepedi.model.listas.ListaPassageiros;
 import br.com.cepedi.model.pessoa.Passageiro;
-import br.com.cepedi.view.MenuCRUDView;
+import br.com.cepedi.view.MenuPassageirosView;
 
 public abstract class MenuPassageirosController {
 	
@@ -13,7 +14,7 @@ public abstract class MenuPassageirosController {
 		int escolha;
 		
 		do {
-			escolha = MenuCRUDView.selecionaAcao(sc);
+			escolha = MenuPassageirosView.selecionaAcao(sc);
 			
 			switch(escolha) {
 			case 1:
@@ -28,6 +29,8 @@ public abstract class MenuPassageirosController {
 			case 4:
 				exclui(sc,passageiros);
 				break;
+			case 5:
+				recarrega(sc,passageiros);
 			case 0:
 				break;
 			
@@ -100,7 +103,7 @@ public abstract class MenuPassageirosController {
 		String escolhaContinue = "";
 		do {
 			try {
-				System.out.println("Digite a placa do veiculo que deseja buscar");
+				System.out.println("Digite o cpf do passageiro que deseja excluir");
 				cpf = sc.nextLine();
 				passageiros.deletar(cpf);
 			}catch(Exception e ) {
@@ -113,6 +116,34 @@ public abstract class MenuPassageirosController {
 				continue;
 			}
 			
+			break;
+			
+		}while(true);
+	}
+	
+	private static void recarrega(Scanner sc , ListaPassageiros passageiros) {
+		Passageiro passageiro = null;
+		String cpf= null;
+		String escolhaContinue = "";
+		String valor;
+		do {
+			try {
+				System.out.println("Digite o cpf do passageiro");
+				cpf = sc.nextLine();
+				passageiro = passageiros.buscar(cpf);
+			    System.out.println("Qual valor a ser recarregado ? ");
+			    valor = sc.nextLine();
+			    passageiro.getCartao().recarregar(new BigDecimal(valor));
+			}catch(Exception e ) {
+				System.out.println(e.getMessage());
+				System.out.println("Deseja tentar o cadastro novamente (0 - para parar , qualquer outra tecla para continuar) ");
+				escolhaContinue = sc.nextLine();
+				if(escolhaContinue.equals("0")) {
+					return;
+				}
+				continue;
+			}
+			System.out.println("Recarga feita com sucesso!");
 			break;
 			
 		}while(true);
