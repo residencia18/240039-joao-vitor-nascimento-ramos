@@ -26,6 +26,12 @@ public abstract class MenuPrincipalController {
 			case 2:
 				MenuImoveisController.selecionarAcao(sc, imoveis, clientes);
 				break;
+			case 3:
+				MenuFaturasController.selecionarAcao(sc, imoveis);
+				break;
+			case 4:
+				MenuPagamentosController.selecionarAcao(sc, imoveis);
+				break;
 			case 0:
 				break;
 				

@@ -1,5 +1,9 @@
 package br.com.cepedi.model;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import br.com.cepedi.verificacoes.geral.VerificacoesGeral;
@@ -12,6 +16,7 @@ public class Imovel {
 	private String matricula;
 	Endereco endereco;
 	Relogio relogio;
+	List<Fatura> faturas;
 	
 	
 	//----CONSTRUTORES
@@ -21,6 +26,7 @@ public class Imovel {
 		setMatricula(matricula);
 		setEndereco(endereco);
 		relogio = new Relogio();
+		faturas = new ArrayList<Fatura>();
 		qntIdsGerados++;
 		this.id = qntIdsGerados;
 	}
@@ -92,7 +98,18 @@ public class Imovel {
 		this.proprietario = proprietario;
 	}
 	
+	public List<Fatura> getFaturas() {
+		return faturas;
+	}
+
+	public void setFaturas(List<Fatura> faturas) {
+		this.faturas = faturas;
+	}
+	
+	
 	//-----TO STRING
+
+
 
 
 
@@ -127,8 +144,28 @@ public class Imovel {
 		return Objects.equals(endereco, other.endereco);
 	}
 	
+	public void realizaLeitura(LocalDate data , BigDecimal novoValor) {
+		
+		relogio.registraNovaLeitura(novoValor);
+		
+		Fatura fatura = new Fatura(data,relogio);
+		
+		this.faturas.add(fatura);
+		
+	}
 	
-	
+	public Fatura buscarFaturaEmAberto(int id) {
+	    return faturas.stream().filter(fatura -> !fatura.isQuitado())
+	                  .filter(fatura -> fatura.getId() == id)
+	                  .findFirst()
+	                  .orElseThrow(() -> new IllegalArgumentException("Fatura não encontrada com o ID: " + id));
+	}
+
+	public Fatura buscarFatura(int id) {
+	    return faturas.stream().filter(fatura -> fatura.getId() == id)
+	                  .findFirst()
+	                  .orElseThrow(() -> new IllegalArgumentException("Fatura não encontrada com o ID: " + id));
+	}
 	
 	
 

@@ -66,7 +66,7 @@ public class Relogio {
 	public void registraNovaLeitura(BigDecimal novaLeitura) {
 	    VerificacoesGeral.verificaLeituraNegativa(novaLeitura);
 	    this.ultimaLeitura = this.leituraAtual;
-	    this.leituraAtual = this.leituraAtual.add(novaLeitura);
+	    this.leituraAtual = novaLeitura;
 	}
 
 	@Override

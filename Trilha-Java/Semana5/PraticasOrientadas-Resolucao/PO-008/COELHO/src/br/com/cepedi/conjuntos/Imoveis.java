@@ -10,7 +10,6 @@ import br.com.cepedi.exceptions.imovel.ImovelNaoEncontrado;
 import br.com.cepedi.model.Cliente;
 import br.com.cepedi.model.Endereco;
 import br.com.cepedi.model.Imovel;
-import br.com.cepedi.model.Relogio;
 
 public class Imoveis extends HashSet<Imovel> {
 

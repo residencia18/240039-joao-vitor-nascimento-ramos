@@ -1,6 +1,7 @@
 package br.com.cepedi.controller.menus;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 import br.com.cepedi.conjuntos.Clientes;
@@ -220,6 +221,8 @@ public abstract class MenuImoveisController {
 
 
 	}
+	
+
 
 
 	private static void atualizaCliente(Scanner sc, Imoveis imoveis, Clientes clientes, int id, Imovel imovel)
