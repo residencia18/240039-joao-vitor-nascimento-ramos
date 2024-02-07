@@ -10,6 +10,8 @@ import br.com.cepedi.verificacoes.geral.VerificacoesGeral;
 
 public class Imovel {
 	
+	//------ATRIBUTOS
+	
 	private Cliente proprietario = null;
 	public static int qntIdsGerados=0;
 	private int id;
@@ -144,6 +146,9 @@ public class Imovel {
 		return Objects.equals(endereco, other.endereco);
 	}
 	
+	
+	// IMOVEL REALIZANDO LEITURA
+	
 	public void realizaLeitura(LocalDate data , BigDecimal novoValor) {
 		
 		relogio.registraNovaLeitura(novoValor);
@@ -151,8 +156,10 @@ public class Imovel {
 		Fatura fatura = new Fatura(data,relogio);
 		
 		this.faturas.add(fatura);
-		
+	
 	}
+	
+	//------BUSCAS NA LISTA DE FATURAS
 	
 	public Fatura buscarFaturaEmAberto(int id) {
 	    return faturas.stream().filter(fatura -> !fatura.isQuitado())

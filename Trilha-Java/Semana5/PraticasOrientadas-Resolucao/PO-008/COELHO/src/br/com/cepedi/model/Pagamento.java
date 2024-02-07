@@ -8,6 +8,8 @@ import br.com.cepedi.verificacoes.geral.VerificacoesGeral;
 public class Pagamento {
 	
 	
+	//------ATRIUTOS
+	
 	public static int qntIdsGerados=0;
 
 	
@@ -17,6 +19,20 @@ public class Pagamento {
 	private Reembolso reembolso;
 	
 	
+	
+	//-----CONSTRUTORES
+
+	public Pagamento(LocalDate data, BigDecimal valor) {
+		super();
+		this.data = data;
+		this.valor = valor;
+		qntIdsGerados++;
+		this.id = qntIdsGerados;
+		
+	}
+	
+	
+	//----GETTERS E SETTERS
 	
 	public Reembolso getReembolso() {
 		return reembolso;
@@ -28,16 +44,6 @@ public class Pagamento {
 		this.reembolso = reembolso;
 	}
 
-
-
-	public Pagamento(LocalDate data, BigDecimal valor) {
-		super();
-		this.data = data;
-		this.valor = valor;
-		qntIdsGerados++;
-		this.id = qntIdsGerados;
-		
-	}
 
 
 	
@@ -87,14 +93,15 @@ public class Pagamento {
 	}
 
 
-
-
+	//------TO STRING
+	
 	@Override
 	public String toString() {
 		return "Pagamento [id=" + id + ", data=" + data + ", valor=" + valor + ", reembolso=" + reembolso + "]";
 	}
 
 
+	//---- REGISTRO DE REEMBOLSO
 
 	public void registraReembolso(LocalDate dataReembolso, BigDecimal valorReembolso) {
 	    

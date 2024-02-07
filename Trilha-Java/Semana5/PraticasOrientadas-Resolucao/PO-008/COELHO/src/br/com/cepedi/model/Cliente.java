@@ -118,7 +118,7 @@ public class Cliente implements Comparable<Cliente>{
 		return Integer.compare(id, o.getId());
 	}
 	
-	//-----------------
+	//----------------- LISTA DE IMOVEIS
 	
 	public void adicionaImovelNaLista(Imovel i) {
 		this.imoveis.add(i);

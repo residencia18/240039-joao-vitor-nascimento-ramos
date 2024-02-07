@@ -7,6 +7,8 @@ import java.util.List;
 
 public class Fatura {
 	
+	//----ATRIUTOS
+	
 	public static int qntIdsGerados=0;
 	public static final BigDecimal valorKW = new BigDecimal("10");
 
@@ -19,6 +21,7 @@ public class Fatura {
 	List<Pagamento> pagamentos;
 	
 	
+	//----CONSTRUTORES
 	
 	public Fatura(LocalDate data , Relogio relogio) {
 		
@@ -30,6 +33,8 @@ public class Fatura {
 		this.id = qntIdsGerados;
 	}
 
+	
+	//-----GETTERS E SETTERS
 
 	public LocalDate getData() {
 		return data;
@@ -118,6 +123,8 @@ public class Fatura {
 		this.quitado = quitado;
 	}
 
+	
+	//-----TO STRING
 
 	@Override
 	public String toString() {
@@ -125,9 +132,17 @@ public class Fatura {
 				+ ", leituraAtual=" + leituraAtual + ", quitado=" + quitado + "]";
 	}
 	
+	
+	//----- METODO PELO REGISTRO DO PAGAMENTO
+	
 	public void registraPagamento(BigDecimal valorPago) {
-	    if (this.quitado) {
+	    
+		if (this.quitado) {
 	        throw new IllegalArgumentException("A fatura está quitada");
+	    }
+	    
+	    if(valorPago.compareTo(BigDecimal.ZERO) < 0 ) {
+	    	throw new IllegalArgumentException("Valor inválido para pagamento");
 	    }
 	    
 	    Pagamento pagamento = new Pagamento(LocalDate.now(), valorPago);

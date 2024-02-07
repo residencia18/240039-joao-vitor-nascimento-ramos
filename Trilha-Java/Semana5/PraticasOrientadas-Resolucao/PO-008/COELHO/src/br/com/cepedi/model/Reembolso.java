@@ -7,12 +7,17 @@ import br.com.cepedi.verificacoes.geral.VerificacoesGeral;
 
 public class Reembolso {
 	
+	
+	//----------ATRIBUTOS
+	
 	public static int qntIdsGerados=0;
 
 	
 	int id;
 	private LocalDate data;
 	private BigDecimal valor;
+	
+	//---------CONSTRUTORES
 	
 	public Reembolso(LocalDate data, BigDecimal valor) {
 		super();
@@ -21,6 +26,9 @@ public class Reembolso {
 		qntIdsGerados++;
 		this.id = qntIdsGerados;
 	}
+	
+	
+	//-------GETTERS E SETTERS
 
 	public int getId() {
 		return id;
@@ -55,6 +63,9 @@ public class Reembolso {
 		
 		this.valor = valor;
 	}
+	
+	
+	//---------TO STRING
 
 	@Override
 	public String toString() {

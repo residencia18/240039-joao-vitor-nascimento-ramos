@@ -2,14 +2,19 @@ package br.com.cepedi.testes;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 
 import br.com.cepedi.conjuntos.Imoveis;
 import br.com.cepedi.model.Endereco;
 import br.com.cepedi.model.Estado;
+import br.com.cepedi.model.Fatura;
 import br.com.cepedi.model.Imovel;
 import br.com.cepedi.model.Relogio;
 
@@ -26,6 +31,7 @@ class TesteImoveis {
 		testAtualizarEndereco();
 		testAtualizarMatriculaValorNulo();
 		testAtualizarEnderecoValorNulo();
+
 	}
 	
 
@@ -132,7 +138,6 @@ class TesteImoveis {
         }
     }
 
-
     void testDeletar() {
         Imoveis imoveis;
         Imovel imovel;
@@ -190,7 +195,7 @@ class TesteImoveis {
             fail("Deveria lançar uma exceção IllegalArgumentException");
         }
     }
-
+    
 
 
 }

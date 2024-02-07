@@ -1,5 +1,7 @@
 package br.com.cepedi.model;
 
+//----- ESTADOS DO PAIS
+
 public enum Estado {
     ACRE,
     ALAGOAS,

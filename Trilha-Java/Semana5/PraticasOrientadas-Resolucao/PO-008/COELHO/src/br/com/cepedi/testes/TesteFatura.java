@@ -3,6 +3,7 @@ package br.com.cepedi.testes;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -23,6 +24,12 @@ class TesteFatura {
         testeConstrutorComParametros();
         testeSetQuitado();
         testeSetValorNegativo();
+		testRegistraPagamento();
+		testRegistraPagamentoWithAlreadyPaidInvoice();
+		testRegistraPagamentoWithNegativeValue();
+		testRegistraPagamentoWithFullPayment();
+		testRegistraPagamentoWithOverPayment();
+		testRegistraPagamentoWithNegativeBalance();
     }
     
     void testeInstanciaFatura() {
@@ -83,5 +90,90 @@ class TesteFatura {
             assertEquals("valor não pode ser negativo", e.getMessage());
         }
     }
+    
+    void testRegistraPagamento() {
+        LocalDate data = LocalDate.now();
+        BigDecimal valorPago = new BigDecimal("100.0");
+        BigDecimal ultimaLeitura = new BigDecimal("10.0");
+        BigDecimal leituraAtual = new BigDecimal("20.0");
+        Relogio relogio = new Relogio(1, ultimaLeitura, leituraAtual);
+        Fatura fatura = new Fatura(data, relogio);
+        fatura.registraPagamento(valorPago);
+
+        assertTrue(fatura.isQuitado());
+        assertEquals(1, fatura.getPagamentos().size());
+    }
+
+    
+    void testRegistraPagamentoWithAlreadyPaidInvoice() {
+        LocalDate data = LocalDate.now();
+        BigDecimal ultimaLeitura = new BigDecimal("10.0");
+        BigDecimal leituraAtual = new BigDecimal("20.0");
+        Relogio relogio = new Relogio(1, ultimaLeitura, leituraAtual);
+        Fatura fatura = new Fatura(data, relogio);
+        fatura.registraPagamento(new BigDecimal("500"));
+
+        assertThrows(IllegalArgumentException.class, () -> fatura.registraPagamento(new BigDecimal("50.0")));
+    }
+
+    
+    void testRegistraPagamentoWithNegativeValue() {
+        LocalDate data = LocalDate.now();
+        BigDecimal ultimaLeitura = new BigDecimal("10.0");
+        BigDecimal leituraAtual = new BigDecimal("20.0");
+        Relogio relogio = new Relogio(1, ultimaLeitura, leituraAtual);
+        Fatura fatura = new Fatura(data, relogio);
+        assertThrows(IllegalArgumentException.class, () -> fatura.registraPagamento(new BigDecimal("-50.0")));
+    }
+
+    
+    void testRegistraPagamentoWithFullPayment() {
+        LocalDate data = LocalDate.now();
+        BigDecimal ultimaLeitura = new BigDecimal("10.0");
+        BigDecimal leituraAtual = new BigDecimal("20.0");
+        Relogio relogio = new Relogio(1, ultimaLeitura, leituraAtual);
+        Fatura fatura = new Fatura(data, relogio);
+        fatura.registraPagamento(new BigDecimal("100"));
+
+        assertTrue(fatura.isQuitado());
+        assertEquals(1, fatura.getPagamentos().size());
+    }
+
+    
+    void testRegistraPagamentoWithOverPayment() {
+        LocalDate data = LocalDate.now();
+        BigDecimal ultimaLeitura = new BigDecimal("10.0");
+        BigDecimal leituraAtual = new BigDecimal("20.0");
+        Relogio relogio = new Relogio(1, ultimaLeitura, leituraAtual);
+        Fatura fatura = new Fatura(data, relogio);
+        fatura.registraPagamento(new BigDecimal("150.0"));
+
+        assertTrue(fatura.isQuitado());
+        assertEquals(1, fatura.getPagamentos().size());
+    }
+
+    
+    void testRegistraPagamentoWithNegativeBalance() {
+        LocalDate data = LocalDate.now();
+        BigDecimal ultimaLeitura = new BigDecimal("10.0");
+        BigDecimal leituraAtual = new BigDecimal("20.0");
+        Relogio relogio = new Relogio(1, ultimaLeitura, leituraAtual);
+        Fatura fatura = new Fatura(data, relogio);
+        fatura.registraPagamento(new BigDecimal("50.0"));
+        fatura.registraPagamento(new BigDecimal("40.0"));
+
+        assertFalse(fatura.isQuitado());
+        assertEquals(2, fatura.getPagamentos().size());
+
+        BigDecimal totalPayments = fatura.getPagamentos().stream()
+                                        .map(p -> p.getValor())
+                                        .reduce(BigDecimal.ZERO, BigDecimal::add);
+        assertTrue(new BigDecimal("90").compareTo(totalPayments) == 0);
+
+
+        assertEquals(new BigDecimal("10.0"), fatura.getValor());
+    }
+
+
 
 }

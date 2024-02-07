@@ -7,11 +7,16 @@ import br.com.cepedi.verificacoes.geral.VerificacoesGeral;
 
 public class Relogio {
 	
+	
+	//-------ATRIBUTOS
+	
 	public static int qntIdsGerados=0;
 	int id;
 	BigDecimal ultimaLeitura;
 	BigDecimal leituraAtual;
 	
+	
+	//---------CONSTRUTORES
 	
 	public Relogio() {
 		ultimaLeitura =BigDecimal.ZERO;
@@ -27,7 +32,7 @@ public class Relogio {
 	}
 	
 	
-	
+	//---------GETTERS E SETTERS
 		
 	public int getId() {
 		return id;
@@ -63,22 +68,32 @@ public class Relogio {
 		this.leituraAtual = leituraAtual;
 	}
 	
+	//------ REGISTRAR LEITURA
+	
 	public void registraNovaLeitura(BigDecimal novaLeitura) {
 	    VerificacoesGeral.verificaLeituraNegativa(novaLeitura);
 	    this.ultimaLeitura = this.leituraAtual;
 	    this.leituraAtual = novaLeitura;
 	}
+	
+	
+	//------------ TO STRING
 
 	@Override
 	public String toString() {
 		return "Relogio [id=" + id + ", ultimaLeitura=" + ultimaLeitura + ", leituraAtual=" + leituraAtual + "]";
 	}
 
+	
+	
+	//-----EQUALS E HASHCODE
+
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
 	}
-
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
