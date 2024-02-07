@@ -1,23 +1,28 @@
 package br.com.cepedi.verificacoes.cliente;
 
+import br.com.cepedi.exceptions.cliente.CPFPessoaInvalidoException;
+import br.com.cepedi.exceptions.cliente.NomePessoaInvalidoException;
+
 public abstract class VerificacoesCliente {
 
-    public static boolean verificaNome(String nome) {
-        return nome.matches("\\D+");
+    public static void verificaNome(String nome) throws NomePessoaInvalidoException {
+    	if(!nome.matches("\\D+")) {
+			throw new NomePessoaInvalidoException();
+    	}
     }
 
-    public static boolean verificaCPF(String cpf) {
+    public static void verificaCPF(String cpf) throws CPFPessoaInvalidoException {
         // Remova caracteres não numéricos do CPF
         cpf = cpf.replaceAll("[^0-9]", "");
 
         // Verifica se o CPF tem 11 dígitos
         if (cpf.length() != 11) {
-            return false;
+			throw new CPFPessoaInvalidoException();
         }
 
         // Verifica se todos os dígitos são iguais
         if (cpf.matches("(\\d)\\1{10}")) {
-            return false;
+			throw new CPFPessoaInvalidoException();
         }
 
         // Calcula o primeiro dígito verificador
@@ -32,7 +37,7 @@ public abstract class VerificacoesCliente {
 
         // Verifica o primeiro dígito verificador
         if (Character.getNumericValue(cpf.charAt(9)) != primeiroDigito) {
-            return false;
+			throw new CPFPessoaInvalidoException();
         }
 
         // Calcula o segundo dígito verificador
@@ -45,7 +50,9 @@ public abstract class VerificacoesCliente {
             segundoDigito = 0;
         }
 
-        // Verifica o segundo dígito verificador
-        return Character.getNumericValue(cpf.charAt(10)) == segundoDigito;
+        // Verifica o segundo dígito verificador        
+        if(!(Character.getNumericValue(cpf.charAt(10)) == segundoDigito)) {
+			throw new CPFPessoaInvalidoException();
+        }
     }
 }

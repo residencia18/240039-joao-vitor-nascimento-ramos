@@ -17,6 +17,7 @@ class TesteClientes {
 	@Test
 	void test() {
 		adicionarCliente();
+		adicionaClienteMesmoCPF();
 		buscarClienteExistente();
 		buscarClienteNaoExistente();
 		deletarClienteExistente();
@@ -35,6 +36,22 @@ class TesteClientes {
         }
 
         assertTrue(clientes.contains(cliente));
+    }
+    
+    void adicionaClienteMesmoCPF() {
+        Clientes clientes = new Clientes();
+        Cliente cliente = null , cliente2 = null; 
+
+        try {
+        	cliente = new Cliente("João", "04999695537");
+        	cliente2 = new Cliente("Paulo", "04999695537");
+            clientes.adicionar(cliente);
+            clientes.adicionar(cliente2);
+        } catch (Exception e) {
+            assertEquals("Cliente já existente",e.getMessage());
+        }
+
+        assertEquals(1,clientes.size());
     }
 
     void buscarClienteExistente() {

@@ -21,6 +21,7 @@ class TesteCliente {
 		instanciaClienteCPFVazio();
 		verificaEquals();
 		verificaIdsIncrementais();
+		insereIDNegativo();
 	}
 	
 	
@@ -132,6 +133,18 @@ class TesteCliente {
 		}
 		
 		assertEquals(c1.getId()+1,c2.getId());
+	}
+	
+	public static void insereIDNegativo() {
+		Cliente cliente = null;
+		try {
+			String nome = "joao";
+			String cpf = "04999695537";
+			cliente = new Cliente(-1,nome,cpf);
+		}catch(Exception e ) {
+			assertEquals("Não é permitido ids menores que 1",e.getMessage());
+		}
+		assertNull(cliente);
 	}
 	
 	

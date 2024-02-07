@@ -2,10 +2,10 @@ package br.com.cepedi.conjuntos;
 
 import java.util.Comparator;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 
+import br.com.cepedi.exceptions.ConjuntoClientes.ClienteJaExistente;
 import br.com.cepedi.exceptions.ConjuntoClientes.ClienteNaoEncontradoException;
 import br.com.cepedi.exceptions.cliente.CPFPessoaInvalidoException;
 import br.com.cepedi.exceptions.cliente.NomePessoaInvalidoException;
@@ -19,94 +19,74 @@ public class Clientes extends HashSet<Cliente> {
 
 	}
 
-	public void adicionar(Cliente cliente) throws CPFPessoaInvalidoException, NomePessoaInvalidoException {
+	public void adicionar(Cliente cliente) throws ClienteJaExistente {
+		
+		if (cliente == null) throw new IllegalArgumentException("tentativa de inserir valor nulo ou vazio");
 
-		int qntDadosNaLista = this.size();
-
-		if (cliente == null) {
-			throw new IllegalArgumentException("tentativa de inserir valor nulo ou vazio");
-		}
-
+		if(this.contains(cliente)) throw new ClienteJaExistente();
+		
 		add(cliente);
+	    System.out.println("Cliente adicionado com sucesso!");
 
-		if (this.size() == qntDadosNaLista) {
-			System.out.println("Não foi possivel realizar adição à lista");
-		} else {
-			System.out.println("Cliente adicionado com sucesso!");
-		}
 	}
 
 	public Cliente buscar(int id) throws ClienteNaoEncontradoException {
-		if (id < 1) {
-			throw new IllegalArgumentException("tentativa de inserir id menor que 1");
-		}
-
-		for (Cliente cliente : this) {
-			if (cliente.getId() == id) {
-				return cliente;
-			}
-		}
-
-		throw new ClienteNaoEncontradoException();
+		
+		if (id < 1) throw new IllegalArgumentException("Não existe id menor que 1");
+		
+	    return this.stream().filter(cliente -> cliente.getId() == id).findFirst().orElseThrow(ClienteNaoEncontradoException::new);
 	}
+	
+	public void atualizar(int id, String novoValor, String atributo) throws ClienteNaoEncontradoException, CPFPessoaInvalidoException, NomePessoaInvalidoException {
+	    Cliente cliente = buscar(id);
+
+	    if (atributo.equals("nome")) {
+            cliente.setNome(novoValor);
+        } else {
+            cliente.setCpf(novoValor);
+        }
+
+
+	    System.out.println("Cliente atualizado com sucesso!");
+	}
+
 
 	public void deletar(int id) throws ClienteNaoEncontradoException {
-		if (id < 1) {
-			throw new IllegalArgumentException("tentativa de inserir id menor que 1");
-		}
+		
+		if (id < 1) throw new IllegalArgumentException("Não existe id menor que 1");
 
-		Iterator<Cliente> iterator = this.iterator();
-		while (iterator.hasNext()) {
-			Cliente cliente = iterator.next();
-			if (cliente.getId() == id) {
-				iterator.remove();
-				System.out.println("Cliente removido com sucesso");
-				return;
-			}
-		}
+	    Cliente cliente = buscar(id);
 
-		throw new ClienteNaoEncontradoException();
+	    this.remove(cliente);
+	    System.out.println("Cliente excluido com sucesso!");
+
+	    
 	}
 
-	public void listar() {
-		if (this.isEmpty()) {
-			System.out.println("Não há clientes cadastrados");
-			return;
-		}
+	public void listar(){
+		
+		if (this.isEmpty()) System.out.println("Não há clientes cadastrados");
+		
 
-		for (Cliente cliente : this) {
-			System.out.println(cliente);
-		}
+		imprimeConjunto(this);
 	}
 
-	public void listarOrdenadoPorID() {
-		
-		if (this.isEmpty()) {
-			System.out.println("Não há clientes cadastrados");
-			return;
-		}
-		
-		Set<Cliente> clientesOrdenadosPorID = new TreeSet<>(Comparator.comparingInt(Cliente::getId));
-		clientesOrdenadosPorID.addAll(this);
 
-		for (Cliente cliente : clientesOrdenadosPorID) {
-			System.out.println(cliente);
-		}
-	}
-
-	public void listarOrdenadoPorNome() {
+	public void listarOrdenadoPorNome()  {
 		
-		if (this.isEmpty()) {
-			System.out.println("Não há clientes cadastrados");
-			return;
-		}
+		if (this.isEmpty()) System.out.println("Não há clientes cadastrados");
+
 		
 		Set<Cliente> clientesOrdenadosPorNome = new TreeSet<>(Comparator.comparing(Cliente::getNome));
 		clientesOrdenadosPorNome.addAll(this);
 
-		for (Cliente cliente : clientesOrdenadosPorNome) {
-			System.out.println(cliente);
-		}
+		imprimeConjunto(clientesOrdenadosPorNome);
 	}
+
+	private <T> void imprimeConjunto(Set<T> lista) {
+	    lista.forEach(System.out::println);
+	}
+	
+	
 
 }

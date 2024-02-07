@@ -1,39 +1,71 @@
 package br.com.cepedi.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import br.com.cepedi.exceptions.cliente.CPFPessoaInvalidoException;
 import br.com.cepedi.exceptions.cliente.NomePessoaInvalidoException;
 import br.com.cepedi.verificacoes.cliente.VerificacoesCliente;
+import br.com.cepedi.verificacoes.geral.VerificacoesGeral;
 
 public class Cliente implements Comparable<Cliente>{
 
+	//-----ATRIBUTOS
+	
 	public static int qntIdsGerados=0;
-	int id;
+	private int id;
 	private String cpf;
 	private String nome;
+	List<Imovel> imoveis;
 	
+	//-----CONSTRUTORES
+
 	
-	public Cliente( String nome , String cpf) throws CPFPessoaInvalidoException, NomePessoaInvalidoException {
+    public Cliente(String nome, String cpf) throws CPFPessoaInvalidoException, NomePessoaInvalidoException {
+        super();
+        setNome(nome);
+        setCpf(cpf);
+        imoveis = new ArrayList<Imovel>();
+        qntIdsGerados++;
+        this.id = qntIdsGerados;
+    }
+	
+	public Cliente( int id, String nome , String cpf) throws CPFPessoaInvalidoException, NomePessoaInvalidoException {
 		super();
 		setNome(nome);
 		setCpf(cpf);
-		qntIdsGerados++;
-		this.id=qntIdsGerados;
+		setId(id);
+		corrigeGeradorID(id);
 	}
+
+	private void corrigeGeradorID(int id) {
+		if(id > qntIdsGerados) {
+			qntIdsGerados =id;
+		}
+	}
+	
+	//-----GETTERS AND SETTERS
+	
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		VerificacoesGeral.verificaID(id);	
+		this.id = id;	
+	}
+	
+	
 	public String getCpf() {
 		return cpf;
 	}
-	public void setCpf(String cpf) throws CPFPessoaInvalidoException {
+	
+	public void setCpf(String cpf) throws CPFPessoaInvalidoException, NomePessoaInvalidoException {
 		
-		if(cpf==null || cpf.equals("")) {
-			throw new IllegalArgumentException("tentativa de inserir valor nulo ou vazio");
-		}
+		VerificacoesGeral.verificaStringVaziaOuNula(cpf);
 		
-		
-		if(!VerificacoesCliente.verificaCPF(cpf)) {
-			throw new CPFPessoaInvalidoException();
-		}
+		VerificacoesCliente.verificaCPF(cpf);
 		
 		
 		this.cpf = cpf;
@@ -41,41 +73,31 @@ public class Cliente implements Comparable<Cliente>{
 	public String getNome() {
 		return nome;
 	}
-	public void setNome(String nome) throws NomePessoaInvalidoException {
+	public void setNome(String nome) throws NomePessoaInvalidoException, CPFPessoaInvalidoException {
 		
-		if(nome==null || nome.equals("")) {
-			throw new IllegalArgumentException("tentativa de inserir valor nulo ou vazio");
-		}
+		VerificacoesGeral.verificaStringVaziaOuNula(nome);
+
 		
-		if(!VerificacoesCliente.verificaNome(nome)) {
-			throw new NomePessoaInvalidoException();
-		}
+		VerificacoesCliente.verificaNome(nome);
 		
 		this.nome = nome;
 	}
 	
 	
-	
-	
+	//-----TO STRING
+
 	@Override
 	public String toString() {
-		return "Cliente [cpf=" + cpf + ", nome=" + nome + "]";
+		return "Cliente [id=" + id + ", cpf=" + cpf + ", nome=" + nome + "]";
 	}
+
+	//-----EQUALS AND HASHCODE
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(cpf);
 	}
-	
-	
-	
-	
-	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -89,10 +111,23 @@ public class Cliente implements Comparable<Cliente>{
 	}
 
 	
+	//-----COMPARE_TO
+	
 	@Override
 	public int compareTo(Cliente o) {
 		return Integer.compare(id, o.getId());
 	}
+	
+	//-----------------
+	
+	public void adicionaImovelNaLista(Imovel i) {
+		this.imoveis.add(i);
+	}
+	
+	public void removeImovelNaLista(Imovel i) {
+		this.imoveis.remove(i);
+	}
+	
 	
 	
 	

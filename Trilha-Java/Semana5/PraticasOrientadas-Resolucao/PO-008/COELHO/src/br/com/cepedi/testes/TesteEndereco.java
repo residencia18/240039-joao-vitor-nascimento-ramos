@@ -139,19 +139,12 @@ class TesteEndereco {
 
         // Teste para valor vazio
         try {
-            endereco.setEstado(Estado.valueOf(""));
+            endereco.setEstado(null);
             fail("Deveria ter lançado uma exceção");
         } catch (IllegalArgumentException e) {
-            assertEquals("Tentativa de inserir valor nulo ou vazio para o estado", e.getMessage());
+            assertEquals("Tentativa de inserir valor nulo para o estado", e.getMessage());
         }
 
-        // Teste para estado inválido
-        try {
-            endereco.setEstado(Estado.valueOf("ESTADO_INVALIDO"));
-            fail("Deveria ter lançado uma exceção");
-        } catch (IllegalArgumentException e) {
-            assertEquals("Tentativa de inserir valor inválido para o estado", e.getMessage());
-        }
     }
 
     void testSetCEP() {
