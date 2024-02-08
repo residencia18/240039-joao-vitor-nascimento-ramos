@@ -1,0 +1,16 @@
+.form-container {
+    width: 50%;
+    margin: 0 auto;
+    border: 1px solid #000;
+    padding: 20px;
+  }
+  
+  #formComum label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  #formComum button {
+    display: block;
+    margin: 0 auto;
+  }

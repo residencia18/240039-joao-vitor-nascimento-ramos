@@ -1,0 +1,43 @@
+<!-- directive formGroup -->
+<!-- directive formControlName -->
+<form [formGroup]="exemploForm" (ngSubmit)="onSubmit()">
+    <label for="id">Id:</label>
+    <input 
+        formControlName="id"
+        name="id"> <br>
+    <label>
+        Modelo:
+        <input 
+            formControlName="modelo">
+            <span *ngIf="!exemploForm.get('modelo')?.valid &&
+            exemploForm.get('modelo')?.touched">Min:3 Max:10 caracteres</span>
+            <br>
+    </label>
+    <label for="capacidade">Capacidade:</label>
+    <input 
+        formControlName="capacidade"
+        name="capacidade">
+    <br>
+    <label for="empresa">Companhia Aérea:</label>
+
+    <input formControlName="empresa" name="empresa">
+    <div *ngIf="exemploForm.get('empresa')?.errors?.['invalidEmpresa']">
+        <p>Empresa invalida</p>
+    </div>
+    
+        <br>
+    <h1>Log de Voos</h1>
+    <button (click)="addLogVoo()">Adicionar</button>
+
+    <div formArrayName="logVoos">
+        <div *ngFor="let log of getControls(); let i=index">
+            <label for="input{{i}}">{{labelLogs[y]}}</label>
+            {{ incY()}}
+            <input id="input{{i}}" type="text" [formControlName]="i">
+            <hr>
+        </div>  
+    </div>
+
+    <button type="submit">Enviar</button>   
+</form>
+

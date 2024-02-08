@@ -1,0 +1,59 @@
+<div class="form-container">
+    <form id="formComum" (ngSubmit)="onSubmit()" #formulario="ngForm">
+      <div ngModelGroup="grupo1" #idmodelo="ngModelGroup">
+      <label>
+        ID:
+        <input name="id"
+         ngModel
+         >
+      </label>
+      <label>
+        Modelo:
+        <input 
+          name="modelo" 
+          ngModel
+          required
+          #modelo="ngModel">
+      </label>
+      <button (click)="sugereNome()">Sugerir</button>
+    </div>  
+      <label>
+        Capacidade:
+        <input name="capacidade" ngModel>
+      </label>
+      <label>
+         Companhia Aérea:
+        <input
+         name="empresa"
+         ngModel
+         required
+         minlength="3"
+         #empresa="ngModel">
+        <span *ngIf="!empresa.valid && empresa.touched">
+          Escreva no mínimo de 3 caracteres
+        </span>
+
+      </label>
+      <label for="email">E-Mail</label>
+       <input 
+       type="email"
+       id="email"
+       name="email" 
+       required
+       ngModel
+       email
+       #email="ngModel">
+      <span *ngIf="!email.valid && email.touched">
+        Entre com um email válido
+      </span>
+      <span *ngIf="idmodelo.valid && idmodelo.touched">
+        grupo id Modelo Valido
+      </span>
+
+      <button type="submit">Enviar</button>
+    </form>
+    <p>Modelo: {{modelo.value}}</p>
+    <p>Valido?: {{modelo.valid}}</p>
+    <p>Formulario: {{formulario.value | json}}</p>
+  </div>
+

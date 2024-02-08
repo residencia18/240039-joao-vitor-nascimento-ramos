@@ -1,0 +1,27 @@
+<form [formGroup]="animalForm"  class="animal-form"> 
+    <mat-form-field>
+      <mat-label>ID</mat-label>
+      <input matInput formControlName="id">
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Idade</mat-label>
+      <input matInput formControlName="age">
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Cor</mat-label>
+      <input matInput formControlName="color">
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Raça</mat-label>
+      <mat-select formControlName="type">
+        <mat-option value="dog">Dog</mat-option>
+        <mat-option value="cat">Cat</mat-option>
+        <!-- Add more options as needed -->
+      </mat-select>
+    </mat-form-field>
+  
+    <button mat-raised-button type="submit" class="botao">Submit</button>
+  </form>
