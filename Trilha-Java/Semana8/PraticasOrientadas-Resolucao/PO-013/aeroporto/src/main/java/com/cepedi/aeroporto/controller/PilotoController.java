@@ -27,6 +27,7 @@ public class PilotoController {
 
 	@GetMapping
 	public List<PilotoDTO> buscaPilotos(String nome) {
+		System.out.println(nome);
 		return (nome != null)
 				? pilotoRepository.findByNome(nome).stream().map(PilotoDTO::new).collect(Collectors.toList())
 				: pilotoRepository.findAll().stream().map(PilotoDTO::new).collect(Collectors.toList());
