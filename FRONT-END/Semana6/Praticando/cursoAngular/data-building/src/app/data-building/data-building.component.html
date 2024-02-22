@@ -1,0 +1,43 @@
+<section class="property-building">
+    <article>
+        <h3>Interpolação </h3>
+        <p>String renderizada com interpolação : {{ url }}</p>
+        <p>Resultado de 1+1 é {{ 1 + 1}}</p>
+        <p>Resultado de 13+12 é {{ getValor()}}</p>
+        <p>Curtiu o curso ? {{getCurtirCurso()}}</p>
+    </article>
+
+    <article>
+        <h3>Proterty Building</h3>
+        <img src="{{urlImagem1}}" alt="">
+        <img [src]="urlImagem2" alt="">
+        <img bind-src="urlImagem3" alt="">
+    </article>
+
+    <article>
+        <h3>Class e Style Binding</h3>
+        <div>
+            <select #classe (change)="0">
+                <option value="alert-sucess">Sucesso</option>
+                <option value="alert-info">Info</option>
+                <option value="alert-warnning">Alerta</option>
+                <option value="alert-danger">Erro</option>
+
+            </select>
+            <br><br>
+
+            <!-- <div class="alert" role="alert" [class.alert-sucess]="classe.value =='alert-sucess'">Sucesso</div>
+            <div class="alert" role="alert">Info</div>
+            <div class="alert" role="alert">Alerta</div>
+            <div class="alert" role="alert">Erro</div> -->
+
+            <div class="alert alert-success" role="alert">...</div>
+            <div class="alert alert-info" role="alert">...</div>
+            <div class="alert alert-warning" role="alert">...</div>
+            <div class="alert alert-danger" role="alert">...</div>
+
+        </div>
+    </article>
+
+
+</section>
