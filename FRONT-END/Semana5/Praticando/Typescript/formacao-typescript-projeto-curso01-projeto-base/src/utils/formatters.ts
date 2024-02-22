@@ -19,3 +19,4 @@ export function formatarData(data: Date, formato: FormatoData = FormatoData.PADR
 
     return data.toLocaleDateString("pt-br");
 }
+

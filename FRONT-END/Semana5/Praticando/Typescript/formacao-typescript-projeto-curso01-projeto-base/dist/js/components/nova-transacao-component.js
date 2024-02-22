@@ -1,5 +1,5 @@
-import { TipoTransacao } from "../types/TipoTransacao";
-import { atualizaSaldo, getSaldo } from "./saldo-component";
+import Conta from "../types/Conta";
+import saldoComponent from "./saldo-component";
 const elementoFormulario = document.querySelector(".block-nova-transacao form");
 elementoFormulario.addEventListener("submit", (evt) => {
     evt.preventDefault();
@@ -13,24 +13,12 @@ elementoFormulario.addEventListener("submit", (evt) => {
     let tipoTransacao = inputTipoTransacao.value;
     let valor = inputValor.valueAsNumber;
     let data = new Date(inputData.value);
-    let saldo = getSaldo();
-    if (tipoTransacao == TipoTransacao.DEPOSITO) {
-        saldo += valor;
-    }
-    else if (tipoTransacao == TipoTransacao.TRANSFERENCIA ||
-        tipoTransacao == TipoTransacao.PAGAMENTO_BOLETO) {
-        saldo -= valor;
-    }
-    else {
-        alert("Transação inválida");
-        return;
-    }
-    atualizaSaldo(saldo);
     const novaTransacao = {
         tipoTransacao: tipoTransacao,
         valor: valor,
         data: data
     };
-    console.log(novaTransacao);
+    Conta.registrarTransacao(novaTransacao);
+    saldoComponent.atualizar();
     elementoFormulario.reset();
 });
