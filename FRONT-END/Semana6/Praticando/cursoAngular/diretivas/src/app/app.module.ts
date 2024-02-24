@@ -3,14 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DataBuildingComponent } from './data-building/data-building.component';
-import { CicloComponent } from './ciclo/ciclo.component';
+import { DiretivasComponent } from './diretivas/diretivas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DataBuildingComponent,
-    CicloComponent
+    DiretivasComponent
   ],
   imports: [
     BrowserModule,
