@@ -3,22 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgClassComponent } from './ng-class/ng-class.component';
-import { NgStyleComponent } from './ng-style/ng-style.component';
-
-import { FormsModule } from '@angular/forms';
-
+import { NgContentComponent } from './ng-content/ng-content.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NgClassComponent,
-    NgStyleComponent
+    NgContentComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    FormsModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
