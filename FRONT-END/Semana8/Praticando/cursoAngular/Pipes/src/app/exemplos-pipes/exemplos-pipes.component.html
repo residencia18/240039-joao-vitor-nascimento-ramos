@@ -1,0 +1,35 @@
+<h5>exemplo de pipes</h5>
+
+
+<p>Titulo : {{Livro.titulo | uppercase | lowercase | camelCase}}</p>
+<p>Estrelas : {{Livro.rating | number}}</p>
+<p>Paginas : {{Livro.numeroPaginas | number}}</p>
+<p>Preco : {{Livro.preco | currency}}</p>
+<p>Data Lançamento : {{Livro.dataLancamento | date:'dd/MM/yy'}}</p>
+<p>Url : {{Livro.url}}</p>
+<br><br>
+<p>Livro : {{Livro | json}}</p>
+
+<br><br><br>
+
+
+<input type="text" [(ngModel)]="filtro">
+<input type="text" #novoCurso>
+<button (click)="adicionarCurso(novoCurso.value)">add</button>
+<h5>pipe puro</h5>
+<ul>
+    <li *ngFor="let item of lista | filtroArray:filtro ">{{item}}</li>
+</ul>
+
+<h5>pipe impuro</h5>
+<ul>
+    <li *ngFor="let item of lista | filtroArrayImpuro:filtro ">{{item}}</li>
+</ul>
+
+<h5>forma correta</h5>
+<ul>
+    <li *ngFor="let item of obterCursos()">{{item}}</li>
+</ul>
+
+<p>{{valorAsync | async}}</p>
+<p>{{valorAsync2 | async}}</p>

@@ -1,0 +1,13 @@
+<div *ngIf="resultados.length > 0">
+    <p>Resultados para {{busca}}</p>
+    <br><br>
+    <div *ngFor="let item of resultados">
+        <h3 [innerHTML]="item.title"></h3>
+        <p [innerHTML]="item.snippet | pipeBold:busca"></p>
+        <a
+        [href]="'https://en.wikipedia.org/wiki/' + item.title"
+        target="_blank"
+        >Saiba Mais</a>
+    </div>
+
+</div>
