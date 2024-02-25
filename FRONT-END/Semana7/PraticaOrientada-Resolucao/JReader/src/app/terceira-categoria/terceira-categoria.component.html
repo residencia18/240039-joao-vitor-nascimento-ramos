@@ -1,0 +1,8 @@
+<div>
+    <b class="title">{{ showVeiculo }}</b>
+    <ol *ngIf="showVeiculo != undefined">
+        <li *ngFor="let tipo of atributos">
+            <button (click)="select(atributos.indexOf(tipo))">{{ tipo }}</button>
+        </li>
+    </ol>
+</div>

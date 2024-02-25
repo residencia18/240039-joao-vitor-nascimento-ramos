@@ -1,0 +1,6 @@
+.categorias{
+    display: grid;
+    grid-template-columns: 0.5fr 0.8fr 1fr 1fr;
+    max-width: 1000px;
+    min-height: 300px;
+  }
