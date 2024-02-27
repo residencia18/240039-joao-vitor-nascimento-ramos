@@ -1,0 +1,10 @@
+<div>
+    <b class="title">{{ tipoSelecionado }}</b>
+
+    <ol *ngIf="tipoSelecionado != '' ">
+        <li *ngFor="let nome of nomesParaSelecao">
+        <button (click)="select(nomesParaSelecao.indexOf(nome))">{{ nome }}</button>
+      </li>
+    </ol>
+</div>
+  

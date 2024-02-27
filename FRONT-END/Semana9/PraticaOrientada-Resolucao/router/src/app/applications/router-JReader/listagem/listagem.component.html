@@ -1,0 +1,9 @@
+<div  *ngIf="listaVeiculos.length > 0">
+    <div *ngFor="let veiculo of listaVeiculos">
+      <li> Nome   :{{ veiculo.Name }} </li>
+      <li> Modelo :{{ veiculo.Model }} </li>
+      <li> Motor  :{{ veiculo.Engine }} </li>
+      <li> Nº Passageiros: {{ veiculo.NumberOfPassengers }} </li>
+      <br><br>
+    </div>
+  </div>

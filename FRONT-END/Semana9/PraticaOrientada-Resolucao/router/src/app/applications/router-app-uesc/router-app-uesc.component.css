@@ -1,0 +1,13 @@
+.body {
+    display: grid;
+    grid-template-columns: 1fr 1fr 20%;
+    grid-template-rows: 1fr 1.5fr;
+    gap: 5px;
+    max-width: 1000px;
+    width: 95%;
+    margin: 10px auto;
+  }
+  
+  .body .resultados {
+      grid-column: 2 / span 2;
+  }
