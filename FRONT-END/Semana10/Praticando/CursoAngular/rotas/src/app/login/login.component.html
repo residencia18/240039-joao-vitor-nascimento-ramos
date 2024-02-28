@@ -1,0 +1,20 @@
+<h5>login</h5>
+
+<div class="row">
+    <div class="input-field col s12">
+        <input [(ngModel)]="usuario.nome" id="usuario" class="validate" type="text">
+        <label for="usuario" class="active">Usuario</label>
+    </div>
+</div>
+
+<div class="row">
+    <div class="input-field col s12">
+        <input [(ngModel)]="usuario.senha" id="senha" class="validate" type="text">
+        <label for="senha" class="active">senha</label>
+    </div>
+</div>
+
+
+<button class="btn was-effect was-light" type="submit" name="action" (click)="fazerLogin()">
+    Login
+</button>
