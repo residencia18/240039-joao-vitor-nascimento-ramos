@@ -5,8 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { CursoModule } from './cursos/cursos.module';
-import { AlunosModule } from './alunos/alunos.module';
+import { AuthService } from './login/auth.service';
+import { FormsModule } from '@angular/forms';
+import { AuthGuard } from './guards/auth-guard';
+import { CursosGuard } from './guards/cursos.guard';
 
 @NgModule({
   declarations: [
@@ -16,10 +18,10 @@ import { AlunosModule } from './alunos/alunos.module';
     ],
   imports: [
     AppRoutingModule,
-    CursoModule,
-    AlunosModule
+    BrowserModule,
+    FormsModule
     ],
-  providers: [],
+  providers: [AuthService,AuthGuard,CursosGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

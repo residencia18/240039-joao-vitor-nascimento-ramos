@@ -1,0 +1,8 @@
+<div class="box" *ngIf="nomeVeiculo != undefined">
+    <span class="title"> {{ nomeVeiculo }}</span>
+    <ol class="ul">
+        <li class="li" *ngFor="let item of propriedades">
+            <button (click)="onClick(propriedades.indexOf(item))">{{ item }}</button>
+        </li>
+    </ol>
+  </div>

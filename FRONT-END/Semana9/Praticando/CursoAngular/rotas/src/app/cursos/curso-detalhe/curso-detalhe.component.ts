@@ -24,7 +24,7 @@ export class CursoDetalheComponent implements OnInit , OnDestroy{
       this.curso = this.service.getCurso(this.id);
       console.log(this.curso)
       if(this.curso===null){
-        this.rout?.navigate(['/naoEncontrado'])
+        this.rout?.navigate(['/cursos/naoEncontrado'])
       }
     
     }

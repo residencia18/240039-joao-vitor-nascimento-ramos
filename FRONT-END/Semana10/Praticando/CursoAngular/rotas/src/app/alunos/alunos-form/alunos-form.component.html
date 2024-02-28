@@ -10,7 +10,7 @@
 
     <div class="row">
         <div class="input-field com s21">
-            <input id='nome' [(ngModel)]="aluno.nome" class="validate" type="text">
+            <input id='nome' [(ngModel)]="aluno.nome" class="validate" type="text" (input)="onInput()" >
             <label for="nome" class="active">Nome</label>
         
         </div>

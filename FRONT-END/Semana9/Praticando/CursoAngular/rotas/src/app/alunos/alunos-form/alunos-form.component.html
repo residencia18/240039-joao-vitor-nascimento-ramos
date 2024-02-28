@@ -1,1 +1,27 @@
-<p>alunos-form works!</p>
+<h5>Formulario alunos</h5>
+
+<div class="col s12">
+    <div class="row">
+        <div class="input-field col s12">
+            <input disabled [(ngModel)]="aluno.id" id="disabled" type="text">
+            <label for="disabled" class="active" >#</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="input-field com s21">
+            <input id='nome' [(ngModel)]="aluno.nome" class="validate" type="text">
+            <label for="nome" class="active">Nome</label>
+        
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="input-field com s21">
+            <input id='email' [(ngModel)]="aluno.email" class="validate" type="text">
+            <label for="email" class="active">email</label>
+        
+        </div>
+    </div>
+
+</div>

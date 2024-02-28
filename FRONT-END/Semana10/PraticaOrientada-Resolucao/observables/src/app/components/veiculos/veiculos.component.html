@@ -1,0 +1,8 @@
+<div class="box" *ngIf="tipo != ''">
+    <span class="title">{{ tipo }}</span>
+    <ol class="ul">
+        <li class="li" *ngFor="let item of veiculos">
+            <button (click)="onClick(veiculos.indexOf(item))">{{ item.Name }}</button>
+        </li>
+    </ol>
+  </div>
