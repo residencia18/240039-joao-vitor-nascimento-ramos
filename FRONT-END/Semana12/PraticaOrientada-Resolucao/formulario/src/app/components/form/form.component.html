@@ -1,0 +1,111 @@
+<form class="form-horizontal" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="col-sm-6">
+            <!-- Nome de Usuário -->
+            <div class="form-group" [ngClass]="aplicaCssErro('nomeUsuario')">
+                <label for="nomeUsuario" class="col-sm-12 col-form-label">Nome</label>
+                <div class="col-sm-12">
+                    <input type="text" class="form-control" name="nomeUsuario" id="nomeUsuario" placeholder="Nome de usuário" formControlName="nomeUsuario">
+                    <app-erros [mostrarErro]="verificaNomeUsuarioInvalido()?.tipo" [msgErro]="verificaNomeUsuarioInvalido()?.mensagem"></app-erros>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <!-- Senha -->
+            <div class="form-group" [ngClass]="aplicaCssErro('senha')">
+                <label for="senha" class="col-sm-12 col-form-label">Senha</label>
+                <div class="col-sm-12">
+                    <input type="password" class="form-control" name="senha" id="senha" placeholder="Senha" formControlName="senha">
+                    <app-erros [mostrarErro]="verificaSenhaInvalida()?.tipo" [msgErro]="verificaSenhaInvalida()?.mensagem"></app-erros>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+
+        <div class="col-sm-6">
+            <div class="form-group row" [ngClass]="aplicaCssErro('email')">
+                <label for="email" class="col-sm-12 col-form-label">Email</label>
+                <div class="col-sm-12">
+                    <input type="text" class="form-control" name="email" id="email" placeholder="Email" formControlName="email">
+                    <app-erros [mostrarErro]="verificaEmailInvalido()?.tipo" [msgErro]="verificaEmailInvalido()?.mensagem"></app-erros>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-6">
+            <div class="form-group row" [ngClass]="aplicaCssErro('telefone')">
+                <label for="telefone" class="col-sm-12 col-form-label">Telefone</label>
+                <div class="col-sm-12">
+                    <input type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" formControlName="telefone">
+                    <app-erros [mostrarErro]="verificaTelefoneInvalido()?.tipo" [msgErro]="verificaTelefoneInvalido()?.mensagem"></app-erros>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row" [ngClass]="aplicaCssErro('nomeCompleto')">
+        <label for="nomeCompleto" class="col-sm-12 col-form-label">Nome Completo</label>
+        <div class="col-sm-12">
+            <input type="text" class="form-control" name="nomeCompleto" id="nomeCompleto" placeholder="Nome completo" formControlName="nomeCompleto">
+            <app-erros [mostrarErro]="nomeCompletoInvalido()?.tipo" [msgErro]="nomeCompletoInvalido()?.mensagem"></app-erros>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group row" [ngClass]="aplicaCssErro('endereco')">
+                <label for="endereco" class="col-sm-12 col-form-label">Endereço</label>
+                <div class="col-sm-12">
+                    <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Endereço" formControlName="endereco">
+                    <app-erros [mostrarErro]="verificaEnderecoInvalido()?.tipo" [msgErro]="verificaEnderecoInvalido()?.mensagem"></app-erros>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group row" [ngClass]="aplicaCssErro('dataNascimento')">
+                <label for="dataNascimento" class="col-sm-12 col-form-label">Data de Nascimento</label>
+                <div class="col-sm-12">
+                    <input type="date" class="form-control" name="dataNascimento" id="dataNascimento" formControlName="dataNascimento">
+                    <app-erros [mostrarErro]="verificaDataNascimentoInvalida()?.tipo" [msgErro]="verificaDataNascimentoInvalida()?.mensagem"></app-erros>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="form-group row">
+        <div class="col-sm-6">
+            <div class="form-group" [ngClass]="aplicaCssErro('genero')">
+                <label for="genero" class="col-sm-12 col-form-label">Gênero</label>
+                <div class="col-sm-12">
+                    <select class="form-control" id="genero" formControlName="genero">
+                        <option *ngFor="let genero of generos" [value]="genero">{{ genero }}</option>
+                    </select>
+                    <app-erros [mostrarErro]="verificaGeneroInvalido()?.tipo" [msgErro]="verificaGeneroInvalido()?.mensagem"></app-erros>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group" [ngClass]="aplicaCssErro('profissao')">
+                <label for="profissao" class="col-sm-12 col-form-label">Profissão</label>
+                <div class="col-sm-12">
+                    <select class="form-control" id="profissao" formControlName="profissao">
+                        <option *ngFor="let profissao of profissoes" [value]="profissao">{{ profissao }}</option>
+                    </select>
+                    <app-erros [mostrarErro]="verificaProfissaoInvalida()?.tipo" [msgErro]="verificaProfissaoInvalida()?.mensagem"></app-erros>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <!-- Botões de envio e reset -->
+    <div class="form-group row">
+        <div class="col-sm-12">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="button" (click)="resetar()" class="btn">Reset</button>
+        </div>
+    </div>
+</form>
