@@ -32,6 +32,6 @@ public class LeilaoDTO {
 
     @Override
     public String toString() {
-        return "LeilaoDTO{" + "descricao=" + descricao + ", valorMinimo=" + valorMinimo + ", status=" + status + '}';
+        return "{" + "descricao=" + descricao + ", valorMinimo=" + valorMinimo + ", status=" + status + '}';
     }
 }

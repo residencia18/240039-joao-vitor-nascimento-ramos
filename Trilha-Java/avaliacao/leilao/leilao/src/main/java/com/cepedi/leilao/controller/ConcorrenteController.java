@@ -34,7 +34,7 @@ public class ConcorrenteController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<?> buscaConcorrente(@PathVariable Integer id,
+	public ResponseEntity<?> buscaConcorrente(@PathVariable Long id,
 			UriComponentsBuilder uriBuilder) {
 		try {
 			
@@ -58,7 +58,7 @@ public class ConcorrenteController {
 	}
 	
     @PutMapping("/{id}")
-    public ResponseEntity<?> alteraConcorrente(@PathVariable Integer id, @RequestBody ConcorrenteFORM concorrenteForm) {
+    public ResponseEntity<?> alteraConcorrente(@PathVariable Long id, @RequestBody ConcorrenteFORM concorrenteForm) {
         try {
 			Concorrente concorrente  = concorrenteRepository.getReferenceById(id);
             concorrente.setNome(concorrenteForm.getNome());
@@ -72,7 +72,7 @@ public class ConcorrenteController {
     }
     
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deletaConcorrente(@PathVariable Integer id) {
+    public ResponseEntity<?> deletaConcorrente(@PathVariable Long id) {
         try {
 			Concorrente concorrente  = concorrenteRepository.getReferenceById(id);
             concorrenteRepository.delete(concorrente);

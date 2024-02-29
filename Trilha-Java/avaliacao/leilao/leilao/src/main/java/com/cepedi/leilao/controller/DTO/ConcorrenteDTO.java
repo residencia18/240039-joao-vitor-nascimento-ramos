@@ -18,7 +18,7 @@ public class ConcorrenteDTO {
 
 	@Override
 	public String toString() {
-		return "ConcorrenteDTO [nome=" + nome + "]";
+		return "[nome=" + nome + "]";
 	}
 
 

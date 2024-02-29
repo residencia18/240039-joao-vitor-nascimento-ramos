@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.cepedi.leilao.model.Leilao;
 
-public interface LeilaoRepository extends JpaRepository<Leilao,Integer>{
+public interface LeilaoRepository extends JpaRepository<Leilao,Long>{
 
 }

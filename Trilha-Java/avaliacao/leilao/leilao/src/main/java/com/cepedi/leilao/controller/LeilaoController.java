@@ -34,7 +34,7 @@ public class LeilaoController {
     }
     
 	@GetMapping("/{id}")
-	public ResponseEntity<?> buscaConcorrente(@PathVariable Integer id,
+	public ResponseEntity<?> buscaConcorrente(@PathVariable Long id,
 			UriComponentsBuilder uriBuilder) {
 		try {	
 	        Leilao leilao = leilaoRepository.getReferenceById(id);
@@ -58,7 +58,7 @@ public class LeilaoController {
     }
     
     @PutMapping("/{id}")
-    public ResponseEntity<?> alteraLeilao(@PathVariable Integer id, @RequestBody LeilaoFORM leilaoForm) {
+    public ResponseEntity<?> alteraLeilao(@PathVariable Long id, @RequestBody LeilaoFORM leilaoForm) {
         try {
             Leilao leilao = leilaoRepository.getReferenceById(id);
             leilao.setDescricao(leilaoForm.getDescricao());
@@ -73,7 +73,7 @@ public class LeilaoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deletaLeilao(@PathVariable Integer id) {
+    public ResponseEntity<?> deletaLeilao(@PathVariable Long id) {
         try {
             Leilao leilao = leilaoRepository.getReferenceById(id);
             leilaoRepository.delete(leilao);

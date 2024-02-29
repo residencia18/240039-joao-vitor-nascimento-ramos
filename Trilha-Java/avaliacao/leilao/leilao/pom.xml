@@ -46,6 +46,18 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.cepedi</groupId>
+			<artifactId>aeroporto</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.json</groupId>
+		    <artifactId>json</artifactId>
+		    <version>20210307</version> <!-- Versão pode ser atualizada -->
+		</dependency>
+		
 	</dependencies>
 
 	<build>

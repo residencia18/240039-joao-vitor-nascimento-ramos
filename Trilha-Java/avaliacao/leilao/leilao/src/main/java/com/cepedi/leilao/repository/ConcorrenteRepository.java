@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.cepedi.leilao.model.Concorrente;
 
 
-public interface ConcorrenteRepository extends JpaRepository<Concorrente,Integer>{
+public interface ConcorrenteRepository extends JpaRepository<Concorrente,Long>{
 
 }

@@ -30,7 +30,7 @@ public class LanceDTO {
 
     @Override
     public String toString() {
-        return "LanceDTO{" +
+        return "{" +
                 "leilaoId=" + leilaoId +
                 ", concorrenteId=" + concorrenteId +
                 ", valor=" + valor +
