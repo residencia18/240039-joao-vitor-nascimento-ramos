@@ -77,15 +77,6 @@ public class Leilao {
 	}
 
 
-	public List<Lance> getLances() {
-		return lances;
-	}
-
-
-	public void setLances(List<Lance> lances) {
-		this.lances = lances;
-	} 
-    
     
 	
 

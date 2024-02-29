@@ -20,7 +20,7 @@ public class Concorrente {
 	private Long id;
 	@Column(name="NOME")
 	private String nome;
-	@Column(name="CPF")
+	@Column(name="CPF" ,  unique = true)
 	private String cpf;
     @OneToMany(mappedBy = "concorrente", cascade = CascadeType.ALL)
     private List<Lance> lances;

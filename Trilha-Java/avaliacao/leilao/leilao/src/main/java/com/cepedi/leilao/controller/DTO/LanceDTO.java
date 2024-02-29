@@ -6,10 +6,22 @@ import java.math.BigDecimal;
 
 public class LanceDTO {
 
+    private Long leilaoId;
+    private Long concorrenteId;
     private BigDecimal valor;
 
     public LanceDTO(Lance lance) {
+        this.leilaoId = lance.getLeilao().getId();
+        this.concorrenteId = lance.getConcorrente().getId();
         this.valor = lance.getValor();
+    }
+
+    public Long getLeilaoId() {
+        return leilaoId;
+    }
+
+    public Long getConcorrenteId() {
+        return concorrenteId;
     }
 
     public BigDecimal getValor() {
@@ -19,7 +31,9 @@ public class LanceDTO {
     @Override
     public String toString() {
         return "LanceDTO{" +
-                "valor=" + valor +
+                "leilaoId=" + leilaoId +
+                ", concorrenteId=" + concorrenteId +
+                ", valor=" + valor +
                 '}';
     }
 }
