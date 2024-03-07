@@ -1,0 +1,32 @@
+{
+  "cursos": [
+    {
+      "id": "1",
+      "nome": "Angular"
+    },
+    {
+      "id": "2",
+      "nome": "Python"
+    },
+    {
+      "id": "89a1",
+      "nome": "Pyhton"
+    },
+    {
+      "id": "7865",
+      "nome": "Laravel"
+    },
+    {
+      "id": "6bca",
+      "nome": "PHP"
+    },
+    {
+      "id": "0764",
+      "nome": "C++"
+    },
+    {
+      "id": "b445",
+      "nome": "Angular16"
+    }
+  ]
+}

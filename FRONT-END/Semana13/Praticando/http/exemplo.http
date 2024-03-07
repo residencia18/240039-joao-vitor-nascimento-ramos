@@ -1,0 +1,28 @@
+http://localhost:3000/cursos
+
+###
+
+GET http://localhost:3000/cursos/b99f HTTP/1.1
+
+###
+
+POST http://localhost:3000/cursos HTTP/1.1
+content-type: application/json
+
+{
+    "nome": "Java"
+}
+
+###
+
+PUT http://localhost:3000/cursos/b99f HTTP/1.1
+content-type: application/json
+
+{
+    "nome": "Python"
+}
+
+###
+
+DELETE http://localhost:3000/cursos/76dc HTTP/1.1
+

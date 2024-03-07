@@ -1,0 +1,54 @@
+<div class="card">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <div>
+      <h4>Cursos</h4>
+    </div>
+    <div>
+      <button type="button" class="btn btn-primary" [routerLink]="['novo']">Novo Curso</button>
+      <button type="button" class="btn btn-secondary" (click)="onRefresh()">Atualizar</button>
+    </div>
+  </div>
+  
+    <div class="card-body">
+      <table class="table table-hover" *ngIf="cursos$ | async as cursos; else: loading">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Curso</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let curso of cursos">
+            <td>{{ curso.id }}</td>
+            <td>{{ curso.nome }}</td>
+            <td>
+              <div class="d-flex justify-content-end">
+                <button class="btn btn-outline-warning mb-1 me-1 btn-sm" >
+                  Atualizar
+                </button>
+                <button class="btn btn-outline-danger mb-1 btn-sm">
+                  Remover
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <ng-template #loading>
+        <div *ngIf="error$ | async; else carregando">
+          <span>Erro ao carregar cursos</span>
+        </div>
+        <ng-template #carregando>
+          <span>Carregando Cursos...</span>
+        </ng-template>
+      </ng-template>
+      
+
+      
+      
+
+
+    </div>
+  </div>
