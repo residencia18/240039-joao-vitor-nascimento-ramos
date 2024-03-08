@@ -3,11 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { CadastroSuinoComponent } from './components/cadastro-suino/cadastro-suino.component';
 import { ListagemSuinosComponent } from './components/listagem-suinos/listagem-suinos.component';
+import { LoginComponent } from './login/login/login.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/listagem', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   {path: 'cadastro', component: CadastroSuinoComponent},
   {path: 'listagem', component: ListagemSuinosComponent},
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: LoginComponent },
+  { path: '**', redirectTo: '/login' }
   // { path: 'home', loadChildren: './home/home.module#HomePageModule' },
   // { path: 'cadastro', loadChildren: './cadastro/cadastro.module#CadastroPageModule' },
   // { path: 'login', loadChildren: './login/login.module#LoginPageModule' },

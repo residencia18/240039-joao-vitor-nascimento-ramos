@@ -6,14 +6,14 @@
       </select>
     </div>
   </div>
-  
+
   <div class="mb-3 row">
     <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Pesquisa :</label>
     <div class="col-xs-3 col-sm-auto">
       <input id="table-filtering-search" class="form-control" type="text" [formControl]="filter" />
     </div>
   </div>
-  
+
   <table class="table table-striped">
     <thead>
       <tr>
@@ -26,6 +26,7 @@
         <th scope="col">Status</th>
         <th scope="col">Sexo</th>
         <th scope="col">Idade</th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -40,6 +41,10 @@
           <td>{{ suino.status }}</td>
           <td>{{ suino.sexo }}</td>
           <td>{{suino.dt_nasc | idade}}</td>
+          <td>
+            <img src="../../../assets/editar.png" title="Editar" alt="Editar" (click)="onEditar(suino)">
+            <img src="../../../assets/lixeira.png" title="Excluir" alt="Excluir" (click)="onExcluir(suino)">
+          </td>
         </tr>
       </ng-container>
       <ng-template #noData>
@@ -49,4 +54,3 @@
       </ng-template>
     </tbody>
   </table>
-  
