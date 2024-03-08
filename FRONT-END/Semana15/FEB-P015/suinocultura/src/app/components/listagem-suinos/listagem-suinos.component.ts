@@ -10,63 +10,6 @@ import { EditarSuinoComponent } from '../editar-suino/editar-suino.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DatabaseService } from '../../services/database.service';
 
-const SUINOS: Suino[] = [
-  {
-    brinco: 'ABC123',
-    brinco_pai: 'DEF456',
-    brinco_mae: 'GHI789',
-    dt_nasc: '2020-02-05',
-    dt_saida: '2021-05-20',
-    status: 'Vendido',
-    sexo: 'Fêmea',
-  },
-  {
-    brinco: 'DEF456',
-    brinco_pai: 'XYZ789',
-    brinco_mae: 'ABC123',
-    dt_nasc: '2019-04-10',
-    dt_saida: ' ',
-    status: 'Ativo',
-    sexo: 'Macho',
-  },
-  {
-    brinco: 'ABC456',
-    brinco_pai: 'DEF456',
-    brinco_mae: 'GHI789',
-    dt_nasc: '2020-02-05',
-    dt_saida: '2021-05-20',
-    status: 'Vendido',
-    sexo: 'Fêmea',
-  },
-  {
-    brinco: 'DEF789',
-    brinco_pai: 'XYZ789',
-    brinco_mae: 'ABC123',
-    dt_nasc: '2019-04-10',
-    dt_saida: ' ',
-    status: 'Ativo',
-    sexo: 'Macho',
-  },
-  {
-    brinco: 'ABC789',
-    brinco_pai: 'DEF456',
-    brinco_mae: 'GHI789',
-    dt_nasc: '2020-02-05',
-    dt_saida: '2021-05-20',
-    status: 'Vendido',
-    sexo: 'Fêmea',
-  },
-  {
-    brinco: 'DEF231',
-    brinco_pai: 'XYZ789',
-    brinco_mae: 'ABC123',
-    dt_nasc: '2019-04-10',
-    dt_saida: ' ',
-    status: 'Ativo',
-    sexo: 'Macho',
-  },
-];
-
 @Component({
   selector: 'app-listagem-suinos',
   templateUrl: './listagem-suinos.component.html',
@@ -74,44 +17,77 @@ const SUINOS: Suino[] = [
   providers: [DecimalPipe],
 })
 export class ListagemSuinosComponent {
-  suinosFiltrados$: Observable<Suino[]>;
+  suinosFiltrados$: Observable<Suino[]> | undefined;
   filter = new FormControl('');
   camposSuino = Object.values(CampoSuino);
   campoSelecionado: CampoSuino = CampoSuino.brinco;
 
-  constructor(private pipe: DecimalPipe, public dialog: MatDialog , private dados:DatabaseService) {
+  listaSuinos: Suino[] = [];
+
+  constructor(private pipe: DecimalPipe, public dialog: MatDialog, private dados: DatabaseService) {
+    this.atualizaLista();
+  }
+
+  atualizaLista(){
+    this.dados.getSuinos().subscribe((suinos: Suino[]) => {
+      console.log('JSON antes de atualizar:', suinos); // Mostra o JSON antes de atualizar os dados da lista
+      this.listaSuinos = Object.values(suinos); // Transforma o objeto em um array
+
+      this.configurarFiltragem();
+    });
+  }
+
+  // Configura a filtragem para reagir às mudanças no filtro
+  configurarFiltragem(): void {
     this.suinosFiltrados$ = this.filter.valueChanges.pipe(
       startWith(''), // Emite um valor inicial vazio
       map((valor) => this.filtrarSuinos(valor))
     );
-    console.log(dados.getSuinos())
-
   }
+  
 
+  // Filtra os suínos com base no valor do filtro
   filtrarSuinos(valor: string | null): Suino[] {
     if (!valor || !this.campoSelecionado) {
-      return SUINOS;
+      return this.listaSuinos;
     }
 
     const termo = valor.toLowerCase();
-    return SUINOS.filter((suino) => {
+    return this.listaSuinos.filter((suino) => {
       const valorCampo = suino[this.campoSelecionado].toLowerCase();
       return valorCampo.includes(termo);
     });
   }
 
+
   onExcluir(suino: Suino): void {
-    const index = SUINOS.indexOf(suino);
-    if(index !== -1 && confirm("Deseja remover este suíno?")){
-      SUINOS.splice(index, 1);
-      this.filter.setValue('');
+    if (confirm("Deseja remover este suíno?")) {
+      this.dados.deletaSuino(suino.brinco).subscribe(() => {
+        this.atualizaLista();
+      });
     }
   }
 
+  
   onEditar(suino: Suino): void {
-    const dialogRef = this.dialog.open(EditarSuinoComponent,{
+    const dialogRef = this.dialog.open(EditarSuinoComponent, {
       width: '500px',
       data: suino
     });
+
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.dados.getSuinoPorBrinco(suino.brinco).subscribe(() => {
+            this.atualizaLista();
+        });
+      }
+    });
   }
+  
+  
+  
+  
+  
+  
 }

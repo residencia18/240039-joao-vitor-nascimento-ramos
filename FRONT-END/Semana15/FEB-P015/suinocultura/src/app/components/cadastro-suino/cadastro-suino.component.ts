@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SuinosService } from '../../services/suinos.service';
 import { Suino } from '../../model/suino';
+import { HttpClient } from '@angular/common/http';
+import { DatabaseService } from '../../services/database.service';
 
 @Component({
   selector: 'app-cadastro-suino',
@@ -12,7 +14,9 @@ export class CadastroSuinoComponent {
   cadastro_suino: FormGroup;
   lista_status: string[] = ['Ativo', 'Vendido', 'Morto'];
 
-  constructor(private suinosService: SuinosService) {
+  constructor(private suinosService: SuinosService,
+    private http:HttpClient,
+    private dados:DatabaseService) {
     this.cadastro_suino = new FormGroup({
       brinco: new FormControl('', [
         Validators.required,
@@ -80,10 +84,33 @@ export class CadastroSuinoComponent {
     return nascimento > saida ? { invalido: true } : null;
   };
   onSubmit() {
-    if(this.cadastro_suino.invalid)
+    if (this.cadastro_suino.invalid)
       return;
+  
+  
+    const dadosFormulario = this.cadastro_suino.value;
 
-    let suino: Suino;
-
+    // Cria uma nova instância de Suino com os dados do formulário
+    const suino: Suino = {
+      brinco: dadosFormulario.brinco,
+      brinco_pai: dadosFormulario.brinco_pai,
+      brinco_mae: dadosFormulario.brinco_mae,
+      dt_nasc: dadosFormulario.dt_nasc,
+      dt_saida: dadosFormulario.dt_saida,
+      status: dadosFormulario.status,
+      sexo: dadosFormulario.sexo,
+    };
+  
+    this.dados.adicionarSuino(suino).subscribe(() => {
+      console.log('Suíno adicionado com sucesso!');
+      // Você pode fazer algo aqui após adicionar o suíno com sucesso, como limpar o formulário ou redirecionar para outra página
+      this.cadastro_suino.reset(); // Limpa o formulário após adicionar o suíno com sucesso
+    }, error => {
+      console.error('Erro ao adicionar suíno:', error);
+      // Você pode lidar com erros aqui, como exibir uma mensagem de erro para o usuário
+    });
   }
+  
+  
 }
+

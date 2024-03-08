@@ -8,29 +8,62 @@ import { Observable, catchError, map, retry, tap, throwError } from 'rxjs';
 })
 export class DatabaseService {
 
-  endpoint = "https://suinocultura-31ff3-default-rtdb.firebaseio.com";
-  ;
+  private endpoint = "https://suinocultura-31ff3-default-rtdb.firebaseio.com";
+  
   constructor(private http: HttpClient) {}
 
-  httpOptions = {
+  private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
+
   getSuinos(): Observable<Suino[]> {
     return this.http
-      .get<{ [key: string]: Suino }>(`${this.endpoint}/Suinos/NbTbpgyXVjLd0zosXdfL`)
+      .get<Suino[]>(`${this.endpoint}/suinos.json`)
       .pipe(
-        tap(response => {
-          console.log('Objetos Suinos:', response);
-        }),
-        map(response => {
-          return Object.keys(response).map(key => response[key]);
-        }),
         retry(2),
         catchError(this.handleError)
       );
   }
+  
+  adicionarSuino(suino: Suino): Observable<void> {
+    
+    const url = `${this.endpoint}/suinos/${suino.brinco}.json`;
+    return this.http.put<void>(url, suino, this.httpOptions)
+      .pipe(
+        tap(() => console.log(`Suíno adicionado com brinco ${suino.brinco}`)),
+        catchError(this.handleError)
+      );
+  }
 
-  handleError(error: HttpErrorResponse) {
+  getSuinoPorBrinco(brinco: string): Observable<Suino | null> {
+    const url = `${this.endpoint}/suinos/${brinco}.json`;
+    
+    return this.http.get<Suino>(url)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+  
+
+  atualizeSuino(brinco: string, suino: Suino): Observable<void> {
+    const url = `${this.endpoint}/suinos/${brinco}.json`;
+    return this.http.put<void>(url, suino, this.httpOptions)
+      .pipe(
+        tap(() => console.log(`Suíno com brinco ${brinco} atualizado com sucesso`)),
+        catchError(this.handleError)
+      );
+  }
+
+  deletaSuino(brinco: string): Observable<void> {
+    const url = `${this.endpoint}/suinos/${brinco}.json`;
+    return this.http.delete<void>(url, this.httpOptions)
+      .pipe(
+        tap(() => console.log(`Suíno com brinco ${brinco} excluído com sucesso`)),
+        catchError(this.handleError)
+      );
+  }
+  
+  private handleError(error: HttpErrorResponse) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
       errorMessage = error.error.message;
@@ -39,7 +72,7 @@ export class DatabaseService {
         `Código do erro: ${error.status}, ` + `menssagem: ${error.message}`;
     }
 
-    return throwError(() => new Error('errorMessage'));
+    return throwError(() => new Error(errorMessage));
   }
 
 }

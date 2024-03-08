@@ -3,10 +3,10 @@
   <form [formGroup]="cadastro_suino">
     <label>Brinco: </label>
     <input type="text" [(ngModel)]="suino.brinco" formControlName="brinco" [ngClass]="{'class-invalid':cadastro_suino.get('brinco')?.invalid && cadastro_suino.get('brinco')?.touched}"><br>
-    <label>Brinco da mãe: </label>
-    <input type="text" [(ngModel)]="suino.brinco_mae" formControlName="brinco_pai" [ngClass]="{'class-invalid':cadastro_suino.get('brinco_pai')?.invalid && cadastro_suino.get('brinco_pai')?.touched}"><br>
     <label>Brinco do pai: </label>
-    <input type="text" [(ngModel)]="suino.brinco_pai" formControlName="brinco_mae" [ngClass]="{'class-invalid':cadastro_suino.get('brinco_mae')?.invalid && cadastro_suino.get('brinco_mae')?.touched}"><br>
+    <input type="text" [(ngModel)]="suino.brinco_pai" formControlName="brinco_pai" [ngClass]="{'class-invalid':cadastro_suino.get('brinco_pai')?.invalid && cadastro_suino.get('brinco_pai')?.touched}"><br>
+    <label>Brinco da mãe: </label>
+    <input type="text" [(ngModel)]="suino.brinco_mae" formControlName="brinco_mae" [ngClass]="{'class-invalid':cadastro_suino.get('brinco_mae')?.invalid && cadastro_suino.get('brinco_mae')?.touched}"><br>
     <label>Data de nascimento: </label>
     <input type="date" [(ngModel)]="suino.dt_nasc" formControlName="dt_nasc" [ngClass]="{'class-invalid':cadastro_suino.get('dt_nasc')?.invalid && cadastro_suino.get('dt_nasc')?.touched}"><br>
     <label>Data de saída: </label>
