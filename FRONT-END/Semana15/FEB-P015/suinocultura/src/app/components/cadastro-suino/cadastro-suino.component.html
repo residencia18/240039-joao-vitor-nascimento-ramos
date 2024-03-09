@@ -1,6 +1,6 @@
 <div class="box-body">
-
-  <form [formGroup]="cadastro_suino" (submit)="onSubmit()">
+  <form [formGroup]="cadastro_suino">
+    <h2 mat-dialog-title>Cadastrar suíno</h2>
     <div class="box-form">
       <label>Brinco do animal</label>
       <input type="text" formControlName="brinco" [ngClass]="{'class-invalid':cadastro_suino.get('brinco')?.invalid && cadastro_suino.get('brinco')?.touched}"/>
@@ -36,7 +36,9 @@
       <input type="radio" value="Masculino" formControlName="sexo" [ngClass]="{'class-invalid':cadastro_suino.get('sexo')?.invalid && cadastro_suino.get('sexo')?.touched}"/> M
       <input type="radio" value="Feminino" formControlName="sexo" [ngClass]="{'class-invalid':cadastro_suino.get('sexo')?.invalid && cadastro_suino.get('sexo')?.touched}"/> F
     </div>
-    <input type="submit" value="Cadastrar" class="btn-submit"/>
+    <mat-dialog-actions align="center">
+      <button mat-raised-button color="primary" (click)="onSubmit()">Cadastrar</button>
+    </mat-dialog-actions>
   </form>
 
 </div>

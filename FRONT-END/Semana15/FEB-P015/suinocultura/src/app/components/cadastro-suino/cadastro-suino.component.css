@@ -1,7 +1,6 @@
 .box-body{
   width: 100vw;
   height: 100vh;
-  background-color: #6D9183;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,7 +28,7 @@ form {
   padding: 30px;
   border: 1px solid #000;
   gap: 15px;
-  background-color: #42E6A9;
+  background-color: #f1f1f1;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
