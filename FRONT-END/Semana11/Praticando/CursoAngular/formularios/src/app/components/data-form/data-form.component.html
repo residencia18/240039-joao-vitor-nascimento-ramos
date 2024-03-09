@@ -17,9 +17,84 @@
         </div>
     </div>
 
+    <div formGroupName = "endereco">
 
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="form-group">
+    
+            <div class="row">
+                <div class="col-md-3" [ngClass]="aplicaCssErro('endereco.cep')">
+                    <label for="cep" class="control-label">CEP</label>
+                    <input type="text" class="form-control" name="cep" id="cep" formControlName="cep" (blur)="consultaCEP()"> 
+                    <app-error [mostrarErro]="verificaValidTouched('endereco.cep')" [msgErro]="'CEP é obrigatorio'"></app-error>
+    
+                </div>
+    
+                <div class="col-md-3" [ngClass]="aplicaCssErro('endereco.numero')">
+                    <label for="numero" class="control-label">numero</label>
+                    <input type="text" class="form-control" name="numero" id="numero" formControlName="numero">
+                    <app-error [mostrarErro]="verificaValidTouched('endereco.numero')" [msgErro]="'numero é obrigatorio'"></app-error>
+    
+                </div>
+    
+                <div class="col-md-6">
+                    <label for="complemento" class="control-label">complemento</label>
+                    <input type="text" class="form-control" name="complemento" id="complemento" formControlName="complemento">
+                </div>
+    
+            </div>
+    
+    
+        </div>
+    
+        <div class="form-group" [ngClass]="aplicaCssErro('endereco.rua')">
+    
+            <div class="col-sm-12">
+                <label for="rua" class="control-label">Rua</label>
+            </div>
+        
+            <div class="col-sm-12">
+                <input type="text" class="form-control" id="rua" placeholder="rua" name="rua" formControlName="rua">
+                <app-error [mostrarErro]="verificaValidTouched('endereco.rua')" [msgErro]="'rua é obrigatorio'"></app-error>
+    
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <div class="row">
+    
+                <div class="col-md-5" [ngClass]="aplicaCssErro('endereco.bairro')">
+                    <label for="bairro" class="control-label">Bairro</label>
+                    <input type="text" class="form-control" name="bairro" id="bairro" formControlName="bairro">
+                    <app-error [mostrarErro]="verificaValidTouched('endereco.bairro')" [msgErro]="'bairro é obrigatorio'"></app-error>
+    
+                </div>
+    
+                <div class="col-md-4" [ngClass]="aplicaCssErro('endereco.cidade')">
+                    <label for="cidade" class="control-label">Cidade</label>
+                    <input type="text" class="form-control" name="cidade" id="cidade" formControlName="cidade">
+                    <app-error [mostrarErro]="verificaValidTouched('endereco.cidade')" [msgErro]="'cidade é obrigatorio'"></app-error>
+    
+                </div>
+    
+                <div class="col-md-3" [ngClass]="aplicaCssErro('endereco.estado')">
+                    <label for="estado" class="control-label">Estado</label>
+                    <input type="text" class="form-control" name="estado" id="estado" formControlName="estado"> 
+                    <app-error [mostrarErro]="verificaValidTouched('endereco.estado')" [msgErro]="'estado é obrigatorio'"></app-error>
+    
+                </div>
+    
+            </div>
+        </div>
+    
+    </div>
+
+    
+    
+
+
+
+    <button type="submit" class="btn btn-primary" >Submit</button>
     <button type="btn" (click)="resetar()" class="btn ">Reset</button>
 
 </form>

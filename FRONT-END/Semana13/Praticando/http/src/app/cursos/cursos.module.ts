@@ -8,6 +8,7 @@ import { CursosListaService } from './cursos-lista/Service/cursos-lista.service'
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { CursosFormComponent } from './cursos-form/cursos-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CursoResolverGuard } from './guards/guards.guard';
 
 
 @NgModule({
@@ -23,8 +24,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ],
   providers:[
     CursosListaService,
-    BsModalService,
-    
-  ]
+    BsModalService
+    ]
 })
 export class CursosModule { }

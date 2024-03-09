@@ -10,7 +10,7 @@
     },
     {
       "id": "89a1",
-      "nome": "Pyhton"
+      "nome": "Ruby"
     },
     {
       "id": "7865",
@@ -27,6 +27,26 @@
     {
       "id": "b445",
       "nome": "Angular16"
+    },
+    {
+      "id": null,
+      "nome": "Bootstrap"
+    },
+    {
+      "id": null,
+      "nome": "JSON"
+    },
+    {
+      "id": null,
+      "nome": "Matira"
+    },
+    {
+      "id": null,
+      "nome": "naruto"
+    },
+    {
+      "id": null,
+      "nome": "C++"
     }
   ]
 }

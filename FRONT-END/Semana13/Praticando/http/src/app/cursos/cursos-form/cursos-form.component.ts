@@ -4,8 +4,6 @@ import { CursosListaService } from '../cursos-lista/Service/cursos-lista.service
 import { AlertModalService } from '../../alert-model/alert-model.service';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { Subscribable } from 'rxjs';
-import { exhaustMap, map, switchMap } from 'rxjs/operators';
 
 
 @Component({
@@ -13,7 +11,7 @@ import { exhaustMap, map, switchMap } from 'rxjs/operators';
   templateUrl: './cursos-form.component.html',
   styleUrls: ['./cursos-form.component.scss']
 })
-export class CursosFormComponent implements OnInit {
+export class CursosFormComponent implements OnInit  {
 
   form: FormGroup = new FormGroup({}); // Inicialización de la propiedad form
   submitted = false;
@@ -26,26 +24,23 @@ export class CursosFormComponent implements OnInit {
     private location:Location,
     private route:ActivatedRoute) { }
 
-  ngOnInit() {
+    ngOnInit() {
+      const curso = this.route.snapshot.data['curso'];
+    
+      if (curso) { // Verifica se 'curso' não é null
+        this.form = this.fb.group({
+          id: [curso.id],
+          nome: [curso.nome, [Validators.required, Validators.minLength(1), Validators.maxLength(250)]]
+        });
+      } else {
+        // Se 'curso' for null, você pode inicializar o formulário de uma maneira padrão ou vazio
+        this.form = this.fb.group({
+          nome: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(250)]]
+        });
+      }
+    }
 
-    this.route.params.pipe(
-      map((params: any) => params['id']),
-      switchMap(id => this.service.loadByID(id))
-      ).subscribe((curso) => {
-      this.updateForm(curso);
-    });
-  
-    this.form = this.fb.group({
-      nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(250)]]
-    });
-  }
 
-  updateForm(curso:any){
-    this.form.patchValue({
-      id: curso.id,
-      nome: curso.nome
-    })
-  }
 
   hasError(field: string) {
 
@@ -60,14 +55,24 @@ export class CursosFormComponent implements OnInit {
     this.submitted = true;
     console.log(this.form.value);
     if (this.form.valid) {
-      this.service.create(this.form.value).subscribe(sucess => {
-        this.alertService.showAlertSuccess('Curso adicionado com sucesso')
-        this.location.back()
-      },
-      error => this.alertService.showAlertDanger('Erro ao adicionar curso'),
-      () => console.log("request completo"));
-    }
+      console.log('submit');
+
+      let msgSuccess = 'Curso criado com sucesso!';
+      let msgError = 'Erro ao criar curso, tente novamente!';
+      if (this.form.value.id) {
+        msgSuccess = 'Curso atualizado com sucesso!';
+        msgError = 'Erro ao atualizar curso, tente novamente!';
+      }
+
+      this.service.save(this.form.value).subscribe(
+        success => {
+          this.alertService.showAlertSuccess(msgSuccess);
+            this.location.back();
+        },
+        error => this.alertService.showAlertDanger(msgError)
+      );
   }
+}
 
   onCancel() {
     this.submitted = false;

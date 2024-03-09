@@ -24,7 +24,18 @@ export class CursosListaService {
     return this.http.post(this.API,curso).pipe(take(1));
   }
 
-  loadByID(id:string){
-    return this.http.get(`${this.API}/${id}`).pipe(take(1));
+  loadByID(id:string) {
+    return this.http.get<Curso>(`${this.API}/${id}`).pipe(take(1));
+  }
+
+  update(curso:Curso){
+    return this.http.put<Curso>(`${this.API}/${curso.id}`,curso).pipe(take(1));
+  }
+
+  save(curso:Curso) {
+    if (curso.id) {
+      return this.update(curso);
+    }
+    return this.create(curso);
   }
 }

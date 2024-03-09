@@ -24,7 +24,7 @@
             <td>{{ curso.nome }}</td>
             <td>
               <div class="d-flex justify-content-end">
-                <button class="btn btn-outline-warning mb-1 me-1 btn-sm" >
+                <button class="btn btn-outline-warning mb-1 btn-sm" (click)="onEdit(curso.id)">
                   Atualizar
                 </button>
                 <button class="btn btn-outline-danger mb-1 btn-sm">
