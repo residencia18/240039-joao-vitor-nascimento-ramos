@@ -86,6 +86,7 @@ export class EditarSuinoComponent {
         dt_saida: dadosFormulario.dt_saida,
         status: dadosFormulario.status,
         sexo: dadosFormulario.sexo,
+        pesos: this.data.pesos
       };
       this.dados.atualizeSuino(this.suino.brinco, suinoAtualizado).subscribe(() => {
 

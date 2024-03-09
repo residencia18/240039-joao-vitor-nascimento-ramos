@@ -6,5 +6,5 @@ export interface Suino {
   dt_saida: string;
   status: string;
   sexo: string;
-
+  pesos: {peso: string; dt_pesagem: string;}[];
 }

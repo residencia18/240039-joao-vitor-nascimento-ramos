@@ -30,8 +30,7 @@ export class ListagemSuinosComponent {
 
   atualizaLista(){
     this.dados.getSuinos().subscribe((suinos: Suino[]) => {
-      console.log('JSON antes de atualizar:', suinos); // Mostra o JSON antes de atualizar os dados da lista
-      this.listaSuinos = Object.values(suinos); // Transforma o objeto em um array
+      this.listaSuinos = Object.values(suinos);
 
       this.configurarFiltragem();
     });
@@ -46,7 +45,6 @@ export class ListagemSuinosComponent {
   }
   
 
-  // Filtra os suínos com base no valor do filtro
   filtrarSuinos(valor: string | null): Suino[] {
     if (!valor || !this.campoSelecionado) {
       return this.listaSuinos;

@@ -99,7 +99,9 @@ export class CadastroSuinoComponent {
       dt_saida: dadosFormulario.dt_saida,
       status: dadosFormulario.status,
       sexo: dadosFormulario.sexo,
+      pesos: [] 
     };
+    
   
     this.dados.adicionarSuino(suino).subscribe(() => {
       console.log('Suíno adicionado com sucesso!');

@@ -19,6 +19,8 @@ import { HeaderComponent } from './components/header/header.component'
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { LoginComponent } from './login/login/login.component';
+import { CadastrarPesoComponent } from './components/cadastrar-peso/cadastrar-peso.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { LoginComponent } from './login/login/login.component';
     EditarSuinoComponent,
     HeaderComponent,
     LoginComponent,
-  ],
+    CadastrarPesoComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -40,7 +43,8 @@ import { LoginComponent } from './login/login/login.component';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    NgMultiSelectDropDownModule
   ],
   providers: [
     AuthService,
