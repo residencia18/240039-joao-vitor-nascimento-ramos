@@ -1,0 +1,9 @@
+section{
+    border: 1px solid #000;
+    
+}
+
+section:hover {
+    cursor: pointer;
+    background-color: #c3b4b4;
+}

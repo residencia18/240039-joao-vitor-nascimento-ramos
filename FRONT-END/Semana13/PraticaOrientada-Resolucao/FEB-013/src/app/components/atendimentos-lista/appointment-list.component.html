@@ -1,0 +1,17 @@
+<div class="container">
+    <h1 class="display-4 mb-4">Lista de Pets</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="list-group">
+                <div *ngFor="let atendimento of listaAtendimentos" class="list-group-item list-group-item-action">
+                    <div (click)="showDetails(atendimento.id)">
+                        <h2 class="mb-1">{{ atendimento.appointment_day |  date:'shortDate' }}</h2>
+                        <p class="mb-1">Tutor: {{ atendimento.tutor_name }} | Pet: {{ atendimento.pet_name }}</p>
+                    </div>
+                    <button type="button" class="btn btn-primary mt-2" (click)="editAppointment(atendimento.id)">Editar</button>
+                    <app-details *ngIf="detailShown && atendimento.id === detailShown" [atendimentoID]="detailShown"></app-details>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
