@@ -2,6 +2,11 @@
 
 Este é um sistema de biblioteca que permite gerenciar livros, autores, editoras, clientes e empréstimos.
 
+# Modelo
+
+![Modelo do sistema ](Modelo.png)
+
+
 ## Funcionalidades
 
 - Cadastro, consulta, atualização e exclusão de livros.
