@@ -33,9 +33,6 @@ Para mais detalhes sobre os endpoints da API e como utilizá-los, consulte a se�
 
 João Vitor Nascimento Ramos
 
-## Licença
-
-Este projeto está licenciado sob a [Licença MIT](LICENSE).
 
 ## Endpoints da API
 
