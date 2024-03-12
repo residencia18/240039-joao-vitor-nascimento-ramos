@@ -25,10 +25,9 @@ Este é um sistema de biblioteca que permite gerenciar livros, autores, editoras
 ## Configuração do Ambiente de Desenvolvimento
 
 1. Clone este repositório.
-2. Configure o banco de dados PostgreSQL e importe o esquema do banco de dados (script SQL fornecido em `/database/schema.sql`).
-3. Abra o projeto.
-4. Configure as credenciais do banco de dados no arquivo `application.properties`.
-5. Execute a aplicação.
+2. Abra o projeto.
+3. Configure as credenciais do banco de dados no arquivo `application.properties`.
+4. Execute a aplicação.
 
 ## Endpoints da API
 
