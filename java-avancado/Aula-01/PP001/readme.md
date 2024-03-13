@@ -4,7 +4,7 @@ Este é um sistema de biblioteca que permite gerenciar livros, autores, editoras
 
 # Modelo
 
-![Modelo do sistema ](Modelo.png)
+![Modelo do sistema ](ModeloPP001.png)
 
 
 ## Funcionalidades
