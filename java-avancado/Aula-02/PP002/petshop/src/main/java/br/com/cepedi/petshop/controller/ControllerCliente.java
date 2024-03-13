@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,13 +31,17 @@ public class ControllerCliente {
 	ClienteRepository clientesrepository;
 	
 	@PostMapping
-	public ResponseEntity<ClienteDTO>create(@RequestBody ClienteFORM clienteForm , UriComponentsBuilder uriBuilder){
-		Cliente cliente = clienteForm.toCliente();
-		clientesrepository.save(cliente);
-		ClienteDTO clienteDTO = new ClienteDTO(cliente);
-		uriBuilder.path("/clientes/{id}");
-		URI uri = uriBuilder.buildAndExpand(cliente.getId()).toUri();
-		return ResponseEntity.created(uri).body(clienteDTO);
+	public ResponseEntity<?> create(@RequestBody ClienteFORM clienteForm , UriComponentsBuilder uriBuilder){
+	    try {
+	        Cliente cliente = clienteForm.toCliente();
+	        clientesrepository.save(cliente);
+	        ClienteDTO clienteDTO = new ClienteDTO(cliente);
+	        uriBuilder.path("/clientes/{id}");
+	        URI uri = uriBuilder.buildAndExpand(cliente.getId()).toUri();
+	        return ResponseEntity.created(uri).body(clienteDTO);
+	    }catch (Exception e) {
+	        return ResponseEntity.badRequest().body(e.getMessage());
+	    }
 	}
 	
 	@GetMapping
@@ -60,11 +65,14 @@ public class ControllerCliente {
 		try {
 			Cliente cliente = clientesrepository.getReferenceById(id);
 			cliente.setNome(clienteForm.getNome());
+			cliente.setCpf(clienteForm.getCpf());
 			clientesrepository.save(cliente);
 			ClienteDTO clienteDTO = new ClienteDTO(cliente);
 			return ResponseEntity.ok(clienteDTO);
-		}catch(Exception e ) {
+		}catch(EmptyResultDataAccessException e ) {
 			return ResponseEntity.notFound().build();
+		}catch(Exception e ) {
+			return ResponseEntity.badRequest().body(e.getMessage());
 		}
 	}
 	

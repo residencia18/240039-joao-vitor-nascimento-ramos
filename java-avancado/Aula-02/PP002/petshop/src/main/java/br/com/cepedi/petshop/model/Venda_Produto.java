@@ -2,8 +2,6 @@ package br.com.cepedi.petshop.model;
 
 import java.math.BigInteger;
 
-import org.antlr.v4.runtime.misc.NotNull;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,65 +16,59 @@ import jakarta.persistence.Table;
 @Table(name="VENDA_PRODUTO")
 public class Venda_Produto {
 
-	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	Long id;
-	
-	@NotNull
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="ID_CLIENTE" , nullable = false)
-	private Cliente cliente;
-	
-	@NotNull
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="ID_PRODUTO" , nullable = false)
-	private Produto produto;
-	
-	@Column(name="QUANTIDADE")
-	private BigInteger quantidade;
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Long id;
+    
+    @ManyToOne
+    @JoinColumn(name="ID_VENDA", nullable = false) 
+    private Venda venda; 
+    
+    @ManyToOne
+    @JoinColumn(name="ID_PRODUTO", nullable = false)
+    private Produto produto;
+    
+    @Column(name="QUANTIDADE")
+    private BigInteger quantidade;
 
-	public Venda_Produto(Cliente cliente, Produto produto, BigInteger quantidade) {
-		super();
-		this.cliente = cliente;
-		this.produto = produto;
-		this.quantidade = quantidade;
-	}
+    public Venda_Produto() {
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public Venda_Produto(Venda venda, Produto produto, BigInteger quantidade) {
+        this.venda = venda;
+        this.produto = produto;
+        this.quantidade = quantidade;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public Cliente getCliente() {
-		return cliente;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
+    public Venda getVenda() {
+        return venda;
+    }
 
-	public Produto getProduto() {
-		return produto;
-	}
+    public void setVenda(Venda venda) {
+        this.venda = venda;
+    }
 
-	public void setProduto(Produto produto) {
-		this.produto = produto;
-	}
+    public Produto getProduto() {
+        return produto;
+    }
 
-	public BigInteger getQuantidade() {
-		return quantidade;
-	}
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
 
-	public void setQuantidade(BigInteger quantidade) {
-		this.quantidade = quantidade;
-	}
-	
-	
-	
-	
-	
-	
+    public BigInteger getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(BigInteger quantidade) {
+        this.quantidade = quantidade;
+    }
 }

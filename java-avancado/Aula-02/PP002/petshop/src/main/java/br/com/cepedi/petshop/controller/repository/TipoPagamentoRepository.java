@@ -2,6 +2,8 @@ package br.com.cepedi.petshop.controller.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface TipoPagamentoRepository extends JpaRepository<TipoPagamentoRepository,Long> {
+import br.com.cepedi.petshop.model.TipoPagamento;
+
+public interface TipoPagamentoRepository extends JpaRepository<TipoPagamento,Long> {
 
 }

@@ -2,14 +2,17 @@ package br.com.cepedi.petshop.controller.FORM;
 
 import java.math.BigDecimal;
 
+import br.com.cepedi.petshop.exceptions.PrecoInvalidoException;
+import br.com.cepedi.petshop.model.Produto;
+
 public class ProdutoFORM {
     
     private String nome;
     private Long idTipoProduto;
+    private Long idMarca; 
     private String descricao;
     private BigDecimal preco;
 
-    // getters e setters
 
     public String getNome() {
         return nome;
@@ -27,6 +30,14 @@ public class ProdutoFORM {
         this.idTipoProduto = idTipoProduto;
     }
 
+    public Long getIdMarca() {
+        return idMarca;
+    }
+
+    public void setIdMarca(Long idMarca) {
+        this.idMarca = idMarca;
+    }
+
     public String getDescricao() {
         return descricao;
     }
@@ -42,4 +53,13 @@ public class ProdutoFORM {
     public void setPreco(BigDecimal preco) {
         this.preco = preco;
     }
+    
+    public Produto toProduto() throws PrecoInvalidoException {
+        Produto produto = new Produto();
+        produto.setNome(nome);
+        produto.setPreco(preco);
+        produto.setDescricao(descricao);
+        return produto;
+    }
+    
 }

@@ -10,14 +10,15 @@ public class ProdutoDTO {
     private String descricao;
     private BigDecimal preco;
     private String nomeTipoProduto;
+    private String nomeMarca; 
 
     public ProdutoDTO(Produto produto) {
         this.nome = produto.getNome();
         this.descricao = produto.getDescricao();
         this.preco = produto.getPreco();
         this.nomeTipoProduto = produto.getTipoProduto().getNome();
+        this.nomeMarca = produto.getMarca().getNome(); 
     }
-
 
     public String getNome() {
         return nome;
@@ -49,5 +50,13 @@ public class ProdutoDTO {
 
     public void setNomeTipoProduto(String nomeTipoProduto) {
         this.nomeTipoProduto = nomeTipoProduto;
+    }
+
+    public String getNomeMarca() {
+        return nomeMarca;
+    }
+
+    public void setNomeMarca(String nomeMarca) {
+        this.nomeMarca = nomeMarca;
     }
 }

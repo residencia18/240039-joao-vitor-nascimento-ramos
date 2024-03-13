@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 import org.antlr.v4.runtime.misc.NotNull;
 
-import jakarta.persistence.CascadeType;
+import br.com.cepedi.petshop.exceptions.PrecoInvalidoException;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,7 +24,7 @@ public class Venda {
 
 	
 	@NotNull
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="ID_CLIENTE" , nullable = false)
 	private Cliente cliente;
 	
@@ -34,15 +34,11 @@ public class Venda {
 
 
 	public Venda() {
-		super();
+	    super();
+	    this.valor_total = BigDecimal.ZERO;
 	}
 
 
-	public Venda(Cliente cliente, BigDecimal valor_total) {
-		super();
-		this.cliente = cliente;
-		this.valor_total = valor_total;
-	}
 
 
 	public Long getId() {
@@ -73,6 +69,22 @@ public class Venda {
 	public void setValor_total(BigDecimal valor_total) {
 		this.valor_total = valor_total;
 	}
+	
+    public void adicionarValor(BigDecimal valor) throws PrecoInvalidoException {
+        if (valor != null && valor.compareTo(BigDecimal.ZERO) > 0) {
+            this.valor_total = this.valor_total.add(valor);
+        }else {
+        	throw new PrecoInvalidoException();
+        }
+    }
+    
+    public void retiraValor(BigDecimal valor) throws PrecoInvalidoException {
+        if (valor != null && valor.compareTo(BigDecimal.ZERO) > 0) {
+            this.valor_total = this.valor_total.subtract(valor);
+        }else {
+        	throw new PrecoInvalidoException();
+        }
+    }
 	
 	
 }

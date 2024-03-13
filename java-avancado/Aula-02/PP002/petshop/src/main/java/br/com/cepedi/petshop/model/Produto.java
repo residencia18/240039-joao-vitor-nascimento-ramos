@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 
 import org.antlr.v4.runtime.misc.NotNull;
 
+import br.com.cepedi.petshop.exceptions.PrecoInvalidoException;
+import br.com.cepedi.petshop.verificacoes.Verificacoes;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,78 +17,97 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="PRODUTO")
+@Table(name = "PRODUTO")
 public class Produto {
-	
-	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	private Long id;
-	
-	@Column(name="NAME")
-	private String nome;
-	
-	@NotNull
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="ID_TIPO_PRODUTO" , nullable = false)
-	private TipoProduto tipoProduto;
 
-	@Column(name="DESCRIÇÃO")
-	private String descricao;
-	
-	@Column(name="PRECO")
-	private BigDecimal preco;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	public Produto(Long id, String nome, TipoProduto tipoProduto, String descricao, BigDecimal preco) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.tipoProduto = tipoProduto;
-		this.descricao = descricao;
-		this.preco = preco;
-	}
+    @NotNull
+    @Column(name = "NOME" , nullable = false)
+    private String nome;
 
-	public Long getId() {
-		return id;
-	}
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "ID_TIPO_PRODUTO", nullable = false)
+    private TipoProduto tipoProduto;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @ManyToOne
+    @JoinColumn(name = "ID_MARCA")
+    private Marca marca;
 
-	public String getNome() {
-		return nome;
-	}
+    @Column(name = "DESCRIÇÃO")
+    private String descricao;
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    @NotNull
+    @Column(name = "PRECO", nullable = false)
+    private BigDecimal preco;
 
-	public TipoProduto getTipoProduto() {
-		return tipoProduto;
-	}
+    public Produto(String nome, TipoProduto tipoProduto, Marca marca, String descricao, BigDecimal preco) {
+        this.nome = nome;
+        this.tipoProduto = tipoProduto;
+        this.marca = marca;
+        this.descricao = descricao;
+        this.preco = preco;
+    }
 
-	public void setTipoProduto(TipoProduto tipoProduto) {
-		this.tipoProduto = tipoProduto;
-	}
+    public Produto() {
+    }
 
-	public String getDescricao() {
-		return descricao;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public BigDecimal getPreco() {
-		return preco;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public void setPreco(BigDecimal preco) {
-		this.preco = preco;
-	}
-	
-	
-	
-	
+    public void setNome(String nome) {
+        if (nome == null || nome.trim().isEmpty()) {
+            throw new IllegalArgumentException("Nome é obrigatório");
+        }
+        this.nome = nome;
+    }
+
+    public TipoProduto getTipoProduto() {
+        return tipoProduto;
+    }
+
+    public void setTipoProduto(TipoProduto tipoProduto) {
+        this.tipoProduto = tipoProduto;
+    }
+
+    public Marca getMarca() {
+        return marca;
+    }
+
+    public void setMarca(Marca marca) {
+    	
+        this.marca = marca;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public BigDecimal getPreco() {
+        return preco;
+    }
+
+    public void setPreco(BigDecimal preco) throws PrecoInvalidoException {
+        if (!Verificacoes.verificarPrecoMaiorQueZero(preco)) {
+            throw new PrecoInvalidoException();
+        }
+        this.preco = preco;
+    }
 
 }

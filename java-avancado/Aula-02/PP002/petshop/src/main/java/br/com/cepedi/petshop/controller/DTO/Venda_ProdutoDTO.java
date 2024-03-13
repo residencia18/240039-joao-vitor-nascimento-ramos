@@ -10,9 +10,8 @@ public class Venda_ProdutoDTO {
     private String nomeProduto;
     private BigInteger quantidade;
 
-    // Construtor com um objeto Venda_Produto
     public Venda_ProdutoDTO(Venda_Produto vendaProduto) {
-        this.nomeCliente = vendaProduto.getCliente().getNome();
+        this.nomeCliente = vendaProduto.getVenda().getCliente().getNome();
         this.nomeProduto = vendaProduto.getProduto().getNome();
         this.quantidade = vendaProduto.getQuantidade();
     }

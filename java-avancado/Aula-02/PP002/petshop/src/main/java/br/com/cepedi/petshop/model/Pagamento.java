@@ -19,11 +19,11 @@ public class Pagamento {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="ID_TIPO_PAGAMENTO" , nullable = false)
 	private TipoPagamento tipoPagamento;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name="ID_VENDA" , nullable = false)
 	private Venda venda;
 
@@ -31,6 +31,10 @@ public class Pagamento {
 		super();
 		this.tipoPagamento = tipoPagamento;
 		this.venda = venda;
+	}
+
+	public Pagamento() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public Long getId() {

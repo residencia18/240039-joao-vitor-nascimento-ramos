@@ -45,6 +45,11 @@ public class TipoProduto {
 
 
 	public void setNome(String nome) {
+		
+	    if (nome == null || nome.trim().isEmpty()) {
+	        throw new IllegalArgumentException("Nome é obrigatório");
+	    }
+		
 		this.nome = nome;
 	}
 	

@@ -8,22 +8,21 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="TIPO_PAGAMENTO")
-public class TipoPagamento {
-    
-	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	private Long id;
-	
-	@Column(name="NAME")
-	private String nome;
-	
+@Table(name = "MARCA")
+public class Marca {
 
-    public TipoPagamento(String nome) {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "NAME")
+    private String nome;
+
+    public Marca(String nome) {
         this.nome = nome;
     }
-    
-    public TipoPagamento() {
+
+    public Marca() {
     }
 
     public Long getId() {
@@ -39,11 +38,9 @@ public class TipoPagamento {
     }
 
     public void setNome(String nome) {
-    	
-	    if (nome == null || nome.trim().isEmpty()) {
-	        throw new IllegalArgumentException("Nome é obrigatório");
-	    }
-    	
+        if (nome == null || nome.trim().isEmpty()) {
+            throw new IllegalArgumentException("Nome da marca é obrigatório");
+        }
         this.nome = nome;
     }
 }

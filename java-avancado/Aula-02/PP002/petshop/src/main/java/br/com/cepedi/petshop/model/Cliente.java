@@ -1,5 +1,8 @@
 package br.com.cepedi.petshop.model;
 
+import br.com.cepedi.petshop.exceptions.CPFInvalidoException;
+import br.com.cepedi.petshop.exceptions.NomeInvalidoException;
+import br.com.cepedi.petshop.verificacoes.Verificacoes;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -47,7 +50,15 @@ public class Cliente {
 	}
 
 
-	public void setNome(String nome) {
+	public void setNome(String nome) throws NomeInvalidoException {
+		
+	    if (nome == null || nome.trim().isEmpty()) {
+	        throw new IllegalArgumentException("Nome é obrigatório");
+	    }
+	    
+	    if(!Verificacoes.verificarNomeSemNumeros(nome)) {
+	        throw new NomeInvalidoException();
+	    }
 		this.nome = nome;
 	}
 
@@ -57,8 +68,16 @@ public class Cliente {
 	}
 
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+	public void setCpf(String cpf) throws CPFInvalidoException {
+		
+	    if (cpf == null || cpf.trim().isEmpty()) {
+	        throw new IllegalArgumentException("CPF é obrigatório");
+	    }
+	    if(!Verificacoes.validarCPF(cpf)) {
+	        throw new CPFInvalidoException();
+	    }
+	    
+		this.cpf = cpf.replaceAll("[^0-9]", "");
 	}
 	
 	

@@ -2,6 +2,7 @@ package br.com.cepedi.petshop.controller.FORM;
 
 
 import br.com.cepedi.petshop.exceptions.CPFInvalidoException;
+import br.com.cepedi.petshop.exceptions.NomeInvalidoException;
 import br.com.cepedi.petshop.model.Cliente;
 import br.com.cepedi.petshop.verificacoes.Verificacoes;
 
@@ -10,24 +11,13 @@ public class ClienteFORM {
 	private String nome;
 	private String cpf;
 	
-	
-	public ClienteFORM(String nome, String cpf) {
-		super();
-		
 
-		
-		this.nome = nome;
-		this.cpf = cpf;
-;
-	}
+    public ClienteFORM(String nome, String cpf){
 
-
-	public ClienteFORM() {
-		super();
-	}
-
-	
-	
+        
+        this.nome = nome;
+        this.cpf = cpf;
+    }
 
 	public String getNome() {
 		return nome;
@@ -35,6 +25,9 @@ public class ClienteFORM {
 
 
 	public void setNome(String nome) {
+		
+
+		
 		this.nome = nome;
 	}
 
@@ -44,16 +37,13 @@ public class ClienteFORM {
 	}
 
 
-	public void setCpf(String cpf) throws CPFInvalidoException {
+	public void setCpf(String cpf)  {
 		
-		if(!Verificacoes.validarCPF(cpf)) {
-			throw new CPFInvalidoException();
-		}
-		this.cpf = cpf.replaceAll("[^0-9]", "");
+		this.cpf = cpf;
 	}
 	
 	
-	public Cliente toCliente() {
+	public Cliente toCliente() throws NomeInvalidoException, CPFInvalidoException {
 		Cliente cliente = new Cliente();
 		cliente.setNome(nome);
 		cliente.setCpf(cpf);
