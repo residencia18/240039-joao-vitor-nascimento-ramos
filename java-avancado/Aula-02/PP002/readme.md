@@ -4,7 +4,7 @@ Este é um sistema de gestão para petshops, que permite o gerenciamento de vend
 
 # Modelo
 
-![Modelo do sistema ](Modelo.png)
+![Modelo do sistema ](ModeloPP002.png)
 
 ## Funcionalidades
 
