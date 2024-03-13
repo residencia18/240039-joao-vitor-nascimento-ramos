@@ -53,7 +53,6 @@ public class ControllerVenda_Produto {
             if (vendaOptional.isPresent()) {
                 Venda venda = vendaOptional.get();
                 
-                // Verifica se já existe um pagamento associado à venda
                 Optional<Pagamento> pagamentoExistente = pagamentoRepository.findByVenda(venda);
                 if (pagamentoExistente.isPresent()) {
                     return ResponseEntity.badRequest().body("Não é possível adicionar produtos a uma venda que já possui pagamento.");
