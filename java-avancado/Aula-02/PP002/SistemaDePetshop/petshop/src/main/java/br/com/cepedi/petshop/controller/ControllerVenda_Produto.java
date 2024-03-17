@@ -2,21 +2,28 @@ package br.com.cepedi.petshop.controller;
 
 import java.math.BigDecimal;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import com.biblioteca.biblioteca.controller.ErrorResponse;
 
 import br.com.cepedi.petshop.controller.DTO.Venda_ProdutoDTO;
 import br.com.cepedi.petshop.controller.FORM.Venda_ProdutoFORM;
@@ -58,14 +65,14 @@ public class ControllerVenda_Produto {
                     return ResponseEntity.badRequest().body("Não é possível adicionar produtos a uma venda que já possui pagamento.");
                 }
                 
-                Optional<Produto> produtoOptional = produtoRepository.findById(vendaProdutoForm.getIdProduto());
+                Optional<Produto> produtoOptional = produtoRepository.findById(vendaProdutoForm.idProduto());
                 if (produtoOptional.isPresent()) {
                     Produto produto = produtoOptional.get();
                     Venda_Produto vendaProduto = new Venda_Produto();
                     vendaProduto.setVenda(venda);
                     vendaProduto.setProduto(produto);
-                    vendaProduto.setQuantidade(vendaProdutoForm.getQuantidade());
-                    BigDecimal valor = produto.getPreco().multiply(new BigDecimal(vendaProdutoForm.getQuantidade()));
+                    vendaProduto.setQuantidade(vendaProdutoForm.quantidade());
+                    BigDecimal valor = produto.getPreco().multiply(new BigDecimal(vendaProdutoForm.quantidade()));
                     venda.adicionarValor(valor);
                     vendaRepository.save(venda);
                     vendaProdutoRepository.save(vendaProduto);
@@ -133,7 +140,7 @@ public class ControllerVenda_Produto {
             Optional<Venda> vendaOptional = vendaRepository.findById(id);
             if(vendaOptional.isPresent()) {
                 Optional<Venda_Produto> vendaProdutoOptional = vendaProdutoRepository.findById(produtoId);
-                Optional<Produto> produtoOptional = produtoRepository.findById(vendaProdutoForm.getIdProduto());
+                Optional<Produto> produtoOptional = produtoRepository.findById(vendaProdutoForm.idProduto());
                 if (vendaProdutoOptional.isPresent() && produtoOptional.isPresent()) {
                     Produto produto = produtoOptional.get();
                  
@@ -148,13 +155,13 @@ public class ControllerVenda_Produto {
                     
                     // Retira o valor atual daquele venda produto do venda para adicionar o novo
                     BigDecimal valorARetirar = vendaProdutoAtual.getProduto().getPreco().multiply(new BigDecimal(vendaProdutoAtual.getQuantidade()));
-                    BigDecimal valorAdicionar = produto.getPreco().multiply(new BigDecimal(vendaProdutoForm.getQuantidade()));
+                    BigDecimal valorAdicionar = produto.getPreco().multiply(new BigDecimal(vendaProdutoForm.quantidade()));
                     venda.retiraValor(valorARetirar);
                     venda.adicionarValor(valorAdicionar);
                     
                     vendaProdutoAtual.setProduto(produto);
                     vendaProdutoAtual.setVenda(venda);
-                    vendaProdutoAtual.setQuantidade(vendaProdutoForm.getQuantidade());
+                    vendaProdutoAtual.setQuantidade(vendaProdutoForm.quantidade());
                     
                     vendaRepository.save(venda);
                     vendaProdutoRepository.save(vendaProdutoAtual);
@@ -207,7 +214,14 @@ public class ControllerVenda_Produto {
         }
     }
     
-    
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<ErrorResponse> handleValidationExceptions(MethodArgumentNotValidException ex) {
+        List<String> errors = new ArrayList<>();
+        ex.getBindingResult().getFieldErrors().forEach(error -> errors.add(error.getDefaultMessage()));
+        ErrorResponse errorResponse = new ErrorResponse(errors);
+        return ResponseEntity.badRequest().body(errorResponse);
+    }
 
     
 }

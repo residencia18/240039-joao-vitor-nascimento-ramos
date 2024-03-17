@@ -1,21 +1,28 @@
 package br.com.cepedi.petshop.controller;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import com.biblioteca.biblioteca.controller.ErrorResponse;
 
 import br.com.cepedi.petshop.controller.DTO.TipoPagamentoDTO;
 import br.com.cepedi.petshop.controller.FORM.TipoPagamentoFORM;
@@ -32,7 +39,8 @@ public class ControllerTipoPagamento {
 	@PostMapping
 	public ResponseEntity<?> create(@RequestBody TipoPagamentoFORM tipoPagamentoForm , UriComponentsBuilder uriBuilder){
 		try {
-			TipoPagamento tipoPagamento = tipoPagamentoForm.toTipoPagamento();
+			TipoPagamento tipoPagamento = new TipoPagamento();
+			construindoTipoPagamento(tipoPagamentoForm, tipoPagamento);
 			tipoPagamentoRepository.save(tipoPagamento);
 			TipoPagamentoDTO tipoPagamentoDTO = new TipoPagamentoDTO(tipoPagamento);
 			uriBuilder.path("/pagamentos/tipos/{id}");
@@ -41,6 +49,10 @@ public class ControllerTipoPagamento {
 		}catch(Exception e ) {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
+	}
+
+	private void construindoTipoPagamento(TipoPagamentoFORM tipoPagamentoForm, TipoPagamento tipoPagamento) {
+		tipoPagamento.setNome(tipoPagamentoForm.nome());
 	}
 	
 	@GetMapping
@@ -65,7 +77,7 @@ public class ControllerTipoPagamento {
 	        Optional<TipoPagamento> tipoPagamentoOpcional = tipoPagamentoRepository.findById(id);
 	        if(tipoPagamentoOpcional.isPresent()) {
 	            TipoPagamento tipoPagamento = tipoPagamentoOpcional.get();
-	            tipoPagamento.setNome(tipoPagamentoForm.getNome());
+				construindoTipoPagamento(tipoPagamentoForm, tipoPagamento);
 	            tipoPagamentoRepository.save(tipoPagamento);
 	            TipoPagamentoDTO tipoPagamentoDTO = new TipoPagamentoDTO(tipoPagamento);
 	            return ResponseEntity.ok(tipoPagamentoDTO);
@@ -94,6 +106,13 @@ public class ControllerTipoPagamento {
 		}
 	}
 	
-	
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<ErrorResponse> handleValidationExceptions(MethodArgumentNotValidException ex) {
+        List<String> errors = new ArrayList<>();
+        ex.getBindingResult().getFieldErrors().forEach(error -> errors.add(error.getDefaultMessage()));
+        ErrorResponse errorResponse = new ErrorResponse(errors);
+        return ResponseEntity.badRequest().body(errorResponse);
+    }
 	
 }

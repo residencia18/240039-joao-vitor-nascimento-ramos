@@ -1,31 +1,14 @@
 package br.com.cepedi.petshop.controller.FORM;
 
-import br.com.cepedi.petshop.model.TipoPagamento;
+import org.antlr.v4.runtime.misc.NotNull;
 
-public class TipoPagamentoFORM {
-    
-    private String nome;
+import jakarta.validation.constraints.NotBlank;
 
-    public TipoPagamentoFORM() {
-        // Construtor padrão vazio
-    }
+public record TipoPagamentoFORM(
+        @NotNull
+        @NotBlank
+        String nome
+) {
 
-    public TipoPagamentoFORM(String nome) {
-        this.nome = nome;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-    
-    public TipoPagamento toTipoPagamento() {
-    	TipoPagamento tipo = new TipoPagamento();
-    	tipo.setNome(nome);
-    	return tipo;
-    }
-    
+	
 }

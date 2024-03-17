@@ -2,28 +2,18 @@ package br.com.cepedi.petshop.controller.FORM;
 
 import java.math.BigInteger;
 
-public class Venda_ProdutoFORM {
-    
-    private Long idProduto;
-    private BigInteger quantidade;
+import org.antlr.v4.runtime.misc.NotNull;
 
-    public Venda_ProdutoFORM() {
-    }
+import jakarta.validation.constraints.Min;
 
+public record Venda_ProdutoFORM(
+        @NotNull
+        Long idProduto,
+        
+        @NotNull
+        @Min(1)
+        BigInteger quantidade
+) {
 
-    public Long getIdProduto() {
-        return idProduto;
-    }
-
-    public void setIdProduto(Long idProduto) {
-        this.idProduto = idProduto;
-    }
-
-    public BigInteger getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(BigInteger quantidade) {
-        this.quantidade = quantidade;
-    }
+	
 }

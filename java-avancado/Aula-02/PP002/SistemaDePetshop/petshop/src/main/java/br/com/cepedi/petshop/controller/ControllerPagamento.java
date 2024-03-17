@@ -1,21 +1,28 @@
 package br.com.cepedi.petshop.controller;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import com.biblioteca.biblioteca.controller.ErrorResponse;
 
 import br.com.cepedi.petshop.controller.DTO.PagamentoDTO;
 import br.com.cepedi.petshop.controller.FORM.PagamentoFORM;
@@ -45,14 +52,14 @@ public class ControllerPagamento {
     public ResponseEntity<?> create(@RequestBody PagamentoFORM pagamentoForm, UriComponentsBuilder uriBuilder) {
         try {
             // Busca o tipo de pagamento no banco de dados
-            Optional<TipoPagamento> tipoPagamentoOptional = tipoPagamentoRepository.findById(pagamentoForm.getIdTipoPagamento());
+            Optional<TipoPagamento> tipoPagamentoOptional = tipoPagamentoRepository.findById(pagamentoForm.idTipoPagamento());
             if (!tipoPagamentoOptional.isPresent()) {
                 return ResponseEntity.badRequest().body("Tipo de pagamento não encontrado!");
             }
             TipoPagamento tipoPagamento = tipoPagamentoOptional.get();
 
             // Busca a venda no banco de dados
-            Optional<Venda> vendaOptional = vendaRepository.findById(pagamentoForm.getIdVenda());
+            Optional<Venda> vendaOptional = vendaRepository.findById(pagamentoForm.idVenda());
             if (!vendaOptional.isPresent()) {
                 return ResponseEntity.badRequest().body("Venda não encontrada!");
             }
@@ -66,8 +73,7 @@ public class ControllerPagamento {
 
             // Cria o objeto Pagamento e o salva no repositório
             Pagamento pagamento = new Pagamento();
-            pagamento.setTipoPagamento(tipoPagamento);
-            pagamento.setVenda(venda);
+            construindoPagamento(tipoPagamento, venda, pagamento);
             pagamentoRepository.save(pagamento);
             
             // Constrói a URI para a resposta
@@ -80,6 +86,13 @@ public class ControllerPagamento {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
+
+
+	private void construindoPagamento(TipoPagamento tipoPagamento, Venda venda, Pagamento pagamento) {
+		pagamento.setTipoPagamento(tipoPagamento);
+		pagamento.setVenda(venda);
+	}
 
 
 
@@ -107,13 +120,13 @@ public class ControllerPagamento {
             if (pagamentoOptional.isPresent()) {
                 Pagamento pagamento = pagamentoOptional.get();
                 
-                Optional<TipoPagamento> tipoPagamentoOptional = tipoPagamentoRepository.findById(pagamentoForm.getIdTipoPagamento());
+                Optional<TipoPagamento> tipoPagamentoOptional = tipoPagamentoRepository.findById(pagamentoForm.idTipoPagamento());
                 if (!tipoPagamentoOptional.isPresent()) {
                     return ResponseEntity.badRequest().body("Tipo de pagamento não encontrado!");
                 }
                 TipoPagamento tipoPagamento = tipoPagamentoOptional.get();
 
-                Optional<Venda> vendaOptional = vendaRepository.findById(pagamentoForm.getIdVenda());
+                Optional<Venda> vendaOptional = vendaRepository.findById(pagamentoForm.idVenda());
                 if (!vendaOptional.isPresent()) {
                     return ResponseEntity.badRequest().body("Venda não encontrada!");
                 }
@@ -124,8 +137,7 @@ public class ControllerPagamento {
                     return ResponseEntity.badRequest().body("Já existe um pagamento associado a esta venda!");
                 }
 
-                pagamento.setTipoPagamento(tipoPagamento);
-                pagamento.setVenda(venda);
+                construindoPagamento(tipoPagamento, venda, pagamento);
 
                 pagamentoRepository.save(pagamento);
                 PagamentoDTO pagamentoDTO = new PagamentoDTO(pagamento);
@@ -154,5 +166,14 @@ public class ControllerPagamento {
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
+    }
+    
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<ErrorResponse> handleValidationExceptions(MethodArgumentNotValidException ex) {
+        List<String> errors = new ArrayList<>();
+        ex.getBindingResult().getFieldErrors().forEach(error -> errors.add(error.getDefaultMessage()));
+        ErrorResponse errorResponse = new ErrorResponse(errors);
+        return ResponseEntity.badRequest().body(errorResponse);
     }
 }
