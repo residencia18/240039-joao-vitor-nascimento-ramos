@@ -43,28 +43,15 @@ public class ControllerProduto {
     @PostMapping
     public ResponseEntity<?> create(@RequestBody ProdutoFORM produtoForm, UriComponentsBuilder uriBuilder) {
         try {
-            Optional<TipoProduto> tipoProdutoOptional = tipoProdutoRepository.findById(produtoForm.getIdTipoProduto());
-            Optional<Marca> marcaOptional = marcaRepository.findById(produtoForm.getIdMarca());
-            
-            if (tipoProdutoOptional.isPresent() && marcaOptional.isPresent()) {
-                Produto produto = produtoForm.toProduto();
-                TipoProduto tipoProduto = tipoProdutoOptional.get();
-                Marca marca = marcaOptional.get();
-                produto.setTipoProduto(tipoProduto);
-                produto.setMarca(marca);
-                produtoRepository.save(produto);
-                
-                ProdutoDTO produtoDTO = new ProdutoDTO(produto);
-                URI uri = uriBuilder.path("/produtos/{id}").buildAndExpand(produto.getId()).toUri();
-                return ResponseEntity.created(uri).body(produtoDTO);
-            } else {
-                if (!tipoProdutoOptional.isPresent()) {
-                    return ResponseEntity.badRequest().body("Tipo de produto não encontrado!");
-                }
-                
-                return ResponseEntity.badRequest().body("Marca não encontrada!");
-            }
-
+        	TipoProduto tipoProduto = tipoProdutoRepository.getReferenceById(produtoForm.getIdTipoProduto());
+        	Marca marca = marcaRepository.getReferenceById(produtoForm.getIdMarca());
+            Produto produto = produtoForm.toProduto();
+            produto.setTipoProduto(tipoProduto);
+            produto.setMarca(marca);
+            produtoRepository.save(produto);
+            ProdutoDTO produtoDTO = new ProdutoDTO(produto);
+            URI uri = uriBuilder.path("/produtos/{id}").buildAndExpand(produto.getId()).toUri();
+            return ResponseEntity.created(uri).body(produtoDTO);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }

@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -28,6 +27,8 @@ import com.biblioteca.biblioteca.controller.DTO.AutorDTO;
 import com.biblioteca.biblioteca.controller.FORM.AutorFORM;
 import com.biblioteca.biblioteca.controller.repository.AutorRepository;
 import com.biblioteca.biblioteca.model.Autor;
+
+import jakarta.persistence.EntityNotFoundException;
 
 @RestController
 @RequestMapping("/autores/")
@@ -50,34 +51,37 @@ public class ControllerAutor {
             log.info("[CREATE] Autor criado: {}", autor);
             return ResponseEntity.created(uri).body(autorDTO);
         } catch (Exception e) {
-            log.error("[CREATE] Erro ao criar autor: {}", e.getMessage());
-            return ResponseEntity.badRequest().body(e.getMessage());
+            String mensagemErro = String.format("Erro ao criar autor: %s", e.getMessage());
+            log.error("[CREATE] " + mensagemErro);
+            return ResponseEntity.badRequest().body(mensagemErro);
         }
     }
+    
     @GetMapping
     public List<AutorDTO> readAll() {
         log.info("[READ] Todos autores pesquisados");
         return repository.findAll().stream().map(AutorDTO::new).collect(Collectors.toList());
     }
-
+    
     @GetMapping("/{id}")
     public ResponseEntity<?> readById(@PathVariable Long id) {
-    	try {
+        try {
             Autor autor = repository.getReferenceById(id);
             AutorDTO autorDTO = new AutorDTO(autor);
             
             log.info("[READ] Autor pesquisado: {}", autor);
             
             return ResponseEntity.ok(autorDTO);
-        } catch (EmptyResultDataAccessException e) {
-            log.error("[READ] Erro ao buscar autor de id {} - Autor não encontrado : {}", id, e.getMessage());
+        } catch (EntityNotFoundException e) {
+            String mensagemErro = String.format("Erro ao buscar autor de id %d - Autor não encontrado : %s", id, e.getMessage());
+            log.error("[READ] " + mensagemErro);
             return ResponseEntity.notFound().build();
         } catch (Exception e) {
-            log.error("[READ] Erro ao buscar autor: {}", e.getMessage());
-            return ResponseEntity.badRequest().body(e.getMessage());
+            String mensagemErro = String.format("Erro ao buscar autor de id %d - %s", id, e.getMessage());
+            return ResponseEntity.badRequest().body(mensagemErro);
         }
     }
-
+    
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable Long id, @RequestBody AutorFORM autorForm) {
         try {
@@ -90,15 +94,17 @@ public class ControllerAutor {
             log.info("[UPDATE] Autor antes da atualização: {} | Autor atualizado: {}", autorAntes, autor);
 
             return ResponseEntity.ok(autorDTO);
-        } catch (EmptyResultDataAccessException e) {
-            log.error("[UPDATE] Erro ao atualizar autor - Autor não encontrado: {}", e.getMessage());
+        } catch (EntityNotFoundException e) {
+            String mensagemErro = String.format("Erro ao atualizar autor de id %d - Autor não encontrado : %s", id, e.getMessage());
+            log.error("[UPDATE] " + mensagemErro);
             return ResponseEntity.notFound().build();
         } catch (Exception e) {
-            log.error("[UPDATE] Erro ao atualizar autor: {}", e.getMessage());
-            return ResponseEntity.badRequest().body(e.getMessage());
+            String mensagemErro = String.format("Erro ao atualizar autor de id %d - %s", id, e.getMessage());
+            log.error("[UPDATE] " + mensagemErro);
+            return ResponseEntity.badRequest().body(mensagemErro);
         }
     }
-
+    
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
         try {
@@ -107,15 +113,16 @@ public class ControllerAutor {
             AutorDTO autorDTO = new AutorDTO(autor);
             log.info("[DELETE] Autor excluído: {}", autor);
             return ResponseEntity.ok(autorDTO);
-        } catch (EmptyResultDataAccessException e) {
-            log.error("[DELETE] Erro ao excluir autor - Autor não encontrado: {}", e.getMessage());
+        } catch (EntityNotFoundException e) {
+            String mensagemErro = String.format("Erro ao excluir autor de id %d - Autor não encontrado: {}", id, e.getMessage());
+            log.error("[DELETE] " + mensagemErro);
             return ResponseEntity.notFound().build();
         } catch (Exception e) {
-            log.error("[DELETE] Erro ao excluir autor: {}", e.getMessage());
-            return ResponseEntity.badRequest().body(e.getMessage());
+            String mensagemErro = String.format("Erro ao excluir autor: {}", e.getMessage());
+            log.error("[DELETE] " + mensagemErro);
+            return ResponseEntity.badRequest().body(mensagemErro);
         }
     }
-
 
     private void construindoAutor(AutorFORM autorForm, Autor autor) {
         autor.setNome(autorForm.nome());
@@ -130,4 +137,3 @@ public class ControllerAutor {
         return ResponseEntity.badRequest().body(errorResponse);
     }
 }
-

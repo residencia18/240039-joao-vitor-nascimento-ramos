@@ -89,4 +89,13 @@ public class Emprestimo {
     public void setData_devolucao(LocalDateTime data_devolucao) {
         this.data_devolucao = data_devolucao;
     }
+
+	@Override
+	public String toString() {
+		return "Emprestimo [id=" + id + ", cliente=" + cliente + ", livro=" + livro + ", data_emprestimo="
+				+ data_emprestimo + ", data_devolucao=" + data_devolucao + "]";
+	}
+    
+    
+    
 }

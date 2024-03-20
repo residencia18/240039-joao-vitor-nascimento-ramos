@@ -1,14 +1,13 @@
 package com.biblioteca.biblioteca.controller;
+
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -31,7 +30,7 @@ import com.biblioteca.biblioteca.controller.FORM.ClienteFORM;
 import com.biblioteca.biblioteca.controller.repository.ClienteRepository;
 import com.biblioteca.biblioteca.model.Cliente;
 
-import jakarta.validation.Valid;
+import jakarta.persistence.EntityNotFoundException;
 
 @RestController
 @RequestMapping("/clientes/")
@@ -42,7 +41,7 @@ public class ControllerCliente {
     ClienteRepository clientesrepository;
     
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody @Valid ClienteFORM clienteForm , UriComponentsBuilder uriBuilder){
+    public ResponseEntity<?> create(@RequestBody ClienteFORM clienteForm , UriComponentsBuilder uriBuilder){
         try {
             Cliente cliente = new Cliente();
             construindoCliente(clienteForm, cliente);
@@ -52,9 +51,10 @@ public class ControllerCliente {
             URI uri = uriBuilder.buildAndExpand(cliente.getId()).toUri();
             log.info("[CREATE] Cliente criado: {}", cliente);
             return ResponseEntity.created(uri).body(clienteDTO);
-        }catch (Exception e) {
-            log.error("[CREATE] Erro ao criar cliente: {}", e.getMessage());
-            return ResponseEntity.badRequest().body(e.getMessage());
+        }catch (NomeInvalidoException | CPFInvalidoException e) {
+            String mensagemErro = String.format("Erro ao criar cliente: %s", e.getMessage());
+            log.error("[CREATE] " + mensagemErro);
+            return ResponseEntity.badRequest().body(mensagemErro);
         }
     }
 
@@ -75,20 +75,22 @@ public class ControllerCliente {
     public ResponseEntity<?> readById(@PathVariable Long id) {
         try {
             Cliente cliente = clientesrepository.getReferenceById(id);
-            ClienteDTO ClienteDTO = new ClienteDTO(cliente);
+            ClienteDTO clienteDTO = new ClienteDTO(cliente);
             log.info("[READ] Cliente pesquisado: {}", cliente);
-            return ResponseEntity.ok(ClienteDTO);
-        } catch (EmptyResultDataAccessException e) {
-            log.error("[READ] Erro ao buscar cliente de id {} - Cliente não encontrado : {}", id, e.getMessage());
+            return ResponseEntity.ok(clienteDTO);
+        } catch (EntityNotFoundException e) {
+            String mensagemErro = String.format("Erro ao buscar cliente de id %d - Cliente não encontrado : %s", id, e.getMessage());
+            log.error("[READ] " + mensagemErro);
             return ResponseEntity.notFound().build();
         } catch (Exception e) {
-            log.error("[READ] Erro ao buscar cliente: {}", e.getMessage());
-            return ResponseEntity.badRequest().body(e.getMessage());
+            String mensagemErro = String.format("Erro ao buscar cliente: %s", e.getMessage());
+            log.error("[READ] " + mensagemErro);
+            return ResponseEntity.badRequest().body(mensagemErro);
         }
     }
     
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable Long id , @RequestBody @Valid ClienteFORM clienteForm){
+    public ResponseEntity<?> update(@PathVariable Long id , @RequestBody ClienteFORM clienteForm){
         try {
             Cliente cliente = clientesrepository.getReferenceById(id);
             construindoCliente(clienteForm, cliente);
@@ -96,12 +98,14 @@ public class ControllerCliente {
             ClienteDTO clienteDTO = new ClienteDTO(cliente);
             log.info("[UPDATE] Cliente antes da atualização: {} | Cliente atualizado: {}", cliente, clienteDTO);
             return ResponseEntity.ok(clienteDTO);
-        }catch(EmptyResultDataAccessException e ) {
-            log.error("[UPDATE] Erro ao atualizar cliente - Cliente não encontrado: {}", e.getMessage());
+        }catch(EntityNotFoundException e ) {
+            String mensagemErro = String.format("Erro ao atualizar cliente - Cliente não encontrado: %s", e.getMessage());
+            log.error("[UPDATE] " + mensagemErro);
             return ResponseEntity.notFound().build();
         }catch(Exception e ) {
-            log.error("[UPDATE] Erro ao atualizar cliente: {}", e.getMessage());
-            return ResponseEntity.badRequest().body(e.getMessage());
+            String mensagemErro = String.format("Erro ao atualizar cliente: %s", e.getMessage());
+            log.error("[UPDATE] " + mensagemErro);
+            return ResponseEntity.badRequest().body(mensagemErro);
         }
     }
     
@@ -113,11 +117,17 @@ public class ControllerCliente {
             ClienteDTO clienteDTO = new ClienteDTO(cliente);
             log.info("[DELETE] Cliente excluído: {}", cliente);
             return ResponseEntity.ok(clienteDTO);
-        }catch(Exception e ) {
-            log.error("[DELETE] Erro ao excluir cliente: {}", e.getMessage());
+        } catch (EntityNotFoundException e) {
+            String mensagemErro = String.format("Erro ao excluir cliente de id %d - Cliente não encontrado : %s", id, e.getMessage());
+            log.error("[DELETE] " + mensagemErro);
             return ResponseEntity.notFound().build();
+        } catch (Exception e) {
+            String mensagemErro = String.format("Erro ao excluir cliente: %s", e.getMessage());
+            log.error("[DELETE] " + mensagemErro);
+            return ResponseEntity.badRequest().body(mensagemErro);
         }
     }
+
     
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -128,4 +138,3 @@ public class ControllerCliente {
         return ResponseEntity.badRequest().body(errorResponse);
     }
 }
-

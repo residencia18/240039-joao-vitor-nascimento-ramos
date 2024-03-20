@@ -1,14 +1,14 @@
 package com.biblioteca.biblioteca.controller;
+
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -30,6 +30,8 @@ import com.biblioteca.biblioteca.controller.repository.AutorRepository;
 import com.biblioteca.biblioteca.controller.repository.EditoraRepository;
 import com.biblioteca.biblioteca.controller.repository.LivroRepository;
 import com.biblioteca.biblioteca.model.Livro;
+
+import jakarta.persistence.EntityNotFoundException;
 
 @RestController
 @RequestMapping("/livros/")
@@ -59,14 +61,24 @@ public class ControllerLivro {
             LivroDTO livroDTO = new LivroDTO(livro);
             log.info("[READ] Livro pesquisado: {}", livro);
             return ResponseEntity.ok(livroDTO);
-        } catch (EmptyResultDataAccessException e) {
-            log.error("[READ] Erro ao buscar livro de id {} - Livro não encontrado : {}", id, e.getMessage());
+        } catch (EntityNotFoundException e) {
+            String mensagemErro = String.format("Erro ao buscar livro de id %d - Livro não encontrado : %s", id, e.getMessage());
+            log.error("[READ] " + mensagemErro);
             return ResponseEntity.notFound().build();
         } catch (Exception e) {
-            log.error("[READ] Erro ao buscar livro: {}", e.getMessage());
-            return ResponseEntity.badRequest().body(e.getMessage());
+            String mensagemErro = String.format("Erro ao buscar livro: %s", e.getMessage());
+            log.error("[READ] " + mensagemErro);
+            return ResponseEntity.badRequest().body(mensagemErro);
         }
     }
+    
+	private String extrairDetalheErro(String mensagemErro) {
+	    if (mensagemErro.contains("(editora_id)")) {
+	        return "A editora especificada não foi encontrada.";
+	    } else {
+	        return "Erro ao criar empréstimo: " + mensagemErro;
+	    }
+	}
 
     @PostMapping
     public ResponseEntity<?> inserir(@RequestBody LivroFORM livroForm, UriComponentsBuilder uriBuilder) {
@@ -79,32 +91,40 @@ public class ControllerLivro {
             URI uri = uriBuilder.buildAndExpand(livro.getId()).toUri();
             log.info("[CREATE] Livro criado: {}", livro);
             return ResponseEntity.created(uri).body(livroDTO);
-        } catch (IllegalArgumentException e) {
-            log.error("[CREATE] Erro ao criar livro: {}", e.getMessage());
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+        } catch(DataIntegrityViolationException e) {
+	        String detalheErro = extrairDetalheErro(e.getMessage());
+	        log.error("[CREATE] Erro ao criar livro: {}", detalheErro);
+	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(detalheErro);
+	    }catch (Exception e) {
+	    	log.error("CREATE] Erro ao criar livro: {} ", e.getMessage());
+	    	return ResponseEntity.badRequest().body(e.getMessage());  
+	    }
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable Long id, @RequestBody LivroFORM livroForm) {
         try {
-            Livro livroAntes = repositoryLivro.getReferenceById(id); // Obtém o livro antes da atualização
-            Livro livro = new Livro(livroAntes); // Cria uma cópia do livro antes de modificá-lo
-            construindoLivro(livroForm, livro); // Atualiza os campos do livro com base nos dados fornecidos
-            repositoryLivro.save(livro); // Salva o livro modificado
+            Livro livroAntes = repositoryLivro.getReferenceById(id); 
+            Livro livro = new Livro(livroAntes); 
+            construindoLivro(livroForm, livro); 
+            repositoryLivro.save(livro); 
             LivroDTO livroDTO = new LivroDTO(livro);
 
-            // Registra o estado antes e depois da atualização em um único log
             log.info("[UPDATE] Livro antes da atualização: {} | Livro atualizado: {}", livroAntes, livro);
 
             return ResponseEntity.ok(livroDTO);
-        } catch (EmptyResultDataAccessException e) {
-            log.error("[UPDATE] Erro ao atualizar livro - Livro não encontrado: {}", e.getMessage());
+        } catch (EntityNotFoundException e) {
+            String mensagemErro = String.format("Erro ao atualizar livro de id %d - Livro não encontrado : %s", id, e.getMessage());
+            log.error("[UPDATE] " + mensagemErro);
             return ResponseEntity.notFound().build();
-        } catch (Exception e) {
-            log.error("[UPDATE] Erro ao atualizar livro: {}", e.getMessage());
-            return ResponseEntity.badRequest().body("Ocorreu um erro ao atualizar o livro.");
-        }
+        } catch(DataIntegrityViolationException e) {
+	        String detalheErro = extrairDetalheErro(e.getMessage());
+	        log.error("[UPDATE] Erro ao atualizar livro: {}", detalheErro);
+	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(detalheErro);
+	    }catch (Exception e) {
+	    	log.error("UPDATE] Erro ao atualizar livro: {} ", e.getMessage());
+	    	return ResponseEntity.badRequest().body(e.getMessage());  
+	    }
     }
 
 
@@ -116,12 +136,14 @@ public class ControllerLivro {
             LivroDTO livroDTO = new LivroDTO(livro);
             log.info("[DELETE] Livro excluído: {}", livro);
             return ResponseEntity.ok(livroDTO);
-        } catch (EmptyResultDataAccessException e) {
-            log.error("[DELETE] Livro de id {} não encontrado.", id);
+        } catch (EntityNotFoundException e) {
+            String mensagemErro = String.format("Erro ao excluir livro de id %d - Livro não encontrado : %s", id, e.getMessage());
+            log.error("[DELETE] " + mensagemErro);
             return ResponseEntity.notFound().build();
         } catch (Exception e) {
-            log.error("[DELETE] Erro ao excluir livro: {}", e.getMessage());
-            return ResponseEntity.badRequest().body(e.getMessage());
+            String mensagemErro = String.format("Erro ao excluir livro: %s", e.getMessage());
+            log.error("[DELETE] " + mensagemErro);
+            return ResponseEntity.badRequest().body(mensagemErro);
         }
     }
 
@@ -131,12 +153,14 @@ public class ControllerLivro {
         livro.setEditora(repositoryEditora.getReferenceById(livroForm.id_editora()));
     }
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResponseEntity<ErrorResponse> handleValidationExceptions(MethodArgumentNotValidException ex) {
-        List<String> errors = new ArrayList<>();
-        ex.getBindingResult().getFieldErrors().forEach(error -> errors.add(error.getDefaultMessage()));
-        ErrorResponse errorResponse = new ErrorResponse(errors);
-        return ResponseEntity.badRequest().body(errorResponse);
-    }
+
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public ResponseEntity<ErrorResponse> handleValidationExceptions(MethodArgumentNotValidException ex) {
+		List<String> errors = new ArrayList<>();
+		ex.getBindingResult().getFieldErrors().forEach(error -> errors.add(error.getDefaultMessage()));
+		ErrorResponse errorResponse = new ErrorResponse(errors);
+		return ResponseEntity.badRequest().body(errorResponse);
+	}
+
 }

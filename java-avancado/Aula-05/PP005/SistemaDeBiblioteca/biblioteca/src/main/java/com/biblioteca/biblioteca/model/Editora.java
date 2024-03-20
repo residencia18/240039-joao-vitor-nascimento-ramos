@@ -55,6 +55,11 @@ public class Editora {
 		
 		this.nome = nome;
 	}
+
+	@Override
+	public String toString() {
+		return "Editora [id=" + id + ", nome=" + nome + "]";
+	}
 	
 	
 	

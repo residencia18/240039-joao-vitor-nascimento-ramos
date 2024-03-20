@@ -5,7 +5,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,53 +32,60 @@ public class ControllerMarca {
     @Autowired
     private MarcaRepository marcaRepository;
     
+    public static final Logger log = LoggerFactory.getLogger(ControllerMarca.class);
+    
     @PostMapping
     public ResponseEntity<?> create(@RequestBody MarcaFORM marcaForm, UriComponentsBuilder uriBuilder){
-    	try {
-    		Marca marca = marcaForm.toMarca();
-    		marcaRepository.save(marca);
-    		MarcaDTO marcaDTO = new MarcaDTO(marca);
-    		uriBuilder.path("/produtos/marcas/{id}");
-    		URI uri = uriBuilder.buildAndExpand(marca.getId()).toUri();
-    		return ResponseEntity.created(uri).body(marcaDTO);
-    	}catch(Exception e ) {
-    		return ResponseEntity.badRequest().build();
-    	}
+        try {
+            Marca marca = marcaForm.toMarca();
+            marcaRepository.save(marca);
+            MarcaDTO marcaDTO = new MarcaDTO(marca);
+            uriBuilder.path("/produtos/marcas/{id}");
+            URI uri = uriBuilder.buildAndExpand(marca.getId()).toUri();
+            log.info("[CREATE] Marca criada: {}", marca);
+            return ResponseEntity.created(uri).body(marcaDTO);
+        } catch (Exception e) {
+            log.error("[CREATE] Erro ao criar marca: {}", e.getMessage());
+            return ResponseEntity.badRequest().build();
+        }
     }
     
     @GetMapping
     public List<MarcaDTO> readAll(){
-    	return marcaRepository.findAll().stream().map(MarcaDTO::new).collect(Collectors.toList());
-    	
+        log.info("[READ] Todas marcas pesquisadas");
+        return marcaRepository.findAll().stream().map(MarcaDTO::new).collect(Collectors.toList());
     }
     
     @GetMapping("/{id}")
-    public ResponseEntity<MarcaDTO> readById(@PathVariable Long id) {
-        Optional<Marca> marcaOptional = marcaRepository.findById(id);
-        
-        if (marcaOptional.isPresent()) {
-            MarcaDTO marcaDTO = new MarcaDTO(marcaOptional.get());
+    public ResponseEntity<?> readById(@PathVariable Long id) {
+        try {
+            Marca marca = marcaRepository.getReferenceById(id);
+            MarcaDTO marcaDTO = new MarcaDTO(marca);
+            log.info("[READ] Marca encontrada: {}", marca);
             return ResponseEntity.ok(marcaDTO);
-        } else {
+        } catch (EmptyResultDataAccessException e) {
+            log.error("[READ] Erro ao buscar marca de id {} - Marca não encontrada : {}", id, e.getMessage());
             return ResponseEntity.notFound().build();
+        } catch (Exception e) {
+            log.error("[READ] Erro ao buscar marca: {}", e.getMessage());
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-    
     
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable Long id, @RequestBody MarcaFORM marcaForm){
         try {
-            Optional<Marca> marcaOptional = marcaRepository.findById(id);     
-            if (marcaOptional.isPresent()) {
-                Marca marca = marcaOptional.get();
-                marca.setNome(marcaForm.getNome());
-                marcaRepository.save(marca);     
-                MarcaDTO marcaDTO = new MarcaDTO(marca);
-                return ResponseEntity.ok(marcaDTO);
-            } else {
-                return ResponseEntity.notFound().build();
-            }
+            Marca marca = marcaRepository.getReferenceById(id);
+            marca.setNome(marcaForm.getNome());
+            marcaRepository.save(marca);
+            MarcaDTO marcaDTO = new MarcaDTO(marca);
+            log.info("[UPDATE] Marca atualizada: {}", marca);
+            return ResponseEntity.ok(marcaDTO);
+        } catch (EmptyResultDataAccessException e) {
+            log.error("[UPDATE] Erro ao atualizar marca - Marca não encontrada: {}", e.getMessage());
+            return ResponseEntity.notFound().build();
         } catch (Exception e) {
+            log.error("[UPDATE] Erro ao atualizar marca: {}", e.getMessage());
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
@@ -83,22 +93,17 @@ public class ControllerMarca {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
         try {
-            Optional<Marca> marcaOptional = marcaRepository.findById(id);
-            if (marcaOptional.isPresent()) {
-                Marca marca = marcaOptional.get();  
-                marcaRepository.delete(marca);   
-                MarcaDTO marcaDTO = new MarcaDTO(marca);
-                return ResponseEntity.ok(marcaDTO);
-            } else {
-                return ResponseEntity.notFound().build();
-            }
+            Marca marca = marcaRepository.getReferenceById(id);
+            marcaRepository.delete(marca);
+            MarcaDTO marcaDTO = new MarcaDTO(marca);
+            log.info("[DELETE] Marca excluída: {}", marca);
+            return ResponseEntity.ok(marcaDTO);
+        } catch (EmptyResultDataAccessException e) {
+            log.error("[DELETE] Erro ao excluir marca - Marca não encontrada: {}", e.getMessage());
+            return ResponseEntity.notFound().build();
         } catch (Exception e) {
+            log.error("[DELETE] Erro ao excluir marca: {}", e.getMessage());
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-    
-    
-
-    
-  
 }

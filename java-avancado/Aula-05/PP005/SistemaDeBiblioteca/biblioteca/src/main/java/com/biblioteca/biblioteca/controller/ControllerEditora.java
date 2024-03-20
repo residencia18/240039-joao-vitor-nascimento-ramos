@@ -29,6 +29,7 @@ import com.biblioteca.biblioteca.controller.FORM.EditoraFORM;
 import com.biblioteca.biblioteca.controller.repository.EditoraRepository;
 import com.biblioteca.biblioteca.model.Editora;
 
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/editoras/")
@@ -69,15 +70,16 @@ public class ControllerEditora {
             EditoraDTO editoraDTO = new EditoraDTO(editora);
             log.info("[READ] Editora pesquisada: {}", editora);
             return ResponseEntity.ok(editoraDTO);
-        } catch (EmptyResultDataAccessException e) {
-            log.error("[READ] Erro ao buscar editora de id {} - Editora não encontrada : {}", id, e.getMessage());
-            return ResponseEntity.notFound().build();
+        } catch (EntityNotFoundException e) {
+            String mensagemErro = String.format("Erro ao buscar editora de id %d - Editora não encontrada : %s", id, e.getMessage());
+            log.error("[READ] " + mensagemErro);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(mensagemErro);
         } catch (Exception e) {
-            log.error("[READ] Erro ao buscar editora: {}", e.getMessage());
-            return ResponseEntity.badRequest().body(e.getMessage());
+            String mensagemErro = String.format("Erro ao buscar editora de id %d - %s", id, e.getMessage());
+            return ResponseEntity.badRequest().body(mensagemErro);
         }
     }
-    
+
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable Long id, @RequestBody EditoraFORM editoraForm) {
         try {
@@ -88,12 +90,14 @@ public class ControllerEditora {
             EditoraDTO editoraDTO = new EditoraDTO(editora);
             log.info("[UPDATE] Editora antes da atualização: {} | Editora atualizada: {}", editoraAntes, editora);
             return ResponseEntity.ok(editoraDTO);
-        } catch (EmptyResultDataAccessException e) {
-            log.error("[UPDATE] Erro ao atualizar editora - Editora não encontrada: {}", e.getMessage());
-            return ResponseEntity.notFound().build();
+        } catch (EntityNotFoundException e) {
+            String mensagemErro = String.format("Erro ao atualizar editora de id %d - Editora não encontrada : %s", id, e.getMessage());
+            log.error("[UPDATE] " + mensagemErro);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(mensagemErro);
         } catch (Exception e) {
-            log.error("[UPDATE] Erro ao atualizar editora: {}", e.getMessage());
-            return ResponseEntity.badRequest().body(e.getMessage());
+            String mensagemErro = String.format("Erro ao atualizar editora de id %d - %s", id, e.getMessage());
+            log.error("[UPDATE] " + mensagemErro);
+            return ResponseEntity.badRequest().body(mensagemErro);
         }
     }
 
@@ -105,15 +109,17 @@ public class ControllerEditora {
             EditoraDTO editoraDTO = new EditoraDTO(editora);
             log.info("[DELETE] Editora excluída: {}", editora);
             return ResponseEntity.ok(editoraDTO);
-        } catch (EmptyResultDataAccessException e) {
-            log.error("[DELETE] Erro ao excluir editora - Editora não encontrada: {}", e.getMessage());
+        } catch (EntityNotFoundException e) {
+            String mensagemErro = String.format("Erro ao excluir editora de id %d - Editora não encontrada : %s", id, e.getMessage());
+            log.error("[DELETE] " + mensagemErro);
             return ResponseEntity.notFound().build();
         } catch (Exception e) {
-            log.error("[DELETE] Erro ao excluir editora: {}", e.getMessage());
-            return ResponseEntity.badRequest().body(e.getMessage());
+            String mensagemErro = String.format("Erro ao excluir editora: %s", e.getMessage());
+            log.error("[DELETE] " + mensagemErro);
+            return ResponseEntity.badRequest().body(mensagemErro);
         }
-    }	
-    
+    }
+
     
 	private void construindoEditora(EditoraFORM editoraForm, Editora editora) {
 		editora.setNome(editoraForm.nome());

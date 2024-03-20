@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -32,102 +32,121 @@ import com.biblioteca.biblioteca.controller.repository.EmprestimoRepository;
 import com.biblioteca.biblioteca.controller.repository.LivroRepository;
 import com.biblioteca.biblioteca.model.Emprestimo;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @RestController
 @RequestMapping("/emprestimos/")
 public class ControllerEmprestimo {
 
-	private static final Logger log = LoggerFactory.getLogger(ControllerEmprestimo.class);
+    private static final Logger log = LoggerFactory.getLogger(ControllerEmprestimo.class);
 
-	@Autowired
-	private EmprestimoRepository emprestimorepository;
+    @Autowired
+    private EmprestimoRepository emprestimoRepository;
 
-	@Autowired
-	private ClienteRepository clientesrepository;
+    @Autowired
+    private ClienteRepository clienteRepository;
 
-	@Autowired
-	private LivroRepository livrorepository;
+    @Autowired
+    private LivroRepository livroRepository;
 
-	@PostMapping
-	public ResponseEntity<?> create(@RequestBody EmprestimoFORM emprestimoForm, UriComponentsBuilder uriBuilder) {
-		try {
-			Emprestimo emprestimo = new Emprestimo();
-			iniciaEmprestimo(emprestimoForm, emprestimo);
-			emprestimorepository.save(emprestimo);
-			EmprestimoDTO emprestimoDTO = new EmprestimoDTO(emprestimo);
-			uriBuilder.path("/emprestimos/{id}");
-			URI uri = uriBuilder.buildAndExpand(emprestimo.getId()).toUri();
-			log.info("[CREATE] Emprestimo criado: {}", emprestimo);
-			return ResponseEntity.created(uri).body(emprestimoDTO);
-		} catch (Exception e) {
-			log.error("[CREATE] Erro ao criar emprestimo: {}", e.getMessage());
-			return ResponseEntity.badRequest().body("Ocorreu um erro ao criar o empréstimo.");
-		}
-	}
+    @PostMapping
+    public ResponseEntity<?> create(@RequestBody EmprestimoFORM emprestimoForm, UriComponentsBuilder uriBuilder) {
+        try {
+            Emprestimo emprestimo = new Emprestimo();
+            inicializarEmprestimo(emprestimoForm, emprestimo);
+            emprestimoRepository.save(emprestimo);
+            EmprestimoDTO emprestimoDTO = new EmprestimoDTO(emprestimo);
+            URI uri = uriBuilder.path("/emprestimos/{id}").buildAndExpand(emprestimo.getId()).toUri();
+            log.info("[CREATE] Empréstimo criado: {}", emprestimo);
+            return ResponseEntity.created(uri).body(emprestimoDTO);
+        } catch (DataIntegrityViolationException e) {
+            String detalheErro = extrairDetalheErro(e.getMessage());
+            log.error("[CREATE] Erro ao criar empréstimo: {}", detalheErro);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(detalheErro);
+        } catch (Exception e) {
+            log.error("CREATE] Erro ao criar empréstimo: {} ", e.getMessage());
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 
-	private void iniciaEmprestimo(EmprestimoFORM emprestimoForm, Emprestimo emprestimo) {
-		emprestimo.setCliente(clientesrepository.getReferenceById(emprestimoForm.id_cliente()));
-		emprestimo.setLivro(livrorepository.getReferenceById(emprestimoForm.id_livro()));
-		emprestimo.setData_emprestimo(LocalDateTime.now());
-	}
+    private String extrairDetalheErro(String mensagemErro) {
+        if (mensagemErro.contains("(cliente_id)")) {
+            return "O cliente especificado não foi encontrado.";
+        } else if (mensagemErro.contains("(livro_id)")) {
+            return "O livro especificado não foi encontrado.";
+        } else {
+            return "Erro ao criar empréstimo: " + mensagemErro;
+        }
+    }
 
-	@GetMapping
-	public List<EmprestimoDTO> buscarTodosLivros() {
-		log.info("[READ] Todas editoras pesquisadas");
-		return emprestimorepository.findAll().stream().map(EmprestimoDTO::new).collect(Collectors.toList());
-	}
+    private void inicializarEmprestimo(EmprestimoFORM emprestimoForm, Emprestimo emprestimo) {
+        emprestimo.setCliente(clienteRepository.getReferenceById(emprestimoForm.id_cliente()));
+        emprestimo.setLivro(livroRepository.getReferenceById(emprestimoForm.id_livro()));
+        emprestimo.setData_emprestimo(LocalDateTime.now());
+    }
 
-	@GetMapping("/{id}")
-	public ResponseEntity<?> buscarLivroPorId(@PathVariable Long id) {
-		try {
-			Emprestimo emprestimo = emprestimorepository.getReferenceById(id);
-			EmprestimoDTO emprestimoDTO = new EmprestimoDTO(emprestimo);
-			log.info("[READ] Emprestimo pesquisado: {}", emprestimo);
-			return ResponseEntity.ok(emprestimoDTO);
-		} catch (EmptyResultDataAccessException e) {
-			log.error("[READ] Erro ao buscar emprestimo de id {} - Editora não encontrada : {}", id, e.getMessage());
-			return ResponseEntity.notFound().build();
-		} catch (Exception e) {
-			log.error("[READ] Erro ao buscar emprestimo: {}", e.getMessage());
-			return ResponseEntity.badRequest().body(e.getMessage());
-		}
-	}
+    @GetMapping
+    public List<EmprestimoDTO> buscarTodosEmprestimos() {
+        log.info("[READ] Todos os empréstimos pesquisados.");
+        return emprestimoRepository.findAll().stream().map(EmprestimoDTO::new).collect(Collectors.toList());
+    }
 
-	@PutMapping("/{id}")
-	public ResponseEntity<?> update(@PathVariable Long id, @RequestBody EmprestimoFORM emprestimoForm) {
-		try {
-			Emprestimo emprestimoAntes = emprestimorepository.getReferenceById(id);
-			Emprestimo emprestimo = new Emprestimo(emprestimoAntes);
-			atualizaEmprestimo(emprestimoForm, emprestimo);
-			emprestimorepository.save(emprestimo);
-			EmprestimoDTO emprestimoDTO = new EmprestimoDTO(emprestimo);
-			log.info("[UPDATE] Empréstimo antes da atualização: {} | Empréstimo atualizado: {}", emprestimoAntes,
-					emprestimo);
-			return ResponseEntity.ok(emprestimoDTO);
-		} catch (EmptyResultDataAccessException e) {
-			log.error("[UPDATE] Erro ao atualizar empréstimo - Empréstimo não encontrado: {}", e.getMessage());
-			return ResponseEntity.notFound().build();
-		} catch (Exception e) {
-			log.error("[UPDATE] Erro ao atualizar empréstimo: {}", e.getMessage());
-			return ResponseEntity.badRequest().body("Ocorreu um erro ao atualizar o empréstimo.");
-		}
-	}
+    @GetMapping("/{id}")
+    public ResponseEntity<?> buscarEmprestimoPorId(@PathVariable Long id) {
+        try {
+            Emprestimo emprestimo = emprestimoRepository.getReferenceById(id);
+            EmprestimoDTO emprestimoDTO = new EmprestimoDTO(emprestimo);
+            log.info("[READ] Empréstimo pesquisado: {}", emprestimo);
+            return ResponseEntity.ok(emprestimoDTO);
+        } catch (EntityNotFoundException e) {
+            log.error("[READ] Erro ao buscar empréstimo de id {} - Empréstimo não encontrado : {}", id, e.getMessage());
+            return ResponseEntity.notFound().build();
+        } catch (Exception e) {
+            log.error("[READ] Erro ao buscar empréstimo: {}", e.getMessage());
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 
-	private void atualizaEmprestimo(EmprestimoFORM emprestimoForm, Emprestimo emprestimo) {
-		emprestimo.setCliente(clientesrepository.getReferenceById(emprestimoForm.id_cliente()));
-		emprestimo.setLivro(livrorepository.getReferenceById(emprestimoForm.id_livro()));
-		emprestimo.setData_emprestimo(emprestimoForm.data_emprestimo());
-		emprestimo.setData_devolucao(emprestimo.getData_devolucao());
-	}
+    @PutMapping("/{id}")
+    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody EmprestimoFORM emprestimoForm) {
+        try {
+            Emprestimo emprestimoAntes = emprestimoRepository.getReferenceById(id);
+            Emprestimo emprestimo = new Emprestimo(emprestimoAntes);
+            atualizarEmprestimo(emprestimoForm, emprestimo);
+            emprestimoRepository.save(emprestimo);
+            EmprestimoDTO emprestimoDTO = new EmprestimoDTO(emprestimo);
+            log.info("[UPDATE] Empréstimo antes da atualização: {} | Empréstimo atualizado: {}", emprestimoAntes,
+                    emprestimo);
+            return ResponseEntity.ok(emprestimoDTO);
+        } catch (EntityNotFoundException e) {
+            log.error("[UPDATE] Erro ao atualizar empréstimo - Empréstimo não encontrado: {}", e.getMessage());
+            return ResponseEntity.notFound().build();
+        } catch (DataIntegrityViolationException e) {
+            String detalheErro = extrairDetalheErro(e.getMessage());
+            log.error("[UPDATE] Erro ao atualizar empréstimo: {}", detalheErro);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(detalheErro);
+        } catch (Exception e) {
+            log.error("UPDATE] Erro ao atualizar empréstimo: {} ", e.getMessage());
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    private void atualizarEmprestimo(EmprestimoFORM emprestimoForm, Emprestimo emprestimo) {
+        emprestimo.setCliente(clienteRepository.getReferenceById(emprestimoForm.id_cliente()));
+        emprestimo.setLivro(livroRepository.getReferenceById(emprestimoForm.id_livro()));
+        emprestimo.setData_emprestimo(emprestimoForm.data_emprestimo());
+        emprestimo.setData_devolucao(emprestimo.getData_devolucao());
+    }
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id) {
 		try {
-			Emprestimo emprestimo = emprestimorepository.getReferenceById(id);
-			emprestimorepository.delete(emprestimo);
+			Emprestimo emprestimo = emprestimoRepository.getReferenceById(id);
+			emprestimoRepository.delete(emprestimo);
 			EmprestimoDTO emprestimoDTO = new EmprestimoDTO(emprestimo);
 			log.info("[DELETE] Empréstimo excluído: {}", emprestimo);
 			return ResponseEntity.ok(emprestimoDTO);
-		} catch (EmptyResultDataAccessException e) {
+		} catch (EntityNotFoundException e) {
 			log.error("[DELETE] Erro ao excluir empréstimo - Empréstimo não encontrado: {}", e.getMessage());
 			return ResponseEntity.notFound().build();
 		} catch (Exception e) {
@@ -139,17 +158,17 @@ public class ControllerEmprestimo {
 	@PutMapping("/{id}/devolucao")
 	public ResponseEntity<?> devolucao(@PathVariable Long id) {
 	    try {
-	        Emprestimo emprestimo = emprestimorepository.getReferenceById(id);
+	        Emprestimo emprestimo = emprestimoRepository.getReferenceById(id);
 	        if (emprestimo.getData_devolucao() != null) {
-		        log.error("[DEVOLUCAO] Erro ao registrar devolução - emprestimo já finalizado");
+		        log.error("[DEVOLUCAO] Erro ao registrar devolução - empréstimo já finalizado");
 	            return ResponseEntity.badRequest().body("Esse empréstimo já foi finalizado.");
 	        }
 	        emprestimo.setData_devolucao(LocalDateTime.now());
-	        emprestimorepository.save(emprestimo);
+	        emprestimoRepository.save(emprestimo);
 	        EmprestimoDTO emprestimoDTO = new EmprestimoDTO(emprestimo);
 	        log.info("[DEVOLUCAO] Empréstimo devolvido: {}", emprestimo);
 	        return ResponseEntity.ok(emprestimoDTO);
-	    } catch (EmptyResultDataAccessException e) {
+	    } catch (EntityNotFoundException e) {
 	        log.error("[DEVOLUCAO] Erro ao registrar devolução - Empréstimo não encontrado: {}", e.getMessage());
 	        return ResponseEntity.notFound().build();
 	    } catch (Exception e) {
