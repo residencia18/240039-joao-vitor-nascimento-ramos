@@ -2,7 +2,7 @@ package br.com.cepedi.petshop.controller.DTO;
 
 import java.math.BigInteger;
 
-import br.com.cepedi.petshop.model.Venda_Produto;
+import br.com.cepedi.petshop.model.VendaProduto;
 
 public class Venda_ProdutoDTO {
 	
@@ -10,7 +10,7 @@ public class Venda_ProdutoDTO {
     private String nomeProduto;
     private BigInteger quantidade;
 
-    public Venda_ProdutoDTO(Venda_Produto vendaProduto) {
+    public Venda_ProdutoDTO(VendaProduto vendaProduto) {
         this.nomeCliente = vendaProduto.getVenda().getCliente().getNome();
         this.nomeProduto = vendaProduto.getProduto().getNome();
         this.quantidade = vendaProduto.getQuantidade();

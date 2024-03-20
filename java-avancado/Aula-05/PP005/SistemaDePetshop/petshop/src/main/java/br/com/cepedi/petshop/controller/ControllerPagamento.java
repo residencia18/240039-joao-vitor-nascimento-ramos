@@ -5,7 +5,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,134 +29,134 @@ import br.com.cepedi.petshop.controller.repository.VendaRepository;
 import br.com.cepedi.petshop.model.Pagamento;
 import br.com.cepedi.petshop.model.TipoPagamento;
 import br.com.cepedi.petshop.model.Venda;
+import jakarta.persistence.EntityNotFoundException;
 
 @RestController
 @RequestMapping("/pagamentos/")
 public class ControllerPagamento {
 
-    @Autowired
-    private PagamentoRepository pagamentoRepository;
-    
+	@Autowired
+	private PagamentoRepository pagamentoRepository;
+
 	@Autowired
 	private TipoPagamentoRepository tipoPagamentoRepository;
-	
-    @Autowired
-    private VendaRepository vendaRepository;
-	
-	
 
-    @PostMapping
-    public ResponseEntity<?> create(@RequestBody PagamentoFORM pagamentoForm, UriComponentsBuilder uriBuilder) {
-        try {
-            // Busca o tipo de pagamento no banco de dados
-            Optional<TipoPagamento> tipoPagamentoOptional = tipoPagamentoRepository.findById(pagamentoForm.getIdTipoPagamento());
-            if (!tipoPagamentoOptional.isPresent()) {
-                return ResponseEntity.badRequest().body("Tipo de pagamento não encontrado!");
-            }
-            TipoPagamento tipoPagamento = tipoPagamentoOptional.get();
+	@Autowired
+	private VendaRepository vendaRepository;
 
-            // Busca a venda no banco de dados
-            Optional<Venda> vendaOptional = vendaRepository.findById(pagamentoForm.getIdVenda());
-            if (!vendaOptional.isPresent()) {
-                return ResponseEntity.badRequest().body("Venda não encontrada!");
-            }
-            Venda venda = vendaOptional.get();
-            
-            // Verifica se já existe um pagamento associado à venda
-            Optional<Pagamento> pagamentoExistente = pagamentoRepository.findByVenda(venda);
-            if (pagamentoExistente.isPresent()) {
-                return ResponseEntity.badRequest().body("Já existe um pagamento associado a esta venda!");
-            }
+	private static final Logger log = LoggerFactory.getLogger(ControllerPagamento.class);
 
-            // Cria o objeto Pagamento e o salva no repositório
-            Pagamento pagamento = new Pagamento();
-            pagamento.setTipoPagamento(tipoPagamento);
-            pagamento.setVenda(venda);
-            pagamentoRepository.save(pagamento);
-            
-            // Constrói a URI para a resposta
-            URI uri = uriBuilder.path("/pagamentos/{id}").buildAndExpand(pagamento.getId()).toUri();
-            
-            // Retorna uma resposta com status 201 (Created) e o corpo contendo o DTO do pagamento criado
-            return ResponseEntity.created(uri).body(new PagamentoDTO(pagamento));
-        } catch (Exception e) {
-            // Em caso de erro, retorna uma resposta com status 400 (Bad Request) e a mensagem de erro
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
-    }
+	@PostMapping
+	public ResponseEntity<?> create(@RequestBody PagamentoFORM pagamentoForm, UriComponentsBuilder uriBuilder) {
+		try {
 
+			TipoPagamento tipoPagamento = tipoPagamentoRepository.getReferenceById(pagamentoForm.idTipoPagamento());
 
+			Venda venda = vendaRepository.getReferenceById(pagamentoForm.idVenda());
 
-    @GetMapping
-    public List<PagamentoDTO> readAll() {
-        return pagamentoRepository.findAll().stream().map(PagamentoDTO::new).collect(Collectors.toList());
-    }
+			Optional<Pagamento> pagamentoExistente = pagamentoRepository.findByVenda(venda);
+			if (pagamentoExistente.isPresent()) {
+				return ResponseEntity.badRequest().body("Já existe um pagamento associado a esta venda!");
+			}
 
-    @GetMapping("/{id}")
-    public ResponseEntity<PagamentoDTO> readById(@PathVariable Long id) {
-        Optional<Pagamento> pagamentoOptional = pagamentoRepository.findById(id);
-        if (pagamentoOptional.isPresent()) {
-            Pagamento pagamento = pagamentoOptional.get();
-            PagamentoDTO pagamentoDTO = new PagamentoDTO(pagamento);
-            return ResponseEntity.ok().body(pagamentoDTO);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
+			Pagamento pagamento = new Pagamento();
+			construindoPagamento(tipoPagamento, venda, pagamento);
+			pagamentoRepository.save(pagamento);
 
-    @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody PagamentoFORM pagamentoForm) {
-        try {
-            Optional<Pagamento> pagamentoOptional = pagamentoRepository.findById(id);
-            if (pagamentoOptional.isPresent()) {
-                Pagamento pagamento = pagamentoOptional.get();
-                
-                Optional<TipoPagamento> tipoPagamentoOptional = tipoPagamentoRepository.findById(pagamentoForm.getIdTipoPagamento());
-                if (!tipoPagamentoOptional.isPresent()) {
-                    return ResponseEntity.badRequest().body("Tipo de pagamento não encontrado!");
-                }
-                TipoPagamento tipoPagamento = tipoPagamentoOptional.get();
+			URI uri = uriBuilder.path("/pagamentos/{id}").buildAndExpand(pagamento.getId()).toUri();
 
-                Optional<Venda> vendaOptional = vendaRepository.findById(pagamentoForm.getIdVenda());
-                if (!vendaOptional.isPresent()) {
-                    return ResponseEntity.badRequest().body("Venda não encontrada!");
-                }
-                Venda venda = vendaOptional.get();
-                
-                Optional<Pagamento> pagamentoExistente = pagamentoRepository.findByVenda(venda);
-                if (pagamentoExistente.isPresent() && !pagamentoExistente.get().equals(pagamento)) {
-                    return ResponseEntity.badRequest().body("Já existe um pagamento associado a esta venda!");
-                }
+			return ResponseEntity.created(uri).body(new PagamentoDTO(pagamento));
+		} catch (DataIntegrityViolationException e) {
+			String detalheErro = extrairDetalheErro(e.getMessage());
+			log.error("[CREATE] Erro ao criar pagamento: {}", detalheErro);
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(detalheErro);
+		} catch (Exception e) {
+			log.error("[CREATE] Erro ao criar pagamento: {} ", e.getMessage());
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+	}
 
-                pagamento.setTipoPagamento(tipoPagamento);
-                pagamento.setVenda(venda);
+	private String extrairDetalheErro(String mensagemErro) {
+		if (mensagemErro.contains("(venda_id)")) {
+			return "A Venda especificada não foi encontrada.";
+		} else if (mensagemErro.contains("(tipo_pagamento_id)")) {
+			return "O tipo de pagamento especificado não foi encontrado.";
+		} else {
+			return "Erro ao criar venda: " + mensagemErro;
+		}
+	}
 
-                pagamentoRepository.save(pagamento);
-                PagamentoDTO pagamentoDTO = new PagamentoDTO(pagamento);
-                return ResponseEntity.ok().body(pagamentoDTO);
-            } else {
-                return ResponseEntity.notFound().build();
-            }
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
-    }
+	private void construindoPagamento(TipoPagamento tipoPagamento, Venda venda, Pagamento pagamento) {
+		pagamento.setTipoPagamento(tipoPagamento);
+		pagamento.setVenda(venda);
+	}
 
+	@GetMapping
+	public List<PagamentoDTO> readAll() {
+		log.info("[READ] Todos os pagamentos pesquisados.");
+		return pagamentoRepository.findAll().stream().map(PagamentoDTO::new).collect(Collectors.toList());
+	}
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable Long id) {
-        try {
-            Optional<Pagamento> pagamentoOptional = pagamentoRepository.findById(id);
-            if (pagamentoOptional.isPresent()) {
-                Pagamento pagamento = pagamentoOptional.get();
-                pagamentoRepository.delete(pagamento);
-                PagamentoDTO pagamentoDTO = new PagamentoDTO(pagamento);
-                return ResponseEntity.ok(pagamentoDTO);
-            } else {
-                return ResponseEntity.notFound().build();
-            }
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
-    }
+	@GetMapping("/{id}")
+	public ResponseEntity<?> readById(@PathVariable Long id) {
+		try {
+			Pagamento pagamento = pagamentoRepository.getReferenceById(id);
+			PagamentoDTO pagamentoDTO = new PagamentoDTO(pagamento);
+			log.info("[READ] Pagamento recuperado: {}", pagamento);
+			return ResponseEntity.ok().body(pagamentoDTO);
+		} catch (EntityNotFoundException e) {
+			log.error("[READ] Pagamento não encontrado com ID: {}", id);
+			return ResponseEntity.notFound().build();
+		} catch (Exception e) {
+			log.error("[READ] Erro ao buscar pagamento: {}", e.getMessage());
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+	}
+
+	@PutMapping("/{id}")
+	public ResponseEntity<?> update(@PathVariable Long id, @RequestBody PagamentoFORM pagamentoForm) {
+		try {
+
+			TipoPagamento tipoPagamento = tipoPagamentoRepository.getReferenceById(pagamentoForm.idTipoPagamento());
+
+			Venda venda = vendaRepository.getReferenceById(pagamentoForm.idVenda());
+
+			Pagamento pagamento = pagamentoRepository.getReferenceById(id);
+
+			construindoPagamento(tipoPagamento, venda, pagamento);
+
+			pagamentoRepository.save(pagamento);
+			PagamentoDTO pagamentoDTO = new PagamentoDTO(pagamento);
+			return ResponseEntity.ok().body(pagamentoDTO);
+
+		} catch (EntityNotFoundException e) {
+			log.error("[UPDATE] Erro ao atualizar pagamento - Pagamento não encontrado: {}", e.getMessage());
+			return ResponseEntity.notFound().build();
+		} catch (DataIntegrityViolationException e) {
+			String detalheErro = extrairDetalheErro(e.getMessage());
+			log.error("[UPDATE] Erro ao atualizar pagamento: {}", detalheErro);
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(detalheErro);
+		} catch (Exception e) {
+			log.error("[UPDATE] Erro ao atualizar pagamento: {} ", e.getMessage());
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+	}
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> delete(@PathVariable Long id) {
+	    try {
+	        Pagamento pagamento = pagamentoRepository.getReferenceById(id);
+	        pagamentoRepository.delete(pagamento);
+	        PagamentoDTO pagamentoDTO = new PagamentoDTO(pagamento);
+	        log.info("[DELETE] Pagamento excluído: {}", pagamento);
+	        return ResponseEntity.ok(pagamentoDTO);
+	    } catch (EntityNotFoundException e) {
+	        log.error("[DELETE] Erro ao excluir pagamento - Pagamento não encontrado: {}", e.getMessage());
+	        return ResponseEntity.notFound().build();
+	    } catch (Exception e) {
+	        log.error("[DELETE] Erro ao excluir pagamento: {}", e.getMessage());
+	        return ResponseEntity.badRequest().body(e.getMessage());
+	    }
+	}
+
 }

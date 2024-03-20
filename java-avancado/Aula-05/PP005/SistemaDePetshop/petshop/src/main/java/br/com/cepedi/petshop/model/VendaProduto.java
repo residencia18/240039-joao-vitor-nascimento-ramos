@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="VENDA_PRODUTO")
-public class Venda_Produto {
+public class VendaProduto {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -31,10 +31,10 @@ public class Venda_Produto {
     @Column(name="QUANTIDADE")
     private BigInteger quantidade;
 
-    public Venda_Produto() {
+    public VendaProduto() {
     }
 
-    public Venda_Produto(Venda venda, Produto produto, BigInteger quantidade) {
+    public VendaProduto(Venda venda, Produto produto, BigInteger quantidade) {
         this.venda = venda;
         this.produto = produto;
         this.quantidade = quantidade;

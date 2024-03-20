@@ -15,8 +15,4 @@ public record LivroFORM(
 
 	
 
-    @Override
-    public String toString() {
-        return "LivroFORM [nome=" + nome + ", id_autor=" + id_autor + ", id_editora=" + id_editora + "]";
-    }
 }
