@@ -1,6 +1,6 @@
 # Sistemas de Petshop e Biblioteca
 
-Na aula 05, foi solicitado aplicar registro de log com @Slf4j. Isso foi implementado para melhorar a rastreabilidade e a depuração do código, permitindo que possamos monitorar as atividades do sistema de forma mais eficiente.
+Na aula 06 do curso, avançamos na melhoria da estrutura dos nossos projetos implementando a biblioteca Lombok nos modelos.
 
 ## Sistema de Petshop
 
