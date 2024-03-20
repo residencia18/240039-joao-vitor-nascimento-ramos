@@ -1,6 +1,6 @@
 # Sistemas de Petshop e Biblioteca
 
-Na aula 04, foi solicitada a implementação de um relacionamento many-to-many. No entanto, em vez de seguir a abordagem tradicional, optamos por utilizar uma tabela intermediária em ambos os projetos. Como essa abordagem já havia sido implementada anteriormente, aproveitamos esse tempo para melhorar o projeto do petshop, substituindo a implementação utilizando classe n pela utilização de registros.
+Na aula 05, foi solicitado aplicar registro de log com @Slf4j. Isso foi implementado para melhorar a rastreabilidade e a depuração do código, permitindo que possamos monitorar as atividades do sistema de forma mais eficiente.
 
 ## Sistema de Petshop
 
