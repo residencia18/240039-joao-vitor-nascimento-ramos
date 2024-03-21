@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 
 public record AutorFORM(
 		
-		@NotBlank
+		@NotBlank(message = "O nome do autor é obrigatorio")
 		String nome
 		
 		

@@ -3,13 +3,15 @@ package br.com.cepedi.petshop.controller.FORM;
 import java.math.BigDecimal;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 public record ProdutoFORM(
-        @NotBlank String nome,
-        @NotBlank Long idTipoProduto,
-        @NotBlank Long idMarca,
-        String descricao,
-        @NotBlank BigDecimal preco
+        @NotBlank(message = "O nome do produto é obrigatorio") String nome,
+        @NotBlank(message = "Tipo do produto é obrigatorio") Long idTipoProduto,
+        @NotBlank(message = "Marca é obrigatorio") Long idMarca,
+        @NotNull(message = "O preço é obrigatório")
+        @Positive(message = "O preço deve ser maior que zero") BigDecimal preco
 ) {
 
 }

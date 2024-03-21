@@ -5,10 +5,10 @@ import org.hibernate.validator.constraints.br.CPF;
 import jakarta.validation.constraints.NotBlank;
 
 public record ClienteFORM(
-	    @NotBlank
-	    String nome,
-
-	    @NotBlank
-	    @CPF
-	    String cpf
+		@NotBlank(message = "O nome do cliente é obrigatorio")
+		String nome,
+		
+		@NotBlank(message = "CPF é obrigatorio")
+		@CPF(message = "CPF inválido")
+		String cpf
 	) {}
