@@ -1,4 +1,4 @@
-package br.com.cepedi.Voll.med;
+package br.com.cepedi.Voll.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
