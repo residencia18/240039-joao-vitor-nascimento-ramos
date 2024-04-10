@@ -1,16 +1,15 @@
-package br.com.cepedi.Voll.api.model.records.doctors.input.doctor;
+package br.com.cepedi.Voll.api.model.records.patients.input;
 
 import br.com.cepedi.Voll.api.model.records.address.DataAddress;
 import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public record DataRegisterDoctor(
+public record DataRegisterPatient (
+
         @JsonAlias("name")
         @NotBlank(message = "{name.required}")
         String name,
@@ -24,18 +23,17 @@ public record DataRegisterDoctor(
         @NotBlank(message = "{phone.required}")
         String phoneNumber,
 
-        @JsonAlias("crm")
-        @NotBlank(message = "{crm.required}")
-        @Pattern(regexp = "\\d{4,6}", message = "{crm.invalid}")
-        String crm,
-
-        @JsonAlias("specialty")
-        @NotNull(message = "{specialty.required}")
-        Specialty specialty,
+        @JsonAlias("cpf")
+        @NotBlank(message = "{cpf.required}")
+        @NotBlank @Pattern(regexp = "\\d{3}\\.?\\d{3}\\.?\\d{3}\\-?\\d{2}")
+        String cpf,
 
         @JsonAlias("address")
         @NotNull(message = "{address.required}")
         @Valid
         DataAddress dataAddress
-) {
+
+        )
+
+        {
 }

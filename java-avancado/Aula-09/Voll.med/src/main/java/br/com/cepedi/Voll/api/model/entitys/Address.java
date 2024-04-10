@@ -1,6 +1,6 @@
 package br.com.cepedi.Voll.api.model.entitys;
 
-import br.com.cepedi.Voll.api.model.records.doctors.input.address.DataAddress;
+import br.com.cepedi.Voll.api.model.records.address.DataAddress;
 import jakarta.persistence.Embeddable;
 import lombok.*;
 
