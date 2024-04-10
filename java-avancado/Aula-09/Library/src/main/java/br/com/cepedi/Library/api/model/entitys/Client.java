@@ -1,44 +1,60 @@
-package br.com.cepedi.Voll.api.model.entitys;
+package br.com.cepedi.Library.api.model.entitys;
 
-import br.com.cepedi.Voll.api.model.records.patient.input.DataRegisterPatient;
-import br.com.cepedi.Voll.api.model.records.patient.input.DataUpdatePatient;
+import br.com.cepedi.Library.api.model.records.client.input.DataRegisterClient;
+import br.com.cepedi.Library.api.model.records.client.input.DataUpdateClient;
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "patients")
+@Table(name = "clients")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 @ToString
-public class Patient {
+public class Client {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+
     private String email;
-    private String phoneNumber;
+
     private String cpf;
-    @Embedded
-    private Address address;
+
+    private String phoneNumber;
 
     private Boolean activated;
 
-    public Patient(DataRegisterPatient data) {
+    @Embedded
+    private Address address;
+
+    public Client(DataRegisterClient data) {
         this.name = data.name();
         this.email = data.email();
-        this.phoneNumber = data.phoneNumber();
         this.cpf = data.cpf();
+        this.phoneNumber = data.phoneNumber();
         this.address = new Address(data.dataAddress());
         this.activated = true;
+
     }
 
-    public void updateData(DataUpdatePatient data) {
+
+    public void updateData(DataUpdateClient data) {
         if (data.name() != null) {
             this.name = data.name();
+        }
+
+        if (data.email() != null) {
+            this.email = data.email();
+        }
+
+        if (data.cpf() != null) {
+            this.cpf = data.cpf();
         }
 
         if (data.phoneNumber() != null) {
@@ -50,7 +66,12 @@ public class Patient {
         }
     }
 
+
+
+
     public void logicalDelete() {
         this.activated = false;
     }
+
+
 }

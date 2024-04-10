@@ -1,13 +1,9 @@
 package br.com.cepedi.Voll.api.controller;
 
-import br.com.cepedi.Voll.api.model.entitys.Doctor;
 import br.com.cepedi.Voll.api.model.entitys.Patient;
-import br.com.cepedi.Voll.api.model.records.doctors.input.doctor.DataUpdateDoctor;
-import br.com.cepedi.Voll.api.model.records.doctors.output.DoctorDTO;
-import br.com.cepedi.Voll.api.model.records.patients.input.DataRegisterPatient;
-import br.com.cepedi.Voll.api.model.records.doctors.output.DataDetailsDoctor;
-import br.com.cepedi.Voll.api.model.records.patients.input.DataUpdatePatient;
-import br.com.cepedi.Voll.api.model.records.patients.output.DataDetailsPatient;
+import br.com.cepedi.Voll.api.model.records.patient.input.DataRegisterPatient;
+import br.com.cepedi.Voll.api.model.records.patient.input.DataUpdatePatient;
+import br.com.cepedi.Voll.api.model.records.patient.output.DataDetailsPatient;
 import br.com.cepedi.Voll.api.repository.PatientRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

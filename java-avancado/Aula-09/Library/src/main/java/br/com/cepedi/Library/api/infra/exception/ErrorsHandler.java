@@ -1,4 +1,4 @@
-package br.com.cepedi.Voll.api.infra;
+package br.com.cepedi.Library.api.infra.exception;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;

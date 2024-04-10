@@ -1,4 +1,4 @@
-package br.com.cepedi.Voll.api.model.records.doctors.input.doctor;
+package br.com.cepedi.Voll.api.model.records.doctor.input.doctor;
 
 public enum Specialty {
     ORTHOPEDICS,
