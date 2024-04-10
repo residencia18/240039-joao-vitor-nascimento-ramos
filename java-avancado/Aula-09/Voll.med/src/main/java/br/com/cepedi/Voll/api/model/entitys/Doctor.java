@@ -1,8 +1,8 @@
 package br.com.cepedi.Voll.api.model.entitys;
 
-import br.com.cepedi.Voll.api.model.records.input.doctor.DataRegisterDoctor;
-import br.com.cepedi.Voll.api.model.records.input.doctor.DataUpdateDoctor;
-import br.com.cepedi.Voll.api.model.records.input.doctor.Specialty;
+import br.com.cepedi.Voll.api.model.records.doctors.input.doctor.DataRegisterDoctor;
+import br.com.cepedi.Voll.api.model.records.doctors.input.doctor.DataUpdateDoctor;
+import br.com.cepedi.Voll.api.model.records.doctors.input.doctor.Specialty;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -36,7 +36,7 @@ public class Doctor {
         this.crm = data.crm();
         this.phoneNumber = data.phoneNumber();
         this.specialty = data.specialty();
-        this.address = new Address(data.dataAddres());
+        this.address = new Address(data.dataAddress());
         this.activated = true;
 
     }
@@ -51,8 +51,8 @@ public class Doctor {
             this.phoneNumber = data.phoneNumber();
         }
 
-        if(data.dataAddres() != null){
-            this.address.updateData(data.dataAddres());
+        if(data.dataAddress() != null){
+            this.address.updateData(data.dataAddress());
         }
 
     }
