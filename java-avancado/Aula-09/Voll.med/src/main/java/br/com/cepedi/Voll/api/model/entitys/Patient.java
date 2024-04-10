@@ -1,6 +1,7 @@
 package br.com.cepedi.Voll.api.model.entitys;
 
 import br.com.cepedi.Voll.api.model.records.patients.input.DataRegisterPatient;
+import br.com.cepedi.Voll.api.model.records.patients.input.DataUpdatePatient;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -35,25 +36,17 @@ public class Patient {
         this.activated = true;
     }
 
-    public void updateData(String name, String email, String phoneNumber, String cpf, Address address) {
-        if (name != null) {
-            this.name = name;
+    public void updateData(DataUpdatePatient data) {
+        if (data.name() != null) {
+            this.name = data.name();
         }
 
-        if (email != null) {
-            this.email = email;
+        if (data.phoneNumber() != null) {
+            this.phoneNumber = data.phoneNumber();
         }
 
-        if (phoneNumber != null) {
-            this.phoneNumber = phoneNumber;
-        }
-
-        if (cpf != null) {
-            this.cpf = cpf;
-        }
-
-        if (address != null) {
-            this.address = address;
+        if (data.dataAddress() != null) {
+            this.address = new Address(data.dataAddress());
         }
     }
 
