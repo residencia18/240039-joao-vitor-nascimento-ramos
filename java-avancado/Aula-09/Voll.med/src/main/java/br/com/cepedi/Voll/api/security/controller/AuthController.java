@@ -1,12 +1,16 @@
 package br.com.cepedi.Voll.api.security.controller;
 
+import br.com.cepedi.Voll.api.security.model.entitys.User;
 import br.com.cepedi.Voll.api.security.model.records.input.DataAuth;
+import br.com.cepedi.Voll.api.security.model.records.output.DadosTokenJWT;
 import br.com.cepedi.Voll.api.security.repository.UserRepository;
+import br.com.cepedi.Voll.api.security.service.TokenService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,11 +20,16 @@ public class AuthController {
     @Autowired
     private AuthenticationManager manager;
 
-    @PostMapping
-    public ResponseEntity login(@RequestBody @Valid DataAuth data){
-        var token = new UsernamePasswordAuthenticationToken(data.login(),data.password());
-        var authentication = manager.authenticate(token);
+    @Autowired
+    private TokenService tokenService;
 
-        return ResponseEntity.ok().build();
+    @PostMapping
+    public ResponseEntity efetuarLogin(@RequestBody @Valid DataAuth data) {
+        var authenticationToken = new UsernamePasswordAuthenticationToken(data.login(), data.password());
+        var authentication = manager.authenticate(authenticationToken);
+
+        var tokenJWT = tokenService.generationToken((User) authentication.getPrincipal());
+
+        return ResponseEntity.ok(new DadosTokenJWT(tokenJWT));
     }
 }
