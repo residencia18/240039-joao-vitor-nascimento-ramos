@@ -14,12 +14,12 @@ public record DataRegisterBook(
         Integer anoPublicacao,
 
         @JsonAlias("author_id")
-        @NotBlank(message = "{author.requered}")
+        @NotBlank(message = "{author_id.required}")
         Long author_id,
 
 
         @JsonAlias("publisher_id")
-        @NotBlank(message = "{publisher.requered}")
+        @NotBlank(message = "{publisher_id.required}")
         Long publisher_id
 
 ) {

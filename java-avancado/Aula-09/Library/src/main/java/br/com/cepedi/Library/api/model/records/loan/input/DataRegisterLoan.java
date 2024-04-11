@@ -6,12 +6,12 @@ import jakarta.validation.constraints.NotBlank;
 public record DataRegisterLoan(
 
         @JsonAlias("book_id")
-        @NotBlank(message = "{book.requered}")
+        @NotBlank(message = "{book_id.required}")
         Long book_id,
 
 
         @JsonAlias("client_id")
-        @NotBlank(message = "{client_id.requered}")
+        @NotBlank(message = "{client_id.required}")
         Long client_id
 
 
