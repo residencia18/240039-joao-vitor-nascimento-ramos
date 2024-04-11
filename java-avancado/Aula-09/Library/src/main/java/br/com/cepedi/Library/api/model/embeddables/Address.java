@@ -1,6 +1,6 @@
-package br.com.cepedi.Library.api.model.entitys;
+package br.com.cepedi.Library.api.model.embeddables;
 
-import br.com.cepedi.Library.api.model.records.address.DataAddress;
+import br.com.cepedi.Library.api.model.records.address.input.DataRegisterAddress;
 import jakarta.persistence.Embeddable;
 import lombok.*;
 
@@ -26,18 +26,18 @@ public class Address {
 
     private String number;
 
-    public Address(DataAddress dataAddress) {
-        this.publicPlace = dataAddress.publicPlace();
-        this.neighborhood = dataAddress.neighborhood();
-        this.cep = dataAddress.cep();
-        this.city = dataAddress.city();
-        this.uf = dataAddress.uf();
-        this.complement = dataAddress.complement();
-        this.number = dataAddress.number();
+    public Address(DataRegisterAddress dataRegisterAddress) {
+        this.publicPlace = dataRegisterAddress.publicPlace();
+        this.neighborhood = dataRegisterAddress.neighborhood();
+        this.cep = dataRegisterAddress.cep();
+        this.city = dataRegisterAddress.city();
+        this.uf = dataRegisterAddress.uf();
+        this.complement = dataRegisterAddress.complement();
+        this.number = dataRegisterAddress.number();
     }
 
 
-    public void updateData(DataAddress data) {
+    public void updateData(DataRegisterAddress data) {
         if (data.publicPlace() != null) {
             this.publicPlace = data.publicPlace();
         }

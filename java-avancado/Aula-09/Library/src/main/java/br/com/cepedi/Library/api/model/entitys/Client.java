@@ -1,9 +1,13 @@
 package br.com.cepedi.Library.api.model.entitys;
 
+import br.com.cepedi.Library.api.model.embeddables.Address;
 import br.com.cepedi.Library.api.model.records.client.input.DataRegisterClient;
 import br.com.cepedi.Library.api.model.records.client.input.DataUpdateClient;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "clients")
@@ -33,12 +37,15 @@ public class Client {
     @Embedded
     private Address address;
 
+    @OneToMany(mappedBy = "client")
+    private List<Loan> loans = new ArrayList<>();
+
     public Client(DataRegisterClient data) {
         this.name = data.name();
         this.email = data.email();
         this.cpf = data.cpf();
         this.phoneNumber = data.phoneNumber();
-        this.address = new Address(data.dataAddress());
+        this.address = new Address(data.dataRegisterAddress());
         this.activated = true;
 
     }
@@ -61,8 +68,8 @@ public class Client {
             this.phoneNumber = data.phoneNumber();
         }
 
-        if (data.dataAddress() != null) {
-            this.address = new Address(data.dataAddress());
+        if (data.dataRegisterAddress() != null) {
+            this.address = new Address(data.dataRegisterAddress());
         }
     }
 
