@@ -27,7 +27,6 @@ public class PublisherController {
     @PostMapping
     public ResponseEntity<DataDetailsPublisher> register(@RequestBody DataRegisterPublisher data , UriComponentsBuilder uriBuilder) {
         DataDetailsPublisher details = service.register(data);
-
         URI uri =  uriBuilder.path("/publishers/{id}").buildAndExpand(details.id()).toUri();
         return ResponseEntity.created(uri).body(details);
     }

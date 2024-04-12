@@ -5,6 +5,7 @@ import br.com.cepedi.Voll.api.model.records.patient.input.DataRegisterPatient;
 import br.com.cepedi.Voll.api.model.records.patient.input.DataUpdatePatient;
 import br.com.cepedi.Voll.api.model.records.patient.output.DataDetailsPatient;
 import br.com.cepedi.Voll.api.services.patient.PatientService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,6 +20,7 @@ import java.net.URI;
 
 @RestController
 @RequestMapping("patients")
+@SecurityRequirement(name = "bearer-key")
 public class PatientController {
 
     @Autowired

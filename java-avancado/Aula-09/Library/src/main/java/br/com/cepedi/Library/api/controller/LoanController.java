@@ -31,7 +31,6 @@ public class LoanController {
 
     @PostMapping
     public ResponseEntity<DataDetailsLoan> register(@RequestBody DataRegisterLoan data , UriComponentsBuilder uriBuilder) {
-        System.out.println("OI");
         DataDetailsLoan details = service.register(data);
         URI uri =  uriBuilder.path("/loans/{id}").buildAndExpand(details.id()).toUri();
         return ResponseEntity.created(uri).body(details);

@@ -6,6 +6,7 @@ import br.com.cepedi.Voll.api.model.records.doctor.input.doctor.DataRegisterDoct
 import br.com.cepedi.Voll.api.model.records.doctor.input.doctor.DataUpdateDoctor;
 import br.com.cepedi.Voll.api.model.records.doctor.output.DataDetailsDoctor;
 import br.com.cepedi.Voll.api.services.doctor.DoctorService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,6 +21,7 @@ import java.net.URI;
 
 @RestController
 @RequestMapping("doctors")
+@SecurityRequirement(name = "bearer-key")
 public class DoctorController {
 
     @Autowired
