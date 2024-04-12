@@ -1,4 +1,4 @@
-package br.com.cepedi.Library.api.service;
+package br.com.cepedi.Library.api.service.book;
 
 import br.com.cepedi.Library.api.model.entitys.Author;
 import br.com.cepedi.Library.api.model.entitys.Book;
@@ -14,11 +14,16 @@ import br.com.cepedi.Library.api.model.records.client.output.DataDetailsClient;
 import br.com.cepedi.Library.api.repository.AuthorRepository;
 import br.com.cepedi.Library.api.repository.BookRepository;
 import br.com.cepedi.Library.api.repository.PublisherRepository;
+import br.com.cepedi.Library.api.service.book.validations.disabled.ValidationDisabledBook;
+import br.com.cepedi.Library.api.service.book.validations.register.ValidationRegisterBook;
+import br.com.cepedi.Library.api.service.book.validations.update.ValidationUpdateBook;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class BookService {
@@ -33,7 +38,19 @@ public class BookService {
     @Autowired
     PublisherRepository repositoryPublisher;
 
+    @Autowired
+    List<ValidationRegisterBook> validationsRegister;
+
+    @Autowired
+    List<ValidationDisabledBook> validationsDisabled;
+
+    @Autowired
+    List<ValidationUpdateBook> validationsUpdate;
+
     public DataDetailsBook register(@Valid DataRegisterBook data) {
+
+        validationsRegister.forEach(v -> v.validation(data));
+
         Author author = repositoryAuthor.getReferenceById(data.author_id());
         Publisher publisher = repositoryPublisher.getReferenceById(data.publisher_id());
         Book book = new Book(data.name(), data.anoPublicacao(), author, publisher);
@@ -52,6 +69,9 @@ public class BookService {
     }
 
     public DataDetailsBook update(DataUpdateBook data) {
+
+        validationsUpdate.forEach(v -> v.validation(data));
+
         Book book = repository.getReferenceById(data.id());
         Author author = null;
         Publisher publisher = null;
@@ -69,6 +89,9 @@ public class BookService {
     }
 
     public void disabled(Long id){
+
+        validationsDisabled.forEach(v -> v.validation(id));
+
         Book book = repository.getReferenceById(id);
         book.logicalDelete();
     }

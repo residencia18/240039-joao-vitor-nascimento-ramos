@@ -1,11 +1,9 @@
 package br.com.cepedi.Library.api.controller;
 
-import br.com.cepedi.Library.api.model.entitys.Author;
 import br.com.cepedi.Library.api.model.records.author.input.DataRegisterAuthor;
 import br.com.cepedi.Library.api.model.records.author.input.DataUpdateAuthor;
 import br.com.cepedi.Library.api.model.records.author.output.DataDetailsAuthor;
-import br.com.cepedi.Library.api.repository.AuthorRepository;
-import br.com.cepedi.Library.api.service.AuthorService;
+import br.com.cepedi.Library.api.service.author.AuthorService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

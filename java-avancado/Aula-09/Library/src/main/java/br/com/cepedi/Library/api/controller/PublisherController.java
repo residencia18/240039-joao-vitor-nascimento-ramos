@@ -3,7 +3,7 @@ package br.com.cepedi.Library.api.controller;
 import br.com.cepedi.Library.api.model.records.publisher.input.DataRegisterPublisher;
 import br.com.cepedi.Library.api.model.records.publisher.input.DataUpdatePublisher;
 import br.com.cepedi.Library.api.model.records.publisher.output.DataDetailsPublisher;
-import br.com.cepedi.Library.api.service.PublisherService;
+import br.com.cepedi.Library.api.service.publisher.PublisherService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

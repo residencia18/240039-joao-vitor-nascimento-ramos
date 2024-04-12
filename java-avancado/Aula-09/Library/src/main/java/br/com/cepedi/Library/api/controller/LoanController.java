@@ -1,15 +1,10 @@
 package br.com.cepedi.Library.api.controller;
 
 
-import br.com.cepedi.Library.api.model.records.author.input.DataRegisterAuthor;
-import br.com.cepedi.Library.api.model.records.author.output.DataDetailsAuthor;
-import br.com.cepedi.Library.api.model.records.book.input.DataUpdateBook;
-import br.com.cepedi.Library.api.model.records.book.output.DataDetailsBook;
-import br.com.cepedi.Library.api.model.records.client.output.DataDetailsClient;
 import br.com.cepedi.Library.api.model.records.loan.input.DataRegisterLoan;
 import br.com.cepedi.Library.api.model.records.loan.input.DataUpdateLoan;
 import br.com.cepedi.Library.api.model.records.loan.output.DataDetailsLoan;
-import br.com.cepedi.Library.api.service.LoanService;
+import br.com.cepedi.Library.api.service.loan.LoanService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

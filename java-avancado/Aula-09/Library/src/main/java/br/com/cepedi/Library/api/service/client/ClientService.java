@@ -1,4 +1,4 @@
-package br.com.cepedi.Library.api.service;
+package br.com.cepedi.Library.api.service.client;
 
 import br.com.cepedi.Library.api.model.entitys.Client;
 import br.com.cepedi.Library.api.model.records.client.input.DataRegisterClient;

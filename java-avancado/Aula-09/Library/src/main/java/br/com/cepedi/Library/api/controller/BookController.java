@@ -5,7 +5,7 @@ package br.com.cepedi.Library.api.controller;
 import br.com.cepedi.Library.api.model.records.book.input.DataRegisterBook;
 import br.com.cepedi.Library.api.model.records.book.input.DataUpdateBook;
 import br.com.cepedi.Library.api.model.records.book.output.DataDetailsBook;
-import br.com.cepedi.Library.api.service.BookService;
+import br.com.cepedi.Library.api.service.book.BookService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
