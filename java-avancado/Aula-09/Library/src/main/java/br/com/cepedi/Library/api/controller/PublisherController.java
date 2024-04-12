@@ -4,6 +4,7 @@ import br.com.cepedi.Library.api.model.records.publisher.input.DataRegisterPubli
 import br.com.cepedi.Library.api.model.records.publisher.input.DataUpdatePublisher;
 import br.com.cepedi.Library.api.model.records.publisher.output.DataDetailsPublisher;
 import br.com.cepedi.Library.api.service.publisher.PublisherService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,6 +19,7 @@ import java.net.URI;
 
 @RestController
 @RequestMapping("publishers")
+@SecurityRequirement(name = "bearer-key")
 public class PublisherController {
 
 

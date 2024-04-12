@@ -5,6 +5,7 @@ import br.com.cepedi.Library.api.model.records.loan.input.DataRegisterLoan;
 import br.com.cepedi.Library.api.model.records.loan.input.DataUpdateLoan;
 import br.com.cepedi.Library.api.model.records.loan.output.DataDetailsLoan;
 import br.com.cepedi.Library.api.service.loan.LoanService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,6 +20,7 @@ import java.net.URI;
 
 @RestController
 @RequestMapping("loans")
+@SecurityRequirement(name = "bearer-key")
 public class LoanController {
 
     @Autowired

@@ -17,7 +17,7 @@ public class ValidateClientAlreadyDisabled implements ValidationDisabledClient {
     public void validation(Long id) {
         Boolean clientActivated = repository.findActivatedById(id);
         if(!clientActivated){
-            throw new ValidationException("The requered client already disabled");
+            throw new ValidationException("The required client already disabled");
         }
     }
 }

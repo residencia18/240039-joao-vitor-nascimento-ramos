@@ -4,6 +4,7 @@ import br.com.cepedi.Library.api.model.records.author.input.DataRegisterAuthor;
 import br.com.cepedi.Library.api.model.records.author.input.DataUpdateAuthor;
 import br.com.cepedi.Library.api.model.records.author.output.DataDetailsAuthor;
 import br.com.cepedi.Library.api.service.author.AuthorService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,6 +19,7 @@ import java.net.URI;
 
 @RestController
 @RequestMapping("authors")
+@SecurityRequirement(name = "bearer-key")
 public class AuthorController {
 
     @Autowired

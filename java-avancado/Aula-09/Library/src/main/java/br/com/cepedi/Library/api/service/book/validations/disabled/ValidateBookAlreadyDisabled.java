@@ -18,7 +18,7 @@ public class ValidateBookAlreadyDisabled implements ValidationDisabledBook {
     public void validation(Long id) {
         Boolean bookActivated = repository.findActivatedById(id);
         if(!bookActivated){
-            throw new ValidationException("The requered book already disabled");
+            throw new ValidationException("The required book already disabled");
         }
     }
 }

@@ -15,7 +15,7 @@ public class ValidateBookExistence implements ValidationUpdateBook {
     @Override
     public void validation(DataUpdateBook data) {
         if(!repository.existsById(data.id())){
-            throw new ValidationException("The requered book does not exists");
+            throw new ValidationException("The required book does not exists");
         }
     }
 }

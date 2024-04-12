@@ -5,6 +5,7 @@ import br.com.cepedi.Library.api.model.records.client.input.DataRegisterClient;
 import br.com.cepedi.Library.api.model.records.client.input.DataUpdateClient;
 import br.com.cepedi.Library.api.model.records.client.output.DataDetailsClient;
 import br.com.cepedi.Library.api.service.client.ClientService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,6 +20,7 @@ import java.net.URI;
 
 @RestController
 @RequestMapping("clients")
+@SecurityRequirement(name = "bearer-key")
 public class ClientController {
 
     @Autowired

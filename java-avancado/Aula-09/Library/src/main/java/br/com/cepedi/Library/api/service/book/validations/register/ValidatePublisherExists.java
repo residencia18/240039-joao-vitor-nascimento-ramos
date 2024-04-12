@@ -15,7 +15,7 @@ public class ValidatePublisherExists implements ValidationRegisterBook{
     @Override
     public void validation(DataRegisterBook data) {
         if(!repository.existsById(data.publisher_id())){
-            throw new ValidationException("The requeried publisher does not exists");
+            throw new ValidationException("The required publisher does not exists");
         }
     }
 }

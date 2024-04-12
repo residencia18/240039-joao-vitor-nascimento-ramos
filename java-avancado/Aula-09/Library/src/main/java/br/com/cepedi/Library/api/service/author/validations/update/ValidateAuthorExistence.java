@@ -15,7 +15,7 @@ public class ValidateAuthorExistence implements ValidationUpdateAuthor{
     @Override
     public void validation(DataUpdateAuthor data) {
         if(!repository.existsById(data.id())){
-            throw  new ValidationException("The requered author is does not exists");
+            throw  new ValidationException("The required author is does not exists");
         }
     }
 }

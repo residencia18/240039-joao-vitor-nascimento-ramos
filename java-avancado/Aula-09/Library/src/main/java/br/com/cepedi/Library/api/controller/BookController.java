@@ -6,6 +6,7 @@ import br.com.cepedi.Library.api.model.records.book.input.DataRegisterBook;
 import br.com.cepedi.Library.api.model.records.book.input.DataUpdateBook;
 import br.com.cepedi.Library.api.model.records.book.output.DataDetailsBook;
 import br.com.cepedi.Library.api.service.book.BookService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,6 +21,7 @@ import java.net.URI;
 
 @RestController
 @RequestMapping("books")
+@SecurityRequirement(name = "bearer-key")
 public class BookController {
 
     @Autowired

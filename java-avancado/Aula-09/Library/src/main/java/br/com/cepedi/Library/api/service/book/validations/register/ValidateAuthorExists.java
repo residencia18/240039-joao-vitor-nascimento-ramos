@@ -15,7 +15,7 @@ public class ValidateAuthorExists implements ValidationRegisterBook{
     @Override
     public void validation(DataRegisterBook data) {
         if(!repository.existsById(data.author_id())){
-            throw  new ValidationException("The requered autor does not exists");
+            throw  new ValidationException("The required author does not exists");
         }
     }
 }

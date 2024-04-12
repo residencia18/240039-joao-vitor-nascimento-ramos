@@ -15,7 +15,7 @@ public class ValidateAuthorAlreadyDisabled  implements  ValidationDisabledAuthor
     public void validation(Long id) {
         Boolean authorActivate = repository.findActivatedById(id);
         if(!authorActivate){
-            throw new ValidationException("The requered author already disabled");
+            throw new ValidationException("The required author already disabled");
         }
     }
 }

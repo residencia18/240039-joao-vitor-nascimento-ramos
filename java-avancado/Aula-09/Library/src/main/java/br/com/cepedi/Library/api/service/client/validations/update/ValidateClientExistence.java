@@ -15,7 +15,7 @@ public class ValidateClientExistence implements  ValidationUpdateClient{
     @Override
     public void validation(DataUpdateClient data) {
         if(!repository.existsById(data.id())){
-            throw  new ValidationException("The requered client is does not exists");
+            throw  new ValidationException("The required client is does not exists");
         }
     }
 }
