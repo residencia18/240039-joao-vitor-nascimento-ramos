@@ -18,15 +18,16 @@ public class TokenService {
     @Value("${api.security.toke.secret}")
     private String secret;
 
+    private static final String ISSUER = "API Voll.med";
+
+
     public String generationToken(User user) {
         try {
             var algorithm = Algorithm.HMAC256(secret);
             return JWT.create()
                     .withIssuer("API Voll.med")
                     .withSubject(user.getLogin())
-
                     .withClaim("id", user.getId())
-
                     .withExpiresAt(expirationDate())
                     .sign(algorithm);
         } catch (JWTCreationException exception){
@@ -40,9 +41,9 @@ public class TokenService {
 
     public String getSubject(String tokenJWT) {
         try {
-            var algorithm = Algorithm.HMAC256(secret);
-            return JWT.require(algorithm)
-                    .withIssuer("API Voll.med")
+            var algoritmo = Algorithm.HMAC256(secret);
+            return JWT.require(algoritmo)
+                    .withIssuer(ISSUER)
                     .build()
                     .verify(tokenJWT)
                     .getSubject();

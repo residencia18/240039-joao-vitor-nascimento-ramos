@@ -1,4 +1,4 @@
-package br.com.cepedi.Voll.api.infra.security;
+package br.com.cepedi.Voll.api.security.infra;
 
 import br.com.cepedi.Voll.api.security.model.entitys.User;
 import br.com.cepedi.Voll.api.security.repository.UserRepository;
