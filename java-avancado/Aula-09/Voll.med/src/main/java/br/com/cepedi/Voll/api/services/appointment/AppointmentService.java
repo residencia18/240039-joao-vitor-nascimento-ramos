@@ -9,7 +9,7 @@ import br.com.cepedi.Voll.api.model.records.appointment.output.DataDetailsAppoin
 import br.com.cepedi.Voll.api.repository.AppointmentRepository;
 import br.com.cepedi.Voll.api.repository.DoctorRepository;
 import br.com.cepedi.Voll.api.repository.PatientRepository;
-import br.com.cepedi.Voll.api.services.appointment.validations.ValidationAcheduleAppointment;
+import br.com.cepedi.Voll.api.services.appointment.validations.register.ValidationAcheduleAppointment;
 import jakarta.validation.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,12 +32,9 @@ public class AppointmentService {
     private List<ValidationAcheduleAppointment> validators;
 
     public DataDetailsAppointment register(DataRegisterAppointment data ){
-
         validators.forEach(validator -> validator.validation(data));
-
         Patient patient = repositoryPatient.getReferenceById(data.idPatient());
         Doctor doctor = chooseDoctor(data);
-
         Appointment appointment = new Appointment(null, doctor, patient, data.date(),null);
         repository.save(appointment);
         return new DataDetailsAppointment(appointment);

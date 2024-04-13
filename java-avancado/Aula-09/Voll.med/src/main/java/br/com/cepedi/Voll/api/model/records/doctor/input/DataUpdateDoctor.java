@@ -1,4 +1,4 @@
-package br.com.cepedi.Voll.api.model.records.doctor.input.doctor;
+package br.com.cepedi.Voll.api.model.records.doctor.input;
 
 import br.com.cepedi.Voll.api.model.records.address.DataAddress;
 import com.fasterxml.jackson.annotation.JsonAlias;

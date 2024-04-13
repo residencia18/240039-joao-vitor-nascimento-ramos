@@ -1,4 +1,4 @@
-package br.com.cepedi.Voll.api.services.appointment.validations;
+package br.com.cepedi.Voll.api.services.appointment.validations.register;
 
 import br.com.cepedi.Voll.api.model.records.appointment.input.DataRegisterAppointment;
 import br.com.cepedi.Voll.api.repository.DoctorRepository;
@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class validateDoctorExistence implements ValidationAcheduleAppointment{
+public class validateDoctorExistence implements ValidationAcheduleAppointment {
 
     @Autowired
     private DoctorRepository repositoryDoctor;

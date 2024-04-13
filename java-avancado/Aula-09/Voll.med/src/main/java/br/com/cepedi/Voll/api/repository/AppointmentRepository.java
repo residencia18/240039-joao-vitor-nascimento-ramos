@@ -13,7 +13,7 @@ public interface AppointmentRepository extends JpaRepository<Appointment,Long> {
             SELECT CASE WHEN COUNT(a) > 0 THEN TRUE ELSE FALSE END 
             FROM Appointment a 
             WHERE a.patient.id = :id 
-            AND a.dateService BETWEEN :startDate AND :endDate
+            AND a.dateService BETWEEN :startDate AND :endDate AND a.reasonCancel is null
             """)
     Boolean existsByPatientIdAndDataBetween(Long id, LocalDateTime startDate, LocalDateTime endDate);
 

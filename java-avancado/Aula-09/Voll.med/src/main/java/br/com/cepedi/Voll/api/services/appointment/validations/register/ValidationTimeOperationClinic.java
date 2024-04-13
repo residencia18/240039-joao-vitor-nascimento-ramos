@@ -1,6 +1,7 @@
-package br.com.cepedi.Voll.api.services.appointment.validations;
+package br.com.cepedi.Voll.api.services.appointment.validations.register;
 
 import br.com.cepedi.Voll.api.model.records.appointment.input.DataRegisterAppointment;
+import br.com.cepedi.Voll.api.services.appointment.validations.register.ValidationAcheduleAppointment;
 import jakarta.validation.ValidationException;
 import org.springframework.stereotype.Component;
 
@@ -8,7 +9,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 
 @Component
-public class ValidationTimeOperationClinic implements  ValidationAcheduleAppointment {
+public class ValidationTimeOperationClinic implements ValidationAcheduleAppointment {
 
     public void validation(DataRegisterAppointment data){
         LocalDateTime dateAppointmnet = data.date();

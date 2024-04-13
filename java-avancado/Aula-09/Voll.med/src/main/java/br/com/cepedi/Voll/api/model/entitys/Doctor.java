@@ -1,8 +1,8 @@
 package br.com.cepedi.Voll.api.model.entitys;
 
-import br.com.cepedi.Voll.api.model.records.doctor.input.doctor.DataRegisterDoctor;
-import br.com.cepedi.Voll.api.model.records.doctor.input.doctor.DataUpdateDoctor;
-import br.com.cepedi.Voll.api.model.records.doctor.input.doctor.Specialty;
+import br.com.cepedi.Voll.api.model.records.doctor.input.DataRegisterDoctor;
+import br.com.cepedi.Voll.api.model.records.doctor.input.DataUpdateDoctor;
+import br.com.cepedi.Voll.api.model.records.doctor.input.Specialty;
 import jakarta.persistence.*;
 import lombok.*;
 

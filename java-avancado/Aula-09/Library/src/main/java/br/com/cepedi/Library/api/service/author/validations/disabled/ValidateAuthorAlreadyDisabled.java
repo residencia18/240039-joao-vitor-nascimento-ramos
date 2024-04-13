@@ -13,8 +13,8 @@ public class ValidateAuthorAlreadyDisabled  implements  ValidationDisabledAuthor
 
     @Override
     public void validation(Long id) {
-        Boolean authorActivate = repository.findActivatedById(id);
-        if(!authorActivate){
+        Boolean authorActivated = repository.findActivatedById(id);
+        if(!authorActivated){
             throw new ValidationException("The required author already disabled");
         }
     }
