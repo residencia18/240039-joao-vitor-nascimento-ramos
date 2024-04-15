@@ -18,8 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 //import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 //
 //@DataJpaTest
-//@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-//@ActiveProfiles("test")
+//
 //@ComponentScan(basePackages = "br.com.cepedi.Voll.api.service.doctor")
 
 //public class TestChooseDoctorRandom {

@@ -7,6 +7,7 @@ import br.com.cepedi.Business.api.model.records.client.input.DataUpdateClient;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +32,8 @@ public class Client {
 
     private String cpf;
 
+    private LocalDate birthday;
+
     private String phoneNumber;
 
     private Boolean activated;
@@ -44,6 +47,11 @@ public class Client {
         this.name = data.name();
         this.email = data.email();
         this.cpf = data.cpf();
+
+        if(data.birthday() != null){
+            this.birthday = data.birthday();
+        }
+
         this.phoneNumber = data.phoneNumber();
         this.address = new Address(data.dataRegisterAddress());
         this.activated = true;
