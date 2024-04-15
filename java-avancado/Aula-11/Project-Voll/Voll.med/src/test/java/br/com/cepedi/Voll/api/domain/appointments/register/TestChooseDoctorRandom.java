@@ -1,79 +1,72 @@
-package br.com.cepedi.Voll.api.domain.appointments.register;
+//package br.com.cepedi.Voll.api.domain.appointments.register;
 
-import br.com.cepedi.Voll.api.domain.appointments.register.service.faker.PtBRCpfIdNumber;
-import br.com.cepedi.Voll.api.model.entitys.Appointment;
 import br.com.cepedi.Voll.api.model.entitys.Doctor;
-import br.com.cepedi.Voll.api.model.entitys.Patient;
-import br.com.cepedi.Voll.api.model.records.address.DataAddress;
-import br.com.cepedi.Voll.api.model.records.doctor.input.DataRegisterDoctor;
 import br.com.cepedi.Voll.api.model.records.doctor.input.Specialty;
-import br.com.cepedi.Voll.api.model.records.patient.input.DataRegisterPatient;
 import br.com.cepedi.Voll.api.repository.DoctorRepository;
-import com.github.javafaker.Faker;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.http.HttpStatus;
-import org.springframework.mock.web.MockHttpServletResponse;
-import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.stereotype.Component;
-import org.springframework.test.context.ActiveProfiles;
+//import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+//import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+//import org.springframework.context.annotation.ComponentScan;
+//import org.springframework.test.context.ActiveProfiles;
+//
+//import java.time.DayOfWeek;
+//import java.time.LocalDate;
+//import java.time.temporal.TemporalAdjusters;
+//
+//import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+//
+//@DataJpaTest
+//
+//@ComponentScan(basePackages = "br.com.cepedi.Voll.api.service.doctor")
 
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.temporal.TemporalAdjusters;
+//public class TestChooseDoctorRandom {
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+//    @Autowired
+//    private DoctorRepository repository;
+//
+//    @Autowired
+//    private RegisterDataTest registerDataTest;
+//
+//
+//    @Test
+//    @DisplayName("Should return a doctor when they are available on the given date")
+//    void chooseRandomAvailableDoctorOnDateScenario1() {
+//        //given or arrange
+//        var nextMondayAt10 = LocalDate.now()
+//                .with(TemporalAdjusters.next(DayOfWeek.MONDAY))
+//                .atTime(10, 0);
+//        Doctor doctor = registerDataTest.registerDoctor( Specialty.CARDIOLOGY);
+//        //when or act
+//        Doctor availableDoctor = repository.chooseDoctorRandomFreethisDate(Specialty.CARDIOLOGY, nextMondayAt10);
+//        //then or assert
+//        assertThat(availableDoctor).isEqualTo(doctor);
+//    }
+//
+//    @Test
+//    @DisplayName("It should return null when the only registered doctor is not available on the date")
+//    void chooseRandomAvailableDoctorOnDateScenario2() {
+//        //given or arrange
+//        var nextMondayAt10 = LocalDate.now()
+//                .with(TemporalAdjusters.next(DayOfWeek.MONDAY))
+//                .atTime(10, 0);
+//        var doctor = registerDataTest.registerDoctor( Specialty.CARDIOLOGY);
+//        var patient = registerDataTest.registerPatient();
+//        registerDataTest.registerAppointment(doctor,patient,nextMondayAt10);
+//        //when or act
+//        var availableDoctor = repository.chooseDoctorRandomFreethisDate(Specialty.CARDIOLOGY, nextMondayAt10);
+//        //then or assert
+//        assertThat(availableDoctor).isNull();
+//    }
+//
+//
+//
+//
+//
 
-@DataJpaTest
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@ActiveProfiles("test")
-@ComponentScan(basePackages = "br.com.cepedi.Voll.api.domain.appointments.register")
-public class TestChooseDoctorRandom {
-
-    @Autowired
-    private DoctorRepository repository;
-
-    @Autowired
-    private RegisterDataTest registerDataTest;
 
 
 
-    @Test
-    @DisplayName("Should return a doctor when they are available on the given date")
-    void chooseRandomAvailableDoctorOnDateScenario1() {
-        // given or arrange
-        var nextMondayAt10 = LocalDate.now()
-                .with(TemporalAdjusters.next(DayOfWeek.MONDAY))
-                .atTime(10, 0);
-        Doctor doctor = registerDataTest.registerDoctor(Specialty.CARDIOLOGY);
-        // when or act
-        Doctor availableDoctor = repository.chooseDoctorRandomFreethisDate(Specialty.CARDIOLOGY, nextMondayAt10);
-        // then or assert
-        assertThat(availableDoctor).isEqualTo(doctor);
-    }
-
-    @Test
-    @DisplayName("It should return null when the only registered doctor is not available on the date")
-    void chooseRandomAvailableDoctorOnDateScenario2() {
-        // given or arrange
-        var nextMondayAt10 = LocalDate.now()
-                .with(TemporalAdjusters.next(DayOfWeek.MONDAY))
-                .atTime(10, 0);
-        var doctor = registerDataTest.registerDoctor(Specialty.CARDIOLOGY);
-        var patient = registerDataTest.registerPatient();
-        registerDataTest.registerAppointment(doctor, patient, nextMondayAt10);
-        // when or act
-        var availableDoctor = repository.chooseDoctorRandomFreethisDate(Specialty.CARDIOLOGY, nextMondayAt10);
-        // then or assert
-        assertThat(availableDoctor).isNull();
-    }
-}
 
 

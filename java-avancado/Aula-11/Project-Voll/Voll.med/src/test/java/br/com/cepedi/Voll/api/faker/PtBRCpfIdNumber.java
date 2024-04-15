@@ -1,4 +1,4 @@
-package br.com.cepedi.Voll.api.domain.appointments.register.service.faker;
+package br.com.cepedi.Voll.api.faker;
 
 import java.util.Arrays;
 import java.util.regex.Pattern;
