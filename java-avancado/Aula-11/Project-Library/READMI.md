@@ -68,6 +68,7 @@ Ensure that environment variables containing sensitive information are properly 
 ## Documentation
 API documentation is generated using Swagger. Accessing the API endpoints via a web browser after running the application will provide detailed information about each endpoint, including request and response schemas.
 
-## Contribution
-Contributions to the API are welcome. Please follow the existing code style and conventions. Before submitting a pull request, ensure that all tests pass and new features are adequately documented.
+## Test
 
+Currently, the tests are as described by the Jacoco plugin.
+![Imagem dos testes](jacoco.png)

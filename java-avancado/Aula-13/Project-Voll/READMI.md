@@ -3,7 +3,7 @@
 ## Overview
 This API serves as a backend system for managing appointments, doctors, and patients within a healthcare environment. It provides endpoints for scheduling appointments, registering doctors and patients, updating their information, and listing details.
 
-## Image of the database generated in pgAdmin4
+## Image of the database generated in workbench
 
 ![Imagem do banco de dados](model.png)
 
