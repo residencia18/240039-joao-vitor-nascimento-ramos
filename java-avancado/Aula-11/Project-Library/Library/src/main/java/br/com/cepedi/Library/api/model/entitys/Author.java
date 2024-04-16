@@ -28,7 +28,7 @@ public class Author {
 
     private Boolean activated;
 
-    @OneToMany(mappedBy = "author")
+    @OneToMany(mappedBy = "author" , fetch = FetchType.EAGER)
     private List<Book> books;
 
 

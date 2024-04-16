@@ -37,7 +37,7 @@ public class Client {
     @Embedded
     private Address address;
 
-    @OneToMany(mappedBy = "client")
+    @OneToMany(mappedBy = "client" , fetch = FetchType.EAGER)
     private List<Loan> loans = new ArrayList<>();
 
     public Client(DataRegisterClient data) {

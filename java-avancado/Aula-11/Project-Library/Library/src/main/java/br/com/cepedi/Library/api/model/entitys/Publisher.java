@@ -30,7 +30,7 @@ public class Publisher {
 
     private Boolean activated;
 
-    @OneToMany(mappedBy = "publisher")
+    @OneToMany(mappedBy = "publisher" , fetch = FetchType.EAGER)
     private List<Book> books;
 
     public Publisher(DataRegisterPublisher data) {

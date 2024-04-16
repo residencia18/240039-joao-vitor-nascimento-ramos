@@ -15,9 +15,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-@ToString
 public class Book {
 
     @Id
@@ -39,7 +37,7 @@ public class Book {
 
     private Boolean activated;
 
-    @OneToMany(mappedBy = "book")
+    @OneToMany(mappedBy = "book" , fetch = FetchType.EAGER)
     private List<Loan> loans = new ArrayList<>();
 
     public Book(String name, Integer anoPublicacao, Author author , Publisher publisher){
@@ -74,6 +72,19 @@ public class Book {
             this.publisher = publisher;
         }
 
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", anoPublicacao=" + anoPublicacao +
+                ", author=" + (author != null ? "Author(id=" + author.getId() + ", name=" + author.getName() + ")" : null) +
+                ", publisher=" + (publisher != null ? "Publisher(id=" + publisher.getId() + ", name=" + publisher.getName() + ")" : null) +
+                ", activated=" + activated +
+                ", loans=" + loans +
+                '}';
     }
 
 }
