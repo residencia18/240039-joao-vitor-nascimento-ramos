@@ -10,6 +10,7 @@ import br.com.cepedi.Voll.api.repository.AppointmentRepository;
 import br.com.cepedi.Voll.api.repository.DoctorRepository;
 import br.com.cepedi.Voll.api.repository.PatientRepository;
 import com.github.javafaker.Faker;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,10 @@ public class TestRepositoryAppointment {
 
     private PtBRCpfIdNumber cpfGenerator = new PtBRCpfIdNumber();
 
+    @BeforeEach
+    public void setUp() {
+        patientRepository.deleteAll();
+    }
 
     @Test
     @DisplayName("Given a patient ID, start date, and end date, when checking if appointments exist for the patient within the specified date range, then return true if appointments exist, otherwise return false")
@@ -56,12 +61,15 @@ public class TestRepositoryAppointment {
         Appointment appointment = new Appointment(null, null, patient, LocalDateTime.now(), null);
         appointmentRepository.save(appointment);
 
+
+
+
+        System.out.println(patient.getId());
         // When
-        Boolean exists = appointmentRepository.existsByPatientIdAndDataBetween(patient.getId(), startDate, endDate);
+        Boolean exists = appointmentRepository.existsByPatientIdAndDataBetween(patient.getId(),  startDate.minusDays(1), endDate);
 
         // Then
         assertTrue(exists);
-
 
     }
 
@@ -81,7 +89,7 @@ public class TestRepositoryAppointment {
         appointmentRepository.save(appointment);
 
         // When checking again
-        Boolean exists = appointmentRepository.existsByPatientIdAndDataBetween(patient.getId(), startDate, endDate);
+        Boolean exists = appointmentRepository.existsByPatientIdAndDataBetween(appointment.getPatient().getId(), startDate, endDate);
 
         // Then
         assertFalse(exists);

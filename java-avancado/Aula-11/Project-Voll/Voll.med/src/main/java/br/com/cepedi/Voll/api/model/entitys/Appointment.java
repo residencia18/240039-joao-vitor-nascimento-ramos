@@ -6,8 +6,8 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Table(name = "appointments")
 @Entity
+@Table(name = "appointments")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -32,6 +32,16 @@ public class Appointment {
     @Column(name = "reason_cancel")
     @Enumerated(EnumType.STRING)
     private ReasonCancelAppointment reasonCancel;
+
+    @Override
+    public String toString() {
+        return "Appointment(id=" + id +
+                ", doctor=" + (doctor != null ? "Doctor(id=" + doctor.getId() + ", name=" + doctor.getName() + ")" : "null") +
+                ", patient=" + (patient != null ? "Patient(id=" + patient.getId() + ", name=" + patient.getName() + ")" : "null") +
+                ", dateService=" + dateService +
+                ", reasonCancel=" + reasonCancel +
+                ')';
+    }
 
     public void cancel(ReasonCancelAppointment reason) {
         this.reasonCancel = reason;

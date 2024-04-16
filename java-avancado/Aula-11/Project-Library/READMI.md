@@ -3,6 +3,10 @@
 ## Overview
 The Library API manages authors, books, clients, publishers, and loans within a library system. It provides endpoints for registering, updating, listing, and disabling these entities.
 
+## Image of the database generated in PgAdmin 4
+
+![Imagem do banco de dados](model.png)
+
 ## Technologies Used
 - Java
 - Spring Boot

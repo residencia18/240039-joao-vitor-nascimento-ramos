@@ -104,7 +104,7 @@ public class TestServiceAppointment {
         assertNotNull(registeredAppointment);
     }
 
-//
+
 //    @Test
 //    @DisplayName("Cancel appointment")
 //    public void shouldCancelAppointment() {
