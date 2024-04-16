@@ -2,16 +2,14 @@ package br.com.cepedi.Voll.api.model.entitys;
 
 import br.com.cepedi.Voll.api.model.records.appointment.input.ReasonCancelAppointment;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Table(name = "appointments")
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
