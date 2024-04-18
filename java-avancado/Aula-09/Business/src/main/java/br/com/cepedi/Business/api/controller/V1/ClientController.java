@@ -1,9 +1,10 @@
-package br.com.cepedi.Business.api.controller;
+package br.com.cepedi.Business.api.controller.V1;
 
 import br.com.cepedi.Business.api.model.records.client.input.DataRegisterClient;
 import br.com.cepedi.Business.api.model.records.client.input.DataUpdateClient;
-import br.com.cepedi.Business.api.model.records.client.output.DataDetailsClient;
+import br.com.cepedi.Business.api.model.records.client.details.DataDetailsClient;
 import br.com.cepedi.Business.api.service.client.ClientService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +19,10 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 
+
+@RestController
+@RequestMapping("v1/clients")
+@SecurityRequirement(name = "bearer-key")
 public class ClientController {
 
     private static final Logger logger = LoggerFactory.getLogger(ClientController.class);

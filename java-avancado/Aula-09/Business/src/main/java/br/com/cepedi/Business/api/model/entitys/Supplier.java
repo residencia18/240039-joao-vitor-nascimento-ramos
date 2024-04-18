@@ -36,27 +36,28 @@ public class Supplier {
     private Address address;
 
 
-    public Supplier(DataRegisterSupplier data){
-
+    public Supplier(DataRegisterSupplier data) {
         this.name = data.name();
-
-        if (data.CPF() != null){
-            this.CPF = data.CPF();
-        }
-
-        if(data.CNPJ() != null){
-            this.CNPJ = data.CNPJ();
-        }
-
         this.email = data.email();
-
         this.phoneNumber1 = data.phoneNumber1();
+        this.phoneNumber2 = data.phoneNumber2();
 
-        if(data.phoneNumber2() != null){
-            this.phoneNumber2 = data.phoneNumber2();
+        validateCPFAndCNPJ(data.CPF(), data.CNPJ());
+
+        if (data.CPF() != null && !data.CPF().isEmpty()) {
+            this.CPF = data.CPF();
+        } else if (data.CNPJ() != null && !data.CNPJ().isEmpty()) {
+            this.CNPJ = data.CNPJ();
+        } else {
+            throw new IllegalArgumentException("It is necessary to provide a CPF or CNPJ to the supplier.");
         }
 
         this.address = new Address(data.dataRegisterAddress());
     }
 
+    private void validateCPFAndCNPJ(String CPF, String CNPJ) {
+        if ((CPF != null && !CPF.isEmpty()) && (CNPJ != null && !CNPJ.isEmpty())) {
+            throw new IllegalArgumentException("It is permitted to provide only a CPF or a CNPJ to the supplier, not both.");
+        }
+    }
 }

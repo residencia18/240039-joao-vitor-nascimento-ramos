@@ -1,6 +1,6 @@
 package br.com.cepedi.Business.api.service.client.validations.disabled;
 
-import br.com.cepedi.Library.api.repository.ClientRepository;
+import br.com.cepedi.Business.api.repository.ClientRepository;
 import jakarta.validation.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -48,10 +48,6 @@ public class Book {
         this.activated = true;
     }
 
-
-
-
-
     public void logicalDelete() {
         this.activated = false;
     }

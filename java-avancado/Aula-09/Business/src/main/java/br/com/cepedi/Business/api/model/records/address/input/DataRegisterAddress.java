@@ -4,6 +4,7 @@ import br.com.cepedi.Business.api.model.Enums.State;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
 
@@ -27,7 +28,7 @@ public record DataRegisterAddress(
         String city,
 
         @JsonAlias("uf")
-        @NotBlank(message = "{uf.required}")
+        @NotNull(message = "{uf.required}")
         State state,
 
         @JsonAlias("complement")
