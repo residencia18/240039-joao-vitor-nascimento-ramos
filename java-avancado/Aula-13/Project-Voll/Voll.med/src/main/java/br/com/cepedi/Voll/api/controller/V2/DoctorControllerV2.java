@@ -3,7 +3,7 @@ package br.com.cepedi.Voll.api.controller.V2;
 import br.com.cepedi.Voll.api.controller.V1.DoctorControllerV1;
 import br.com.cepedi.Voll.api.model.records.doctor.input.DataRegisterDoctor;
 import br.com.cepedi.Voll.api.model.records.doctor.input.DataUpdateDoctor;
-import br.com.cepedi.Voll.api.model.records.doctor.output.DataDetailsDoctor;
+import br.com.cepedi.Voll.api.model.records.doctor.details.DataDetailsDoctor;
 import br.com.cepedi.Voll.api.services.doctor.DoctorService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;

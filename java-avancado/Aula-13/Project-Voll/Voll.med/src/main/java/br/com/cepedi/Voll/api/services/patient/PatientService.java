@@ -1,10 +1,9 @@
 package br.com.cepedi.Voll.api.services.patient;
 
 import br.com.cepedi.Voll.api.model.entitys.Patient;
-import br.com.cepedi.Voll.api.model.records.doctor.output.DataDetailsDoctor;
 import br.com.cepedi.Voll.api.model.records.patient.input.DataRegisterPatient;
 import br.com.cepedi.Voll.api.model.records.patient.input.DataUpdatePatient;
-import br.com.cepedi.Voll.api.model.records.patient.output.DataDetailsPatient;
+import br.com.cepedi.Voll.api.model.records.patient.details.DataDetailsPatient;
 import br.com.cepedi.Voll.api.repository.PatientRepository;
 import br.com.cepedi.Voll.api.services.patient.validations.disabled.ValidationDisabledPatient;
 import br.com.cepedi.Voll.api.services.patient.validations.update.ValidationUpdatePatient;

@@ -1,6 +1,6 @@
 package br.com.cepedi.Voll.api.model.records.patient.input;
 
-import br.com.cepedi.Voll.api.model.records.address.DataAddress;
+import br.com.cepedi.Voll.api.model.records.address.input.DataRegisterAddress;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import jakarta.validation.constraints.NotNull;
 
@@ -16,7 +16,7 @@ public record DataUpdatePatient(
         String phoneNumber,
 
         @JsonAlias("endereco")
-        DataAddress dataAddress
+        DataRegisterAddress dataAddress
 ) {
 
 

@@ -3,7 +3,7 @@ package br.com.cepedi.Voll.api.controller.V2;
 import br.com.cepedi.Voll.api.controller.V1.AppointmentControllerV1;
 import br.com.cepedi.Voll.api.model.records.appointment.input.DataCancelAppointment;
 import br.com.cepedi.Voll.api.model.records.appointment.input.DataRegisterAppointment;
-import br.com.cepedi.Voll.api.model.records.appointment.output.DataDetailsAppointment;
+import br.com.cepedi.Voll.api.model.records.appointment.details.DataDetailsAppointment;
 import br.com.cepedi.Voll.api.services.appointment.AppointmentService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;

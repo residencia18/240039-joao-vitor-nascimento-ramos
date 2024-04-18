@@ -3,7 +3,7 @@ package br.com.cepedi.Voll.api.repositorys;
 
 import br.com.cepedi.Voll.api.faker.PtBRCpfIdNumber;
 import br.com.cepedi.Voll.api.model.entitys.Doctor;
-import br.com.cepedi.Voll.api.model.records.address.DataAddress;
+import br.com.cepedi.Voll.api.model.records.address.input.DataRegisterAddress;
 import br.com.cepedi.Voll.api.model.records.doctor.input.DataRegisterDoctor;
 import br.com.cepedi.Voll.api.model.records.doctor.input.Specialty;
 import br.com.cepedi.Voll.api.repository.DoctorRepository;
@@ -124,8 +124,8 @@ public class TestRepositoryDoctor {
 
 
 
-    private DataAddress createAddressData() {
-        return new DataAddress(
+    private DataRegisterAddress createAddressData() {
+        return new DataRegisterAddress(
                 faker.address().streetName(),
                 faker.address().city(),
                 faker.number().digits(8),

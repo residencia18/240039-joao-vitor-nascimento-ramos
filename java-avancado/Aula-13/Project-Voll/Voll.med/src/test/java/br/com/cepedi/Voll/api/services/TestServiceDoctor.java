@@ -2,11 +2,11 @@ package br.com.cepedi.Voll.api.services;
 
 import br.com.cepedi.Voll.api.faker.PtBRCpfIdNumber;
 import br.com.cepedi.Voll.api.model.entitys.Doctor;
-import br.com.cepedi.Voll.api.model.records.address.DataAddress;
+import br.com.cepedi.Voll.api.model.records.address.input.DataRegisterAddress;
 import br.com.cepedi.Voll.api.model.records.doctor.input.DataRegisterDoctor;
 import br.com.cepedi.Voll.api.model.records.doctor.input.DataUpdateDoctor;
 import br.com.cepedi.Voll.api.model.records.doctor.input.Specialty;
-import br.com.cepedi.Voll.api.model.records.doctor.output.DataDetailsDoctor;
+import br.com.cepedi.Voll.api.model.records.doctor.details.DataDetailsDoctor;
 import br.com.cepedi.Voll.api.repository.DoctorRepository;
 import br.com.cepedi.Voll.api.services.doctor.DoctorService;
 import br.com.cepedi.Voll.api.services.doctor.validations.disabled.ValidationDisabledDoctor;
@@ -111,7 +111,7 @@ public class TestServiceDoctor {
 
         // Agora, crie os dados de atualização
         DataUpdateDoctor updateData = new DataUpdateDoctor(doctorId, "New Name", "joao@email.com", null ,
-                new DataAddress("Street", "City", "12345", "State", "XX", null, null));
+                new DataRegisterAddress("Street", "City", "12345", "State", "XX", null, null));
 
         // When
         DataDetailsDoctor updatedDoctorDetails = doctorService.update(updateData);
@@ -119,7 +119,7 @@ public class TestServiceDoctor {
         // Then
         assertEquals(updateData.name(), updatedDoctorDetails.name());
         assertNotEquals(updateData.email(), updatedDoctorDetails.email());
-        assertEquals(updateData.dataAddress().cep(), updatedDoctorDetails.address().getCep());
+        assertEquals(updateData.dataAddress().cep(), updatedDoctorDetails.address().cep());
     }
 
     @Test
@@ -134,7 +134,7 @@ public class TestServiceDoctor {
 
 
         DataUpdateDoctor data = new DataUpdateDoctor(registeredDoctorDetails.id(), "New Name", "new@email.com", null,
-                new DataAddress("Street", "City", "12345", "State", "XX", null, null));
+                new DataRegisterAddress("Street", "City", "12345", "State", "XX", null, null));
 
 
         // When/Then
@@ -155,8 +155,8 @@ public class TestServiceDoctor {
 
 
 
-    private DataAddress createAddressData() {
-        return new DataAddress(
+    private DataRegisterAddress createAddressData() {
+        return new DataRegisterAddress(
                 faker.address().streetName(),
                 faker.address().city(),
                 faker.number().digits(8),

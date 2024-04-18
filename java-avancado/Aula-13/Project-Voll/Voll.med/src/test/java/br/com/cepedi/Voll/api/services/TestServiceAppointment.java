@@ -1,18 +1,14 @@
 package br.com.cepedi.Voll.api.services;
 
 import br.com.cepedi.Voll.api.faker.PtBRCpfIdNumber;
-import br.com.cepedi.Voll.api.model.entitys.Appointment;
-import br.com.cepedi.Voll.api.model.entitys.Doctor;
-import br.com.cepedi.Voll.api.model.entitys.Patient;
-import br.com.cepedi.Voll.api.model.records.address.DataAddress;
-import br.com.cepedi.Voll.api.model.records.appointment.input.DataCancelAppointment;
+import br.com.cepedi.Voll.api.model.records.address.input.DataRegisterAddress;
 import br.com.cepedi.Voll.api.model.records.appointment.input.DataRegisterAppointment;
-import br.com.cepedi.Voll.api.model.records.appointment.output.DataDetailsAppointment;
+import br.com.cepedi.Voll.api.model.records.appointment.details.DataDetailsAppointment;
 import br.com.cepedi.Voll.api.model.records.doctor.input.DataRegisterDoctor;
 import br.com.cepedi.Voll.api.model.records.doctor.input.Specialty;
-import br.com.cepedi.Voll.api.model.records.doctor.output.DataDetailsDoctor;
+import br.com.cepedi.Voll.api.model.records.doctor.details.DataDetailsDoctor;
 import br.com.cepedi.Voll.api.model.records.patient.input.DataRegisterPatient;
-import br.com.cepedi.Voll.api.model.records.patient.output.DataDetailsPatient;
+import br.com.cepedi.Voll.api.model.records.patient.details.DataDetailsPatient;
 import br.com.cepedi.Voll.api.repository.AppointmentRepository;
 import br.com.cepedi.Voll.api.repository.DoctorRepository;
 import br.com.cepedi.Voll.api.repository.PatientRepository;
@@ -27,16 +23,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.ActiveProfiles;
 
-import javax.print.Doc;
 import java.time.DayOfWeek;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.TemporalAdjusters;
 import java.util.List;
@@ -151,8 +143,8 @@ public class TestServiceAppointment {
 
 
 
-    private DataAddress createAddressData() {
-        return new DataAddress(
+    private DataRegisterAddress createAddressData() {
+        return new DataRegisterAddress(
                 faker.address().streetName(),
                 faker.address().city(),
                 faker.number().digits(8),

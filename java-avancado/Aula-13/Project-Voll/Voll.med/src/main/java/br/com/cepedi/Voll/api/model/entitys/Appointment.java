@@ -1,6 +1,6 @@
 package br.com.cepedi.Voll.api.model.entitys;
 
-import br.com.cepedi.Voll.api.model.records.appointment.input.ReasonCancelAppointment;
+import br.com.cepedi.Voll.api.model.records.appointment.enums.ReasonCancelAppointment;
 import jakarta.persistence.*;
 import lombok.*;
 

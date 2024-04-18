@@ -1,9 +1,6 @@
-package br.com.cepedi.Voll.api.model;
+package br.com.cepedi.Voll.api.model.entitys;
 
-import br.com.cepedi.Voll.api.model.entitys.Appointment;
-import br.com.cepedi.Voll.api.model.entitys.Doctor;
-import br.com.cepedi.Voll.api.model.entitys.Patient;
-import br.com.cepedi.Voll.api.model.records.appointment.input.ReasonCancelAppointment;
+import br.com.cepedi.Voll.api.model.records.appointment.enums.ReasonCancelAppointment;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -12,6 +9,7 @@ import java.time.LocalDateTime;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+@DisplayName("Test entity appointment")
 public class TestAppointment {
 
     @Test

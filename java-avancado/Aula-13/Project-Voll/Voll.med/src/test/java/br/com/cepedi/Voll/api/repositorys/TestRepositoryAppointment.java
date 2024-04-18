@@ -4,7 +4,7 @@ package br.com.cepedi.Voll.api.repositorys;
 import br.com.cepedi.Voll.api.faker.PtBRCpfIdNumber;
 import br.com.cepedi.Voll.api.model.entitys.Appointment;
 import br.com.cepedi.Voll.api.model.entitys.Patient;
-import br.com.cepedi.Voll.api.model.records.address.DataAddress;
+import br.com.cepedi.Voll.api.model.records.address.input.DataRegisterAddress;
 import br.com.cepedi.Voll.api.model.records.patient.input.DataRegisterPatient;
 import br.com.cepedi.Voll.api.repository.AppointmentRepository;
 import br.com.cepedi.Voll.api.repository.DoctorRepository;
@@ -111,8 +111,8 @@ public class TestRepositoryAppointment {
     }
 
 
-    private DataAddress createAddressData() {
-        return new DataAddress(
+    private DataRegisterAddress createAddressData() {
+        return new DataRegisterAddress(
                 faker.address().streetName(),
                 faker.address().city(),
                 faker.number().digits(8),

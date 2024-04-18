@@ -1,6 +1,6 @@
 package br.com.cepedi.Voll.api.model.entitys;
 
-import br.com.cepedi.Voll.api.model.records.address.DataAddress;
+import br.com.cepedi.Voll.api.model.records.address.input.DataRegisterAddress;
 import jakarta.persistence.Embeddable;
 import lombok.*;
 
@@ -26,7 +26,7 @@ public class Address {
 
     private String number;
 
-    public Address(DataAddress dataAddress) {
+    public Address(DataRegisterAddress dataAddress) {
         this.publicPlace = dataAddress.publicPlace();
         this.neighborhood = dataAddress.neighborhood();
         this.cep = dataAddress.cep();
@@ -37,7 +37,7 @@ public class Address {
     }
 
 
-    public void updateData(DataAddress data) {
+    public void updateData(DataRegisterAddress data) {
         if (data.publicPlace() != null) {
             this.publicPlace = data.publicPlace();
         }

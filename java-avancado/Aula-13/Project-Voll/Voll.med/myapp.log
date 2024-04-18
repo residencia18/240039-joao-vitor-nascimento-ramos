@@ -8107,3 +8107,101 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 2024-04-15T22:56:04.062-03:00  INFO 116495 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-04-15T22:56:04.063-03:00  INFO 116495 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
 2024-04-15T22:56:04.070-03:00  INFO 116495 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2024-04-17T23:51:04.479-03:00  INFO 35862 --- [main] b.c.c.V.a.r.TestRepositoryAppointment    : Starting TestRepositoryAppointment using Java 17.0.9 with PID 35862 (started by joao in /home/joao/residencia18/java-avancado/Aula-13/Project-Voll/Voll.med)
+2024-04-17T23:51:04.481-03:00  INFO 35862 --- [main] b.c.c.V.a.r.TestRepositoryAppointment    : The following 1 profile is active: "test"
+2024-04-17T23:51:05.197-03:00  INFO 35862 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-17T23:51:05.324-03:00  INFO 35862 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 112 ms. Found 4 JPA repository interfaces.
+2024-04-17T23:51:05.902-03:00  INFO 35862 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-17T23:51:06.514-03:00  INFO 35862 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5bf86398
+2024-04-17T23:51:06.519-03:00  INFO 35862 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-17T23:51:06.765-03:00  INFO 35862 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.22.3 by Redgate
+2024-04-17T23:51:06.765-03:00  INFO 35862 --- [main] o.f.c.internal.license.VersionPrinter    : See release notes here: https://rd.gt/416ObMi
+2024-04-17T23:51:06.765-03:00  INFO 35862 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2024-04-17T23:51:06.806-03:00  INFO 35862 --- [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/vollmed_api_test (MySQL 8.0)
+2024-04-17T23:51:06.892-03:00  INFO 35862 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.051s)
+2024-04-17T23:51:06.918-03:00  INFO 35862 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `vollmed_api_test`: 8
+2024-04-17T23:51:06.922-03:00  INFO 35862 --- [main] o.f.core.internal.command.DbMigrate      : Schema `vollmed_api_test` is up to date. No migration necessary.
+2024-04-17T23:51:07.114-03:00  INFO 35862 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-17T23:51:07.263-03:00  INFO 35862 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-04-17T23:51:07.354-03:00  INFO 35862 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-17T23:51:07.822-03:00  INFO 35862 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-17T23:51:09.739-03:00  INFO 35862 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-17T23:51:09.743-03:00  INFO 35862 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-17T23:51:10.337-03:00  INFO 35862 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-04-17T23:51:11.827-03:00  INFO 35862 --- [main] b.c.c.V.a.r.TestRepositoryAppointment    : Started TestRepositoryAppointment in 8.143 seconds (process running for 10.466)
+2024-04-17T23:51:13.209-03:00  INFO 35862 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.cepedi.Voll.api.repositorys.TestRepositoryDoctor]: TestRepositoryDoctor does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-04-17T23:51:13.227-03:00  INFO 35862 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.cepedi.Voll.api.Application for test class br.com.cepedi.Voll.api.repositorys.TestRepositoryDoctor
+2024-04-17T23:51:13.523-03:00  INFO 35862 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.cepedi.Voll.api.repositorys.TestRepositoryPatient]: TestRepositoryPatient does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-04-17T23:51:13.537-03:00  INFO 35862 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.cepedi.Voll.api.Application for test class br.com.cepedi.Voll.api.repositorys.TestRepositoryPatient
+2024-04-17T23:51:14.210-03:00  INFO 35862 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.cepedi.Voll.api.services.TestServiceDoctor]: TestServiceDoctor does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-04-17T23:51:14.236-03:00  INFO 35862 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.cepedi.Voll.api.Application for test class br.com.cepedi.Voll.api.services.TestServiceDoctor
+2024-04-17T23:51:14.243-03:00  INFO 35862 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2024-04-17T23:51:14.281-03:00  INFO 35862 --- [main] b.c.c.V.api.services.TestServiceDoctor   : Starting TestServiceDoctor using Java 17.0.9 with PID 35862 (started by joao in /home/joao/residencia18/java-avancado/Aula-13/Project-Voll/Voll.med)
+2024-04-17T23:51:14.282-03:00  INFO 35862 --- [main] b.c.c.V.api.services.TestServiceDoctor   : The following 1 profile is active: "test"
+2024-04-17T23:51:14.422-03:00  INFO 35862 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-17T23:51:14.443-03:00  INFO 35862 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 20 ms. Found 4 JPA repository interfaces.
+2024-04-17T23:51:15.263-03:00  INFO 35862 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2024-04-17T23:51:15.349-03:00  INFO 35862 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@33059d8d
+2024-04-17T23:51:15.349-03:00  INFO 35862 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2024-04-17T23:51:15.373-03:00  INFO 35862 --- [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/vollmed_api_test (MySQL 8.0)
+2024-04-17T23:51:15.414-03:00  INFO 35862 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.024s)
+2024-04-17T23:51:15.439-03:00  INFO 35862 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `vollmed_api_test`: 8
+2024-04-17T23:51:15.441-03:00  INFO 35862 --- [main] o.f.core.internal.command.DbMigrate      : Schema `vollmed_api_test` is up to date. No migration necessary.
+2024-04-17T23:51:15.522-03:00  INFO 35862 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-17T23:51:15.531-03:00  INFO 35862 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-17T23:51:15.545-03:00  INFO 35862 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-17T23:51:15.875-03:00  INFO 35862 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-17T23:51:15.876-03:00  INFO 35862 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-17T23:51:16.339-03:00  INFO 35862 --- [main] b.c.c.V.api.services.TestServiceDoctor   : Started TestServiceDoctor in 2.096 seconds (process running for 14.979)
+2024-04-17T23:51:17.007-03:00  INFO 35862 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.cepedi.Voll.api.services.TestServiceAppointment]: TestServiceAppointment does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-04-17T23:51:17.055-03:00  INFO 35862 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.cepedi.Voll.api.Application for test class br.com.cepedi.Voll.api.services.TestServiceAppointment
+2024-04-17T23:51:17.840-03:00  INFO 35862 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2024-04-17T23:51:17.952-03:00  INFO 35862 --- [main] b.c.c.V.a.s.TestServiceAppointment       : Starting TestServiceAppointment using Java 17.0.9 with PID 35862 (started by joao in /home/joao/residencia18/java-avancado/Aula-13/Project-Voll/Voll.med)
+2024-04-17T23:51:17.953-03:00  INFO 35862 --- [main] b.c.c.V.a.s.TestServiceAppointment       : The following 1 profile is active: "test"
+2024-04-17T23:51:18.284-03:00  INFO 35862 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-17T23:51:18.336-03:00  INFO 35862 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 50 ms. Found 4 JPA repository interfaces.
+2024-04-17T23:51:18.592-03:00  INFO 35862 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2024-04-17T23:51:18.644-03:00  INFO 35862 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@297f6bc1
+2024-04-17T23:51:18.645-03:00  INFO 35862 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2024-04-17T23:51:18.669-03:00  INFO 35862 --- [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/vollmed_api_test (MySQL 8.0)
+2024-04-17T23:51:18.701-03:00  INFO 35862 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.019s)
+2024-04-17T23:51:18.728-03:00  INFO 35862 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `vollmed_api_test`: 8
+2024-04-17T23:51:18.730-03:00  INFO 35862 --- [main] o.f.core.internal.command.DbMigrate      : Schema `vollmed_api_test` is up to date. No migration necessary.
+2024-04-17T23:51:18.800-03:00  INFO 35862 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-17T23:51:18.808-03:00  INFO 35862 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-17T23:51:18.820-03:00  INFO 35862 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-17T23:51:19.187-03:00  INFO 35862 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-17T23:51:19.188-03:00  INFO 35862 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-17T23:51:19.897-03:00  INFO 35862 --- [main] b.c.c.V.a.s.TestServiceAppointment       : Started TestServiceAppointment in 2.058 seconds (process running for 18.537)
+2024-04-17T23:51:19.942-03:00  INFO 35862 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.cepedi.Voll.api.services.TestServicePatient]: TestServicePatient does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-04-17T23:51:19.973-03:00  INFO 35862 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.cepedi.Voll.api.Application for test class br.com.cepedi.Voll.api.services.TestServicePatient
+2024-04-17T23:51:19.984-03:00  INFO 35862 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2024-04-17T23:51:20.043-03:00  INFO 35862 --- [main] b.c.c.V.api.services.TestServicePatient  : Starting TestServicePatient using Java 17.0.9 with PID 35862 (started by joao in /home/joao/residencia18/java-avancado/Aula-13/Project-Voll/Voll.med)
+2024-04-17T23:51:20.044-03:00  INFO 35862 --- [main] b.c.c.V.api.services.TestServicePatient  : The following 1 profile is active: "test"
+2024-04-17T23:51:20.242-03:00  INFO 35862 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-17T23:51:20.287-03:00  INFO 35862 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 45 ms. Found 4 JPA repository interfaces.
+2024-04-17T23:51:20.487-03:00  INFO 35862 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2024-04-17T23:51:20.532-03:00  INFO 35862 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5f220f63
+2024-04-17T23:51:20.532-03:00  INFO 35862 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2024-04-17T23:51:20.553-03:00  INFO 35862 --- [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/vollmed_api_test (MySQL 8.0)
+2024-04-17T23:51:20.583-03:00  INFO 35862 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.015s)
+2024-04-17T23:51:20.605-03:00  INFO 35862 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `vollmed_api_test`: 8
+2024-04-17T23:51:20.607-03:00  INFO 35862 --- [main] o.f.core.internal.command.DbMigrate      : Schema `vollmed_api_test` is up to date. No migration necessary.
+2024-04-17T23:51:20.680-03:00  INFO 35862 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-17T23:51:20.686-03:00  INFO 35862 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-17T23:51:20.693-03:00  INFO 35862 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-17T23:51:21.010-03:00  INFO 35862 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-17T23:51:21.011-03:00  INFO 35862 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-17T23:51:21.647-03:00  INFO 35862 --- [main] b.c.c.V.api.services.TestServicePatient  : Started TestServicePatient in 1.663 seconds (process running for 20.286)
+2024-04-17T23:51:22.295-03:00  INFO 35862 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-17T23:51:22.301-03:00  INFO 35862 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-17T23:51:22.309-03:00  INFO 35862 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-17T23:51:22.314-03:00  INFO 35862 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-17T23:51:22.315-03:00  INFO 35862 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2024-04-17T23:51:22.321-03:00  INFO 35862 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2024-04-17T23:51:22.323-03:00  INFO 35862 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-17T23:51:22.323-03:00  INFO 35862 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2024-04-17T23:51:22.328-03:00  INFO 35862 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2024-04-17T23:51:22.330-03:00  INFO 35862 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-17T23:51:22.331-03:00  INFO 35862 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2024-04-17T23:51:22.335-03:00  INFO 35862 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.

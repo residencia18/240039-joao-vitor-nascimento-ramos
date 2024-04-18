@@ -1,6 +1,6 @@
 package br.com.cepedi.Voll.api.model.records.patient.input;
 
-import br.com.cepedi.Voll.api.model.records.address.DataAddress;
+import br.com.cepedi.Voll.api.model.records.address.input.DataRegisterAddress;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
@@ -31,7 +31,7 @@ public record DataRegisterPatient (
         @JsonAlias("address")
         @NotNull(message = "{address.required}")
         @Valid
-        DataAddress dataAddress
+        DataRegisterAddress dataAddress
 
         )
 

@@ -3,7 +3,7 @@ package br.com.cepedi.Voll.api.services.doctor;
 import br.com.cepedi.Voll.api.model.entitys.Doctor;
 import br.com.cepedi.Voll.api.model.records.doctor.input.DataRegisterDoctor;
 import br.com.cepedi.Voll.api.model.records.doctor.input.DataUpdateDoctor;
-import br.com.cepedi.Voll.api.model.records.doctor.output.DataDetailsDoctor;
+import br.com.cepedi.Voll.api.model.records.doctor.details.DataDetailsDoctor;
 import br.com.cepedi.Voll.api.repository.DoctorRepository;
 import br.com.cepedi.Voll.api.services.doctor.validations.disabled.ValidationDisabledDoctor;
 import br.com.cepedi.Voll.api.services.doctor.validations.update.ValidationUpdateDoctor;

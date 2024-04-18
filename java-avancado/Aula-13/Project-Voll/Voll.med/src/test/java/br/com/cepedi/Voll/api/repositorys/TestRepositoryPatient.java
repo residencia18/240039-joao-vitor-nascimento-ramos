@@ -3,7 +3,7 @@ package br.com.cepedi.Voll.api.repositorys;
 
 import br.com.cepedi.Voll.api.faker.PtBRCpfIdNumber;
 import br.com.cepedi.Voll.api.model.entitys.Patient;
-import br.com.cepedi.Voll.api.model.records.address.DataAddress;
+import br.com.cepedi.Voll.api.model.records.address.input.DataRegisterAddress;
 import br.com.cepedi.Voll.api.model.records.patient.input.DataRegisterPatient;
 import br.com.cepedi.Voll.api.repository.PatientRepository;
 import com.github.javafaker.Faker;
@@ -137,8 +137,8 @@ public class TestRepositoryPatient {
     }
 
 
-    private DataAddress createAddressData() {
-        return new DataAddress(
+    private DataRegisterAddress createAddressData() {
+        return new DataRegisterAddress(
                 faker.address().streetName(),
                 faker.address().city(),
                 faker.number().digits(8),

@@ -1,4 +1,4 @@
-package br.com.cepedi.Voll.api.model.records.address;
+package br.com.cepedi.Voll.api.model.records.address.input;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Pattern;
 
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public record DataAddress(
+public record DataRegisterAddress(
         @JsonAlias("publicPlace")
         @NotBlank(message = "{publicPlace.required}")
         String publicPlace,

@@ -1,8 +1,6 @@
-package br.com.cepedi.Voll.api.model;
+package br.com.cepedi.Voll.api.model.entitys;
 
-import br.com.cepedi.Voll.api.model.entitys.Address;
-import br.com.cepedi.Voll.api.model.entitys.Doctor;
-import br.com.cepedi.Voll.api.model.records.address.DataAddress;
+import br.com.cepedi.Voll.api.model.records.address.input.DataRegisterAddress;
 import br.com.cepedi.Voll.api.model.records.doctor.input.DataRegisterDoctor;
 import br.com.cepedi.Voll.api.model.records.doctor.input.DataUpdateDoctor;
 import br.com.cepedi.Voll.api.model.records.doctor.input.Specialty;
@@ -11,12 +9,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("Test entity doctor")
 public class TestDoctor {
 
     @Test
     @DisplayName("Create Doctor")
     public void createDoctor() {
-        DataRegisterDoctor data = new DataRegisterDoctor("Dr. John Doe", "john@example.com", "123456789", "12345", Specialty.DERMATOLOGY, new DataAddress("Rua Teste", "Bairro Teste", "12345-678", "City Test", "UF Test", "Complement Test", "123"));
+        DataRegisterDoctor data = new DataRegisterDoctor("Dr. John Doe", "john@example.com", "123456789", "12345", Specialty.DERMATOLOGY, new DataRegisterAddress("Rua Teste", "Bairro Teste", "12345-678", "City Test", "UF Test", "Complement Test", "123"));
         Doctor doctor = new Doctor(data);
         assertEquals("Dr. John Doe", doctor.getName());
         assertEquals("john@example.com", doctor.getEmail());
@@ -36,9 +35,9 @@ public class TestDoctor {
     @Test
     @DisplayName("Update Doctor")
     public void updateDoctor() {
-        DataRegisterDoctor dataRegister = new DataRegisterDoctor("Dr. John Doe", "john@example.com", "123456789", "12345", Specialty.DERMATOLOGY, new DataAddress("Rua Teste", "Bairro Teste", "12345-678", "City Test", "UF Test", "Complement Test", "123"));
+        DataRegisterDoctor dataRegister = new DataRegisterDoctor("Dr. John Doe", "john@example.com", "123456789", "12345", Specialty.DERMATOLOGY, new DataRegisterAddress("Rua Teste", "Bairro Teste", "12345-678", "City Test", "UF Test", "Complement Test", "123"));
         Doctor doctor = new Doctor(dataRegister);
-        DataUpdateDoctor data = new DataUpdateDoctor(1L, "Dr. Jane Doe", "jane@example.com", "987654321", new DataAddress("Rua Nova", "Novo Bairro", "87654-321", "New City", "New UF", "New Complement", "456"));
+        DataUpdateDoctor data = new DataUpdateDoctor(1L, "Dr. Jane Doe", "jane@example.com", "987654321", new DataRegisterAddress("Rua Nova", "Novo Bairro", "87654-321", "New City", "New UF", "New Complement", "456"));
         doctor.updateData(data);
         assertEquals("Dr. Jane Doe", doctor.getName());
         assertEquals("987654321", doctor.getPhoneNumber());
@@ -63,7 +62,7 @@ public class TestDoctor {
     @DisplayName("Test getters, setters, and toString")
     public void testGettersSettersAndToString() {
         // Test data
-        DataRegisterDoctor registerData = new DataRegisterDoctor("Dr. John Doe", "john@example.com", "123456789", "12345", Specialty.DERMATOLOGY, new DataAddress("Rua Teste", "Bairro Teste", "12345-678", "City Test", "UF Test", "Complement Test", "123"));
+        DataRegisterDoctor registerData = new DataRegisterDoctor("Dr. John Doe", "john@example.com", "123456789", "12345", Specialty.DERMATOLOGY, new DataRegisterAddress("Rua Teste", "Bairro Teste", "12345-678", "City Test", "UF Test", "Complement Test", "123"));
 
         // Creating a doctor from registration data
         Doctor doctor = new Doctor(registerData);
@@ -93,7 +92,7 @@ public class TestDoctor {
         doctor.setPhoneNumber("987654321");
         doctor.setCrm("54321");
         doctor.setSpecialty(Specialty.DERMATOLOGY);
-        DataAddress newAddress = new DataAddress("New St", "New Neighborhood", "54321-876", "New City", "New UF", "New Complement", "456");
+        DataRegisterAddress newAddress = new DataRegisterAddress("New St", "New Neighborhood", "54321-876", "New City", "New UF", "New Complement", "456");
         doctor.setAddress(new Address(newAddress));
 
         // Test toString
@@ -105,11 +104,11 @@ public class TestDoctor {
     @DisplayName("Test equals based on ID")
     public void testEqualsBasedOnId() {
         // Creating doctors with the same ID
-        Doctor doctor1 = new Doctor(1L, "Dr. John Doe", "john@example.com", "123456789", "12345", Specialty.DERMATOLOGY, new Address(new DataAddress("Rua Teste", "Bairro Teste", "12345-678", "City Test", "UF Test", "Complement Test", "123")), true);
-        Doctor doctor2 = new Doctor(1L, "Dr. Jane Smith", "jane@example.com", "987654321", "54321", Specialty.DERMATOLOGY, new Address(new DataAddress("New St", "New Neighborhood", "54321-876", "New City", "New UF", "New Complement", "456")), true);
+        Doctor doctor1 = new Doctor(1L, "Dr. John Doe", "john@example.com", "123456789", "12345", Specialty.DERMATOLOGY, new Address(new DataRegisterAddress("Rua Teste", "Bairro Teste", "12345-678", "City Test", "UF Test", "Complement Test", "123")), true);
+        Doctor doctor2 = new Doctor(1L, "Dr. Jane Smith", "jane@example.com", "987654321", "54321", Specialty.DERMATOLOGY, new Address(new DataRegisterAddress("New St", "New Neighborhood", "54321-876", "New City", "New UF", "New Complement", "456")), true);
 
         // Creating a doctor with a different ID
-        Doctor doctor3 = new Doctor(2L, "Dr. John Doe", "john@example.com", "123456789", "12345", Specialty.DERMATOLOGY, new Address(new DataAddress("Rua Teste", "Bairro Teste", "12345-678", "City Test", "UF Test", "Complement Test", "123")), true);
+        Doctor doctor3 = new Doctor(2L, "Dr. John Doe", "john@example.com", "123456789", "12345", Specialty.DERMATOLOGY, new Address(new DataRegisterAddress("Rua Teste", "Bairro Teste", "12345-678", "City Test", "UF Test", "Complement Test", "123")), true);
 
         // Testing equals method
         assertTrue(doctor1.equals(doctor2)); // Reflexivity
@@ -121,8 +120,8 @@ public class TestDoctor {
     @DisplayName("Test hashCode based on ID")
     public void testHashCodeBasedOnId() {
         // Creating doctors with the same ID
-        Doctor doctor1 = new Doctor(1L, "Dr. John Doe", "john@example.com", "123456789", "12345", Specialty.DERMATOLOGY, new Address(new DataAddress("Rua Teste", "Bairro Teste", "12345-678", "City Test", "UF Test", "Complement Test", "123")), true);
-        Doctor doctor2 = new Doctor(1L, "Dr. Jane Smith", "jane@example.com", "987654321", "54321", Specialty.DERMATOLOGY, new Address(new DataAddress("New St", "New Neighborhood", "54321-876", "New City", "New UF", "New Complement", "456")), true);
+        Doctor doctor1 = new Doctor(1L, "Dr. John Doe", "john@example.com", "123456789", "12345", Specialty.DERMATOLOGY, new Address(new DataRegisterAddress("Rua Teste", "Bairro Teste", "12345-678", "City Test", "UF Test", "Complement Test", "123")), true);
+        Doctor doctor2 = new Doctor(1L, "Dr. Jane Smith", "jane@example.com", "987654321", "54321", Specialty.DERMATOLOGY, new Address(new DataRegisterAddress("New St", "New Neighborhood", "54321-876", "New City", "New UF", "New Complement", "456")), true);
 
         // Testing hashCode method
         assertEquals(doctor1.hashCode(), doctor2.hashCode()); // Consistency
@@ -132,8 +131,8 @@ public class TestDoctor {
     @DisplayName("Test equals")
     public void testEquals() {
         // Creating doctors with the same ID
-        Doctor doctor1 = new Doctor(1L, "Dr. John Doe", "john@example.com", "123456789", "12345", Specialty.DERMATOLOGY, new Address(new DataAddress("Rua Teste", "Bairro Teste", "12345-678", "City Test", "UF Test", "Complement Test", "123")), true);
-        Doctor doctor2 = new Doctor(1L, "Dr. Jane Smith", "jane@example.com", "987654321", "54321", Specialty.DERMATOLOGY, new Address(new DataAddress("New St", "New Neighborhood", "54321-876", "New City", "New UF", "New Complement", "456")), true);
+        Doctor doctor1 = new Doctor(1L, "Dr. John Doe", "john@example.com", "123456789", "12345", Specialty.DERMATOLOGY, new Address(new DataRegisterAddress("Rua Teste", "Bairro Teste", "12345-678", "City Test", "UF Test", "Complement Test", "123")), true);
+        Doctor doctor2 = new Doctor(1L, "Dr. Jane Smith", "jane@example.com", "987654321", "54321", Specialty.DERMATOLOGY, new Address(new DataRegisterAddress("New St", "New Neighborhood", "54321-876", "New City", "New UF", "New Complement", "456")), true);
 
         // Testing equals method
         assertTrue(doctor1.equals(doctor2)); // Consistency

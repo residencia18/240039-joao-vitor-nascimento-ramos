@@ -5,7 +5,7 @@ import br.com.cepedi.Voll.api.model.entitys.Doctor;
 import br.com.cepedi.Voll.api.model.entitys.Patient;
 import br.com.cepedi.Voll.api.model.records.appointment.input.DataRegisterAppointment;
 import br.com.cepedi.Voll.api.model.records.appointment.input.DataCancelAppointment;
-import br.com.cepedi.Voll.api.model.records.appointment.output.DataDetailsAppointment;
+import br.com.cepedi.Voll.api.model.records.appointment.details.DataDetailsAppointment;
 import br.com.cepedi.Voll.api.repository.AppointmentRepository;
 import br.com.cepedi.Voll.api.repository.DoctorRepository;
 import br.com.cepedi.Voll.api.repository.PatientRepository;

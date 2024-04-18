@@ -1,6 +1,6 @@
 package br.com.cepedi.Voll.api.model.record.patient.input;
 
-import br.com.cepedi.Voll.api.model.records.address.DataAddress;
+import br.com.cepedi.Voll.api.model.records.address.input.DataRegisterAddress;
 import br.com.cepedi.Voll.api.model.records.patient.input.DataRegisterPatient;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
@@ -26,7 +26,7 @@ public class TestDataRegisterPatient {
                 "johndoe@example.com",
                 "123456789",
                 "123.456.789-01",
-                new DataAddress(
+                new DataRegisterAddress(
                         "Rua Teste",
                         "Bairro Teste",
                         "12345678",
@@ -64,7 +64,7 @@ public class TestDataRegisterPatient {
                 "invalidemail",
                 "123456789",
                 "123.456.789-01",
-                new DataAddress(
+                new DataRegisterAddress(
                         "Rua Teste",
                         "Bairro Teste",
                         "12345678",

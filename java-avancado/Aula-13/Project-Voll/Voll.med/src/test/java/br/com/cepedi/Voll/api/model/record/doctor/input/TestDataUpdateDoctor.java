@@ -1,6 +1,6 @@
 package br.com.cepedi.Voll.api.model.record.doctor.input;
 
-import br.com.cepedi.Voll.api.model.records.address.DataAddress;
+import br.com.cepedi.Voll.api.model.records.address.input.DataRegisterAddress;
 import br.com.cepedi.Voll.api.model.records.doctor.input.DataUpdateDoctor;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
@@ -26,7 +26,7 @@ public class TestDataUpdateDoctor {
                 "Dr. John Doe",
                 "johndoe@example.com",
                 "123456789",
-                new DataAddress(
+                new DataRegisterAddress(
                         "Rua Teste",
                         "Bairro Teste",
                         "12345678",
@@ -64,7 +64,7 @@ public class TestDataUpdateDoctor {
                 "Dr. John Doe",
                 "invalidemail",
                 "123456789",
-                new DataAddress(
+                new DataRegisterAddress(
                         "Rua Teste",
                         "Bairro Teste",
                         "12345678",

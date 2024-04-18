@@ -4,7 +4,7 @@ package br.com.cepedi.Voll.api.controller.V2;
 import br.com.cepedi.Voll.api.controller.V1.PatientControllerV1;
 import br.com.cepedi.Voll.api.model.records.patient.input.DataRegisterPatient;
 import br.com.cepedi.Voll.api.model.records.patient.input.DataUpdatePatient;
-import br.com.cepedi.Voll.api.model.records.patient.output.DataDetailsPatient;
+import br.com.cepedi.Voll.api.model.records.patient.details.DataDetailsPatient;
 import br.com.cepedi.Voll.api.services.patient.PatientService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;

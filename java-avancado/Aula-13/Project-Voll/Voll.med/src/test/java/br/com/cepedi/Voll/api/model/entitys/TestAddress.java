@@ -1,18 +1,19 @@
-package br.com.cepedi.Voll.api.model;
+package br.com.cepedi.Voll.api.model.entitys;
 
-import br.com.cepedi.Voll.api.model.entitys.Address;
-import br.com.cepedi.Voll.api.model.records.address.DataAddress;
+
+import br.com.cepedi.Voll.api.model.records.address.input.DataRegisterAddress;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@DisplayName("Test entity address")
 public class TestAddress {
     @Test
     @DisplayName("Update public place")
     public void updatePublicPlace() {
         Address address = new Address();
-        DataAddress data = new DataAddress("Rua Teste", "", "", "", "", "", "");
+        DataRegisterAddress data = new DataRegisterAddress("Rua Teste", "", "", "", "", "", "");
         address.updateData(data);
         assertEquals("Rua Teste", address.getPublicPlace());
     }
@@ -21,7 +22,7 @@ public class TestAddress {
     @DisplayName("Update neighborhood")
     public void updateNeighborhood() {
         Address address = new Address();
-        DataAddress data = new DataAddress("", "Bairro Teste", "", "", "", "", "");
+        DataRegisterAddress data = new DataRegisterAddress("", "Bairro Teste", "", "", "", "", "");
         address.updateData(data);
         assertEquals("Bairro Teste", address.getNeighborhood());
     }
@@ -30,7 +31,7 @@ public class TestAddress {
     @DisplayName("Update CEP")
     public void updateCEP() {
         Address address = new Address();
-        DataAddress data = new DataAddress("", "", "12345678", "", "", "", "");
+        DataRegisterAddress data = new DataRegisterAddress("", "", "12345678", "", "", "", "");
         address.updateData(data);
         assertEquals("12345678", address.getCep());
     }
@@ -39,7 +40,7 @@ public class TestAddress {
     @DisplayName("Update city")
     public void updateCity() {
         Address address = new Address();
-        DataAddress data = new DataAddress("", "", "", "City Test", "", "", "");
+        DataRegisterAddress data = new DataRegisterAddress("", "", "", "City Test", "", "", "");
         address.updateData(data);
         assertEquals("City Test", address.getCity());
     }
@@ -48,7 +49,7 @@ public class TestAddress {
     @DisplayName("Update UF")
     public void updateUF() {
         Address address = new Address();
-        DataAddress data = new DataAddress("", "", "", "", "UF Test", "", "");
+        DataRegisterAddress data = new DataRegisterAddress("", "", "", "", "UF Test", "", "");
         address.updateData(data);
         assertEquals("UF Test", address.getUf());
     }
@@ -57,7 +58,7 @@ public class TestAddress {
     @DisplayName("Update complement")
     public void updateComplement() {
         Address address = new Address();
-        DataAddress data = new DataAddress("", "", "", "", "", "Complement Test", "");
+        DataRegisterAddress data = new DataRegisterAddress("", "", "", "", "", "Complement Test", "");
         address.updateData(data);
         assertEquals("Complement Test", address.getComplement());
     }
@@ -66,7 +67,7 @@ public class TestAddress {
     @DisplayName("Update number")
     public void updateNumber() {
         Address address = new Address();
-        DataAddress data = new DataAddress("", "", "", "", "", "", "123");
+        DataRegisterAddress data = new DataRegisterAddress("", "", "", "", "", "", "123");
         address.updateData(data);
         assertEquals("123", address.getNumber());
     }
@@ -75,7 +76,7 @@ public class TestAddress {
     @DisplayName("Update all fields")
     public void updateAllFields() {
         Address address = new Address();
-        DataAddress data = new DataAddress("Rua Teste", "Bairro Teste", "12345678", "City Test", "UF Test", "Complement Test", "123");
+        DataRegisterAddress data = new DataRegisterAddress("Rua Teste", "Bairro Teste", "12345678", "City Test", "UF Test", "Complement Test", "123");
         address.updateData(data);
 
         assertEquals("Rua Teste", address.getPublicPlace());
@@ -91,7 +92,7 @@ public class TestAddress {
     @DisplayName("Update with null data")
     public void updateWithNullData() {
         Address address = new Address();
-        DataAddress data = new DataAddress(null, null, null, null, null, null, null);
+        DataRegisterAddress data = new DataRegisterAddress(null, null, null, null, null, null, null);
         address.updateData(data);
 
         assertEquals(null, address.getPublicPlace());
@@ -107,7 +108,7 @@ public class TestAddress {
     @DisplayName("Update with empty data")
     public void updateWithEmptyData() {
         Address address = new Address();
-        DataAddress data = new DataAddress("", "", "", "", "", "", "");
+        DataRegisterAddress data = new DataRegisterAddress("", "", "", "", "", "", "");
         address.updateData(data);
 
         assertEquals("", address.getPublicPlace());

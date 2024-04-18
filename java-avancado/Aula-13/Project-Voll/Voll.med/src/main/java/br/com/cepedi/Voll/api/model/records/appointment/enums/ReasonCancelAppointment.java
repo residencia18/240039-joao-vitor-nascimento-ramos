@@ -1,4 +1,4 @@
-package br.com.cepedi.Voll.api.model.records.appointment.input;
+package br.com.cepedi.Voll.api.model.records.appointment.enums;
 
 public enum ReasonCancelAppointment {
 

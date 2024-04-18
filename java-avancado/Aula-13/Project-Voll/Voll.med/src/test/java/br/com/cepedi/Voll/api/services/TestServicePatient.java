@@ -2,10 +2,10 @@ package br.com.cepedi.Voll.api.services;
 
 import br.com.cepedi.Voll.api.faker.PtBRCpfIdNumber;
 import br.com.cepedi.Voll.api.model.entitys.Patient;
-import br.com.cepedi.Voll.api.model.records.address.DataAddress;
+import br.com.cepedi.Voll.api.model.records.address.input.DataRegisterAddress;
 import br.com.cepedi.Voll.api.model.records.patient.input.DataRegisterPatient;
 import br.com.cepedi.Voll.api.model.records.patient.input.DataUpdatePatient;
-import br.com.cepedi.Voll.api.model.records.patient.output.DataDetailsPatient;
+import br.com.cepedi.Voll.api.model.records.patient.details.DataDetailsPatient;
 import br.com.cepedi.Voll.api.repository.PatientRepository;
 import br.com.cepedi.Voll.api.services.patient.PatientService;
 import br.com.cepedi.Voll.api.services.patient.validations.disabled.ValidationDisabledPatient;
@@ -143,7 +143,7 @@ public class TestServicePatient {
     @DisplayName("Update patient - Patient does not exist")
     public void shouldThrowExceptionWhenUpdatingNonExistingPatient() {
         // Given
-        DataUpdatePatient data = new DataUpdatePatient(99999L, "John Doe", "123456789", new DataAddress("Street", "City", "12345", "State", "XX", null, null));
+        DataUpdatePatient data = new DataUpdatePatient(99999L, "John Doe", "123456789", new DataRegisterAddress("Street", "City", "12345", "State", "XX", null, null));
 
         // When
         assertThrows(ValidationException.class, () -> patientService.update(data));
@@ -160,7 +160,7 @@ public class TestServicePatient {
 
         // Agora, crie os dados de atualização
         DataUpdatePatient updateData = new DataUpdatePatient(patientId, "John Doe", null,
-                new DataAddress("Street", "City", "12345", "State", "XX", null, null));
+                new DataRegisterAddress("Street", "City", "12345", "State", "XX", null, null));
 
 
         // When
@@ -168,7 +168,7 @@ public class TestServicePatient {
 
         // Then
         assertEquals(updateData.name(), updatedPatientDetails.name());
-        assertEquals(updateData.dataAddress().cep(), updatedPatientDetails.address().getCep());
+        assertEquals(updateData.dataAddress().cep(), updatedPatientDetails.address().cep());
     }
 
 
@@ -186,8 +186,8 @@ public class TestServicePatient {
         return cpfGenerator.getValidFormattedCpf(faker);
     }
 
-    private DataAddress createAddressData() {
-        return new DataAddress(
+    private DataRegisterAddress createAddressData() {
+        return new DataRegisterAddress(
                 faker.address().streetName(),
                 faker.address().city(),
                 faker.number().digits(8),

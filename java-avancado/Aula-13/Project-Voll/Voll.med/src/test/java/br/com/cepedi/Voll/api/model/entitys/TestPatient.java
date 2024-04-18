@@ -1,8 +1,6 @@
-package br.com.cepedi.Voll.api.model;
+package br.com.cepedi.Voll.api.model.entitys;
 
-import br.com.cepedi.Voll.api.model.entitys.Address;
-import br.com.cepedi.Voll.api.model.entitys.Patient;
-import br.com.cepedi.Voll.api.model.records.address.DataAddress;
+import br.com.cepedi.Voll.api.model.records.address.input.DataRegisterAddress;
 import br.com.cepedi.Voll.api.model.records.patient.input.DataRegisterPatient;
 import br.com.cepedi.Voll.api.model.records.patient.input.DataUpdatePatient;
 import org.junit.jupiter.api.DisplayName;
@@ -10,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("Test entity patient")
 public class TestPatient {
 
     @Test
@@ -21,7 +20,7 @@ public class TestPatient {
                 "john@example.com",
                 "123456789",
                 "123.456.789-10",
-                new DataAddress("123 Main St", "City", "12345", "State", "XX", null, null)
+                new DataRegisterAddress("123 Main St", "City", "12345", "State", "XX", null, null)
         );
 
         // When
@@ -46,7 +45,7 @@ public class TestPatient {
                 1L,
                 "Jane Smith",
                 "987654321",
-                new DataAddress("456 Oak St", "Town", "54321888", "State", "YY", null, null)
+                new DataRegisterAddress("456 Oak St", "Town", "54321888", "State", "YY", null, null)
         );
 
         // When
@@ -84,7 +83,7 @@ public class TestPatient {
                 "john@example.com",
                 "123456789",
                 "123.456.789-10",
-                new DataAddress("123 Main St", "City", "12345", "State", "XX", null, null)
+                new DataRegisterAddress("123 Main St", "City", "12345", "State", "XX", null, null)
         );
 
         // Create patient from registration data
@@ -109,7 +108,7 @@ public class TestPatient {
         patient.setPhoneNumber("987654321");
         patient.setCpf("987.654.321-10");
         patient.setActivated(false);
-        DataAddress newAddress = new DataAddress("456 Oak St", "Town", "54321888", "State", "YY", null, null);
+        DataRegisterAddress newAddress = new DataRegisterAddress("456 Oak St", "Town", "54321888", "State", "YY", null, null);
         patient.setAddress(new Address((newAddress)));
 
         // Test toString
@@ -121,11 +120,11 @@ public class TestPatient {
     @DisplayName("Test equals based on ID")
     public void testEqualsBasedOnId() {
         // Creating patients with the same ID
-        Patient patient1 = new Patient(1L, "John Doe", "john@example.com", "123456789", "123.456.789-10", new Address(new DataAddress("123 Main St", "City", "12345", "State", "XX", "Complement", "1")), true);
-        Patient patient2 = new Patient(1L, "Jane Smith", "jane@example.com", "987654321", "987.654.321-10", new Address(new DataAddress("123 Main St", "City", "12345", "State", "XX", "Complement", "1")), false);
+        Patient patient1 = new Patient(1L, "John Doe", "john@example.com", "123456789", "123.456.789-10", new Address(new DataRegisterAddress("123 Main St", "City", "12345", "State", "XX", "Complement", "1")), true);
+        Patient patient2 = new Patient(1L, "Jane Smith", "jane@example.com", "987654321", "987.654.321-10", new Address(new DataRegisterAddress("123 Main St", "City", "12345", "State", "XX", "Complement", "1")), false);
 
         // Creating a patient with a different ID
-        Patient patient3 = new Patient(2L, "John Doe", "john@example.com", "123456789", "123.456.789-10", new Address(new DataAddress("123 Main St", "City", "12345", "State", "XX", "Complement", "1")), true);
+        Patient patient3 = new Patient(2L, "John Doe", "john@example.com", "123456789", "123.456.789-10", new Address(new DataRegisterAddress("123 Main St", "City", "12345", "State", "XX", "Complement", "1")), true);
 
         // Testing equals method
         assertTrue(patient1.equals(patient2)); // Reflexivity
@@ -138,8 +137,8 @@ public class TestPatient {
     @DisplayName("Test hashCode based on ID")
     public void testHashCodeBasedOnId() {
         // Creating patients with the same ID
-        Patient patient1 = new Patient(1L, "John Doe", "john@example.com", "123456789", "123.456.789-10", new Address(new DataAddress("123 Main St", "City", "12345", "State", "XX", "Complement", "1")), true);
-        Patient patient2 = new Patient(1L, "Jane Smith", "jane@example.com", "987654321", "987.654.321-10", new Address(new DataAddress("123 Main St", "City", "12345", "State", "XX", "Complement", "1")), false);
+        Patient patient1 = new Patient(1L, "John Doe", "john@example.com", "123456789", "123.456.789-10", new Address(new DataRegisterAddress("123 Main St", "City", "12345", "State", "XX", "Complement", "1")), true);
+        Patient patient2 = new Patient(1L, "Jane Smith", "jane@example.com", "987654321", "987.654.321-10", new Address(new DataRegisterAddress("123 Main St", "City", "12345", "State", "XX", "Complement", "1")), false);
 
         // Testing hashCode method
         assertEquals(patient1.hashCode(), patient2.hashCode()); // Consistency
@@ -149,8 +148,8 @@ public class TestPatient {
     @DisplayName("Test equals")
     public void testEquals() {
         // Creating patients with the same ID
-        Patient patient1 = new Patient(1L, "John Doe", "john@example.com", "123456789", "123.456.789-10", new Address(new DataAddress("123 Main St", "City", "12345", "State", "XX", "Complement", "1")), true);
-        Patient patient2 = new Patient(1L, "Jane Smith", "jane@example.com", "987654321", "987.654.321-10", new Address(new DataAddress("123 Main St", "City", "12345", "State", "XX", "Complement", "1")), false);
+        Patient patient1 = new Patient(1L, "John Doe", "john@example.com", "123456789", "123.456.789-10", new Address(new DataRegisterAddress("123 Main St", "City", "12345", "State", "XX", "Complement", "1")), true);
+        Patient patient2 = new Patient(1L, "Jane Smith", "jane@example.com", "987654321", "987.654.321-10", new Address(new DataRegisterAddress("123 Main St", "City", "12345", "State", "XX", "Complement", "1")), false);
 
         // Testing hashCode method
         assertTrue(patient1.equals(patient2)); // Consistency
@@ -160,7 +159,7 @@ public class TestPatient {
     @DisplayName("Test updateData method with null name and null address")
     public void testUpdateDataWithNullNameAndNullAddress() {
         // Creating a patient with initial data
-        Patient patient = new Patient(1L, "John Doe", "john@example.com", "123456789", "123.456.789-10", new Address(new DataAddress("123 Main St", "City", "12345", "City", "XX", "Complement", "1")), true);
+        Patient patient = new Patient(1L, "John Doe", "john@example.com", "123456789", "123.456.789-10", new Address(new DataRegisterAddress("123 Main St", "City", "12345", "City", "XX", "Complement", "1")), true);
 
         // Creating DataUpdatePatient with null name and null dataAddress
         DataUpdatePatient data = new DataUpdatePatient(1L,null,null,null);
@@ -183,8 +182,8 @@ public class TestPatient {
     @DisplayName("Test equals: Different IDs should return false")
     public void testEqualsFalse() {
         // Creating patients with different IDs
-        Patient patient1 = new Patient(1L, "John Doe", "john@example.com", "123456789", "123.456.789-10", new Address(new DataAddress("123 Main St", "City", "12345", "State", "XX", "Complement", "1")), true);
-        Patient patient2 = new Patient(2L, "John Doe", "john@example.com", "123456789", "123.456.789-10", new Address(new DataAddress("123 Main St", "City", "12345", "State", "XX", "Complement", "1")), true);
+        Patient patient1 = new Patient(1L, "John Doe", "john@example.com", "123456789", "123.456.789-10", new Address(new DataRegisterAddress("123 Main St", "City", "12345", "State", "XX", "Complement", "1")), true);
+        Patient patient2 = new Patient(2L, "John Doe", "john@example.com", "123456789", "123.456.789-10", new Address(new DataRegisterAddress("123 Main St", "City", "12345", "State", "XX", "Complement", "1")), true);
 
         // Testing equals method
         assertFalse(patient1.equals(patient2)); // Different IDs should return false

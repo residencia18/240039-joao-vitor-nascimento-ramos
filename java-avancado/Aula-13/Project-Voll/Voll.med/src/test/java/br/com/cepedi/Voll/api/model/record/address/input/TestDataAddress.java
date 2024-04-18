@@ -1,6 +1,6 @@
 package br.com.cepedi.Voll.api.model.record.address.input;
 
-import br.com.cepedi.Voll.api.model.records.address.DataAddress;
+import br.com.cepedi.Voll.api.model.records.address.input.DataRegisterAddress;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
@@ -21,7 +21,7 @@ public class TestDataAddress {
     @Test
     @DisplayName("Test valid DataAddress")
     public void testValidDataAddress() {
-        DataAddress dataAddress = new DataAddress(
+        DataRegisterAddress dataAddress = new DataRegisterAddress(
                 "Rua Teste",
                 "Bairro Teste",
                 "12345678",
@@ -31,14 +31,14 @@ public class TestDataAddress {
                 "123"
         );
 
-        Set<ConstraintViolation<DataAddress>> violations = validator.validate(dataAddress);
+        Set<ConstraintViolation<DataRegisterAddress>> violations = validator.validate(dataAddress);
         assertTrue(violations.isEmpty(), "Expected no violations, but found some.");
     }
 
     @Test
     @DisplayName("Test invalid DataAddress with missing required fields")
     public void testInvalidDataAddressMissingRequiredFields() {
-        DataAddress dataAddress = new DataAddress(
+        DataRegisterAddress dataAddress = new DataRegisterAddress(
                 null,
                 null,
                 null,
@@ -48,14 +48,14 @@ public class TestDataAddress {
                 null
         );
 
-        Set<ConstraintViolation<DataAddress>> violations = validator.validate(dataAddress);
+        Set<ConstraintViolation<DataRegisterAddress>> violations = validator.validate(dataAddress);
         assertTrue(!violations.isEmpty(), "Expected violations, but found none.");
     }
 
     @Test
     @DisplayName("Test invalid DataAddress with invalid CEP")
     public void testInvalidDataAddressInvalidCEP() {
-        DataAddress dataAddress = new DataAddress(
+        DataRegisterAddress dataAddress = new DataRegisterAddress(
                 "Rua Teste",
                 "Bairro Teste",
                 "123",
@@ -65,7 +65,7 @@ public class TestDataAddress {
                 "123"
         );
 
-        Set<ConstraintViolation<DataAddress>> violations = validator.validate(dataAddress);
+        Set<ConstraintViolation<DataRegisterAddress>> violations = validator.validate(dataAddress);
         assertTrue(!violations.isEmpty(), "Expected violations, but found none.");
     }
 
