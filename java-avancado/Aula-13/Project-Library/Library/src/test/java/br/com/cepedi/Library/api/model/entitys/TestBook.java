@@ -27,7 +27,7 @@ public class TestBook {
 
         // Then: We verify if the values were correctly assigned
         assertEquals(name, book.getName());
-        assertEquals(anoPublicacao, book.getAnoPublicacao());
+        assertEquals(anoPublicacao, book.getYearPublication());
         assertEquals(author, book.getAuthor());
         assertEquals(publisher, book.getPublisher());
         assertTrue(book.getActivated());
@@ -87,7 +87,7 @@ public class TestBook {
 
         // Then: We verify if the data was updated correctly
         assertEquals(updatedName, book.getName());
-        assertEquals(updatedAnoPublicacao, book.getAnoPublicacao());
+        assertEquals(updatedAnoPublicacao, book.getYearPublication());
         assertEquals(updatedAuthor, book.getAuthor());
         assertEquals(updatedPublisher, book.getPublisher());
     }
@@ -120,25 +120,6 @@ public class TestBook {
         assertEquals(book1.hashCode(), book2.hashCode()); // Two books with the same ID should have the same hashCode
     }
 
-    @Test
-    @DisplayName("Test toString method")
-    void testToString() {
-        // Given: Book data
-        String name = "Book Name";
-        Integer anoPublicacao = 2022;
-        DataRegisterAuthor dataRegisterAuthor = new DataRegisterAuthor("Author name");
-        Author author = new Author(dataRegisterAuthor);
-
-        DataRegisterPublisher dataRegisterPublisher = new DataRegisterPublisher("Publisher name");
-        Publisher publisher = new Publisher(dataRegisterPublisher);
-
-        // When: We create an instance of Book with valid data
-        Book book = new Book(name, anoPublicacao, author, publisher);
-
-        // Then: We verify if the toString method works correctly
-        assertEquals("Book{id=null, name='Book Name', anoPublicacao=2022, author=Author(id=null, name=Author name), " +
-                "publisher=Publisher(id=null, name=Publisher name), activated=true, loans=[]}", book.toString());
-    }
 
     @Test
     @DisplayName("Test setters")
@@ -164,13 +145,13 @@ public class TestBook {
         Publisher updatedPublisher = new Publisher(dataUpdatePublisher);
 
         book.setName(updatedName);
-        book.setAnoPublicacao(updatedAnoPublicacao);
+        book.setYearPublication(updatedAnoPublicacao);
         book.setAuthor(updatedAuthor);
         book.setPublisher(updatedPublisher);
 
         // Then: We verify if the values were correctly updated
         assertEquals(updatedName, book.getName());
-        assertEquals(updatedAnoPublicacao, book.getAnoPublicacao());
+        assertEquals(updatedAnoPublicacao, book.getYearPublication());
         assertEquals(updatedAuthor, book.getAuthor());
         assertEquals(updatedPublisher, book.getPublisher());
     }

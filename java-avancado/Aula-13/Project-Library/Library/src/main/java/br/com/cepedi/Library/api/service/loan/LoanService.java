@@ -1,10 +1,9 @@
 package br.com.cepedi.Library.api.service.loan;
 
 import br.com.cepedi.Library.api.model.entitys.*;
-import br.com.cepedi.Library.api.model.records.book.output.DataDetailsBook;
 import br.com.cepedi.Library.api.model.records.loan.input.DataRegisterLoan;
 import br.com.cepedi.Library.api.model.records.loan.input.DataUpdateLoan;
-import br.com.cepedi.Library.api.model.records.loan.output.DataDetailsLoan;
+import br.com.cepedi.Library.api.model.records.loan.details.DataDetailsLoan;
 import br.com.cepedi.Library.api.repository.BookRepository;
 import br.com.cepedi.Library.api.repository.ClientRepository;
 import br.com.cepedi.Library.api.repository.LoanRepository;

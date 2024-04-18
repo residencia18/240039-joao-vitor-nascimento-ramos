@@ -4,7 +4,7 @@ package br.com.cepedi.Library.api.controller.V1;
 
 import br.com.cepedi.Library.api.model.records.book.input.DataRegisterBook;
 import br.com.cepedi.Library.api.model.records.book.input.DataUpdateBook;
-import br.com.cepedi.Library.api.model.records.book.output.DataDetailsBook;
+import br.com.cepedi.Library.api.model.records.book.details.DataDetailsBook;
 import br.com.cepedi.Library.api.service.book.BookService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;

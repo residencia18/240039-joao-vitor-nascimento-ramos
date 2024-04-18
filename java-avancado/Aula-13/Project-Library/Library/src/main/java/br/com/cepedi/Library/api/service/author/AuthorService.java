@@ -1,17 +1,10 @@
 package br.com.cepedi.Library.api.service.author;
 
 import br.com.cepedi.Library.api.model.entitys.Author;
-import br.com.cepedi.Library.api.model.entitys.Client;
 import br.com.cepedi.Library.api.model.records.author.input.DataRegisterAuthor;
 import br.com.cepedi.Library.api.model.records.author.input.DataUpdateAuthor;
-import br.com.cepedi.Library.api.model.records.author.output.DataDetailsAuthor;
-import br.com.cepedi.Library.api.model.records.client.input.DataRegisterClient;
-import br.com.cepedi.Library.api.model.records.client.input.DataUpdateClient;
-import br.com.cepedi.Library.api.model.records.client.output.DataDetailsClient;
-import br.com.cepedi.Library.api.model.records.publisher.input.DataRegisterPublisher;
-import br.com.cepedi.Library.api.model.records.publisher.output.DataDetailsPublisher;
+import br.com.cepedi.Library.api.model.records.author.details.DataDetailsAuthor;
 import br.com.cepedi.Library.api.repository.AuthorRepository;
-import br.com.cepedi.Library.api.service.author.validations.disabled.ValidateAuthorAlreadyDisabled;
 import br.com.cepedi.Library.api.service.author.validations.disabled.ValidationDisabledAuthor;
 import br.com.cepedi.Library.api.service.author.validations.update.ValidationUpdateAuthor;
 import jakarta.validation.Valid;
@@ -19,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 

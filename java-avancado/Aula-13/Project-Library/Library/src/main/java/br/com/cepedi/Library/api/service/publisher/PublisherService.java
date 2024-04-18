@@ -3,7 +3,7 @@ package br.com.cepedi.Library.api.service.publisher;
 import br.com.cepedi.Library.api.model.entitys.Publisher;
 import br.com.cepedi.Library.api.model.records.publisher.input.DataRegisterPublisher;
 import br.com.cepedi.Library.api.model.records.publisher.input.DataUpdatePublisher;
-import br.com.cepedi.Library.api.model.records.publisher.output.DataDetailsPublisher;
+import br.com.cepedi.Library.api.model.records.publisher.details.DataDetailsPublisher;
 import br.com.cepedi.Library.api.repository.PublisherRepository;
 import br.com.cepedi.Library.api.service.publisher.validations.disabled.ValidationDisabledPublisher;
 import br.com.cepedi.Library.api.service.publisher.validations.register.ValidationRegisterPublisher;

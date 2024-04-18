@@ -3,7 +3,7 @@ package br.com.cepedi.Library.api.controller.V1;
 
 import br.com.cepedi.Library.api.model.records.loan.input.DataRegisterLoan;
 import br.com.cepedi.Library.api.model.records.loan.input.DataUpdateLoan;
-import br.com.cepedi.Library.api.model.records.loan.output.DataDetailsLoan;
+import br.com.cepedi.Library.api.model.records.loan.details.DataDetailsLoan;
 import br.com.cepedi.Library.api.service.loan.LoanService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;

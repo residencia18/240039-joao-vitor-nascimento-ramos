@@ -2,7 +2,7 @@ package br.com.cepedi.Library.api.controller.V1;
 
 import br.com.cepedi.Library.api.model.records.publisher.input.DataRegisterPublisher;
 import br.com.cepedi.Library.api.model.records.publisher.input.DataUpdatePublisher;
-import br.com.cepedi.Library.api.model.records.publisher.output.DataDetailsPublisher;
+import br.com.cepedi.Library.api.model.records.publisher.details.DataDetailsPublisher;
 import br.com.cepedi.Library.api.service.publisher.PublisherService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;

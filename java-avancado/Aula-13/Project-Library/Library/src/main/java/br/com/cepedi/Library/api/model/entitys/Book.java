@@ -24,7 +24,7 @@ public class Book {
 
     private String name;
 
-    private Integer anoPublicacao;
+    private Integer yearPublication;
 
     @ManyToOne
     @JoinColumn(name = "author_id")
@@ -40,9 +40,9 @@ public class Book {
     @OneToMany(mappedBy = "book" , fetch = FetchType.EAGER)
     private List<Loan> loans = new ArrayList<>();
 
-    public Book(String name, Integer anoPublicacao, Author author , Publisher publisher){
+    public Book(String name, Integer yearPublication, Author author , Publisher publisher){
         this.name = name;
-        this.anoPublicacao = anoPublicacao;
+        this.yearPublication = yearPublication;
         this.author = author;
         this.publisher = publisher;
         this.activated = true;
@@ -56,12 +56,12 @@ public class Book {
         this.activated = false;
     }
 
-    public void updateData(String name, Integer anoPublicacao, Author author , Publisher publisher) {
+    public void updateData(String name, Integer yearPublication, Author author , Publisher publisher) {
         if (name != null) {
             this.name = name;
         }
-        if (anoPublicacao != null) {
-            this.anoPublicacao = anoPublicacao;
+        if (yearPublication != null) {
+            this.yearPublication = yearPublication;
         }
 
         if (author != null) {
@@ -74,17 +74,6 @@ public class Book {
 
     }
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", anoPublicacao=" + anoPublicacao +
-                ", author=" + (author != null ? "Author(id=" + author.getId() + ", name=" + author.getName() + ")" : null) +
-                ", publisher=" + (publisher != null ? "Publisher(id=" + publisher.getId() + ", name=" + publisher.getName() + ")" : null) +
-                ", activated=" + activated +
-                ", loans=" + loans +
-                '}';
-    }
+
 
 }

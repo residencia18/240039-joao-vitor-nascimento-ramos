@@ -3,17 +3,14 @@ package br.com.cepedi.Library.api.service.client;
 import br.com.cepedi.Library.api.model.entitys.Client;
 import br.com.cepedi.Library.api.model.records.client.input.DataRegisterClient;
 import br.com.cepedi.Library.api.model.records.client.input.DataUpdateClient;
-import br.com.cepedi.Library.api.model.records.client.output.DataDetailsClient;
+import br.com.cepedi.Library.api.model.records.client.details.DataDetailsClient;
 import br.com.cepedi.Library.api.repository.ClientRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.util.UriComponentsBuilder;
-
-import java.net.URI;
 
 @Service
 public class ClientService {

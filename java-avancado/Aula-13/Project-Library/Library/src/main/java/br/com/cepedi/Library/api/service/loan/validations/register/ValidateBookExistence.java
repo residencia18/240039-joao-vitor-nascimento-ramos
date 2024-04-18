@@ -1,9 +1,7 @@
 package br.com.cepedi.Library.api.service.loan.validations.register;
 
 import br.com.cepedi.Library.api.model.records.loan.input.DataRegisterLoan;
-import br.com.cepedi.Library.api.model.records.loan.output.DataDetailsLoan;
 import br.com.cepedi.Library.api.repository.BookRepository;
-import br.com.cepedi.Library.api.repository.LoanRepository;
 import jakarta.validation.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

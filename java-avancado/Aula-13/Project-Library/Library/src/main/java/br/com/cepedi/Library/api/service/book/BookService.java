@@ -2,15 +2,10 @@ package br.com.cepedi.Library.api.service.book;
 
 import br.com.cepedi.Library.api.model.entitys.Author;
 import br.com.cepedi.Library.api.model.entitys.Book;
-import br.com.cepedi.Library.api.model.entitys.Client;
 import br.com.cepedi.Library.api.model.entitys.Publisher;
-import br.com.cepedi.Library.api.model.records.author.input.DataRegisterAuthor;
-import br.com.cepedi.Library.api.model.records.author.output.DataDetailsAuthor;
 import br.com.cepedi.Library.api.model.records.book.input.DataRegisterBook;
 import br.com.cepedi.Library.api.model.records.book.input.DataUpdateBook;
-import br.com.cepedi.Library.api.model.records.book.output.DataDetailsBook;
-import br.com.cepedi.Library.api.model.records.client.input.DataUpdateClient;
-import br.com.cepedi.Library.api.model.records.client.output.DataDetailsClient;
+import br.com.cepedi.Library.api.model.records.book.details.DataDetailsBook;
 import br.com.cepedi.Library.api.repository.AuthorRepository;
 import br.com.cepedi.Library.api.repository.BookRepository;
 import br.com.cepedi.Library.api.repository.PublisherRepository;

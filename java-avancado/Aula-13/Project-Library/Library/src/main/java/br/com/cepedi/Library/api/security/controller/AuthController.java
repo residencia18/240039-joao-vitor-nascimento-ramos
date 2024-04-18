@@ -2,8 +2,8 @@ package br.com.cepedi.Library.api.security.controller;
 
 
 import br.com.cepedi.Library.api.security.model.entitys.User;
+import br.com.cepedi.Library.api.security.model.records.details.DadosTokenJWT;
 import br.com.cepedi.Library.api.security.model.records.input.DataAuth;
-import br.com.cepedi.Library.api.security.model.records.output.DadosTokenJWT;
 import br.com.cepedi.Library.api.security.service.TokenService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
