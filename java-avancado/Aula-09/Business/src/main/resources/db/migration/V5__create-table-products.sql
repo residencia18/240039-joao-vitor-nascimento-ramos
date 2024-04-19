@@ -1,6 +1,6 @@
 CREATE TABLE products (
     id SERIAL PRIMARY KEY,
-    code VARCHAR(255),
+    code VARCHAR(255) UNIQUE,
     name VARCHAR(255) NOT NULL,
     description TEXT,
     color VARCHAR(255),

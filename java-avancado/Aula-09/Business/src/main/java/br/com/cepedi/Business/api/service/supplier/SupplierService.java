@@ -1,9 +1,13 @@
 package br.com.cepedi.Business.api.service.supplier;
 
 
+import br.com.cepedi.Business.api.model.entitys.Client;
 import br.com.cepedi.Business.api.model.entitys.Supplier;
+import br.com.cepedi.Business.api.model.records.client.details.DataDetailsClient;
+import br.com.cepedi.Business.api.model.records.client.input.DataUpdateClient;
 import br.com.cepedi.Business.api.model.records.supplier.details.DataDetailsSupplier;
 import br.com.cepedi.Business.api.model.records.supplier.input.DataRegisterSupplier;
+import br.com.cepedi.Business.api.model.records.supplier.input.DataUpdateSupplier;
 import br.com.cepedi.Business.api.repository.SupplierRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +34,17 @@ public class SupplierService {
     public DataDetailsSupplier findById(Long id) {
         Supplier supplier = supplierRepository.getReferenceById(id);
         return new DataDetailsSupplier(supplier);
+    }
+
+    public DataDetailsSupplier update(Long id , DataUpdateSupplier data) {
+        Supplier supplier = supplierRepository.getReferenceById(id);
+        supplier.updateData(data);
+        return new DataDetailsSupplier(supplier);
+    }
+
+    public void disabled(Long id){
+        Supplier supplier = supplierRepository.getReferenceById(id);
+        supplier.logicalDelete();
     }
 
 

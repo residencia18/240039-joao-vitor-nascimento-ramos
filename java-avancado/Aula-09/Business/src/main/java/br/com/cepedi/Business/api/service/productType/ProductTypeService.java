@@ -8,6 +8,7 @@ import br.com.cepedi.Business.api.model.records.client.details.DataDetailsClient
 import br.com.cepedi.Business.api.model.records.client.input.DataUpdateClient;
 import br.com.cepedi.Business.api.model.records.productType.details.DataDetailsProductType;
 import br.com.cepedi.Business.api.model.records.productType.input.DataRegisterProductType;
+import br.com.cepedi.Business.api.model.records.productType.input.DataUpdateProductType;
 import br.com.cepedi.Business.api.repository.ProductTypeRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,16 +39,16 @@ public class ProductTypeService {
 
     }
 
-//    public DataDetailsProductType update(DataUpdateClient data) {
-//        ProductType productType  = repository.getReferenceById(data.id());
-//        client.updateData(data);
-//        return new DataDetailsProductType(client);
-//    }
-//
-//    public void disabled(Long id){
-//        Client client = repository.getReferenceById(id);
-//        client.logicalDelete();
-//    }
+    public DataDetailsProductType update(Long id , DataUpdateProductType data) {
+        ProductType productType  = repository.getReferenceById(id);
+        productType.updateData(data);
+        return new DataDetailsProductType(productType);
+    }
+
+    public void disabled(Long id){
+        ProductType productType  = repository.getReferenceById(id);
+        productType.logicalDelete();
+    }
 
 
 }

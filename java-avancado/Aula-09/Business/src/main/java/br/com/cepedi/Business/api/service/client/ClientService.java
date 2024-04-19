@@ -35,8 +35,8 @@ public class ClientService {
 
     }
 
-    public DataDetailsClient update(DataUpdateClient data) {
-        Client client = repository.getReferenceById(data.id());
+    public DataDetailsClient update(Long id , DataUpdateClient data) {
+        Client client = repository.getReferenceById(id);
         client.updateData(data);
         return new DataDetailsClient(client);
     }

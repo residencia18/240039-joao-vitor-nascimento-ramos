@@ -1,8 +1,8 @@
 package br.com.cepedi.Business.api.controller.V1;
 
-
 import br.com.cepedi.Business.api.model.records.productType.details.DataDetailsProductType;
 import br.com.cepedi.Business.api.model.records.productType.input.DataRegisterProductType;
+import br.com.cepedi.Business.api.model.records.productType.input.DataUpdateProductType;
 import br.com.cepedi.Business.api.service.productType.ProductTypeService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
@@ -20,7 +20,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 
 @RestController
-@RequestMapping("product/type")
+@RequestMapping("v1/product/type")
 @SecurityRequirement(name = "bearer-key")
 public class ProductTypeController {
 
@@ -53,6 +53,25 @@ public class ProductTypeController {
         DataDetailsProductType details = service.findById(id);
         logger.info("Details of type of product with ID {} fetched successfully.", id);
         return ResponseEntity.ok(details);
+    }
+
+    @PutMapping("/{id}")
+    @Transactional
+    public ResponseEntity<DataDetailsProductType> update(@PathVariable Long id , @RequestBody @Valid DataUpdateProductType data){
+        logger.info("Updating type of product with ID: {}", id);
+        DataDetailsProductType details = service.update(id , data);
+        logger.info("Type of product with ID {} updated successfully.", id);
+        return ResponseEntity.ok(details);
+    }
+
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity<Object> disabled(@PathVariable Long id){
+        logger.info("Disabling type of product with ID: {}", id);
+        service.disabled(id);
+        logger.info("Type of product with ID {} disabled successfully.", id);
+        return ResponseEntity.noContent().build();
     }
 
 

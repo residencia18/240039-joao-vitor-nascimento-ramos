@@ -5,6 +5,6 @@ import br.com.cepedi.Business.api.model.records.client.input.DataUpdateClient;
 
 public interface ValidationUpdateClient {
 
-    void validation(DataUpdateClient data);
+    void validation(Long id , DataUpdateClient data);
 
 }

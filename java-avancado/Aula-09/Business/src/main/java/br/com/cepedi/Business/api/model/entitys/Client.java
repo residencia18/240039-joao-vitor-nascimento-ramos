@@ -60,23 +60,23 @@ public class Client {
 
 
     public void updateData(DataUpdateClient data) {
-        if (data.name() != null) {
+        if (data.name() != null && !data.name().isEmpty()) {
             this.name = data.name();
         }
 
-        if (data.email() != null) {
+        if (data.email() != null && !data.email().isEmpty()) {
             this.email = data.email();
         }
 
-        if (data.cpf() != null) {
+        if (data.cpf() != null && !data.cpf().isEmpty()) {
             this.cpf = data.cpf();
         }
 
-        if (data.phoneNumber() != null) {
+        if (data.phoneNumber() != null && !data.phoneNumber().isEmpty()) {
             this.phoneNumber = data.phoneNumber();
         }
 
-        if (data.dataRegisterAddress() != null) {
+        if (data.dataRegisterAddress() != null && !data.phoneNumber().isEmpty()) {
             this.address = new Address(data.dataRegisterAddress());
         }
     }

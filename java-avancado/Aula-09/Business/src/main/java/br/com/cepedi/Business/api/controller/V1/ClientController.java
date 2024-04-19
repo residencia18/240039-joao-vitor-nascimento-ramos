@@ -58,12 +58,12 @@ public class ClientController {
     }
 
 
-    @PutMapping
+    @PutMapping("/{id}")
     @Transactional
-    public ResponseEntity<DataDetailsClient> update(@RequestBody @Valid DataUpdateClient data){
-        logger.info("Updating client with ID: {}", data.id());
-        DataDetailsClient details = service.update(data);
-        logger.info("Client with ID {} updated successfully.", data.id());
+    public ResponseEntity<DataDetailsClient> update(@PathVariable Long id , @RequestBody @Valid DataUpdateClient data){
+        logger.info("Updating client with ID: {}", id);
+        DataDetailsClient details = service.update(id , data);
+        logger.info("Client with ID {} updated successfully.", id);
         return ResponseEntity.ok(details);
     }
 

@@ -1,10 +1,10 @@
 package br.com.cepedi.Business.api.controller.V1;
 
-
-
-
+import br.com.cepedi.Business.api.model.records.client.details.DataDetailsClient;
+import br.com.cepedi.Business.api.model.records.client.input.DataUpdateClient;
 import br.com.cepedi.Business.api.model.records.supplier.details.DataDetailsSupplier;
 import br.com.cepedi.Business.api.model.records.supplier.input.DataRegisterSupplier;
+import br.com.cepedi.Business.api.model.records.supplier.input.DataUpdateSupplier;
 import br.com.cepedi.Business.api.service.supplier.SupplierService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
@@ -22,7 +22,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 
 @RestController
-@RequestMapping("supplier")
+@RequestMapping("v1/supplier")
 @SecurityRequirement(name = "bearer-key")
 public class SupplierController {
 
@@ -55,6 +55,24 @@ public class SupplierController {
         DataDetailsSupplier details = service.findById(id);
         logger.info("Details of supplier with ID {} fetched successfully.", id);
         return ResponseEntity.ok(details);
+    }
+
+    @PutMapping("/{id}")
+    @Transactional
+    public ResponseEntity<DataDetailsSupplier> update(@PathVariable Long id,  @RequestBody @Valid DataUpdateSupplier data){
+        logger.info("Updating supplier with ID: {}", id);
+        DataDetailsSupplier details = service.update(id , data);
+        logger.info("Supplier with ID {} updated successfully.", id);
+        return ResponseEntity.ok(details);
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity<Object> disabled(@PathVariable Long id){
+        logger.info("Disabling supplier with ID: {}", id);
+        service.disabled(id);
+        logger.info("Supplier with ID {} disabled successfully.", id);
+        return ResponseEntity.noContent().build();
     }
 
 

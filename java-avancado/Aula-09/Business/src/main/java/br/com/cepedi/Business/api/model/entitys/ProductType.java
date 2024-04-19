@@ -1,6 +1,7 @@
 package br.com.cepedi.Business.api.model.entitys;
 
 import br.com.cepedi.Business.api.model.records.productType.input.DataRegisterProductType;
+import br.com.cepedi.Business.api.model.records.productType.input.DataUpdateProductType;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -28,5 +29,15 @@ public class ProductType {
         this.activated = true;
     }
 
+    public void updateData(DataUpdateProductType data) {
 
+        if(data.name() != null && !data.name().isEmpty()){
+            this.name = data.name();
+        }
+
+    }
+
+    public void logicalDelete() {
+        this.activated = false;
+    }
 }
