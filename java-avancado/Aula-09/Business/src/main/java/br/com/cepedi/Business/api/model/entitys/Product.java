@@ -1,14 +1,11 @@
 package br.com.cepedi.Business.api.model.entitys;
 
+import br.com.cepedi.Business.api.model.embeddables.product.Price;
+import br.com.cepedi.Business.api.model.embeddables.product.Stock;
 import br.com.cepedi.Business.api.model.records.product.input.DataRegisterProduct;
 import br.com.cepedi.Business.api.model.records.product.input.DataUpdateProduct;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.springframework.security.core.parameters.P;
-
-import java.math.BigDecimal;
 
 
 @Entity

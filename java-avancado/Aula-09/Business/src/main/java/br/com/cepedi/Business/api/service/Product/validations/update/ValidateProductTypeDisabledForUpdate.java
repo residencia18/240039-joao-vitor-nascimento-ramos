@@ -4,7 +4,9 @@ import br.com.cepedi.Business.api.model.records.product.input.DataUpdateProduct;
 import br.com.cepedi.Business.api.repository.ProductTypeRepository;
 import jakarta.validation.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ValidateProductTypeDisabledForUpdate implements ValidateProductUpdate{
 
 

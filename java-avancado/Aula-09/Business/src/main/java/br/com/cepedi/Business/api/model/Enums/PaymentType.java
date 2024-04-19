@@ -7,5 +7,6 @@ public enum PaymentType {
     CASH,
     BANK_TRANSFER,
     PAYPAL,
-    BITCOIN
+    BITCOIN,
+    OTHER
 }

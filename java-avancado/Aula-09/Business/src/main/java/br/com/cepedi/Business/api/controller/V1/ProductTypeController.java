@@ -20,7 +20,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 
 @RestController
-@RequestMapping("v1/product/type")
+@RequestMapping("v1/product/types")
 @SecurityRequirement(name = "bearer-key")
 public class ProductTypeController {
 
@@ -33,8 +33,8 @@ public class ProductTypeController {
     @Transactional
     public ResponseEntity<DataDetailsProductType> register(@RequestBody @Valid DataRegisterProductType data , UriComponentsBuilder uriBuilder){
         logger.info("Registering new type of product...");
-        DataDetailsProductType dataDetailsProductType = service.register(data,uriBuilder);
-        URI uri = uriBuilder.path("/product/type/{id}").buildAndExpand(dataDetailsProductType.id()).toUri();
+        DataDetailsProductType dataDetailsProductType = service.register(data);
+        URI uri = uriBuilder.path("/product/types/{id}").buildAndExpand(dataDetailsProductType.id()).toUri();
         logger.info("New type of product registered with ID: {}", dataDetailsProductType.id());
         return ResponseEntity.created(uri).body(dataDetailsProductType);
     }

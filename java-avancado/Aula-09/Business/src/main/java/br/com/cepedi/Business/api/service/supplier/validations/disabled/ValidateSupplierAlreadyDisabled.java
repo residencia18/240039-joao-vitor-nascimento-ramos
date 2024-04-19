@@ -3,7 +3,9 @@ package br.com.cepedi.Business.api.service.supplier.validations.disabled;
 import br.com.cepedi.Business.api.repository.SupplierRepository;
 import jakarta.validation.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ValidateSupplierAlreadyDisabled implements ValidateDisabledSupplier{
 
     @Autowired

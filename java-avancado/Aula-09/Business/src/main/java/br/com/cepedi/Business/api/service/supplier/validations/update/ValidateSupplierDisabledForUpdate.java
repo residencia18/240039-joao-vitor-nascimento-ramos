@@ -4,8 +4,10 @@ import br.com.cepedi.Business.api.model.records.supplier.input.DataUpdateSupplie
 import br.com.cepedi.Business.api.repository.SupplierRepository;
 import jakarta.validation.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-public class ValidateSupplierDisabled implements ValidateUpdateSupplier{
+@Component
+public class ValidateSupplierDisabledForUpdate implements ValidateUpdateSupplier{
 
     @Autowired
     private SupplierRepository repository;

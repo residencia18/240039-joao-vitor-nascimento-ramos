@@ -4,8 +4,10 @@ import br.com.cepedi.Business.api.model.records.product.input.DataRegisterProduc
 import br.com.cepedi.Business.api.repository.ProductTypeRepository;
 import jakarta.validation.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-public class ValidateTypeProductDisabled implements ValidateProductRegister{
+@Component
+public class ValidateTypeProductDisabledForRegisterProduct implements ValidateProductRegister{
 
     @Autowired
     private ProductTypeRepository repository;

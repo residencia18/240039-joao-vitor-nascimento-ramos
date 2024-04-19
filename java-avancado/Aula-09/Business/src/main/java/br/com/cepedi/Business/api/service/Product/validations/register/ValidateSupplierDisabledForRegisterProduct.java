@@ -4,16 +4,19 @@ import br.com.cepedi.Business.api.model.records.product.input.DataRegisterProduc
 import br.com.cepedi.Business.api.repository.SupplierRepository;
 import jakarta.validation.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-public class ValidateSupplierExistence implements ValidateProductRegister{
+@Component
+public class ValidateSupplierDisabledForRegisterProduct implements ValidateProductRegister{
 
     @Autowired
     private SupplierRepository repository;
 
     @Override
     public void validation(DataRegisterProduct data) {
-        if(!repository.existsById(data.idSupplier())){
-            throw  new ValidationException("The required client is does not exists");
+        Boolean activated = repository.findActivatedById(data.idSupplier());
+        if(!activated){
+            throw new ValidationException("The required supplier is disabled");
         }
     }
 }

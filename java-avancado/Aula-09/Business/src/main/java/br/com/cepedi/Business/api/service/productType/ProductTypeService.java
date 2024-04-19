@@ -1,11 +1,8 @@
 package br.com.cepedi.Business.api.service.productType;
 
 
-import br.com.cepedi.Business.api.model.entitys.Client;
 import br.com.cepedi.Business.api.model.entitys.ProductType;
 
-import br.com.cepedi.Business.api.model.records.client.details.DataDetailsClient;
-import br.com.cepedi.Business.api.model.records.client.input.DataUpdateClient;
 import br.com.cepedi.Business.api.model.records.productType.details.DataDetailsProductType;
 import br.com.cepedi.Business.api.model.records.productType.input.DataRegisterProductType;
 import br.com.cepedi.Business.api.model.records.productType.input.DataUpdateProductType;
@@ -33,7 +30,7 @@ public class ProductTypeService {
     @Autowired
     private List<ValidateDisabledProductType> validationsDisabled;
 
-    public DataDetailsProductType register(@Valid DataRegisterProductType data, UriComponentsBuilder uriBuilder) {
+    public DataDetailsProductType register(@Valid DataRegisterProductType data) {
         ProductType productType = new ProductType(data);
         repository.save(productType);
         return new DataDetailsProductType(productType);

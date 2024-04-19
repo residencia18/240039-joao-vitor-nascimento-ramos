@@ -5,13 +5,9 @@ import br.com.cepedi.Business.api.model.entitys.Product;
 import br.com.cepedi.Business.api.model.entitys.ProductType;
 import br.com.cepedi.Business.api.model.entitys.Supplier;
 
-import br.com.cepedi.Business.api.model.records.client.details.DataDetailsClient;
-import br.com.cepedi.Business.api.model.records.client.input.DataUpdateClient;
 import br.com.cepedi.Business.api.model.records.product.details.DataDetailsProduct;
 import br.com.cepedi.Business.api.model.records.product.input.DataRegisterProduct;
 import br.com.cepedi.Business.api.model.records.product.input.DataUpdateProduct;
-import br.com.cepedi.Business.api.model.records.supplier.details.DataDetailsSupplier;
-import br.com.cepedi.Business.api.model.records.supplier.input.DataUpdateSupplier;
 import br.com.cepedi.Business.api.repository.ProductRepository;
 import br.com.cepedi.Business.api.repository.ProductTypeRepository;
 import br.com.cepedi.Business.api.repository.SupplierRepository;
@@ -23,7 +19,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 

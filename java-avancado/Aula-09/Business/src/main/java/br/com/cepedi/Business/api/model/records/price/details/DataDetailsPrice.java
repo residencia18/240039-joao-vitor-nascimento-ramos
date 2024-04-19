@@ -1,6 +1,6 @@
 package br.com.cepedi.Business.api.model.records.price.details;
 
-import br.com.cepedi.Business.api.model.entitys.Price;
+import br.com.cepedi.Business.api.model.embeddables.product.Price;
 
 import java.math.BigDecimal;
 

@@ -1,4 +1,4 @@
-package br.com.cepedi.Business.api.model.entitys;
+package br.com.cepedi.Business.api.model.embeddables.product;
 
 
 import br.com.cepedi.Business.api.model.records.stock.input.DataRegisterStock;

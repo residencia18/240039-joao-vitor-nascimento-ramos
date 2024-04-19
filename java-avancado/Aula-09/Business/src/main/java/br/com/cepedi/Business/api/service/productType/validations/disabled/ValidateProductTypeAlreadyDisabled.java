@@ -3,7 +3,9 @@ package br.com.cepedi.Business.api.service.productType.validations.disabled;
 import br.com.cepedi.Business.api.repository.ProductTypeRepository;
 import jakarta.validation.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ValidateProductTypeAlreadyDisabled implements  ValidateDisabledProductType{
 
     @Autowired

@@ -1,7 +1,6 @@
 package br.com.cepedi.Business.api.model.records.productType.details;
 
 import br.com.cepedi.Business.api.model.entitys.ProductType;
-import br.com.cepedi.Business.api.model.records.productType.input.DataRegisterProductType;
 
 public record DataDetailsProductType(
 
