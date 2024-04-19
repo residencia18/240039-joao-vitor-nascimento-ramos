@@ -15,12 +15,17 @@ import br.com.cepedi.Business.api.model.records.supplier.input.DataUpdateSupplie
 import br.com.cepedi.Business.api.repository.ProductRepository;
 import br.com.cepedi.Business.api.repository.ProductTypeRepository;
 import br.com.cepedi.Business.api.repository.SupplierRepository;
+import br.com.cepedi.Business.api.service.Product.validations.disabled.ValidateProductDisabled;
+import br.com.cepedi.Business.api.service.Product.validations.register.ValidateProductRegister;
+import br.com.cepedi.Business.api.service.Product.validations.update.ValidateProductUpdate;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import java.util.List;
 
 @Service
 public class ProductService {
@@ -34,7 +39,18 @@ public class ProductService {
     @Autowired
     private SupplierRepository supplierRepository;
 
+    @Autowired
+    private List<ValidateProductRegister> validationsRegister;
+
+    @Autowired
+    private List<ValidateProductUpdate> validationsUpdate;
+
+    @Autowired
+    private List<ValidateProductDisabled> validationsDisabled;
+
+
     public DataDetailsProduct register(@Valid DataRegisterProduct data) {
+        validationsRegister.forEach(v -> v.validation(data));
         ProductType productType = productTypeRepository.getReferenceById(data.idProductType());
         Supplier supplier = supplierRepository.getReferenceById(data.idSupplier());
         Product product = new Product(data,supplier,productType);
@@ -52,6 +68,8 @@ public class ProductService {
     }
 
     public DataDetailsProduct update(Long id , DataUpdateProduct data) {
+
+        validationsUpdate.forEach(v -> v.validation(id,data));
 
         ProductType productType = null;
         Supplier supplier = null;
@@ -71,6 +89,7 @@ public class ProductService {
     }
 
     public void disabled(Long id){
+        validationsDisabled.forEach(v -> v.validation(id));
         Product product = productRepository.getReferenceById(id);
         product.logicalDelete();
     }

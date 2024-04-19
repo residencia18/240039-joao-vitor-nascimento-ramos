@@ -1,8 +1,8 @@
-package br.com.cepedi.Business.api.service.productType.validations.update;
+package br.com.cepedi.Business.api.service.productType.validations.register;
 
 import br.com.cepedi.Business.api.model.records.productType.input.DataRegisterProductType;
 
-public interface ValidateUpdateTypeProduct {
+public interface ValidateRegisterProductType {
 
 
     void validation(DataRegisterProductType data);
