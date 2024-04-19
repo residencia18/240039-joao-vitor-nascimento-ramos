@@ -2,7 +2,6 @@ package br.com.cepedi.Business.api.model.records.address.details;
 
 import br.com.cepedi.Business.api.model.Enums.State;
 import br.com.cepedi.Business.api.model.embeddables.Address;
-import br.com.cepedi.Business.api.model.records.address.input.DataRegisterAddress;
 
 public record DataDetailsAddress(
         String publicPlace,

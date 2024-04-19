@@ -32,6 +32,8 @@ public class Supplier {
 
     private String phoneNumber2;
 
+    private Boolean activated;
+
     @Embedded
     private Address address;
 
@@ -53,6 +55,7 @@ public class Supplier {
         }
 
         this.address = new Address(data.dataRegisterAddress());
+        this.activated = true;
     }
 
     private void validateCPFAndCNPJ(String CPF, String CNPJ) {

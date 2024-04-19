@@ -42,10 +42,10 @@ public class Price {
     }
 
     private BigDecimal calculatePriceCost(BigDecimal priceAcquisition, BigDecimal costPercentage) {
-        return priceAcquisition.multiply(costPercentage).divide(new BigDecimal(100));
+        return priceAcquisition.multiply((costPercentage.divide(new BigDecimal(100))).add(BigDecimal.ONE));
     }
 
     private BigDecimal calculateSalePrice(BigDecimal priceCost, BigDecimal profitPercentage) {
-        return priceCost.multiply(profitPercentage).divide(new BigDecimal(100));
+        return priceCost.multiply((profitPercentage.divide(new BigDecimal(100))).add(BigDecimal.ONE));
     }
 }

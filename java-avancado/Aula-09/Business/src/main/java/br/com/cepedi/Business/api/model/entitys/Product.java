@@ -37,12 +37,14 @@ public class Product {
     private Stock stock;
 
     @ManyToOne
-    @JoinColumn(name = "supplier_id")
+    @JoinColumn(name = "id_supplier")
     private Supplier supplier;
 
     @ManyToOne
-    @JoinColumn(name = "product_type_id")
+    @JoinColumn(name = "id_product_type")
     private ProductType productType;
+
+    private Boolean activated;
 
     public  Product(DataRegisterProduct data, Supplier supplier , ProductType productType){
         this.code = data.code();
@@ -53,6 +55,7 @@ public class Product {
         this.stock = new Stock(data.stock());
         this.supplier = supplier;
         this.productType = productType;
+        this.activated = true;
     }
 
 

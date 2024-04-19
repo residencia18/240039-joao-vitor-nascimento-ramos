@@ -4,6 +4,8 @@ import br.com.cepedi.Business.api.model.entitys.Supplier;
 import br.com.cepedi.Business.api.model.records.address.details.DataDetailsAddress;
 
 public record DataDetailsSupplier(
+        Long id,
+
         String name,
         String CPF,
         String CNPJ,
@@ -14,6 +16,7 @@ public record DataDetailsSupplier(
 ) {
     public DataDetailsSupplier(Supplier supplier) {
         this(
+                supplier.getId(),
                 supplier.getName(),
                 supplier.getCPF(),
                 supplier.getCNPJ(),

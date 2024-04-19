@@ -19,9 +19,13 @@ public class ProductType {
 
     String name;
 
+    private Boolean activated;
+
+
 
     public ProductType(DataRegisterProductType data){
         this.name = data.name();
+        this.activated = true;
     }
 
 
