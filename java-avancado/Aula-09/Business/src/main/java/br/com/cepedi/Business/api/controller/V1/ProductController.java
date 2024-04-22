@@ -4,7 +4,7 @@ package br.com.cepedi.Business.api.controller.V1;
 import br.com.cepedi.Business.api.model.records.product.details.DataDetailsProduct;
 import br.com.cepedi.Business.api.model.records.product.input.DataRegisterProduct;
 import br.com.cepedi.Business.api.model.records.product.input.DataUpdateProduct;
-import br.com.cepedi.Business.api.service.Product.ProductService;
+import br.com.cepedi.Business.api.service.product.ProductService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;

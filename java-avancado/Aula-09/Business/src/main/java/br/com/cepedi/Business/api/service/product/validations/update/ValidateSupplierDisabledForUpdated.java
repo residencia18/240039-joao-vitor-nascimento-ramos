@@ -1,4 +1,4 @@
-package br.com.cepedi.Business.api.service.Product.validations.update;
+package br.com.cepedi.Business.api.service.product.validations.update;
 
 import br.com.cepedi.Business.api.model.records.product.input.DataUpdateProduct;
 import br.com.cepedi.Business.api.repository.SupplierRepository;

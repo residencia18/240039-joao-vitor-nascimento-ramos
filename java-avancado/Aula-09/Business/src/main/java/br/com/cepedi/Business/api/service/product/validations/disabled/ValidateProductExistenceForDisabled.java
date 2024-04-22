@@ -1,4 +1,4 @@
-package br.com.cepedi.Business.api.service.Product.validations.disabled;
+package br.com.cepedi.Business.api.service.product.validations.disabled;
 
 import br.com.cepedi.Business.api.repository.ProductRepository;
 import jakarta.validation.ValidationException;

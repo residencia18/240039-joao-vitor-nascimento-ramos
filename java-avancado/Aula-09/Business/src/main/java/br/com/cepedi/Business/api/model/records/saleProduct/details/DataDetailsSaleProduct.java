@@ -8,14 +8,14 @@ public record DataDetailsSaleProduct(
 
     Long id,
 
-    DataDetailsProduct product,
+    Long idProduct,
 
     Long amount
 
 ) {
 
     public DataDetailsSaleProduct(SaleProduct saleProduct){
-        this(saleProduct.getId(), new DataDetailsProduct(saleProduct.getProduct()) , saleProduct.getAmount());
+        this(saleProduct.getId(), saleProduct.getProduct().getId() , saleProduct.getAmount());
     }
 
 }

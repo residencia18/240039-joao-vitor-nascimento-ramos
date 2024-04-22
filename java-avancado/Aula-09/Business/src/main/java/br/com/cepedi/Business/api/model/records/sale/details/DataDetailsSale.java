@@ -16,9 +16,9 @@ public record DataDetailsSale (
     Long id,
 
 
-    DataDetailsClient client,
+    Long idClient,
 
-    DataDetailsEmployee employee,
+    Long idEmployee,
 
     BigDecimal grossValue,
 
@@ -36,8 +36,8 @@ public record DataDetailsSale (
     public  DataDetailsSale(Sale sale){
         this(
                 sale.getId(),
-                new DataDetailsClient(sale.getClient()),
-                new DataDetailsEmployee(sale.getEmployee()),
+                sale.getClient().getId(),
+                sale.getEmployee().getId(),
                 sale.getGrossValue(),
                 sale.getValueDiscount(),
                 sale.getFinalValue(),

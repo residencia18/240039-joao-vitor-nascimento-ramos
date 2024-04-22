@@ -1,4 +1,4 @@
-package br.com.cepedi.Business.api.service.Product.validations.register;
+package br.com.cepedi.Business.api.service.product.validations.register;
 
 import br.com.cepedi.Business.api.model.records.product.input.DataRegisterProduct;
 import br.com.cepedi.Business.api.repository.ProductTypeRepository;

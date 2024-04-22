@@ -1,4 +1,4 @@
-package br.com.cepedi.Business.api.service.Product;
+package br.com.cepedi.Business.api.service.product;
 
 
 import br.com.cepedi.Business.api.model.entitys.Product;
@@ -11,9 +11,9 @@ import br.com.cepedi.Business.api.model.records.product.input.DataUpdateProduct;
 import br.com.cepedi.Business.api.repository.ProductRepository;
 import br.com.cepedi.Business.api.repository.ProductTypeRepository;
 import br.com.cepedi.Business.api.repository.SupplierRepository;
-import br.com.cepedi.Business.api.service.Product.validations.disabled.ValidateProductDisabled;
-import br.com.cepedi.Business.api.service.Product.validations.register.ValidateProductRegister;
-import br.com.cepedi.Business.api.service.Product.validations.update.ValidateProductUpdate;
+import br.com.cepedi.Business.api.service.product.validations.disabled.ValidateProductDisabled;
+import br.com.cepedi.Business.api.service.product.validations.register.ValidateProductRegister;
+import br.com.cepedi.Business.api.service.product.validations.update.ValidateProductUpdate;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

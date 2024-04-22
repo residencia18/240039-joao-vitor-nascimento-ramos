@@ -1,9 +1,9 @@
 CREATE TABLE suppliers (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    CPF VARCHAR(14),
-    CNPJ VARCHAR(18),
-    email VARCHAR(255) NOT NULL,
+    CPF VARCHAR(14) UNIQUE,
+    CNPJ VARCHAR(18) UNIQUE,
+    email VARCHAR(255) NOT NULL UNIQUE,
     phone_number1 VARCHAR(20) NOT NULL,
     phone_number2 VARCHAR(20),
     activated BOOLEAN NOT NULL,
