@@ -5,7 +5,7 @@ CREATE TABLE employees (
     email VARCHAR(255),
     cpf VARCHAR(14),
     birthday DATE,
-    phoneNumber VARCHAR(20),
+    phone_number VARCHAR(20),
     public_place VARCHAR(255) NOT NULL,
     neighborhood VARCHAR(255) NOT NULL,
     cep VARCHAR(8) NOT NULL,
