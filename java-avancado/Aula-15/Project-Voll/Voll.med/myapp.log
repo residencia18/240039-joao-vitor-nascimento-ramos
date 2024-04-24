@@ -1,0 +1,98 @@
+2024-04-24T14:52:08.290-03:00  INFO 16020 --- [main] b.c.c.V.a.r.TestRepositoryAppointment    : Starting TestRepositoryAppointment using Java 17.0.9 with PID 16020 (started by joao in /home/joao/residencia18/java-avancado/Aula-13/Project-Voll/Voll.med)
+2024-04-24T14:52:08.297-03:00  INFO 16020 --- [main] b.c.c.V.a.r.TestRepositoryAppointment    : The following 1 profile is active: "test"
+2024-04-24T14:52:08.917-03:00  INFO 16020 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-24T14:52:09.027-03:00  INFO 16020 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 97 ms. Found 4 JPA repository interfaces.
+2024-04-24T14:52:09.456-03:00  INFO 16020 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-24T14:52:09.966-03:00  INFO 16020 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4698ae6
+2024-04-24T14:52:09.969-03:00  INFO 16020 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-24T14:52:10.171-03:00  INFO 16020 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.22.3 by Redgate
+2024-04-24T14:52:10.172-03:00  INFO 16020 --- [main] o.f.c.internal.license.VersionPrinter    : See release notes here: https://rd.gt/416ObMi
+2024-04-24T14:52:10.172-03:00  INFO 16020 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2024-04-24T14:52:10.213-03:00  INFO 16020 --- [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/vollmed_api_test (MySQL 8.0)
+2024-04-24T14:52:10.305-03:00  INFO 16020 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.056s)
+2024-04-24T14:52:10.329-03:00  INFO 16020 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `vollmed_api_test`: 8
+2024-04-24T14:52:10.333-03:00  INFO 16020 --- [main] o.f.core.internal.command.DbMigrate      : Schema `vollmed_api_test` is up to date. No migration necessary.
+2024-04-24T14:52:10.469-03:00  INFO 16020 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-24T14:52:10.569-03:00  INFO 16020 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-04-24T14:52:10.620-03:00  INFO 16020 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-24T14:52:10.971-03:00  INFO 16020 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-24T14:52:12.363-03:00  INFO 16020 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-24T14:52:12.367-03:00  INFO 16020 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-24T14:52:12.727-03:00  INFO 16020 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-04-24T14:52:13.636-03:00  INFO 16020 --- [main] b.c.c.V.a.r.TestRepositoryAppointment    : Started TestRepositoryAppointment in 5.925 seconds (process running for 7.818)
+2024-04-24T14:52:14.743-03:00  INFO 16020 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.cepedi.Voll.api.repositorys.TestRepositoryDoctor]: TestRepositoryDoctor does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-04-24T14:52:14.757-03:00  INFO 16020 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.cepedi.Voll.api.Application for test class br.com.cepedi.Voll.api.repositorys.TestRepositoryDoctor
+2024-04-24T14:52:14.998-03:00  INFO 16020 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.cepedi.Voll.api.repositorys.TestRepositoryPatient]: TestRepositoryPatient does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-04-24T14:52:15.011-03:00  INFO 16020 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.cepedi.Voll.api.Application for test class br.com.cepedi.Voll.api.repositorys.TestRepositoryPatient
+2024-04-24T14:52:15.614-03:00  INFO 16020 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.cepedi.Voll.api.services.TestServiceDoctor]: TestServiceDoctor does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-04-24T14:52:15.649-03:00  INFO 16020 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.cepedi.Voll.api.Application for test class br.com.cepedi.Voll.api.services.TestServiceDoctor
+2024-04-24T14:52:15.655-03:00  INFO 16020 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2024-04-24T14:52:15.685-03:00  INFO 16020 --- [main] b.c.c.V.api.services.TestServiceDoctor   : Starting TestServiceDoctor using Java 17.0.9 with PID 16020 (started by joao in /home/joao/residencia18/java-avancado/Aula-13/Project-Voll/Voll.med)
+2024-04-24T14:52:15.685-03:00  INFO 16020 --- [main] b.c.c.V.api.services.TestServiceDoctor   : The following 1 profile is active: "test"
+2024-04-24T14:52:15.827-03:00  INFO 16020 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-24T14:52:15.849-03:00  INFO 16020 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21 ms. Found 4 JPA repository interfaces.
+2024-04-24T14:52:16.484-03:00  INFO 16020 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2024-04-24T14:52:16.558-03:00  INFO 16020 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2c7cb194
+2024-04-24T14:52:16.559-03:00  INFO 16020 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2024-04-24T14:52:16.581-03:00  INFO 16020 --- [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/vollmed_api_test (MySQL 8.0)
+2024-04-24T14:52:16.615-03:00  INFO 16020 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.019s)
+2024-04-24T14:52:16.632-03:00  INFO 16020 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `vollmed_api_test`: 8
+2024-04-24T14:52:16.633-03:00  INFO 16020 --- [main] o.f.core.internal.command.DbMigrate      : Schema `vollmed_api_test` is up to date. No migration necessary.
+2024-04-24T14:52:16.698-03:00  INFO 16020 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-24T14:52:16.704-03:00  INFO 16020 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-24T14:52:16.720-03:00  INFO 16020 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-24T14:52:16.974-03:00  INFO 16020 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-24T14:52:16.975-03:00  INFO 16020 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-24T14:52:17.251-03:00  INFO 16020 --- [main] b.c.c.V.api.services.TestServiceDoctor   : Started TestServiceDoctor in 1.597 seconds (process running for 11.433)
+2024-04-24T14:52:17.664-03:00  INFO 16020 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.cepedi.Voll.api.services.TestServiceAppointment]: TestServiceAppointment does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-04-24T14:52:17.685-03:00  INFO 16020 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.cepedi.Voll.api.Application for test class br.com.cepedi.Voll.api.services.TestServiceAppointment
+2024-04-24T14:52:18.316-03:00  INFO 16020 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2024-04-24T14:52:18.391-03:00  INFO 16020 --- [main] b.c.c.V.a.s.TestServiceAppointment       : Starting TestServiceAppointment using Java 17.0.9 with PID 16020 (started by joao in /home/joao/residencia18/java-avancado/Aula-13/Project-Voll/Voll.med)
+2024-04-24T14:52:18.392-03:00  INFO 16020 --- [main] b.c.c.V.a.s.TestServiceAppointment       : The following 1 profile is active: "test"
+2024-04-24T14:52:18.709-03:00  INFO 16020 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-24T14:52:18.742-03:00  INFO 16020 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 32 ms. Found 4 JPA repository interfaces.
+2024-04-24T14:52:18.914-03:00  INFO 16020 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2024-04-24T14:52:18.943-03:00  INFO 16020 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@38b4b31f
+2024-04-24T14:52:18.944-03:00  INFO 16020 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2024-04-24T14:52:18.965-03:00  INFO 16020 --- [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/vollmed_api_test (MySQL 8.0)
+2024-04-24T14:52:18.999-03:00  INFO 16020 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.020s)
+2024-04-24T14:52:19.020-03:00  INFO 16020 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `vollmed_api_test`: 8
+2024-04-24T14:52:19.022-03:00  INFO 16020 --- [main] o.f.core.internal.command.DbMigrate      : Schema `vollmed_api_test` is up to date. No migration necessary.
+2024-04-24T14:52:19.061-03:00  INFO 16020 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-24T14:52:19.068-03:00  INFO 16020 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-24T14:52:19.074-03:00  INFO 16020 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-24T14:52:19.266-03:00  INFO 16020 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-24T14:52:19.267-03:00  INFO 16020 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-24T14:52:19.686-03:00  INFO 16020 --- [main] b.c.c.V.a.s.TestServiceAppointment       : Started TestServiceAppointment in 1.371 seconds (process running for 13.868)
+2024-04-24T14:52:19.709-03:00  INFO 16020 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.cepedi.Voll.api.services.TestServicePatient]: TestServicePatient does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-04-24T14:52:19.732-03:00  INFO 16020 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.cepedi.Voll.api.Application for test class br.com.cepedi.Voll.api.services.TestServicePatient
+2024-04-24T14:52:19.740-03:00  INFO 16020 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2024-04-24T14:52:19.776-03:00  INFO 16020 --- [main] b.c.c.V.api.services.TestServicePatient  : Starting TestServicePatient using Java 17.0.9 with PID 16020 (started by joao in /home/joao/residencia18/java-avancado/Aula-13/Project-Voll/Voll.med)
+2024-04-24T14:52:19.776-03:00  INFO 16020 --- [main] b.c.c.V.api.services.TestServicePatient  : The following 1 profile is active: "test"
+2024-04-24T14:52:19.880-03:00  INFO 16020 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-24T14:52:19.898-03:00  INFO 16020 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 18 ms. Found 4 JPA repository interfaces.
+2024-04-24T14:52:20.013-03:00  INFO 16020 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2024-04-24T14:52:20.036-03:00  INFO 16020 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@68711098
+2024-04-24T14:52:20.036-03:00  INFO 16020 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2024-04-24T14:52:20.053-03:00  INFO 16020 --- [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/vollmed_api_test (MySQL 8.0)
+2024-04-24T14:52:20.076-03:00  INFO 16020 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.014s)
+2024-04-24T14:52:20.090-03:00  INFO 16020 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `vollmed_api_test`: 8
+2024-04-24T14:52:20.092-03:00  INFO 16020 --- [main] o.f.core.internal.command.DbMigrate      : Schema `vollmed_api_test` is up to date. No migration necessary.
+2024-04-24T14:52:20.125-03:00  INFO 16020 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-24T14:52:20.129-03:00  INFO 16020 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-24T14:52:20.135-03:00  INFO 16020 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-24T14:52:20.324-03:00  INFO 16020 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-24T14:52:20.324-03:00  INFO 16020 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-24T14:52:20.591-03:00  INFO 16020 --- [main] b.c.c.V.api.services.TestServicePatient  : Started TestServicePatient in 0.851 seconds (process running for 14.773)
+2024-04-24T14:52:20.872-03:00  INFO 16020 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-24T14:52:20.876-03:00  INFO 16020 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-24T14:52:20.885-03:00  INFO 16020 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-24T14:52:20.888-03:00  INFO 16020 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-24T14:52:20.889-03:00  INFO 16020 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2024-04-24T14:52:20.897-03:00  INFO 16020 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2024-04-24T14:52:20.900-03:00  INFO 16020 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-24T14:52:20.901-03:00  INFO 16020 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2024-04-24T14:52:20.907-03:00  INFO 16020 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2024-04-24T14:52:20.909-03:00  INFO 16020 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-24T14:52:20.910-03:00  INFO 16020 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2024-04-24T14:52:20.916-03:00  INFO 16020 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
