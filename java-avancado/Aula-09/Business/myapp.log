@@ -3332,3 +3332,6 @@ Need more flexibility with validation rules? Learn more: https://rd.gt/3AbJUZE
 2024-04-22T20:13:29.508-03:00  INFO 19090 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
 2024-04-22T20:13:29.545-03:00  INFO 19090 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
 2024-04-22T20:13:29.559-03:00  INFO 19090 --- [restartedMain] b.c.c.Business.api.BusinessApplication   : Started BusinessApplication in 8.15 seconds (process running for 8.789)
+2024-04-22T23:55:18.755-03:00  INFO 19090 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-22T23:55:18.760-03:00  INFO 19090 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-22T23:55:18.769-03:00  INFO 19090 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
