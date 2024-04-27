@@ -1,9 +1,6 @@
-package br.com.cepedi.Voll.api.controller.V2;
+package br.com.cepedi.Voll.api.controller.V1;
 
 
-import br.com.cepedi.Voll.api.controller.V1.PatientControllerV1;
-import br.com.cepedi.Voll.api.model.records.doctor.details.DataDetailsDoctor;
-import br.com.cepedi.Voll.api.model.records.doctor.input.DataUpdateDoctor;
 import br.com.cepedi.Voll.api.model.records.patient.input.DataRegisterPatient;
 import br.com.cepedi.Voll.api.model.records.patient.input.DataUpdatePatient;
 import br.com.cepedi.Voll.api.model.records.patient.details.DataDetailsPatient;
@@ -24,9 +21,9 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 
 @RestController
-@RequestMapping("v2/patients")
+@RequestMapping("v1/patients")
 @SecurityRequirement(name = "bearer-key")
-public class PatientControllerV2 {
+public class PatientControllerV1 {
 
     private static final Logger log = LoggerFactory.getLogger(PatientControllerV1.class);
 
@@ -44,7 +41,7 @@ public class PatientControllerV2 {
     }
 
     @GetMapping
-    public ResponseEntity<Page<DataDetailsPatient>> listPatients(@PageableDefault(size = 5, sort = {"id"}) Pageable pageable) {
+    public ResponseEntity<Page<DataDetailsPatient>> listPatients(@PageableDefault(size = 10, sort = {"name"}) Pageable pageable) {
         log.info("Fetching list of patients...");
         Page<DataDetailsPatient> page = service.list(pageable);
         log.info("List of patients fetched successfully.");
@@ -59,7 +56,7 @@ public class PatientControllerV2 {
         return ResponseEntity.ok(details);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     @Transactional
     public ResponseEntity<DataDetailsPatient> update(@PathVariable Long id, @RequestBody @Valid DataUpdatePatient data) {
         log.info("Updating patient with ID: {}", id);
@@ -67,7 +64,6 @@ public class PatientControllerV2 {
         log.info("Patient with ID {} updated successfully.", id);
         return ResponseEntity.ok(details);
     }
-
 
     @DeleteMapping("/{id}")
     @Transactional
