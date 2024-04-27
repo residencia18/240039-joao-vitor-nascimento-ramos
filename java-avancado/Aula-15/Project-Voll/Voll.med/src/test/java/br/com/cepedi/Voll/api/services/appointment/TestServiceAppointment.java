@@ -74,27 +74,27 @@ public class TestServiceAppointment {
         appointmentRepository.deleteAll();
     }
 
-    @Test
-    @Disabled("Test in construction")
-    @DisplayName("Register new appointment")
-    public void shouldRegisterNewAppointment() {
-        // Given
-
-        // Save patient
-        DataDetailsPatient detailsPatient = patientService.register(generateRandomPatientData());
-        DataDetailsDoctor detailsDoctor = doctorService.register(generationDoctorRandomWithSpecialityDefined(Specialty.DERMATOLOGY));
-
-
-        // Create an appointment for the next Monday
-        LocalDateTime nextMonday = LocalDateTime.now().with(TemporalAdjusters.next(DayOfWeek.MONDAY));
-        DataRegisterAppointment data = new DataRegisterAppointment(detailsDoctor.id(), detailsPatient.id(), nextMonday, null);
-
-        // When
-        DataDetailsAppointment registeredAppointment = appointmentService.register(data);
-
-        // Then
-        assertNotNull(registeredAppointment);
-    }
+//    @Test
+//    @Disabled("Test in construction")
+//    @DisplayName("Register new appointment")
+//    public void shouldRegisterNewAppointment() {
+//        // Given
+//
+//        // Save patient
+//        DataDetailsPatient detailsPatient = patientService.register(generateRandomPatientData());
+//        DataDetailsDoctor detailsDoctor = doctorService.register(generationDoctorRandomWithSpecialityDefined(Specialty.DERMATOLOGY));
+//
+//
+//        // Create an appointment for the next Monday
+//        LocalDateTime nextMonday = LocalDateTime.now().with(TemporalAdjusters.next(DayOfWeek.MONDAY));
+//        DataRegisterAppointment data = new DataRegisterAppointment(detailsDoctor.id(), detailsPatient.id(), nextMonday, null);
+//
+//        // When
+//        DataDetailsAppointment registeredAppointment = appointmentService.register(data);
+//
+//        // Then
+//        assertNotNull(registeredAppointment);
+//    }
 
 
 //    @Test
