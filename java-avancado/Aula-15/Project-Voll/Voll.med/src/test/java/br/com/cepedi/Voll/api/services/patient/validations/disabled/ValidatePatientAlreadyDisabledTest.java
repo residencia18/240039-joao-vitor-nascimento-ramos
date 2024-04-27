@@ -1,8 +1,6 @@
-package br.com.cepedi.Voll.api.services.patients.validations.disabled;
+package br.com.cepedi.Voll.api.services.patient.validations.disabled;
 
 import br.com.cepedi.Voll.api.repository.PatientRepository;
-import br.com.cepedi.Voll.api.services.patient.validations.disabled.ValidateDisabledExistenceForDisabled;
-import br.com.cepedi.Voll.api.services.patient.validations.disabled.ValidatePatientAlreadyDisabled;
 import jakarta.validation.ValidationException;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;

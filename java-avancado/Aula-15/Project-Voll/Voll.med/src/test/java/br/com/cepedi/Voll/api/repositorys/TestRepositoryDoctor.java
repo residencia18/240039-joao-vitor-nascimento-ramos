@@ -3,13 +3,13 @@ package br.com.cepedi.Voll.api.repositorys;
 
 import br.com.cepedi.Voll.api.faker.PtBRCpfIdNumber;
 import br.com.cepedi.Voll.api.model.entitys.Doctor;
+import br.com.cepedi.Voll.api.model.entitys.Patient;
 import br.com.cepedi.Voll.api.model.records.address.input.DataRegisterAddress;
 import br.com.cepedi.Voll.api.model.records.doctor.input.DataRegisterDoctor;
 import br.com.cepedi.Voll.api.model.records.doctor.input.Specialty;
 import br.com.cepedi.Voll.api.repository.DoctorRepository;
 import com.github.javafaker.Faker;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -18,11 +18,13 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.ActiveProfiles;
 
+import javax.print.Doc;
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
+@TestMethodOrder(MethodOrderer.Random.class)
 @ActiveProfiles("test")
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class TestRepositoryDoctor {
@@ -31,9 +33,14 @@ public class TestRepositoryDoctor {
     @Autowired
     private DoctorRepository doctorRepository;
 
-    private static final Faker faker = new Faker();
+    private final Faker faker = new Faker();
 
     private PtBRCpfIdNumber cpfGenerator = new PtBRCpfIdNumber();
+
+    @BeforeEach
+    void setup(){
+        doctorRepository.deleteAll();
+    }
 
     @Test
     @DisplayName("Given activated doctors, when finding all activated doctors, then return only activated doctors")
@@ -43,6 +50,8 @@ public class TestRepositoryDoctor {
         doctorRepository.save(activatedDoctor1);
 
         Doctor activatedDoctor2 = new Doctor(generationDoctorRandomWithSpecialityDefined(Specialty.ORTHOPEDICS));
+        activatedDoctor2.setActivated(false);
+
         doctorRepository.save(activatedDoctor2);
 
         // When
@@ -50,7 +59,7 @@ public class TestRepositoryDoctor {
         Page<Doctor> activatedDoctorsPage = doctorRepository.findAllByActivatedTrue(pageable);
 
         // Then
-        assertEquals(2, activatedDoctorsPage.getTotalElements());
+        assertEquals(1, activatedDoctorsPage.getTotalElements());
         assertTrue(activatedDoctorsPage.getContent().stream().allMatch(Doctor::getActivated));
     }
 
@@ -109,6 +118,144 @@ public class TestRepositoryDoctor {
         assertFalse(exists); // Assuming no appointment exists for this doctor at this date
     }
 
+    @Test
+    @DisplayName("Given activated and deactivated doctors, when finding all activated doctors, then return all doctors")
+    public void findAllPatients() {
+        // Given
+        Doctor activatedDoctor1 = new Doctor(generationDoctorRandomWithSpecialityDefined(Specialty.CARDIOLOGY));
+        doctorRepository.save(activatedDoctor1);
+
+        Doctor desactivatedDoctor = new Doctor(generationDoctorRandomWithSpecialityDefined(Specialty.ORTHOPEDICS));
+        desactivatedDoctor.setActivated(false);
+        doctorRepository.save(desactivatedDoctor);
+
+        // When
+        Pageable pageable = PageRequest.of(0, 10);
+        Page<Doctor> doctorPage = doctorRepository.findAll(pageable);
+
+        // Then
+        assertEquals(2, doctorPage.getTotalElements());
+        assertTrue(doctorPage.getContent().get(0).getActivated());
+        assertFalse(doctorPage.getContent().get(1).getActivated());
+        assertEquals(activatedDoctor1.getAddress(),doctorPage.getContent().get(0).getAddress());
+        assertEquals(desactivatedDoctor.getAddress(),doctorPage.getContent().get(1).getAddress());
+    }
+
+    @Test
+    @DisplayName("Given a doctor ID, when finding activated status by ID for non-existent doctor, then return null")
+    public void findActivatedStatusForNonExistentPatient() {
+        // When
+        Boolean activated = doctorRepository.findActivatedById(1L);
+
+        // Then
+        assertNull(activated);
+    }
+
+    @Test
+    @DisplayName("Given deactivated doctors, when finding all activated doctors with custom query, then return empty list")
+    public void findAllActivatedPatientsWithCustomQueryNoResults() {
+        // Given
+        Doctor desactivatedDoctor1 = new Doctor(generationDoctorRandomWithSpecialityDefined(Specialty.CARDIOLOGY));
+        desactivatedDoctor1.setActivated(false);
+        doctorRepository.save(desactivatedDoctor1);
+
+        Doctor desactivatedDoctor2 = new Doctor(generationDoctorRandomWithSpecialityDefined(Specialty.ORTHOPEDICS));
+        desactivatedDoctor2.setActivated(false);
+        doctorRepository.save(desactivatedDoctor2);
+
+        Pageable pageable = PageRequest.of(0, 10);
+
+        // When
+        Page<Doctor> activatedDoctors = doctorRepository.findAllByActivatedTrue(pageable);
+
+        // Then
+        assertTrue(activatedDoctors.isEmpty());
+    }
+
+    @Test
+    @DisplayName("Find All Activated Patient By firstName")
+    public void findAllActivatedPatientByFirstName(){
+        //given
+        Doctor activatedDoctor1 = new Doctor(generationDoctorRandomWithSpecialityDefined(Specialty.CARDIOLOGY));
+        activatedDoctor1.setName("Joao Paulo");
+        doctorRepository.save(activatedDoctor1);
+        Doctor activatedDoctor2 = new Doctor(generationDoctorRandomWithSpecialityDefined(Specialty.CARDIOLOGY));
+        activatedDoctor2.setName("Joao Pedro");
+        doctorRepository.save(activatedDoctor2);
+        Doctor activatedDoctor3 = new Doctor(generationDoctorRandomWithSpecialityDefined(Specialty.CARDIOLOGY));
+        activatedDoctor3.setName("Pedro Paulo");
+        doctorRepository.save(activatedDoctor3);
+        Doctor activatedDoctor4 = new Doctor(generationDoctorRandomWithSpecialityDefined(Specialty.CARDIOLOGY));
+        activatedDoctor4.setName("Pedro Joao");
+        doctorRepository.save(activatedDoctor4);
+
+        Pageable pageable = PageRequest.of(0,10);
+        Page<Doctor> activatedDoctorsWithFirstNameJoao = doctorRepository.findByDoctorsByFirstName("Joao",pageable);
+        assertEquals(2,activatedDoctorsWithFirstNameJoao.getContent().size());
+    }
+
+    @Test
+    @DisplayName("Find All Activated Patient By lastName")
+    public void findAllActivatedPatientByLastName(){
+        //given
+        Doctor activatedDoctor1 = new Doctor(generationDoctorRandomWithSpecialityDefined(Specialty.CARDIOLOGY));
+        activatedDoctor1.setName("Joao Paulo");
+        doctorRepository.save(activatedDoctor1);
+        Doctor activatedDoctor2 = new Doctor(generationDoctorRandomWithSpecialityDefined(Specialty.CARDIOLOGY));
+        activatedDoctor2.setName("Joao Pedro");
+        doctorRepository.save(activatedDoctor2);
+        Doctor activatedDoctor3 = new Doctor(generationDoctorRandomWithSpecialityDefined(Specialty.CARDIOLOGY));
+        activatedDoctor3.setName("Pedro Paulo");
+        doctorRepository.save(activatedDoctor3);
+        Doctor activatedDoctor4 = new Doctor(generationDoctorRandomWithSpecialityDefined(Specialty.CARDIOLOGY));
+        activatedDoctor4.setName("Pedro Joao");
+        doctorRepository.save(activatedDoctor4);
+
+        Pageable pageable = PageRequest.of(0,10);
+        Page<Doctor> activatedDoctorsWithLastNamePaulo = doctorRepository.findByDoctorsByLastName("Paulo",pageable);
+        assertEquals(2,activatedDoctorsWithLastNamePaulo.getContent().size());
+    }
+
+    @Test
+    @DisplayName("Find All Activated Patient with determined city and neighborhood")
+    public void findPatientWithDeterminedCityAndNeighborhood(){
+        //given
+        Doctor activatedDoctor1 = new Doctor(generationDoctorRandomWithSpecialityDefined(Specialty.CARDIOLOGY));
+        activatedDoctor1.setName("Joao Paulo");
+        activatedDoctor1.getAddress().setCity("New York");
+        activatedDoctor1.getAddress().setNeighborhood("Local 1");
+        doctorRepository.save(activatedDoctor1);
+        Doctor activatedDoctor2 = new Doctor(generationDoctorRandomWithSpecialityDefined(Specialty.CARDIOLOGY));
+        activatedDoctor2.setName("Joao Paulo");
+        activatedDoctor2.getAddress().setCity("New York");
+        activatedDoctor2.getAddress().setNeighborhood("Local 2");
+        doctorRepository.save(activatedDoctor2);
+        Doctor activatedDoctor3 = new Doctor(generationDoctorRandomWithSpecialityDefined(Specialty.CARDIOLOGY));
+        activatedDoctor3.setName("Joao Paulo");
+        activatedDoctor3.getAddress().setCity("Sao Paulo");
+        activatedDoctor3.getAddress().setNeighborhood("Local 1");
+        doctorRepository.save(activatedDoctor3);
+
+        Pageable pageable = PageRequest.of(0,10);
+        Page<Doctor> activatedPatientsWithDeterminedAddress = doctorRepository.findByDoctorByCityAndNeighborhood(activatedDoctor1.getAddress().getCity(),
+                activatedDoctor1.getAddress().getNeighborhood(),pageable);
+
+        assertEquals(1,activatedPatientsWithDeterminedAddress.getContent().size());
+        assertEquals(activatedDoctor1.getAddress().getCity(),activatedPatientsWithDeterminedAddress.getContent().get(0).getAddress().getCity());
+        assertEquals(activatedDoctor1.getAddress().getNeighborhood(),activatedPatientsWithDeterminedAddress.getContent().get(0).getAddress().getNeighborhood());
+
+    }
+
+    @Test
+    @DisplayName("Find getReferenceById ")
+    public void findPatientWithGetReferenceById(){
+        //given
+        Doctor activatedDoctor1 = new Doctor(generationDoctorRandomWithSpecialityDefined(Specialty.CARDIOLOGY));
+        activatedDoctor1 = doctorRepository.save(activatedDoctor1);
+        Doctor doctor = doctorRepository.getReferenceById(activatedDoctor1.getId());
+        assertNotNull(doctor);
+        assertEquals(activatedDoctor1,doctor);
+    }
 
 
     private DataRegisterDoctor generationDoctorRandomWithSpecialityDefined(Specialty specialty) {

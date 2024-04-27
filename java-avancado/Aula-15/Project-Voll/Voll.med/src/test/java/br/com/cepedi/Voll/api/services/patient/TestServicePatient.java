@@ -1,4 +1,4 @@
-package br.com.cepedi.Voll.api.services.patients;
+package br.com.cepedi.Voll.api.services.patient;
 
 import br.com.cepedi.Voll.api.faker.PtBRCpfIdNumber;
 import br.com.cepedi.Voll.api.model.entitys.Patient;
@@ -7,7 +7,6 @@ import br.com.cepedi.Voll.api.model.records.patient.input.DataRegisterPatient;
 import br.com.cepedi.Voll.api.model.records.patient.details.DataDetailsPatient;
 import br.com.cepedi.Voll.api.model.records.patient.input.DataUpdatePatient;
 import br.com.cepedi.Voll.api.repository.PatientRepository;
-import br.com.cepedi.Voll.api.services.patient.PatientService;
 import br.com.cepedi.Voll.api.services.patient.validations.disabled.ValidationDisabledPatient;
 import br.com.cepedi.Voll.api.services.patient.validations.update.ValidationUpdatePatient;
 import com.github.javafaker.Faker;
@@ -16,7 +15,6 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -33,7 +31,6 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 

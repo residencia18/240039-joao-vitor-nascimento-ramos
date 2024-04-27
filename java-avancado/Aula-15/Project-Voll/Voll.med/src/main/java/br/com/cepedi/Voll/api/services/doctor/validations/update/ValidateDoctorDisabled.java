@@ -12,8 +12,8 @@ public class ValidateDoctorDisabled implements  ValidationUpdateDoctor{
     @Autowired
     private DoctorRepository repository;
     @Override
-    public void validation(DataUpdateDoctor data) {
-        Boolean doctorActivated = repository.findActivatedById(data.id());
+    public void validation(Long id ,DataUpdateDoctor data) {
+        Boolean doctorActivated = repository.findActivatedById(id);
         if(!doctorActivated){
             throw new ValidationException("The required doctor is disabled");
         }

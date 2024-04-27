@@ -43,9 +43,9 @@ public class PatientService {
     }
 
 
-    public DataDetailsPatient update(DataUpdatePatient data){
-        validationUpdatePatient.forEach( v -> v.validation(data));
-        Patient patient = repository.getReferenceById(data.id());
+    public DataDetailsPatient update(Long id , DataUpdatePatient data){
+        validationUpdatePatient.forEach( v -> v.validation(id, data));
+        Patient patient = repository.getReferenceById(id);
         patient.updateData(data);
         return new DataDetailsPatient(patient);
     }

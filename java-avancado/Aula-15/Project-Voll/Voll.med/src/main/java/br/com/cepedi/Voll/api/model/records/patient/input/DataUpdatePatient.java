@@ -6,9 +6,7 @@ import jakarta.validation.constraints.NotNull;
 
 public record DataUpdatePatient(
 
-        @JsonAlias("id")
-        @NotNull
-        Long id,
+
         @JsonAlias("nome")
         String name,
 

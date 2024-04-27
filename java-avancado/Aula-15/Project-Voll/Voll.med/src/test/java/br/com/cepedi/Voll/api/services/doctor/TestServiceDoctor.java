@@ -1,99 +1,127 @@
-package br.com.cepedi.Voll.api.services;
+package br.com.cepedi.Voll.api.services.doctor;
 
 import br.com.cepedi.Voll.api.faker.PtBRCpfIdNumber;
 import br.com.cepedi.Voll.api.model.entitys.Doctor;
+import br.com.cepedi.Voll.api.model.entitys.Patient;
 import br.com.cepedi.Voll.api.model.records.address.input.DataRegisterAddress;
 import br.com.cepedi.Voll.api.model.records.doctor.input.DataRegisterDoctor;
 import br.com.cepedi.Voll.api.model.records.doctor.input.DataUpdateDoctor;
 import br.com.cepedi.Voll.api.model.records.doctor.input.Specialty;
 import br.com.cepedi.Voll.api.model.records.doctor.details.DataDetailsDoctor;
+import br.com.cepedi.Voll.api.model.records.patient.details.DataDetailsPatient;
+import br.com.cepedi.Voll.api.model.records.patient.input.DataRegisterPatient;
 import br.com.cepedi.Voll.api.repository.DoctorRepository;
 import br.com.cepedi.Voll.api.services.doctor.DoctorService;
 import br.com.cepedi.Voll.api.services.doctor.validations.disabled.ValidationDisabledDoctor;
+import br.com.cepedi.Voll.api.services.doctor.validations.register.ValidationRegisterDoctor;
 import br.com.cepedi.Voll.api.services.doctor.validations.update.ValidationUpdateDoctor;
 import com.github.javafaker.Faker;
 import jakarta.validation.ValidationException;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.ActiveProfiles;
 
+import javax.print.Doc;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.when;
 
-@DataJpaTest
-@ActiveProfiles("test")
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@ComponentScan(basePackages = "br.com.cepedi.Voll.api.services.doctor")
+@ExtendWith(MockitoExtension.class)
+@TestMethodOrder(MethodOrderer.Random.class)
 public class TestServiceDoctor {
 
-    @Autowired
+    @InjectMocks
     private DoctorService doctorService;
 
-    @Autowired
+    @Mock
     private DoctorRepository doctorRepository;
 
-    @MockBean
-    private List<ValidationUpdateDoctor> validationsUpdate;
+    @Mock
+    private List<ValidationUpdateDoctor> validationUpdateDoctors;
 
-    @MockBean
-    private List<ValidationDisabledDoctor> validationsDisabled;
+    @Mock
+    private List<ValidationDisabledDoctor> validationDisabledDoctors;
+
 
     private static final Faker faker = new Faker();
 
     private PtBRCpfIdNumber cpfGenerator = new PtBRCpfIdNumber();
+    private List<DataRegisterDoctor> dataRegisterDoctors = new ArrayList<>();
 
 
     @BeforeEach
     public void setUp() {
         doctorRepository.deleteAll();
+
+        // Given
+        for (int i = 0; i < 15; i++) {
+            dataRegisterDoctors.add(generationDoctorRandomWithSpecialityDefined(Specialty.DERMATOLOGY));
+        }
+        for (int i = 0; i < 15; i++) {
+            dataRegisterDoctors.add(generationDoctorRandomWithSpecialityDefined(Specialty.CARDIOLOGY));
+        }
     }
 
     @Test
     @DisplayName("Register new doctor")
     public void shouldRegisterNewDoctor() {
         // Given
-        DataRegisterDoctor data = generationDoctorRandomWithSpecialityDefined(Specialty.CARDIOLOGY);
+        Doctor doctorSaved = new Doctor(dataRegisterDoctors.get(0));
 
         // When
-        DataDetailsDoctor registeredDoctorDetails = doctorService.register(data);
+        DataDetailsDoctor registeredDoctorDetails = doctorService.register(dataRegisterDoctors.get(0));
 
         // Then
         assertNotNull(registeredDoctorDetails);
-        assertNotNull(registeredDoctorDetails.id());
-        assertEquals(data.name(), registeredDoctorDetails.name());
-        assertEquals(data.email(), registeredDoctorDetails.email());
-        assertEquals(data.specialty(), registeredDoctorDetails.specialty());
+        assertEquals(registeredDoctorDetails.name(), doctorSaved.getName());
+        assertEquals(registeredDoctorDetails.email(), doctorSaved.getEmail());
+        assertEquals(registeredDoctorDetails.specialty(), doctorSaved.getSpecialty());
     }
 
     @Test
     @DisplayName("List doctors")
     public void shouldListDoctors() {
-        // Given
-        // Crie alguns médicos para testar a listagem
-        DataRegisterDoctor doctor1Data = generationDoctorRandomWithSpecialityDefined(Specialty.CARDIOLOGY);
-        DataRegisterDoctor doctor2Data = generationDoctorRandomWithSpecialityDefined(Specialty.ORTHOPEDICS);
-        doctorService.register(doctor1Data);
-        doctorService.register(doctor2Data);
+        Doctor doctor1 = new Doctor(dataRegisterDoctors.get(0));
+        Doctor doctor2 = new Doctor(dataRegisterDoctors.get(10));
+        doctorService.register(dataRegisterDoctors.get(0));
+        doctorService.register(dataRegisterDoctors.get(10));
 
         // When
-        Page<DataDetailsDoctor> doctorPage = doctorService.list(PageRequest.of(0, 10));
+        List<Doctor> doctorsList = Arrays.asList(doctor1, doctor2);
+        Pageable pageable = PageRequest.of(0, 10);
+
+        Page<Doctor> doctorsPage = new PageImpl<>(doctorsList, pageable, doctorsList.size());
+
+        when(doctorRepository.findAllByActivatedTrue(any())).thenReturn(doctorsPage);
+
+        Page<DataDetailsDoctor> patientPage = doctorService.list(pageable);
+
 
         // Then
-        assertNotNull(doctorPage);
-        assertEquals(2, doctorPage.getTotalElements());
+        assertNotNull(doctorsPage);
+        assertEquals(2, doctorsPage.getTotalElements());
 
-        List<DataDetailsDoctor> doctors = doctorPage.getContent();
+        List<DataDetailsDoctor> doctors = patientPage.getContent();
         for (DataDetailsDoctor doctor : doctors) {
-            assertNotNull(doctor.id());
             assertNotNull(doctor.name());
             assertNotNull(doctor.email());
             assertNotNull(doctor.address());
@@ -105,40 +133,53 @@ public class TestServiceDoctor {
     public void shouldUpdateDoctor() {
 
         // Given
-        DataRegisterDoctor registrationData = generationDoctorRandomWithSpecialityDefined(Specialty.DERMATOLOGY);
-        DataDetailsDoctor registeredDoctorDetails = doctorService.register(registrationData);
-        Long doctorId = registeredDoctorDetails.id();
+        Doctor doctor = new Doctor(dataRegisterDoctors.get(0));
+        when(doctorRepository.getReferenceById(anyLong())).thenReturn(doctor);
+
 
         // Agora, crie os dados de atualização
-        DataUpdateDoctor updateData = new DataUpdateDoctor(doctorId, "New Name", "joao@email.com", null ,
+        DataUpdateDoctor updateData = new DataUpdateDoctor("New Name", "joao@email.com", null ,
                 new DataRegisterAddress("Street", "City", "12345", "State", "XX", null, null));
 
         // When
-        DataDetailsDoctor updatedDoctorDetails = doctorService.update(updateData);
+        DataDetailsDoctor updatedDoctorDetails = doctorService.update(1L,updateData);
 
         // Then
+        assertNotNull(updatedDoctorDetails);
         assertEquals(updateData.name(), updatedDoctorDetails.name());
         assertNotEquals(updateData.email(), updatedDoctorDetails.email());
         assertEquals(updateData.dataAddress().cep(), updatedDoctorDetails.address().cep());
     }
 
     @Test
-    @DisplayName("Update doctor - Doctor is disabled")
+    @DisplayName("Disabled doctor - Doctor is disabled")
     public void shouldThrowExceptionWhenUpdatingDisabledDoctor() {
         // Given
-        DataRegisterDoctor registrationData = generationDoctorRandomWithSpecialityDefined(Specialty.DERMATOLOGY);
-        DataDetailsDoctor registeredDoctorDetails = doctorService.register(registrationData);
+        Doctor doctor = new Doctor(dataRegisterDoctors.get(0));
+        when(doctorRepository.getReferenceById(any())).thenReturn(doctor);
 
-        Doctor doctor = doctorRepository.findById(registeredDoctorDetails.id()).orElseThrow();
+        //When
         doctorService.disabled(doctor.getId());
 
+        //Then
+        assertFalse(doctor.getActivated());
 
-        DataUpdateDoctor data = new DataUpdateDoctor(registeredDoctorDetails.id(), "New Name", "new@email.com", null,
-                new DataRegisterAddress("Street", "City", "12345", "State", "XX", null, null));
+    }
 
+    @Test
+    @DisplayName("Details doctor with success")
+    public void dataDetailsDoctor() {
+        // Given
+        Doctor doctor = new Doctor(dataRegisterDoctors.get(0));
+        doctor.setId(1L);
+        when(doctorRepository.getReferenceById(any())).thenReturn(doctor);
+        // When
+        DataDetailsDoctor details = doctorService.details(1L);
 
-        // When/Then
-        assertThrows(ValidationException.class, () -> doctorService.update(data));
+        // Then
+        assertEquals(doctor.getName(),details.name());
+        assertEquals(doctor.getCrm(),details.crm());
+        assertEquals(doctor.getEmail(),details.email());
     }
 
     // Métodos de geração de dados aleatórios para médicos (simulados)

@@ -12,8 +12,8 @@ public class ValidatePatientExistenceForUpdate implements ValidationUpdatePatien
     @Autowired
     private PatientRepository repository;
 
-    public void validation(DataUpdatePatient data){
-        if(!repository.existsById(data.id())){
+    public void validation(Long id ,DataUpdatePatient data){
+        if(!repository.existsById(id)){
             throw new ValidationException("The required patient is does not exists");
         }
     }

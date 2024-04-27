@@ -57,12 +57,12 @@ public class DoctorControllerV1 {
         return ResponseEntity.ok(details);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     @Transactional
-    public ResponseEntity<DataDetailsDoctor> update(@RequestBody @Valid DataUpdateDoctor data) {
-        log.info("Updating doctor with ID: {}", data.id());
-        DataDetailsDoctor details = service.update(data);
-        log.info("Doctor with ID {} updated successfully.", data.id());
+    public ResponseEntity<DataDetailsDoctor> update(@PathVariable Long id, @RequestBody @Valid DataUpdateDoctor data) {
+        log.info("Updating doctor with ID: {}", id);
+        DataDetailsDoctor details = service.update(id , data);
+        log.info("Doctor with ID {} updated successfully.", id);
         return ResponseEntity.ok(details);
     }
 

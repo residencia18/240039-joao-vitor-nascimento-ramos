@@ -2,6 +2,8 @@ package br.com.cepedi.Voll.api.controller.V2;
 
 
 import br.com.cepedi.Voll.api.controller.V1.PatientControllerV1;
+import br.com.cepedi.Voll.api.model.records.doctor.details.DataDetailsDoctor;
+import br.com.cepedi.Voll.api.model.records.doctor.input.DataUpdateDoctor;
 import br.com.cepedi.Voll.api.model.records.patient.input.DataRegisterPatient;
 import br.com.cepedi.Voll.api.model.records.patient.input.DataUpdatePatient;
 import br.com.cepedi.Voll.api.model.records.patient.details.DataDetailsPatient;
@@ -59,12 +61,13 @@ public class PatientControllerV2 {
 
     @PutMapping
     @Transactional
-    public ResponseEntity<DataDetailsPatient> update(@RequestBody @Valid DataUpdatePatient data) {
-        log.info("Updating patient with ID: {}", data.id());
-        DataDetailsPatient details = service.update(data);
-        log.info("Patient with ID {} updated successfully.", data.id());
+    public ResponseEntity<DataDetailsPatient> update(@PathVariable Long id, @RequestBody @Valid DataUpdatePatient data) {
+        log.info("Updating patient with ID: {}", id);
+        DataDetailsPatient details = service.update(id,data);
+        log.info("Patient with ID {} updated successfully.", id);
         return ResponseEntity.ok(details);
     }
+
 
     @DeleteMapping("/{id}")
     @Transactional

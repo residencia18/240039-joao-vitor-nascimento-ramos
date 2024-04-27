@@ -1,8 +1,7 @@
-package br.com.cepedi.Voll.api.services.patients.validations.update;
+package br.com.cepedi.Voll.api.services.patient.validations.update;
 
 import br.com.cepedi.Voll.api.model.records.patient.input.DataUpdatePatient;
 import br.com.cepedi.Voll.api.repository.PatientRepository;
-import br.com.cepedi.Voll.api.services.patient.validations.update.ValidatePatientExistenceForUpdate;
 import jakarta.validation.ValidationException;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;

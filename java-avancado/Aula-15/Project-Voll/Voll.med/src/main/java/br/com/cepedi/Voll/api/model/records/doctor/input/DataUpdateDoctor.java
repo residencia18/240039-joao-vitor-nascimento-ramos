@@ -9,9 +9,6 @@ import jakarta.validation.constraints.NotNull;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record DataUpdateDoctor (
 
-    @JsonAlias("id")
-    @NotNull
-    Long id,
     @JsonAlias("nome")
     String name,
     @JsonAlias("email")

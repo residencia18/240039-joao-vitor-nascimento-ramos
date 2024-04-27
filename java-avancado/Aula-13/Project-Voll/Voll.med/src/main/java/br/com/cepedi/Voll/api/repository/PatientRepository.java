@@ -20,5 +20,5 @@ public interface PatientRepository extends JpaRepository<Patient,Long> {
             """)
     Boolean findActivatedById(Long id);
 
-    
+
 }

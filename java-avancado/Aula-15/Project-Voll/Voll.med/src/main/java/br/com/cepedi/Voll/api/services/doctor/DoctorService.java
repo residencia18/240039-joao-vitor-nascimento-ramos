@@ -6,6 +6,7 @@ import br.com.cepedi.Voll.api.model.records.doctor.input.DataUpdateDoctor;
 import br.com.cepedi.Voll.api.model.records.doctor.details.DataDetailsDoctor;
 import br.com.cepedi.Voll.api.repository.DoctorRepository;
 import br.com.cepedi.Voll.api.services.doctor.validations.disabled.ValidationDisabledDoctor;
+import br.com.cepedi.Voll.api.services.doctor.validations.register.ValidationRegisterDoctor;
 import br.com.cepedi.Voll.api.services.doctor.validations.update.ValidationUpdateDoctor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,6 +27,9 @@ public class DoctorService {
     @Autowired
     private List<ValidationUpdateDoctor> validationsUpdate;
 
+    @Autowired
+    private List<ValidationRegisterDoctor> validationRegisterDoctors;
+
 
 
 
@@ -43,9 +47,9 @@ public class DoctorService {
         return new DataDetailsDoctor(repository.getReferenceById(id));
     }
 
-    public DataDetailsDoctor update(DataUpdateDoctor data){
-        validationsUpdate.forEach(v -> v.validation(data));
-        Doctor doctor = repository.getReferenceById(data.id());
+    public DataDetailsDoctor update(Long id, DataUpdateDoctor data){
+        validationsUpdate.forEach(v -> v.validation(id , data));
+        Doctor doctor = repository.getReferenceById(id);
         doctor.updateData(data);
         return new DataDetailsDoctor(doctor);
     }

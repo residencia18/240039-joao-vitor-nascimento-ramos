@@ -39,7 +39,7 @@ public class TestDoctor {
     public void updateDoctor() {
         DataRegisterDoctor dataRegister = new DataRegisterDoctor("Dr. John Doe", "john@example.com", "123456789", "12345", Specialty.DERMATOLOGY, new DataRegisterAddress("Rua Teste", "Bairro Teste", "12345-678", "City Test", "UF Test", "Complement Test", "123"));
         Doctor doctor = new Doctor(dataRegister);
-        DataUpdateDoctor data = new DataUpdateDoctor(1L, "Dr. Jane Doe", "jane@example.com", "987654321", new DataRegisterAddress("Rua Nova", "Novo Bairro", "87654-321", "New City", "New UF", "New Complement", "456"));
+        DataUpdateDoctor data = new DataUpdateDoctor( "Dr. Jane Doe", "jane@example.com", "987654321", new DataRegisterAddress("Rua Nova", "Novo Bairro", "87654-321", "New City", "New UF", "New Complement", "456"));
         doctor.updateData(data);
         assertEquals("Dr. Jane Doe", doctor.getName());
         assertEquals("987654321", doctor.getPhoneNumber());

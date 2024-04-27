@@ -10,9 +10,7 @@ import br.com.cepedi.Voll.api.repository.AppointmentRepository;
 import br.com.cepedi.Voll.api.repository.DoctorRepository;
 import br.com.cepedi.Voll.api.repository.PatientRepository;
 import com.github.javafaker.Faker;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -24,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DataJpaTest
+@TestMethodOrder(MethodOrderer.Random.class)
 @ActiveProfiles("test")
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class TestRepositoryAppointment {
@@ -44,6 +43,8 @@ public class TestRepositoryAppointment {
     @BeforeEach
     public void setUp() {
         patientRepository.deleteAll();
+        appointmentRepository.deleteAll();
+        doctorRepository.deleteAll();
     }
 
     @Test

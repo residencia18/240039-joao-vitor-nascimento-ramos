@@ -22,7 +22,6 @@ public class TestDataUpdateDoctor {
     @DisplayName("Test valid DataUpdateDoctor")
     public void testValidDataUpdateDoctor() {
         DataUpdateDoctor dataUpdateDoctor = new DataUpdateDoctor(
-                1L,
                 "Dr. John Doe",
                 "johndoe@example.com",
                 "123456789",
@@ -41,26 +40,11 @@ public class TestDataUpdateDoctor {
         assertTrue(violations.isEmpty(), "Expected no violations, but found some.");
     }
 
-    @Test
-    @DisplayName("Test invalid DataUpdateDoctor with missing required fields")
-    public void testInvalidDataUpdateDoctorMissingRequiredFields() {
-        DataUpdateDoctor dataUpdateDoctor = new DataUpdateDoctor(
-                null,
-                null,
-                null,
-                null,
-                null
-        );
-
-        Set<ConstraintViolation<DataUpdateDoctor>> violations = validator.validate(dataUpdateDoctor);
-        assertTrue(!violations.isEmpty(), "Expected violations, but found none.");
-    }
 
     @Test
     @DisplayName("Test invalid DataUpdateDoctor with invalid email")
     public void testInvalidDataUpdateDoctorInvalidEmail() {
         DataUpdateDoctor dataUpdateDoctor = new DataUpdateDoctor(
-                1L,
                 "Dr. John Doe",
                 "invalidemail",
                 "123456789",

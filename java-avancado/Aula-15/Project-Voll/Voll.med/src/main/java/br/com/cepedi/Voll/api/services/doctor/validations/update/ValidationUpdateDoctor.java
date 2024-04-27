@@ -4,6 +4,6 @@ import br.com.cepedi.Voll.api.model.records.doctor.input.DataUpdateDoctor;
 
 public interface ValidationUpdateDoctor {
 
-    void validation(DataUpdateDoctor data);
+    void validation(Long id, DataUpdateDoctor data);
 
 }

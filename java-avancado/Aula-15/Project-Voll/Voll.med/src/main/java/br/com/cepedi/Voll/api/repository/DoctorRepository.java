@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDateTime;
 
@@ -42,6 +43,29 @@ public interface DoctorRepository extends JpaRepository<Doctor, Long> {
             )
             """)
     Boolean existsByDoctorIdAndData(Long id, LocalDateTime date);
+
+
+    @Query("""
+            SELECT p FROM Doctor p WHERE p.email = :email AND p.activated = true
+             """)
+    Doctor findByDoctorByEmail(@Param("email") String email);
+
+    @Query("""
+            SELECT p FROM Doctor p WHERE SUBSTRING_INDEX(p.name,' ',1) = :firstName
+             """)
+    Page<Doctor> findByDoctorsByFirstName(@Param("firstName") String firstName , Pageable pageable);
+
+    @Query("""
+            SELECT p FROM Doctor p WHERE SUBSTRING_INDEX(p.name,' ',-1) = :lastName
+             """)
+    Page<Doctor> findByDoctorsByLastName(@Param("lastName") String lastName, Pageable pageable);
+
+
+    @Query("""
+            SELECT p FROM Doctor p WHERE p.address.city = :city AND p.address.neighborhood = :neighborhood
+           """)
+    Page<Doctor> findByDoctorByCityAndNeighborhood(@Param("city") String city, @Param("neighborhood") String neighborhood, Pageable pageable);
+
 
 
 }

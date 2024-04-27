@@ -12,8 +12,8 @@ public class ValidateDoctorExistenceForUpdate implements ValidationUpdateDoctor 
     @Autowired
     private DoctorRepository repository;
 
-    public void validation(DataUpdateDoctor data){
-        if(!repository.existsById(data.id())){
+    public void validation(Long id ,DataUpdateDoctor data){
+        if(!repository.existsById(id)){
             throw new ValidationException("The required doctor is does not exists");
         }
     }
