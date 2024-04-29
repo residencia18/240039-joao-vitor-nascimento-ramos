@@ -875,3 +875,294 @@
 2024-04-29T10:01:02.685-03:00  INFO 19284 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-04-29T10:01:02.687-03:00  INFO 19284 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-04-29T10:01:02.694-03:00  INFO 19284 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-29T13:55:08.936-03:00  INFO 26964 --- [main] b.c.c.V.a.c.ControllerPatientV1Test      : Starting ControllerPatientV1Test using Java 17.0.9 with PID 26964 (started by joao in /home/joao/residencia18/java-avancado/Aula-15/Project-Voll/Voll.med)
+2024-04-29T13:55:08.939-03:00  INFO 26964 --- [main] b.c.c.V.a.c.ControllerPatientV1Test      : No active profile set, falling back to 1 default profile: "default"
+2024-04-29T13:55:10.676-03:00  INFO 26964 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-29T13:55:10.828-03:00  INFO 26964 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 134 ms. Found 4 JPA repository interfaces.
+2024-04-29T13:55:13.248-03:00  INFO 26964 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-29T13:55:13.881-03:00  INFO 26964 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@75f8d9b0
+2024-04-29T13:55:13.903-03:00  INFO 26964 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-29T13:55:14.061-03:00  INFO 26964 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.22.3 by Redgate
+2024-04-29T13:55:14.062-03:00  INFO 26964 --- [main] o.f.c.internal.license.VersionPrinter    : See release notes here: https://rd.gt/416ObMi
+2024-04-29T13:55:14.062-03:00  INFO 26964 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2024-04-29T13:55:14.101-03:00  INFO 26964 --- [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/vollmed_api (MySQL 8.0)
+2024-04-29T13:55:14.197-03:00  INFO 26964 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.058s)
+2024-04-29T13:55:14.227-03:00  INFO 26964 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `vollmed_api`: 8
+2024-04-29T13:55:14.233-03:00  INFO 26964 --- [main] o.f.core.internal.command.DbMigrate      : Schema `vollmed_api` is up to date. No migration necessary.
+2024-04-29T13:55:14.437-03:00  INFO 26964 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-29T13:55:14.527-03:00  INFO 26964 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-04-29T13:55:14.586-03:00  INFO 26964 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-29T13:55:14.767-03:00  INFO 26964 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-29T13:55:16.352-03:00  INFO 26964 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-29T13:55:16.359-03:00  INFO 26964 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-29T13:55:16.930-03:00  INFO 26964 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-04-29T13:55:18.897-03:00  WARN 26964 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-29T13:55:20.695-03:00  INFO 26964 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4f774a14, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@54907471, org.springframework.security.web.context.SecurityContextHolderFilter@b96fb73, org.springframework.security.web.header.HeaderWriterFilter@48562206, org.springframework.web.filter.CorsFilter@255e9649, org.springframework.security.web.authentication.logout.LogoutFilter@209aefd1, br.com.cepedi.Voll.api.security.infra.SecurityFilter@267e36f5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1ceefb02, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1a68c0c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4d0be2ac, org.springframework.security.web.session.SessionManagementFilter@7c752d6b, org.springframework.security.web.access.ExceptionTranslationFilter@5548d5c4, org.springframework.security.web.access.intercept.AuthorizationFilter@da2dbd0]
+2024-04-29T13:55:21.604-03:00  INFO 26964 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-04-29T13:55:21.605-03:00  INFO 26964 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-04-29T13:55:21.608-03:00  INFO 26964 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2024-04-29T13:55:21.676-03:00  INFO 26964 --- [main] b.c.c.V.a.c.ControllerPatientV1Test      : Started ControllerPatientV1Test in 13.147 seconds (process running for 15.624)
+2024-04-29T13:55:22.352-03:00  INFO 26964 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : Fetching list of patients...
+2024-04-29T13:55:22.359-03:00  INFO 26964 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : List of patients fetched successfully.
+2024-04-29T13:55:22.528-03:00  INFO 26964 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-29T13:55:22.533-03:00  INFO 26964 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-29T13:55:22.553-03:00  INFO 26964 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-29T13:55:49.240-03:00  INFO 27291 --- [main] b.c.c.V.a.c.ControllerPatientV1Test      : Starting ControllerPatientV1Test using Java 17.0.9 with PID 27291 (started by joao in /home/joao/residencia18/java-avancado/Aula-15/Project-Voll/Voll.med)
+2024-04-29T13:55:49.243-03:00  INFO 27291 --- [main] b.c.c.V.a.c.ControllerPatientV1Test      : No active profile set, falling back to 1 default profile: "default"
+2024-04-29T13:55:50.377-03:00  INFO 27291 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-29T13:55:50.464-03:00  INFO 27291 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 78 ms. Found 4 JPA repository interfaces.
+2024-04-29T13:55:52.419-03:00  INFO 27291 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-29T13:55:52.962-03:00  INFO 27291 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@11f9b95a
+2024-04-29T13:55:52.966-03:00  INFO 27291 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-29T13:55:53.171-03:00  INFO 27291 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.22.3 by Redgate
+2024-04-29T13:55:53.172-03:00  INFO 27291 --- [main] o.f.c.internal.license.VersionPrinter    : See release notes here: https://rd.gt/416ObMi
+2024-04-29T13:55:53.172-03:00  INFO 27291 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2024-04-29T13:55:53.207-03:00  INFO 27291 --- [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/vollmed_api (MySQL 8.0)
+2024-04-29T13:55:53.283-03:00  INFO 27291 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.046s)
+2024-04-29T13:55:53.308-03:00  INFO 27291 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `vollmed_api`: 8
+2024-04-29T13:55:53.313-03:00  INFO 27291 --- [main] o.f.core.internal.command.DbMigrate      : Schema `vollmed_api` is up to date. No migration necessary.
+2024-04-29T13:55:53.524-03:00  INFO 27291 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-29T13:55:53.602-03:00  INFO 27291 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-04-29T13:55:53.652-03:00  INFO 27291 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-29T13:55:53.794-03:00  INFO 27291 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-29T13:55:55.183-03:00  INFO 27291 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-29T13:55:55.189-03:00  INFO 27291 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-29T13:55:55.620-03:00  INFO 27291 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-04-29T13:55:57.238-03:00  WARN 27291 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-29T13:55:58.686-03:00  INFO 27291 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7bbdaf51, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@58ca3439, org.springframework.security.web.context.SecurityContextHolderFilter@30f8e8b2, org.springframework.security.web.header.HeaderWriterFilter@5a6d931c, org.springframework.web.filter.CorsFilter@da2dbd0, org.springframework.security.web.authentication.logout.LogoutFilter@578ce232, br.com.cepedi.Voll.api.security.infra.SecurityFilter@7a01358f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7f77a0d6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7c5c3132, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@50c43f7d, org.springframework.security.web.session.SessionManagementFilter@7157b2d4, org.springframework.security.web.access.ExceptionTranslationFilter@50a7dc25, org.springframework.security.web.access.intercept.AuthorizationFilter@553011a9]
+2024-04-29T13:55:59.300-03:00  INFO 27291 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-04-29T13:55:59.300-03:00  INFO 27291 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-04-29T13:55:59.303-03:00  INFO 27291 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 3 ms
+2024-04-29T13:55:59.367-03:00  INFO 27291 --- [main] b.c.c.V.a.c.ControllerPatientV1Test      : Started ControllerPatientV1Test in 10.511 seconds (process running for 12.207)
+2024-04-29T13:55:59.930-03:00  INFO 27291 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : Fetching list of patients...
+2024-04-29T13:55:59.935-03:00  INFO 27291 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : List of patients fetched successfully.
+2024-04-29T13:56:00.062-03:00  INFO 27291 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-29T13:56:00.067-03:00  INFO 27291 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-29T13:56:00.078-03:00  INFO 27291 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-29T13:56:52.176-03:00  INFO 27640 --- [main] b.c.c.V.a.c.ControllerPatientV1Test      : Starting ControllerPatientV1Test using Java 17.0.9 with PID 27640 (started by joao in /home/joao/residencia18/java-avancado/Aula-15/Project-Voll/Voll.med)
+2024-04-29T13:56:52.178-03:00  INFO 27640 --- [main] b.c.c.V.a.c.ControllerPatientV1Test      : No active profile set, falling back to 1 default profile: "default"
+2024-04-29T13:56:53.487-03:00  INFO 27640 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-29T13:56:53.609-03:00  INFO 27640 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 110 ms. Found 4 JPA repository interfaces.
+2024-04-29T13:56:55.541-03:00  INFO 27640 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-29T13:56:56.093-03:00  INFO 27640 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4f7ae05
+2024-04-29T13:56:56.096-03:00  INFO 27640 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-29T13:56:56.290-03:00  INFO 27640 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.22.3 by Redgate
+2024-04-29T13:56:56.290-03:00  INFO 27640 --- [main] o.f.c.internal.license.VersionPrinter    : See release notes here: https://rd.gt/416ObMi
+2024-04-29T13:56:56.291-03:00  INFO 27640 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2024-04-29T13:56:56.328-03:00  INFO 27640 --- [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/vollmed_api (MySQL 8.0)
+2024-04-29T13:56:56.414-03:00  INFO 27640 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.049s)
+2024-04-29T13:56:56.446-03:00  INFO 27640 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `vollmed_api`: 8
+2024-04-29T13:56:56.451-03:00  INFO 27640 --- [main] o.f.core.internal.command.DbMigrate      : Schema `vollmed_api` is up to date. No migration necessary.
+2024-04-29T13:56:56.642-03:00  INFO 27640 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-29T13:56:56.714-03:00  INFO 27640 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-04-29T13:56:56.762-03:00  INFO 27640 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-29T13:56:56.911-03:00  INFO 27640 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-29T13:56:58.284-03:00  INFO 27640 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-29T13:56:58.290-03:00  INFO 27640 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-29T13:56:58.775-03:00  INFO 27640 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-04-29T13:57:00.640-03:00  WARN 27640 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-29T13:57:02.180-03:00  INFO 27640 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@54907471, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@255e9649, org.springframework.security.web.context.SecurityContextHolderFilter@5edd911f, org.springframework.security.web.header.HeaderWriterFilter@700df0dd, org.springframework.web.filter.CorsFilter@4d0be2ac, org.springframework.security.web.authentication.logout.LogoutFilter@70a8c26e, br.com.cepedi.Voll.api.security.infra.SecurityFilter@317d7a5e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1a68c0c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3d57b228, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@385936f3, org.springframework.security.web.session.SessionManagementFilter@7f77a0d6, org.springframework.security.web.access.ExceptionTranslationFilter@7e95bbbb, org.springframework.security.web.access.intercept.AuthorizationFilter@50c43f7d]
+2024-04-29T13:57:02.847-03:00  INFO 27640 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-04-29T13:57:02.847-03:00  INFO 27640 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-04-29T13:57:02.849-03:00  INFO 27640 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2024-04-29T13:57:02.893-03:00  INFO 27640 --- [main] b.c.c.V.a.c.ControllerPatientV1Test      : Started ControllerPatientV1Test in 11.087 seconds (process running for 12.906)
+2024-04-29T13:57:03.390-03:00  INFO 27640 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : Fetching list of patients...
+2024-04-29T13:57:03.395-03:00  INFO 27640 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : List of patients fetched successfully.
+2024-04-29T13:57:03.526-03:00  INFO 27640 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-29T13:57:03.530-03:00  INFO 27640 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-29T13:57:03.543-03:00  INFO 27640 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-29T13:58:56.775-03:00  INFO 28038 --- [main] b.c.c.V.a.c.ControllerPatientV1Test      : Starting ControllerPatientV1Test using Java 17.0.9 with PID 28038 (started by joao in /home/joao/residencia18/java-avancado/Aula-15/Project-Voll/Voll.med)
+2024-04-29T13:58:56.777-03:00  INFO 28038 --- [main] b.c.c.V.a.c.ControllerPatientV1Test      : No active profile set, falling back to 1 default profile: "default"
+2024-04-29T13:58:57.838-03:00  INFO 28038 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-29T13:58:57.916-03:00  INFO 28038 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 69 ms. Found 4 JPA repository interfaces.
+2024-04-29T13:58:59.709-03:00  INFO 28038 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-29T13:59:00.227-03:00  INFO 28038 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1e23ee0e
+2024-04-29T13:59:00.231-03:00  INFO 28038 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-29T13:59:00.408-03:00  INFO 28038 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.22.3 by Redgate
+2024-04-29T13:59:00.409-03:00  INFO 28038 --- [main] o.f.c.internal.license.VersionPrinter    : See release notes here: https://rd.gt/416ObMi
+2024-04-29T13:59:00.409-03:00  INFO 28038 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2024-04-29T13:59:00.440-03:00  INFO 28038 --- [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/vollmed_api (MySQL 8.0)
+2024-04-29T13:59:00.516-03:00  INFO 28038 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.045s)
+2024-04-29T13:59:00.540-03:00  INFO 28038 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `vollmed_api`: 8
+2024-04-29T13:59:00.544-03:00  INFO 28038 --- [main] o.f.core.internal.command.DbMigrate      : Schema `vollmed_api` is up to date. No migration necessary.
+2024-04-29T13:59:00.694-03:00  INFO 28038 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-29T13:59:00.762-03:00  INFO 28038 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-04-29T13:59:00.805-03:00  INFO 28038 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-29T13:59:00.940-03:00  INFO 28038 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-29T13:59:02.437-03:00  INFO 28038 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-29T13:59:02.442-03:00  INFO 28038 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-29T13:59:02.845-03:00  INFO 28038 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-04-29T13:59:04.205-03:00  WARN 28038 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-29T13:59:05.474-03:00  INFO 28038 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@54907471, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@255e9649, org.springframework.security.web.context.SecurityContextHolderFilter@5edd911f, org.springframework.security.web.header.HeaderWriterFilter@700df0dd, org.springframework.web.filter.CorsFilter@4d0be2ac, org.springframework.security.web.authentication.logout.LogoutFilter@70a8c26e, br.com.cepedi.Voll.api.security.infra.SecurityFilter@5a13b931, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1a68c0c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3d57b228, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@385936f3, org.springframework.security.web.session.SessionManagementFilter@7f77a0d6, org.springframework.security.web.access.ExceptionTranslationFilter@7e95bbbb, org.springframework.security.web.access.intercept.AuthorizationFilter@50c43f7d]
+2024-04-29T13:59:06.031-03:00  INFO 28038 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-04-29T13:59:06.032-03:00  INFO 28038 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-04-29T13:59:06.034-03:00  INFO 28038 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2024-04-29T13:59:06.082-03:00  INFO 28038 --- [main] b.c.c.V.a.c.ControllerPatientV1Test      : Started ControllerPatientV1Test in 9.603 seconds (process running for 11.275)
+2024-04-29T13:59:06.527-03:00  INFO 28038 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : Fetching list of patients...
+2024-04-29T13:59:06.531-03:00  INFO 28038 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : List of patients fetched successfully.
+2024-04-29T13:59:06.632-03:00  INFO 28038 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-29T13:59:06.635-03:00  INFO 28038 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-29T13:59:06.644-03:00  INFO 28038 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-29T14:00:37.950-03:00  INFO 28425 --- [main] b.c.c.V.a.c.ControllerPatientV1Test      : Starting ControllerPatientV1Test using Java 17.0.9 with PID 28425 (started by joao in /home/joao/residencia18/java-avancado/Aula-15/Project-Voll/Voll.med)
+2024-04-29T14:00:37.952-03:00  INFO 28425 --- [main] b.c.c.V.a.c.ControllerPatientV1Test      : No active profile set, falling back to 1 default profile: "default"
+2024-04-29T14:00:39.495-03:00  INFO 28425 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-29T14:00:39.619-03:00  INFO 28425 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 106 ms. Found 4 JPA repository interfaces.
+2024-04-29T14:00:41.649-03:00  INFO 28425 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-29T14:00:42.153-03:00  INFO 28425 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1468e880
+2024-04-29T14:00:42.157-03:00  INFO 28425 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-29T14:00:42.325-03:00  INFO 28425 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.22.3 by Redgate
+2024-04-29T14:00:42.325-03:00  INFO 28425 --- [main] o.f.c.internal.license.VersionPrinter    : See release notes here: https://rd.gt/416ObMi
+2024-04-29T14:00:42.326-03:00  INFO 28425 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2024-04-29T14:00:42.357-03:00  INFO 28425 --- [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/vollmed_api (MySQL 8.0)
+2024-04-29T14:00:42.437-03:00  INFO 28425 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.048s)
+2024-04-29T14:00:42.463-03:00  INFO 28425 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `vollmed_api`: 8
+2024-04-29T14:00:42.469-03:00  INFO 28425 --- [main] o.f.core.internal.command.DbMigrate      : Schema `vollmed_api` is up to date. No migration necessary.
+2024-04-29T14:00:42.675-03:00  INFO 28425 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-29T14:00:42.746-03:00  INFO 28425 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-04-29T14:00:42.791-03:00  INFO 28425 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-29T14:00:42.935-03:00  INFO 28425 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-29T14:00:44.235-03:00  INFO 28425 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-29T14:00:44.239-03:00  INFO 28425 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-29T14:00:44.692-03:00  INFO 28425 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-04-29T14:00:46.478-03:00  WARN 28425 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-29T14:00:47.876-03:00  INFO 28425 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@553011a9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@368d76d7, org.springframework.security.web.context.SecurityContextHolderFilter@7157b2d4, org.springframework.security.web.header.HeaderWriterFilter@2ac974bc, org.springframework.web.filter.CorsFilter@7bbdaf51, org.springframework.security.web.authentication.logout.LogoutFilter@c2c1622, br.com.cepedi.Voll.api.security.infra.SecurityFilter@38ab2740, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4999462c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@30f8e8b2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@58ca3439, org.springframework.security.web.session.SessionManagementFilter@56c802bc, org.springframework.security.web.access.ExceptionTranslationFilter@7b7039ac, org.springframework.security.web.access.intercept.AuthorizationFilter@4c85eb6b]
+2024-04-29T14:00:48.565-03:00  INFO 28425 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-04-29T14:00:48.565-03:00  INFO 28425 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-04-29T14:00:48.568-03:00  INFO 28425 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 3 ms
+2024-04-29T14:00:48.627-03:00  INFO 28425 --- [main] b.c.c.V.a.c.ControllerPatientV1Test      : Started ControllerPatientV1Test in 11.037 seconds (process running for 12.884)
+2024-04-29T14:00:49.189-03:00  INFO 28425 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : Fetching list of patients...
+2024-04-29T14:00:49.193-03:00  INFO 28425 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : List of patients fetched successfully.
+2024-04-29T14:00:49.306-03:00  INFO 28425 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-29T14:00:49.309-03:00  INFO 28425 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-29T14:00:49.319-03:00  INFO 28425 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-29T14:02:18.748-03:00  INFO 28742 --- [main] b.c.c.V.a.c.ControllerPatientV1Test      : Starting ControllerPatientV1Test using Java 17.0.9 with PID 28742 (started by joao in /home/joao/residencia18/java-avancado/Aula-15/Project-Voll/Voll.med)
+2024-04-29T14:02:18.750-03:00  INFO 28742 --- [main] b.c.c.V.a.c.ControllerPatientV1Test      : No active profile set, falling back to 1 default profile: "default"
+2024-04-29T14:02:19.926-03:00  INFO 28742 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-29T14:02:20.018-03:00  INFO 28742 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 84 ms. Found 4 JPA repository interfaces.
+2024-04-29T14:02:21.696-03:00  INFO 28742 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-29T14:02:22.257-03:00  INFO 28742 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1e23ee0e
+2024-04-29T14:02:22.260-03:00  INFO 28742 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-29T14:02:22.430-03:00  INFO 28742 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.22.3 by Redgate
+2024-04-29T14:02:22.430-03:00  INFO 28742 --- [main] o.f.c.internal.license.VersionPrinter    : See release notes here: https://rd.gt/416ObMi
+2024-04-29T14:02:22.430-03:00  INFO 28742 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2024-04-29T14:02:22.458-03:00  INFO 28742 --- [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/vollmed_api (MySQL 8.0)
+2024-04-29T14:02:22.537-03:00  INFO 28742 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.048s)
+2024-04-29T14:02:22.562-03:00  INFO 28742 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `vollmed_api`: 8
+2024-04-29T14:02:22.568-03:00  INFO 28742 --- [main] o.f.core.internal.command.DbMigrate      : Schema `vollmed_api` is up to date. No migration necessary.
+2024-04-29T14:02:22.740-03:00  INFO 28742 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-29T14:02:22.824-03:00  INFO 28742 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-04-29T14:02:22.875-03:00  INFO 28742 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-29T14:02:23.010-03:00  INFO 28742 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-29T14:02:24.206-03:00  INFO 28742 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-29T14:02:24.210-03:00  INFO 28742 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-29T14:02:24.540-03:00  INFO 28742 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-04-29T14:02:25.971-03:00  WARN 28742 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-29T14:02:27.494-03:00  INFO 28742 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@255e9649, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4d0be2ac, org.springframework.security.web.context.SecurityContextHolderFilter@1ceefb02, org.springframework.security.web.header.HeaderWriterFilter@63f8fded, org.springframework.web.filter.CorsFilter@385936f3, org.springframework.security.web.authentication.logout.LogoutFilter@51f779b2, br.com.cepedi.Voll.api.security.infra.SecurityFilter@5a13b931, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3d57b228, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@fb089f4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6fbdee75, org.springframework.security.web.session.SessionManagementFilter@7c5c3132, org.springframework.security.web.access.ExceptionTranslationFilter@48562206, org.springframework.security.web.access.intercept.AuthorizationFilter@4615c513]
+2024-04-29T14:02:28.240-03:00  INFO 28742 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-04-29T14:02:28.240-03:00  INFO 28742 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-04-29T14:02:28.243-03:00  INFO 28742 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2024-04-29T14:02:28.303-03:00  INFO 28742 --- [main] b.c.c.V.a.c.ControllerPatientV1Test      : Started ControllerPatientV1Test in 9.826 seconds (process running for 11.39)
+2024-04-29T14:02:28.813-03:00  INFO 28742 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : Fetching list of patients...
+2024-04-29T14:02:28.818-03:00  INFO 28742 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : List of patients fetched successfully.
+2024-04-29T14:02:28.939-03:00  INFO 28742 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-29T14:02:28.943-03:00  INFO 28742 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-29T14:02:28.953-03:00  INFO 28742 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-29T14:03:25.334-03:00  INFO 29096 --- [main] b.c.c.V.a.c.ControllerPatientV1Test      : Starting ControllerPatientV1Test using Java 17.0.9 with PID 29096 (started by joao in /home/joao/residencia18/java-avancado/Aula-15/Project-Voll/Voll.med)
+2024-04-29T14:03:25.336-03:00  INFO 29096 --- [main] b.c.c.V.a.c.ControllerPatientV1Test      : No active profile set, falling back to 1 default profile: "default"
+2024-04-29T14:03:26.563-03:00  INFO 29096 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-29T14:03:26.667-03:00  INFO 29096 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 96 ms. Found 4 JPA repository interfaces.
+2024-04-29T14:03:28.797-03:00  INFO 29096 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-29T14:03:29.330-03:00  INFO 29096 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@42066f0d
+2024-04-29T14:03:29.333-03:00  INFO 29096 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-29T14:03:29.512-03:00  INFO 29096 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.22.3 by Redgate
+2024-04-29T14:03:29.513-03:00  INFO 29096 --- [main] o.f.c.internal.license.VersionPrinter    : See release notes here: https://rd.gt/416ObMi
+2024-04-29T14:03:29.513-03:00  INFO 29096 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2024-04-29T14:03:29.546-03:00  INFO 29096 --- [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/vollmed_api (MySQL 8.0)
+2024-04-29T14:03:29.621-03:00  INFO 29096 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.040s)
+2024-04-29T14:03:29.647-03:00  INFO 29096 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `vollmed_api`: 8
+2024-04-29T14:03:29.652-03:00  INFO 29096 --- [main] o.f.core.internal.command.DbMigrate      : Schema `vollmed_api` is up to date. No migration necessary.
+2024-04-29T14:03:29.836-03:00  INFO 29096 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-29T14:03:29.925-03:00  INFO 29096 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-04-29T14:03:29.982-03:00  INFO 29096 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-29T14:03:30.166-03:00  INFO 29096 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-29T14:03:31.545-03:00  INFO 29096 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-29T14:03:31.548-03:00  INFO 29096 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-29T14:03:31.938-03:00  INFO 29096 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-04-29T14:03:33.661-03:00  WARN 29096 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-29T14:03:35.186-03:00  INFO 29096 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@58ca3439, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@da2dbd0, org.springframework.security.web.context.SecurityContextHolderFilter@30f8e8b2, org.springframework.security.web.header.HeaderWriterFilter@5a6d931c, org.springframework.web.filter.CorsFilter@50c43f7d, org.springframework.security.web.authentication.logout.LogoutFilter@578ce232, br.com.cepedi.Voll.api.security.infra.SecurityFilter@1bf18ca8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7f77a0d6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7c5c3132, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4615c513, org.springframework.security.web.session.SessionManagementFilter@7157b2d4, org.springframework.security.web.access.ExceptionTranslationFilter@50a7dc25, org.springframework.security.web.access.intercept.AuthorizationFilter@553011a9]
+2024-04-29T14:03:35.945-03:00  INFO 29096 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-04-29T14:03:35.946-03:00  INFO 29096 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-04-29T14:03:35.949-03:00  INFO 29096 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2024-04-29T14:03:36.004-03:00  INFO 29096 --- [main] b.c.c.V.a.c.ControllerPatientV1Test      : Started ControllerPatientV1Test in 11.019 seconds (process running for 12.953)
+2024-04-29T14:03:36.533-03:00  INFO 29096 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : Fetching list of patients...
+2024-04-29T14:03:36.538-03:00  INFO 29096 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : List of patients fetched successfully.
+2024-04-29T14:03:36.667-03:00  INFO 29096 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-29T14:03:36.670-03:00  INFO 29096 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-29T14:03:36.679-03:00  INFO 29096 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-29T14:04:44.674-03:00  INFO 29449 --- [main] b.c.c.V.a.c.ControllerPatientV1Test      : Starting ControllerPatientV1Test using Java 17.0.9 with PID 29449 (started by joao in /home/joao/residencia18/java-avancado/Aula-15/Project-Voll/Voll.med)
+2024-04-29T14:04:44.677-03:00  INFO 29449 --- [main] b.c.c.V.a.c.ControllerPatientV1Test      : No active profile set, falling back to 1 default profile: "default"
+2024-04-29T14:04:46.399-03:00  INFO 29449 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-29T14:04:46.542-03:00  INFO 29449 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 123 ms. Found 4 JPA repository interfaces.
+2024-04-29T14:04:49.768-03:00  INFO 29449 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-29T14:04:50.844-03:00  INFO 29449 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7aa91a69
+2024-04-29T14:04:50.849-03:00  INFO 29449 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-29T14:04:51.190-03:00  INFO 29449 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.22.3 by Redgate
+2024-04-29T14:04:51.191-03:00  INFO 29449 --- [main] o.f.c.internal.license.VersionPrinter    : See release notes here: https://rd.gt/416ObMi
+2024-04-29T14:04:51.192-03:00  INFO 29449 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2024-04-29T14:04:51.251-03:00  INFO 29449 --- [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/vollmed_api (MySQL 8.0)
+2024-04-29T14:04:51.391-03:00  INFO 29449 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.082s)
+2024-04-29T14:04:51.428-03:00  INFO 29449 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `vollmed_api`: 8
+2024-04-29T14:04:51.434-03:00  INFO 29449 --- [main] o.f.core.internal.command.DbMigrate      : Schema `vollmed_api` is up to date. No migration necessary.
+2024-04-29T14:04:51.786-03:00  INFO 29449 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-29T14:04:52.019-03:00  INFO 29449 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-04-29T14:04:52.156-03:00  INFO 29449 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-29T14:04:52.518-03:00  INFO 29449 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-29T14:04:55.252-03:00  INFO 29449 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-29T14:04:55.259-03:00  INFO 29449 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-29T14:04:55.831-03:00  INFO 29449 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-04-29T14:04:58.905-03:00  WARN 29449 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-29T14:05:01.147-03:00  INFO 29449 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2170c57f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@452eda2f, org.springframework.security.web.context.SecurityContextHolderFilter@2960be34, org.springframework.security.web.header.HeaderWriterFilter@2df9c215, org.springframework.web.filter.CorsFilter@18f5c2f9, org.springframework.security.web.authentication.logout.LogoutFilter@70eec13e, br.com.cepedi.Voll.api.security.infra.SecurityFilter@7572c5db, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@48186c05, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7d8af967, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2a9eedee, org.springframework.security.web.session.SessionManagementFilter@71769c47, org.springframework.security.web.access.ExceptionTranslationFilter@4444cfd7, org.springframework.security.web.access.intercept.AuthorizationFilter@467459df]
+2024-04-29T14:05:02.033-03:00  INFO 29449 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-04-29T14:05:02.034-03:00  INFO 29449 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-04-29T14:05:02.036-03:00  INFO 29449 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2024-04-29T14:05:02.091-03:00  INFO 29449 --- [main] b.c.c.V.a.c.ControllerPatientV1Test      : Started ControllerPatientV1Test in 18.053 seconds (process running for 21.747)
+2024-04-29T14:05:03.041-03:00  INFO 29449 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : Updating patient with ID: 1
+2024-04-29T14:05:03.048-03:00  INFO 29449 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : Patient with ID 1 updated successfully.
+2024-04-29T14:05:03.162-03:00  INFO 29449 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : Disabling patient with ID: 1
+2024-04-29T14:05:03.163-03:00  INFO 29449 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : Patient with ID 1 disabled successfully.
+2024-04-29T14:05:03.197-03:00  INFO 29449 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : Fetching details of patient with ID: 1
+2024-04-29T14:05:03.198-03:00  INFO 29449 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : Details of patient with ID 1 fetched successfully.
+2024-04-29T14:05:03.265-03:00  INFO 29449 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : Fetching list of patients...
+2024-04-29T14:05:03.265-03:00  INFO 29449 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : List of patients fetched successfully.
+2024-04-29T14:05:03.506-03:00  INFO 29449 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-04-29T14:05:03.507-03:00  INFO 29449 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: null
+2024-04-29T14:05:03.716-03:00  INFO 29449 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.cepedi.Voll.api.repositorys.TestRepositoryAppointment]: TestRepositoryAppointment does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-04-29T14:05:03.767-03:00  INFO 29449 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.cepedi.Voll.api.Application for test class br.com.cepedi.Voll.api.repositorys.TestRepositoryAppointment
+2024-04-29T14:05:03.780-03:00  INFO 29449 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2024-04-29T14:05:03.861-03:00  INFO 29449 --- [main] b.c.c.V.a.r.TestRepositoryAppointment    : Starting TestRepositoryAppointment using Java 17.0.9 with PID 29449 (started by joao in /home/joao/residencia18/java-avancado/Aula-15/Project-Voll/Voll.med)
+2024-04-29T14:05:03.863-03:00  INFO 29449 --- [main] b.c.c.V.a.r.TestRepositoryAppointment    : The following 1 profile is active: "test"
+2024-04-29T14:05:04.119-03:00  INFO 29449 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-29T14:05:04.181-03:00  INFO 29449 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 61 ms. Found 4 JPA repository interfaces.
+2024-04-29T14:05:04.312-03:00  INFO 29449 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2024-04-29T14:05:04.356-03:00  INFO 29449 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1c75d67a
+2024-04-29T14:05:04.357-03:00  INFO 29449 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2024-04-29T14:05:04.379-03:00  INFO 29449 --- [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/vollmed_api_test (MySQL 8.0)
+2024-04-29T14:05:04.420-03:00  INFO 29449 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.024s)
+2024-04-29T14:05:04.444-03:00  INFO 29449 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `vollmed_api_test`: 8
+2024-04-29T14:05:04.446-03:00  INFO 29449 --- [main] o.f.core.internal.command.DbMigrate      : Schema `vollmed_api_test` is up to date. No migration necessary.
+2024-04-29T14:05:04.489-03:00  INFO 29449 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-29T14:05:04.492-03:00  INFO 29449 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-29T14:05:04.498-03:00  INFO 29449 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-29T14:05:04.791-03:00  INFO 29449 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-29T14:05:04.792-03:00  INFO 29449 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-29T14:05:05.080-03:00  INFO 29449 --- [main] b.c.c.V.a.r.TestRepositoryAppointment    : Started TestRepositoryAppointment in 1.3 seconds (process running for 24.736)
+2024-04-29T14:05:05.626-03:00  INFO 29449 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.cepedi.Voll.api.repositorys.TestRepositoryDoctor]: TestRepositoryDoctor does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-04-29T14:05:05.643-03:00  INFO 29449 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.cepedi.Voll.api.Application for test class br.com.cepedi.Voll.api.repositorys.TestRepositoryDoctor
+2024-04-29T14:05:06.870-03:00  INFO 29449 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.cepedi.Voll.api.repositorys.TestRepositoryPatient]: TestRepositoryPatient does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-04-29T14:05:06.884-03:00  INFO 29449 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.cepedi.Voll.api.Application for test class br.com.cepedi.Voll.api.repositorys.TestRepositoryPatient
+2024-04-29T14:05:09.658-03:00  INFO 29449 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-29T14:05:09.664-03:00  INFO 29449 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-29T14:05:09.676-03:00  INFO 29449 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-29T14:05:09.680-03:00  INFO 29449 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-29T14:05:09.682-03:00  INFO 29449 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2024-04-29T14:05:09.689-03:00  INFO 29449 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
