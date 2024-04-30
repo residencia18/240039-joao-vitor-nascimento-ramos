@@ -272,3 +272,157 @@
 2024-04-30T11:02:30.432-03:00  INFO 81357 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-04-30T11:02:30.438-03:00  INFO 81357 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-04-30T11:02:30.449-03:00  INFO 81357 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-30T11:20:33.763-03:00  INFO 83410 --- [restartedMain] br.com.cepedi.Voll.api.Application       : Starting Application using Java 17.0.9 with PID 83410 (/home/joao/residencia18/java-avancado/Aula-15/Project-Voll/Voll.med/target/classes started by joao in /home/joao/residencia18/java-avancado/Aula-15/Project-Voll/Voll.med)
+2024-04-30T11:20:33.768-03:00  INFO 83410 --- [restartedMain] br.com.cepedi.Voll.api.Application       : No active profile set, falling back to 1 default profile: "default"
+2024-04-30T11:20:33.846-03:00  INFO 83410 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-04-30T11:20:33.846-03:00  INFO 83410 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-04-30T11:20:35.150-03:00  INFO 83410 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-30T11:20:35.262-03:00  INFO 83410 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 100 ms. Found 4 JPA repository interfaces.
+2024-04-30T11:20:36.284-03:00  INFO 83410 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-04-30T11:20:36.299-03:00  INFO 83410 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-30T11:20:36.300-03:00  INFO 83410 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-30T11:20:36.372-03:00  INFO 83410 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-30T11:20:36.373-03:00  INFO 83410 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2525 ms
+2024-04-30T11:20:36.505-03:00  INFO 83410 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-30T11:20:36.945-03:00  INFO 83410 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3c7d0800
+2024-04-30T11:20:36.947-03:00  INFO 83410 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-30T11:20:37.049-03:00  INFO 83410 --- [restartedMain] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.22.3 by Redgate
+2024-04-30T11:20:37.050-03:00  INFO 83410 --- [restartedMain] o.f.c.internal.license.VersionPrinter    : See release notes here: https://rd.gt/416ObMi
+2024-04-30T11:20:37.050-03:00  INFO 83410 --- [restartedMain] o.f.c.internal.license.VersionPrinter    : 
+2024-04-30T11:20:37.089-03:00  INFO 83410 --- [restartedMain] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/vollmed_api (MySQL 8.0)
+2024-04-30T11:20:37.145-03:00  INFO 83410 --- [restartedMain] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table `vollmed_api`.`flyway_schema_history` does not exist yet
+2024-04-30T11:20:37.153-03:00  INFO 83410 --- [restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.028s)
+2024-04-30T11:20:37.192-03:00  INFO 83410 --- [restartedMain] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table `vollmed_api`.`flyway_schema_history` ...
+2024-04-30T11:20:37.286-03:00  INFO 83410 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema `vollmed_api`: << Empty Schema >>
+2024-04-30T11:20:37.302-03:00  INFO 83410 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema `vollmed_api` to version "1 - create-table-doctors"
+2024-04-30T11:20:37.377-03:00  INFO 83410 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema `vollmed_api` to version "2 - alter-table-doctors-add-column-phone-number"
+2024-04-30T11:20:37.448-03:00  INFO 83410 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema `vollmed_api` to version "3 - alter-table-doctors-add-column-activated"
+2024-04-30T11:20:37.555-03:00  INFO 83410 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema `vollmed_api` to version "4 - create-table-patients"
+2024-04-30T11:20:37.612-03:00  INFO 83410 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema `vollmed_api` to version "5 - alter-table-patients-add-column-activated"
+2024-04-30T11:20:37.659-03:00  INFO 83410 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema `vollmed_api` to version "6 - create-table-users"
+2024-04-30T11:20:37.713-03:00  INFO 83410 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema `vollmed_api` to version "7 - create-table-appointments"
+2024-04-30T11:20:37.762-03:00  INFO 83410 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema `vollmed_api` to version "8 - alter-table-appointments-add-column-reason-cancel"
+2024-04-30T11:20:37.798-03:00  INFO 83410 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Successfully applied 8 migrations to schema `vollmed_api`, now at version v8 (execution time 00:00.216s)
+2024-04-30T11:20:37.940-03:00  INFO 83410 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-30T11:20:38.060-03:00  INFO 83410 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-04-30T11:20:38.163-03:00  INFO 83410 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-30T11:20:38.564-03:00  INFO 83410 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-30T11:20:40.073-03:00  INFO 83410 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-30T11:20:40.077-03:00  INFO 83410 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-30T11:20:40.639-03:00  INFO 83410 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-04-30T11:20:42.073-03:00  WARN 83410 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-30T11:20:43.853-03:00  INFO 83410 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3dfba189, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4d69dd48, org.springframework.security.web.context.SecurityContextHolderFilter@7b10d65d, org.springframework.security.web.header.HeaderWriterFilter@250ab9c5, org.springframework.web.filter.CorsFilter@10b7166b, org.springframework.security.web.authentication.logout.LogoutFilter@e3e42c, br.com.cepedi.Voll.api.security.infra.SecurityFilter@75366b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3d900693, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@55cb640e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@58a97a32, org.springframework.security.web.session.SessionManagementFilter@625689ea, org.springframework.security.web.access.ExceptionTranslationFilter@5822ac34, org.springframework.security.web.access.intercept.AuthorizationFilter@3de9b177]
+2024-04-30T11:20:44.722-03:00  INFO 83410 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-04-30T11:20:44.943-03:00  INFO 83410 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-04-30T11:20:44.973-03:00  INFO 83410 --- [restartedMain] br.com.cepedi.Voll.api.Application       : Started Application in 11.803 seconds (process running for 12.403)
+2024-04-30T11:20:45.013-03:00  INFO 83410 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-30T11:20:45.034-03:00  INFO 83410 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-30T11:20:45.070-03:00  INFO 83410 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-30T11:21:11.018-03:00  INFO 83733 --- [testcontainers-lifecycle-0] o.t.d.DockerClientProviderStrategy       : Loaded org.testcontainers.dockerclient.UnixSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2024-04-30T11:21:11.485-03:00  INFO 83733 --- [testcontainers-lifecycle-0] o.t.d.DockerClientProviderStrategy       : Found Docker environment with local Unix socket (unix:///var/run/docker.sock)
+2024-04-30T11:21:11.488-03:00  INFO 83733 --- [testcontainers-lifecycle-0] org.testcontainers.DockerClientFactory   : Docker host IP address is localhost
+2024-04-30T11:21:11.510-03:00  INFO 83733 --- [testcontainers-lifecycle-0] org.testcontainers.DockerClientFactory   : Connected to docker: 
+  Server Version: 24.0.5
+  API Version: 1.43
+  Operating System: Ubuntu 22.04.4 LTS
+  Total Memory: 15694 MB
+2024-04-30T11:21:11.538-03:00  INFO 83733 --- [testcontainers-lifecycle-0] tc.testcontainers/ryuk:0.6.0             : Creating container for image: testcontainers/ryuk:0.6.0
+2024-04-30T11:21:11.545-03:00  INFO 83733 --- [testcontainers-lifecycle-0] o.t.utility.RegistryAuthLocator          : Failure when attempting to lookup auth config. Please ignore if you don't have images in an authenticated registry. Details: (dockerImageName: testcontainers/ryuk:0.6.0, configFile: /home/joao/.docker/config.json, configEnv: DOCKER_AUTH_CONFIG). Falling back to docker-java default behaviour. Exception message: Status 404: No config supplied. Checked in order: /home/joao/.docker/config.json (file not found), DOCKER_AUTH_CONFIG (not set)
+2024-04-30T11:21:11.689-03:00  INFO 83733 --- [testcontainers-lifecycle-0] tc.testcontainers/ryuk:0.6.0             : Container testcontainers/ryuk:0.6.0 is starting: caa438778d2aa6636bbdaf92ae6d27e536d8557529b02ab573c1c39a23bb5cb6
+2024-04-30T11:21:12.170-03:00  INFO 83733 --- [testcontainers-lifecycle-0] tc.testcontainers/ryuk:0.6.0             : Container testcontainers/ryuk:0.6.0 started in PT0.63209003S
+2024-04-30T11:21:12.175-03:00  INFO 83733 --- [testcontainers-lifecycle-0] o.t.utility.RyukResourceReaper           : Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2024-04-30T11:21:12.176-03:00  INFO 83733 --- [testcontainers-lifecycle-0] org.testcontainers.DockerClientFactory   : Checking the system...
+2024-04-30T11:21:12.177-03:00  INFO 83733 --- [testcontainers-lifecycle-0] org.testcontainers.DockerClientFactory   : ✔︎ Docker server version should be at least 1.6.0
+2024-04-30T11:21:12.182-03:00  INFO 83733 --- [testcontainers-lifecycle-0] tc.mysql:8.0.28                          : Creating container for image: mysql:8.0.28
+2024-04-30T11:21:12.234-03:00  INFO 83733 --- [testcontainers-lifecycle-0] tc.mysql:8.0.28                          : Container mysql:8.0.28 is starting: 3c8d504161f1234009cbc361c8ba9b9167a571a2e4cb075a8586bcd6fb2fff68
+2024-04-30T11:21:12.587-03:00  INFO 83733 --- [testcontainers-lifecycle-0] tc.mysql:8.0.28                          : Waiting for database connection to become available at jdbc:mysql://localhost:32883/test using query 'SELECT 1'
+2024-04-30T11:21:26.183-03:00  INFO 83733 --- [testcontainers-lifecycle-0] tc.mysql:8.0.28                          : Container mysql:8.0.28 started in PT14.001557261S
+2024-04-30T11:21:26.184-03:00  INFO 83733 --- [testcontainers-lifecycle-0] tc.mysql:8.0.28                          : Container is started (JDBC URL: jdbc:mysql://localhost:32883/test)
+2024-04-30T11:21:26.191-03:00  INFO 83733 --- [main] V.a.i.c.TestIntegrationControllerPatient : Starting TestIntegrationControllerPatient using Java 17.0.9 with PID 83733 (started by joao in /home/joao/residencia18/java-avancado/Aula-15/Project-Voll/Voll.med)
+2024-04-30T11:21:26.192-03:00  INFO 83733 --- [main] V.a.i.c.TestIntegrationControllerPatient : The following 1 profile is active: "test"
+2024-04-30T11:21:27.217-03:00  INFO 83733 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-30T11:21:27.321-03:00  INFO 83733 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 93 ms. Found 4 JPA repository interfaces.
+2024-04-30T11:21:28.228-03:00  INFO 83733 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2024-04-30T11:21:28.242-03:00  INFO 83733 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-30T11:21:28.243-03:00  INFO 83733 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-30T11:21:28.328-03:00  INFO 83733 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-30T11:21:28.329-03:00  INFO 83733 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2104 ms
+2024-04-30T11:21:28.476-03:00  INFO 83733 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-30T11:21:28.705-03:00  INFO 83733 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@628e0403
+2024-04-30T11:21:28.707-03:00  INFO 83733 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-30T11:21:28.802-03:00  INFO 83733 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.22.3 by Redgate
+2024-04-30T11:21:28.802-03:00  INFO 83733 --- [main] o.f.c.internal.license.VersionPrinter    : See release notes here: https://rd.gt/416ObMi
+2024-04-30T11:21:28.802-03:00  INFO 83733 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2024-04-30T11:21:28.834-03:00  INFO 83733 --- [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:32883/test (MySQL 8.0)
+2024-04-30T11:21:28.897-03:00  INFO 83733 --- [main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table `test`.`flyway_schema_history` does not exist yet
+2024-04-30T11:21:28.902-03:00  INFO 83733 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.030s)
+2024-04-30T11:21:28.945-03:00  INFO 83733 --- [main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table `test`.`flyway_schema_history` ...
+2024-04-30T11:21:29.044-03:00  INFO 83733 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `test`: << Empty Schema >>
+2024-04-30T11:21:29.053-03:00  INFO 83733 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema `test` to version "1 - create-table-doctors"
+2024-04-30T11:21:29.118-03:00  INFO 83733 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema `test` to version "2 - alter-table-doctors-add-column-phone-number"
+2024-04-30T11:21:29.176-03:00  INFO 83733 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema `test` to version "3 - alter-table-doctors-add-column-activated"
+2024-04-30T11:21:29.263-03:00  INFO 83733 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema `test` to version "4 - create-table-patients"
+2024-04-30T11:21:29.317-03:00  INFO 83733 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema `test` to version "5 - alter-table-patients-add-column-activated"
+2024-04-30T11:21:29.370-03:00  INFO 83733 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema `test` to version "6 - create-table-users"
+2024-04-30T11:21:29.433-03:00  INFO 83733 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema `test` to version "7 - create-table-appointments"
+2024-04-30T11:21:29.493-03:00  INFO 83733 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema `test` to version "8 - alter-table-appointments-add-column-reason-cancel"
+2024-04-30T11:21:29.540-03:00  INFO 83733 --- [main] o.f.core.internal.command.DbMigrate      : Successfully applied 8 migrations to schema `test`, now at version v8 (execution time 00:00.243s)
+2024-04-30T11:21:29.663-03:00  INFO 83733 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-30T11:21:29.739-03:00  INFO 83733 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-04-30T11:21:29.787-03:00  INFO 83733 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-30T11:21:30.111-03:00  INFO 83733 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-30T11:21:30.193-03:00  WARN 83733 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-30T11:21:30.195-03:00  WARN 83733 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-04-30T11:21:31.452-03:00  INFO 83733 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-30T11:21:31.790-03:00  INFO 83733 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-30T11:21:32.316-03:00  INFO 83733 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-04-30T11:21:33.871-03:00  WARN 83733 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-30T11:21:35.516-03:00  INFO 83733 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@15d0cd8c, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@76a0e2af, org.springframework.security.web.context.SecurityContextHolderFilter@6c4c4df8, org.springframework.security.web.header.HeaderWriterFilter@3452d160, org.springframework.web.filter.CorsFilter@634aceca, org.springframework.security.web.authentication.logout.LogoutFilter@2e581514, br.com.cepedi.Voll.api.security.infra.SecurityFilter@6ad259d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6d5f8cef, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@77afcbe1, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5fc46215, org.springframework.security.web.session.SessionManagementFilter@474e0ab4, org.springframework.security.web.access.ExceptionTranslationFilter@6f13b75b, org.springframework.security.web.access.intercept.AuthorizationFilter@77a28627]
+2024-04-30T11:21:36.027-03:00  INFO 83733 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path ''
+2024-04-30T11:21:36.048-03:00  INFO 83733 --- [main] V.a.i.c.TestIntegrationControllerPatient : Started TestIntegrationControllerPatient in 25.657 seconds (process running for 28.609)
+2024-04-30T11:21:37.493-03:00  INFO 83733 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-30T11:21:37.494-03:00  INFO 83733 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-04-30T11:21:37.496-03:00  INFO 83733 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-04-30T11:21:39.017-03:00  INFO 83733 --- [http-nio-8081-exec-3] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-04-30T11:21:39.029-03:00  INFO 83733 --- [http-nio-8081-exec-3] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 1
+2024-04-30T11:21:39.106-03:00  INFO 83733 --- [http-nio-8081-exec-4] b.c.c.V.a.c.V1.PatientControllerV1       : Updating patient with ID: 1
+2024-04-30T11:21:39.154-03:00  INFO 83733 --- [http-nio-8081-exec-4] b.c.c.V.a.c.V1.PatientControllerV1       : Patient with ID 1 updated successfully.
+2024-04-30T11:21:39.207-03:00  INFO 83733 --- [http-nio-8081-exec-5] b.c.c.V.a.c.V1.PatientControllerV1       : Fetching details of patient with ID: 1
+2024-04-30T11:21:39.216-03:00  INFO 83733 --- [http-nio-8081-exec-5] b.c.c.V.a.c.V1.PatientControllerV1       : Details of patient with ID 1 fetched successfully.
+2024-04-30T11:21:39.268-03:00  INFO 83733 --- [http-nio-8081-exec-10] b.c.c.V.a.c.V1.PatientControllerV1       : Disabling patient with ID: 1
+2024-04-30T11:21:39.277-03:00  INFO 83733 --- [http-nio-8081-exec-10] b.c.c.V.a.c.V1.PatientControllerV1       : Patient with ID 1 disabled successfully.
+2024-04-30T11:21:39.310-03:00  INFO 83733 --- [http-nio-8081-exec-1] b.c.c.V.a.c.V1.PatientControllerV1       : Fetching details of patient with ID: 1
+2024-04-30T11:21:39.316-03:00  INFO 83733 --- [http-nio-8081-exec-1] b.c.c.V.a.c.V1.PatientControllerV1       : Details of patient with ID 1 fetched successfully.
+2024-04-30T11:21:39.360-03:00  INFO 83733 --- [http-nio-8081-exec-2] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-04-30T11:21:39.364-03:00  INFO 83733 --- [http-nio-8081-exec-2] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 2
+2024-04-30T11:21:39.403-03:00  INFO 83733 --- [http-nio-8081-exec-3] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-04-30T11:21:39.407-03:00  INFO 83733 --- [http-nio-8081-exec-3] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 3
+2024-04-30T11:21:39.441-03:00  INFO 83733 --- [http-nio-8081-exec-4] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-04-30T11:21:39.444-03:00  INFO 83733 --- [http-nio-8081-exec-4] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 4
+2024-04-30T11:21:39.476-03:00  INFO 83733 --- [http-nio-8081-exec-5] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-04-30T11:21:39.480-03:00  INFO 83733 --- [http-nio-8081-exec-5] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 5
+2024-04-30T11:21:39.515-03:00  INFO 83733 --- [http-nio-8081-exec-6] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-04-30T11:21:39.518-03:00  INFO 83733 --- [http-nio-8081-exec-6] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 6
+2024-04-30T11:21:39.551-03:00  INFO 83733 --- [http-nio-8081-exec-9] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-04-30T11:21:39.554-03:00  INFO 83733 --- [http-nio-8081-exec-9] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 7
+2024-04-30T11:21:39.587-03:00  INFO 83733 --- [http-nio-8081-exec-7] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-04-30T11:21:39.593-03:00  INFO 83733 --- [http-nio-8081-exec-7] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 8
+2024-04-30T11:21:39.631-03:00  INFO 83733 --- [http-nio-8081-exec-8] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-04-30T11:21:39.635-03:00  INFO 83733 --- [http-nio-8081-exec-8] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 9
+2024-04-30T11:21:39.682-03:00  INFO 83733 --- [http-nio-8081-exec-10] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-04-30T11:21:39.686-03:00  INFO 83733 --- [http-nio-8081-exec-10] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 10
+2024-04-30T11:21:39.722-03:00  INFO 83733 --- [http-nio-8081-exec-1] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-04-30T11:21:39.725-03:00  INFO 83733 --- [http-nio-8081-exec-1] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 11
+2024-04-30T11:21:39.759-03:00  INFO 83733 --- [http-nio-8081-exec-2] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-04-30T11:21:39.762-03:00  INFO 83733 --- [http-nio-8081-exec-2] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 12
+2024-04-30T11:21:39.794-03:00  INFO 83733 --- [http-nio-8081-exec-3] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-04-30T11:21:39.797-03:00  INFO 83733 --- [http-nio-8081-exec-3] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 13
+2024-04-30T11:21:39.842-03:00  INFO 83733 --- [http-nio-8081-exec-4] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-04-30T11:21:39.846-03:00  INFO 83733 --- [http-nio-8081-exec-4] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 14
+2024-04-30T11:21:39.887-03:00  INFO 83733 --- [http-nio-8081-exec-5] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-04-30T11:21:39.891-03:00  INFO 83733 --- [http-nio-8081-exec-5] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 15
+2024-04-30T11:21:39.921-03:00  INFO 83733 --- [http-nio-8081-exec-6] b.c.c.V.a.c.V1.PatientControllerV1       : Fetching list of patients...
+2024-04-30T11:21:39.948-03:00  INFO 83733 --- [http-nio-8081-exec-6] b.c.c.V.a.c.V1.PatientControllerV1       : List of patients fetched successfully.
+2024-04-30T11:21:40.065-03:00  INFO 83733 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-30T11:21:40.069-03:00  INFO 83733 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-30T11:21:40.181-03:00  INFO 83733 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
