@@ -2,8 +2,8 @@ package br.com.cepedi.Voll.api.repositorys;
 
 
 import br.com.cepedi.Voll.api.faker.PtBRCpfIdNumber;
+import br.com.cepedi.Voll.api.integretion.containers.AbstractIntegrationTest;
 import br.com.cepedi.Voll.api.model.entitys.Doctor;
-import br.com.cepedi.Voll.api.model.entitys.Patient;
 import br.com.cepedi.Voll.api.model.records.address.input.DataRegisterAddress;
 import br.com.cepedi.Voll.api.model.records.doctor.input.DataRegisterDoctor;
 import br.com.cepedi.Voll.api.model.records.doctor.input.Specialty;
@@ -18,7 +18,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.ActiveProfiles;
 
-import javax.print.Doc;
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.Random.class)
 @ActiveProfiles("test")
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class TestRepositoryDoctor {
+public class TestRepositoryDoctor extends AbstractIntegrationTest {
 
 
     @Autowired

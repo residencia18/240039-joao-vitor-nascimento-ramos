@@ -2,6 +2,7 @@ package br.com.cepedi.Voll.api.repositorys;
 
 
 import br.com.cepedi.Voll.api.faker.PtBRCpfIdNumber;
+import br.com.cepedi.Voll.api.integretion.containers.AbstractIntegrationTest;
 import br.com.cepedi.Voll.api.model.entitys.Patient;
 import br.com.cepedi.Voll.api.model.records.address.input.DataRegisterAddress;
 import br.com.cepedi.Voll.api.model.records.patient.input.DataRegisterPatient;
@@ -14,12 +15,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.core.parameters.P;
 import org.springframework.test.context.ActiveProfiles;
 
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -27,14 +24,14 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.Random.class)
 @ActiveProfiles("test")
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class TestRepositoryPatient {
+public class TestRepositoryPatient extends AbstractIntegrationTest {
 
     @Autowired
     private PatientRepository patientRepository;
 
-    private final Faker faker = new Faker();
+    private  final Faker faker = new Faker();
 
-    private PtBRCpfIdNumber cpfGenerator = new PtBRCpfIdNumber();
+    private  PtBRCpfIdNumber cpfGenerator = new PtBRCpfIdNumber();
 
     @BeforeEach
     void setup(){

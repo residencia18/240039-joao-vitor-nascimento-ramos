@@ -12,7 +12,6 @@ import org.springframework.context.annotation.Primary;
 public class CacheConfig {
 
     @Bean
-    @Primary
     public CacheManager cacheManagerAppointment() {
         return new ConcurrentMapCacheManager("patientsWithAppointmentInDataBetween");
     }
@@ -23,6 +22,7 @@ public class CacheConfig {
     }
 
     @Bean
+    @Primary
     public CacheManager cacheManagerPatient() {
         return new ConcurrentMapCacheManager("patientsActivated");
     }

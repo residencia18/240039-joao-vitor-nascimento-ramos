@@ -1,4 +1,4 @@
-package br.com.cepedi.Voll.api.integration_test_containers;
+package br.com.cepedi.Voll.api.integretion.containers;
 
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;

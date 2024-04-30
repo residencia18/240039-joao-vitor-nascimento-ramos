@@ -2,6 +2,7 @@ package br.com.cepedi.Voll.api.repositorys;
 
 
 import br.com.cepedi.Voll.api.faker.PtBRCpfIdNumber;
+import br.com.cepedi.Voll.api.integretion.containers.AbstractIntegrationTest;
 import br.com.cepedi.Voll.api.model.entitys.Appointment;
 import br.com.cepedi.Voll.api.model.entitys.Patient;
 import br.com.cepedi.Voll.api.model.records.address.input.DataRegisterAddress;
@@ -25,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @TestMethodOrder(MethodOrderer.Random.class)
 @ActiveProfiles("test")
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class TestRepositoryAppointment {
+public class TestRepositoryAppointment extends AbstractIntegrationTest {
 
     @Autowired
     private AppointmentRepository appointmentRepository;
