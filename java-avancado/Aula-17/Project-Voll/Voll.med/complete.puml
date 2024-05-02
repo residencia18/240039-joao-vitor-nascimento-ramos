@@ -1,0 +1,606 @@
+@startuml
+class br.com.cepedi.Voll.api.services.doctor.validations.disabled.ValidateDoctorAlreadyDisabled {
+- DoctorRepository repository
++ void validation(Long)
+}
+
+
+class br.com.cepedi.Voll.api.controller.V1.AppointmentControllerV1 {
+- {static} Logger log
+- AppointmentService service
++ ResponseEntity<Object> schedule(DataRegisterAppointment)
++ ResponseEntity<Object> cancel(DataCancelAppointment)
+}
+
+
+class br.com.cepedi.Voll.api.model.records.doctor.input.DataUpdateDoctor {
+- String name
+- String email
+- String phoneNumber
+- DataRegisterAddress dataAddress
++ String name()
++ String phoneNumber()
++ String email()
++ DataRegisterAddress dataAddress()
+}
+
+
+class br.com.cepedi.Voll.api.model.entitys.Address {
+- String publicPlace
+- String neighborhood
+- String cep
+- String city
+- String uf
+- String complement
+- String number
++ void updateData(DataRegisterAddress)
+}
+
+
+interface br.com.cepedi.Voll.api.services.appointment.validations.register.ValidationAcheduleAppointment {
+~ void validation(DataRegisterAppointment)
+}
+
+class br.com.cepedi.Voll.api.model.records.doctor.input.DataRegisterDoctor {
+- String name
+- String email
+- String phoneNumber
+- String crm
+- Specialty specialty
+- DataRegisterAddress dataAddress
++ String name()
++ String crm()
++ String phoneNumber()
++ String email()
++ Specialty specialty()
++ DataRegisterAddress dataAddress()
+}
+
+
+class br.com.cepedi.Voll.api.services.appointment.validations.register.ValidationDoctorWithOtherAppointmentInSameDate {
+- DoctorRepository repositoryDoctor
++ void validation(DataRegisterAppointment)
+}
+
+
+class br.com.cepedi.Voll.api.security.model.records.details.DadosTokenJWT {
+- String token
++ String token()
+}
+
+
+interface br.com.cepedi.Voll.api.services.patient.validations.register.ValidationRegisterPatient {
+}
+class br.com.cepedi.Voll.api.model.records.address.input.DataRegisterAddress {
+- String publicPlace
+- String neighborhood
+- String cep
+- String city
+- String uf
+- String complement
+- String number
++ String uf()
++ String neighborhood()
++ String number()
++ String cep()
++ String publicPlace()
++ String city()
++ String complement()
+}
+
+
+class br.com.cepedi.Voll.api.services.doctor.validations.update.ValidateDoctorExistenceForUpdate {
+- DoctorRepository repository
++ void validation(Long,DataUpdateDoctor)
+}
+
+
+class br.com.cepedi.Voll.api.services.appointment.validations.register.validateDoctorExistence {
+- DoctorRepository repositoryDoctor
++ void validation(DataRegisterAppointment)
+}
+
+
+class br.com.cepedi.Voll.api.services.doctor.validations.update.ValidateDoctorDisabled {
+- DoctorRepository repository
++ void validation(Long,DataUpdateDoctor)
+}
+
+
+interface br.com.cepedi.Voll.api.services.doctor.validations.disabled.ValidationDisabledDoctor {
+~ void validation(Long)
+}
+
+class br.com.cepedi.Voll.api.security.infra.SecurityFilter {
+- TokenService tokenService
+- UserRepository repository
+# void doFilterInternal(HttpServletRequest,HttpServletResponse,FilterChain)
+- String recoverToken(HttpServletRequest)
+}
+
+
+class br.com.cepedi.Voll.api.security.model.records.input.DataAuth {
+- String login
+- String password
++ String password()
++ String login()
+}
+
+
+class br.com.cepedi.Voll.api.security.infra.SettingsSecurity {
+- SecurityFilter securityFilter
++ SecurityFilterChain securityFilterChain(HttpSecurity)
++ AuthenticationManager authenticationManager(AuthenticationConfiguration)
++ PasswordEncoder passwordEncoder()
+}
+
+
+class br.com.cepedi.Voll.api.model.entitys.Patient {
+- Long id
+- String name
+- String email
+- String phoneNumber
+- String cpf
+- Address address
+- Boolean activated
++ void updateData(DataUpdatePatient)
++ void logicalDelete()
+}
+
+
+class br.com.cepedi.Voll.api.model.records.patient.input.DataRegisterPatient {
+- String name
+- String email
+- String phoneNumber
+- String cpf
+- DataRegisterAddress dataAddress
++ String name()
++ String cpf()
++ String phoneNumber()
++ String email()
++ DataRegisterAddress dataAddress()
+}
+
+
+interface br.com.cepedi.Voll.api.services.patient.validations.update.ValidationUpdatePatient {
+~ void validation(Long,DataUpdatePatient)
+}
+
+class br.com.cepedi.Voll.api.controller.V2.DoctorControllerV2 {
+- {static} Logger log
+- DoctorService service
++ ResponseEntity<DataDetailsDoctor> register(DataRegisterDoctor,UriComponentsBuilder)
++ ResponseEntity<Page<DataDetailsDoctor>> list(Pageable)
++ ResponseEntity<DataDetailsDoctor> details(Long)
++ ResponseEntity<DataDetailsDoctor> update(Long,DataUpdateDoctor)
++ ResponseEntity<Object> disabled(Long)
+}
+
+
+class br.com.cepedi.Voll.api.Application {
++ {static} void main(String[])
+}
+
+class br.com.cepedi.Voll.api.services.patient.validations.disabled.ValidatePatientAlreadyDisabled {
+- PatientRepository repository
++ void validation(Long)
+}
+
+
+class br.com.cepedi.Voll.api.infra.cache.CacheConfig {
++ CacheManager cacheManagerAppointment()
++ CacheManager cacheManagerDoctor()
++ CacheManager cacheManagerPatient()
+}
+
+class br.com.cepedi.Voll.api.model.entitys.Doctor {
+- Long id
+- String name
+- String email
+~ String phoneNumber
+- String crm
+- Specialty specialty
+- Address address
+- Boolean activated
++ void updateData(DataUpdateDoctor)
++ void logicalDelete()
+}
+
+
+class br.com.cepedi.Voll.api.model.records.appointment.input.DataRegisterAppointment {
+- Long idDoctor
+- Long idPatient
+- LocalDateTime date
+- Specialty specialty
++ LocalDateTime date()
++ Specialty specialty()
++ Long idPatient()
++ Long idDoctor()
+}
+
+
+enum br.com.cepedi.Voll.api.model.records.appointment.enums.ReasonCancelAppointment {
++  PATIENT_GIVE_UP
++  DOCTOR_CANCEL
++  OTHERS
+}
+
+interface br.com.cepedi.Voll.api.services.patient.validations.disabled.ValidationDisabledPatient {
+~ void validation(Long)
+}
+
+class br.com.cepedi.Voll.api.services.appointment.validations.register.ValidationRegisterBeforeTimeEstablished {
++ void validation(DataRegisterAppointment)
+}
+
+class br.com.cepedi.Voll.api.services.doctor.DoctorService {
+- DoctorRepository repository
+- List<ValidationDisabledDoctor> validationsDisabled
+- List<ValidationUpdateDoctor> validationsUpdate
++ DataDetailsDoctor register(DataRegisterDoctor)
++ Page<DataDetailsDoctor> list(Pageable)
++ DataDetailsDoctor details(Long)
++ DataDetailsDoctor update(Long,DataUpdateDoctor)
++ void disabled(Long)
+}
+
+
+class br.com.cepedi.Voll.api.services.patient.PatientService {
+- PatientRepository repository
+- List<ValidationUpdatePatient> validationUpdatePatient
+- List<ValidationDisabledPatient> validationDisabledPatients
++ DataDetailsPatient register(DataRegisterPatient)
++ Page<DataDetailsPatient> list(Pageable)
++ DataDetailsPatient details(Long)
++ DataDetailsPatient update(Long,DataUpdatePatient)
++ void disabled(Long)
+}
+
+
+class br.com.cepedi.Voll.api.security.controller.AuthController {
+- AuthenticationManager manager
+- TokenService tokenService
++ ResponseEntity efetuarLogin(DataAuth)
+}
+
+
+class br.com.cepedi.Voll.api.controller.V2.PatientControllerV2 {
+- {static} Logger log
+- PatientService service
++ ResponseEntity<DataDetailsPatient> register(DataRegisterPatient,UriComponentsBuilder)
++ ResponseEntity<Page<DataDetailsPatient>> listPatients(Pageable)
++ ResponseEntity<DataDetailsPatient> detailsDoctor(Long)
++ ResponseEntity<DataDetailsPatient> update(Long,DataUpdatePatient)
++ ResponseEntity<Object> disabled(Long)
+}
+
+
+interface br.com.cepedi.Voll.api.repository.PatientRepository {
+~ Page<Patient> findAllByActivatedTrue(Pageable)
+~ Boolean findActivatedById(Long)
+~ Patient findByPatientByEmail(String)
+~ Page<Patient> findByPatientsByFirstName(String,Pageable)
+~ Page<Patient> findByPatientsByLastName(String,Pageable)
+~ Page<Patient> findByPatientByCityAndNeighborhood(String,String,Pageable)
+}
+
+interface br.com.cepedi.Voll.api.services.doctor.validations.update.ValidationUpdateDoctor {
+~ void validation(Long,DataUpdateDoctor)
+}
+
+class br.com.cepedi.Voll.api.infra.springDoc.SpringDocSettings {
++ OpenAPI customOpenAPI()
+}
+
+enum br.com.cepedi.Voll.api.model.records.doctor.input.Specialty {
++  ORTHOPEDICS
++  CARDIOLOGY
++  GYNECOLOGY
++  DERMATOLOGY
+}
+
+class br.com.cepedi.Voll.api.services.patient.validations.update.ValidatePatientDisabledForUpdate {
+- PatientRepository repository
++ void validation(Long,DataUpdatePatient)
+}
+
+
+class br.com.cepedi.Voll.api.services.appointment.validations.register.ValidationTimeOperationClinic {
++ void validation(DataRegisterAppointment)
+}
+
+class br.com.cepedi.Voll.api.services.appointment.validations.register.ValidationDoctorActivated {
+- DoctorRepository repositoryDoctor
++ void validation(DataRegisterAppointment)
+}
+
+
+class br.com.cepedi.Voll.api.services.appointment.validations.register.ValidationPatientWithoutOtherAppointmentOnTheDate {
+- AppointmentRepository appointmentRepository
++ void validation(DataRegisterAppointment)
+}
+
+
+class br.com.cepedi.Voll.api.model.records.patient.input.DataUpdatePatient {
+- String name
+- String phoneNumber
+- DataRegisterAddress dataAddress
++ String name()
++ String phoneNumber()
++ DataRegisterAddress dataAddress()
+}
+
+
+class br.com.cepedi.Voll.api.model.records.patient.details.DataDetailsPatient {
+- Long id
+- String name
+- String email
+- String phoneNumber
+- String cpf
+- DataDetailsAddress address
+- Boolean activated
++ String phoneNumber()
++ DataDetailsAddress address()
++ String cpf()
++ String name()
++ String email()
++ Boolean activated()
++ Long id()
+}
+
+
+interface br.com.cepedi.Voll.api.services.appointment.validations.cancel.ValidationCancelAppointment {
+~ void validation(DataCancelAppointment)
+}
+
+interface br.com.cepedi.Voll.api.services.doctor.validations.register.ValidationRegisterDoctor {
+~ void validation(DataRegisterDoctor)
+}
+
+class br.com.cepedi.Voll.api.controller.V1.DoctorControllerV1 {
+- {static} Logger log
+- DoctorService service
++ ResponseEntity<DataDetailsDoctor> register(DataRegisterDoctor,UriComponentsBuilder)
++ ResponseEntity<Page<DataDetailsDoctor>> list(Pageable)
++ ResponseEntity<DataDetailsDoctor> details(Long)
++ ResponseEntity<DataDetailsDoctor> update(Long,DataUpdateDoctor)
++ ResponseEntity<Object> disabled(Long)
+}
+
+
+class br.com.cepedi.Voll.api.model.records.appointment.details.DataDetailsAppointment {
+- Long id
+- Long doctorId
+- String doctorName
+- Long patientId
+- String patientName
+- LocalDateTime dateService
+- ReasonCancelAppointment reasonCancel
++ String doctorName()
++ LocalDateTime dateService()
++ Long doctorId()
++ Long patientId()
++ String patientName()
++ Long id()
++ ReasonCancelAppointment reasonCancel()
+}
+
+
+class br.com.cepedi.Voll.api.services.patient.validations.update.ValidatePatientExistenceForUpdate {
+- PatientRepository repository
++ void validation(Long,DataUpdatePatient)
+}
+
+
+class br.com.cepedi.Voll.api.controller.V1.PatientControllerV1 {
+- {static} Logger log
+- PatientService service
++ ResponseEntity<DataDetailsPatient> register(DataRegisterPatient,UriComponentsBuilder)
++ ResponseEntity<Page<DataDetailsPatient>> listPatients(Pageable)
++ ResponseEntity<DataDetailsPatient> detailsDoctor(Long)
++ ResponseEntity<DataDetailsPatient> update(Long,DataUpdatePatient)
++ ResponseEntity<Object> disabled(Long)
+}
+
+
+class br.com.cepedi.Voll.api.infra.exception.ErrorsHandler {
+- {static} Logger logger
++ ResponseEntity<Object> Error404()
++ ResponseEntity<Object> Error400(MethodArgumentNotValidException)
++ ResponseEntity<Object> handleBadCredentialsError()
++ ResponseEntity<Object> handleAuthenticationError()
++ ResponseEntity<Object> handleAccessDeniedError()
++ ResponseEntity<Object> handle500Error(Exception)
+}
+
+
+class br.com.cepedi.Voll.api.infra.exception.ErrorsHandler$DataExceptionValidate {
+- String value
+- String message
++ String message()
++ String value()
+}
+
+
+interface br.com.cepedi.Voll.api.security.repository.UserRepository {
+~ UserDetails findByLogin(String)
+}
+
+class br.com.cepedi.Voll.api.services.appointment.validations.register.ValidationPatientActivated {
+- PatientRepository repositoryPatient
++ void validation(DataRegisterAppointment)
+}
+
+
+interface br.com.cepedi.Voll.api.repository.DoctorRepository {
+~ Page<Doctor> findAllByActivatedTrue(Pageable)
+~ Doctor chooseDoctorRandomFreethisDate(Specialty,LocalDateTime)
+~ Boolean findActivatedById(Long)
+~ Boolean existsByDoctorIdAndData(Long,LocalDateTime)
+~ Doctor findByDoctorByEmail(String)
+~ Page<Doctor> findByDoctorsByFirstName(String,Pageable)
+~ Page<Doctor> findByDoctorsByLastName(String,Pageable)
+~ Page<Doctor> findByDoctorByCityAndNeighborhood(String,String,Pageable)
+}
+
+class br.com.cepedi.Voll.api.model.entitys.Appointment {
+- Long id
+- Doctor doctor
+- Patient patient
+- LocalDateTime dateService
+- ReasonCancelAppointment reasonCancel
++ String toString()
++ void cancel(ReasonCancelAppointment)
+}
+
+
+class br.com.cepedi.Voll.api.model.records.appointment.input.DataCancelAppointment {
+- Long idAppointment
+- ReasonCancelAppointment reason
++ Long idAppointment()
++ ReasonCancelAppointment reason()
+}
+
+
+class br.com.cepedi.Voll.api.security.service.AuthService {
+~ UserRepository repository
++ UserDetails loadUserByUsername(String)
+}
+
+
+class br.com.cepedi.Voll.api.controller.V2.AppointmentControllerV2 {
+- {static} Logger log
+- AppointmentService service
++ ResponseEntity<Object> schedule(DataRegisterAppointment)
++ ResponseEntity<Object> cancel(DataCancelAppointment)
+}
+
+
+class br.com.cepedi.Voll.api.security.model.entitys.User {
+- Long id
+- String login
+- String password
++ Collection<? extends GrantedAuthority> getAuthorities()
++ String getPassword()
++ String getUsername()
++ boolean isAccountNonExpired()
++ boolean isAccountNonLocked()
++ boolean isCredentialsNonExpired()
++ boolean isEnabled()
+}
+
+
+class br.com.cepedi.Voll.api.services.appointment.validations.register.ValidationPatientExistence {
+- PatientRepository repositoryPatient
++ void validation(DataRegisterAppointment)
+}
+
+
+interface br.com.cepedi.Voll.api.repository.AppointmentRepository {
+~ Boolean existsByPatientIdAndDataBetween(Long,LocalDateTime,LocalDateTime)
+}
+
+class br.com.cepedi.Voll.api.model.records.address.details.DataDetailsAddress {
+- String publicPlace
+- String neighborhood
+- String cep
+- String city
+- String uf
+- String complement
+- String number
++ String publicPlace()
++ String cep()
++ String complement()
++ String city()
++ String neighborhood()
++ String uf()
++ String number()
+}
+
+
+class br.com.cepedi.Voll.api.security.service.TokenService {
+- String secret
+- {static} String ISSUER
++ String generationToken(User)
+- Instant expirationDate()
++ String getSubject(String)
+}
+
+
+class br.com.cepedi.Voll.api.services.doctor.validations.disabled.ValidateDoctorExistenceForDisabled {
+- DoctorRepository repository
++ void validation(Long)
+}
+
+
+class br.com.cepedi.Voll.api.model.records.doctor.details.DataDetailsDoctor {
+- Long id
+- String name
+- String email
+- String phoneNumber
+- String crm
+- Specialty specialty
+- DataDetailsAddress address
+- Boolean activated
++ String phoneNumber()
++ DataDetailsAddress address()
++ Specialty specialty()
++ String name()
++ String email()
++ String crm()
++ Boolean activated()
++ Long id()
+}
+
+
+class br.com.cepedi.Voll.api.services.patient.validations.disabled.ValidateDisabledExistenceForDisabled {
+- PatientRepository repository
++ void validation(Long)
+}
+
+
+class br.com.cepedi.Voll.api.services.appointment.AppointmentService {
+- AppointmentRepository repository
+- DoctorRepository repositoryDoctors
+- PatientRepository repositoryPatient
+- List<ValidationAcheduleAppointment> validators
++ DataDetailsAppointment register(DataRegisterAppointment)
+- Doctor chooseDoctor(DataRegisterAppointment)
++ void cancel(DataCancelAppointment)
+}
+
+
+class br.com.cepedi.Voll.api.services.appointment.validations.cancel.ValidationCancelBeforeTimeEstablished {
+- AppointmentRepository repository
++ void validation(DataCancelAppointment)
+}
+
+
+
+
+br.com.cepedi.Voll.api.services.doctor.validations.disabled.ValidationDisabledDoctor <|.. br.com.cepedi.Voll.api.services.doctor.validations.disabled.ValidateDoctorAlreadyDisabled
+br.com.cepedi.Voll.api.services.appointment.validations.register.ValidationAcheduleAppointment <|.. br.com.cepedi.Voll.api.services.appointment.validations.register.ValidationDoctorWithOtherAppointmentInSameDate
+br.com.cepedi.Voll.api.services.doctor.validations.update.ValidationUpdateDoctor <|.. br.com.cepedi.Voll.api.services.doctor.validations.update.ValidateDoctorExistenceForUpdate
+br.com.cepedi.Voll.api.services.appointment.validations.register.ValidationAcheduleAppointment <|.. br.com.cepedi.Voll.api.services.appointment.validations.register.validateDoctorExistence
+br.com.cepedi.Voll.api.services.doctor.validations.update.ValidationUpdateDoctor <|.. br.com.cepedi.Voll.api.services.doctor.validations.update.ValidateDoctorDisabled
+org.springframework.web.filter.OncePerRequestFilter <|-- br.com.cepedi.Voll.api.security.infra.SecurityFilter
+br.com.cepedi.Voll.api.services.patient.validations.disabled.ValidationDisabledPatient <|.. br.com.cepedi.Voll.api.services.patient.validations.disabled.ValidatePatientAlreadyDisabled
+br.com.cepedi.Voll.api.services.appointment.validations.register.ValidationAcheduleAppointment <|.. br.com.cepedi.Voll.api.services.appointment.validations.register.ValidationRegisterBeforeTimeEstablished
+org.springframework.data.jpa.repository.JpaRepository <|-- br.com.cepedi.Voll.api.repository.PatientRepository
+br.com.cepedi.Voll.api.services.patient.validations.update.ValidationUpdatePatient <|.. br.com.cepedi.Voll.api.services.patient.validations.update.ValidatePatientDisabledForUpdate
+br.com.cepedi.Voll.api.services.appointment.validations.register.ValidationAcheduleAppointment <|.. br.com.cepedi.Voll.api.services.appointment.validations.register.ValidationTimeOperationClinic
+br.com.cepedi.Voll.api.services.appointment.validations.register.ValidationAcheduleAppointment <|.. br.com.cepedi.Voll.api.services.appointment.validations.register.ValidationDoctorActivated
+br.com.cepedi.Voll.api.services.appointment.validations.register.ValidationAcheduleAppointment <|.. br.com.cepedi.Voll.api.services.appointment.validations.register.ValidationPatientWithoutOtherAppointmentOnTheDate
+br.com.cepedi.Voll.api.services.patient.validations.update.ValidationUpdatePatient <|.. br.com.cepedi.Voll.api.services.patient.validations.update.ValidatePatientExistenceForUpdate
+br.com.cepedi.Voll.api.infra.exception.ErrorsHandler +.. br.com.cepedi.Voll.api.infra.exception.ErrorsHandler$DataExceptionValidate
+org.springframework.data.jpa.repository.JpaRepository <|-- br.com.cepedi.Voll.api.security.repository.UserRepository
+br.com.cepedi.Voll.api.services.appointment.validations.register.ValidationAcheduleAppointment <|.. br.com.cepedi.Voll.api.services.appointment.validations.register.ValidationPatientActivated
+org.springframework.data.jpa.repository.JpaRepository <|-- br.com.cepedi.Voll.api.repository.DoctorRepository
+org.springframework.security.core.userdetails.UserDetailsService <|.. br.com.cepedi.Voll.api.security.service.AuthService
+org.springframework.security.core.userdetails.UserDetails <|.. br.com.cepedi.Voll.api.security.model.entitys.User
+br.com.cepedi.Voll.api.services.appointment.validations.register.ValidationAcheduleAppointment <|.. br.com.cepedi.Voll.api.services.appointment.validations.register.ValidationPatientExistence
+org.springframework.data.jpa.repository.JpaRepository <|-- br.com.cepedi.Voll.api.repository.AppointmentRepository
+br.com.cepedi.Voll.api.services.doctor.validations.disabled.ValidationDisabledDoctor <|.. br.com.cepedi.Voll.api.services.doctor.validations.disabled.ValidateDoctorExistenceForDisabled
+br.com.cepedi.Voll.api.services.patient.validations.disabled.ValidationDisabledPatient <|.. br.com.cepedi.Voll.api.services.patient.validations.disabled.ValidateDisabledExistenceForDisabled
+br.com.cepedi.Voll.api.services.appointment.validations.cancel.ValidationCancelAppointment <|.. br.com.cepedi.Voll.api.services.appointment.validations.cancel.ValidationCancelBeforeTimeEstablished
+@enduml
