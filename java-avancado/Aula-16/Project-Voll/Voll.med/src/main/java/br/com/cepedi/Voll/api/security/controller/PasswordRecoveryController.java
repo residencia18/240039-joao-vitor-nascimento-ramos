@@ -1,9 +1,11 @@
 package br.com.cepedi.Voll.api.security.controller;
 
 import br.com.cepedi.Voll.api.security.model.entitys.User;
+import br.com.cepedi.Voll.api.security.model.records.input.DataRequestResetPassword;
 import br.com.cepedi.Voll.api.security.model.records.input.DataResetPassword;
 import br.com.cepedi.Voll.api.security.service.TokenService;
 import br.com.cepedi.Voll.api.security.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +29,7 @@ public class PasswordRecoveryController {
     private TokenService tokenService;
 
     @PostMapping("/request")
-    public String resetPasswordRequest(@RequestBody DataResetPassword dataResetPassword) {
+    public String resetPasswordRequest(@RequestBody DataRequestResetPassword dataResetPassword) {
         User user = userService.getUserActivatedByEmail(dataResetPassword.email());
         if (user == null) {
             return "E-mail not found";
@@ -61,24 +63,17 @@ public class PasswordRecoveryController {
         }
     }
 
-    @GetMapping("/reset")
-    public ResponseEntity<String> resetPassword(@RequestParam(name = "token", required = false) String token, @RequestParam(name = "password", required = false) String password) {
-        if (token == null || token.isEmpty()) {
-            return ResponseEntity.badRequest().body("Token não fornecido");
-        }
-        if (password == null || password.isEmpty()) {
-            return ResponseEntity.badRequest().body("Senha não fornecida");
-        }
+    @PutMapping("/reset")
+    public ResponseEntity<String> resetPassword(@RequestBody @Valid DataResetPassword dataResetPassword) {
 
-        System.out.println(token);
-        System.out.println(password);
-
+        System.out.println(dataResetPassword);
         // Valida o token
-        if (tokenService.isValidToken(token)) {
+        if (tokenService.isValidToken(dataResetPassword.token())) {
             // Obtém o e-mail associado ao token
-            String email = tokenService.getEmailByToken(token);
+            String email = tokenService.getEmailByToken(dataResetPassword.token());
+            System.out.println(email);
             // Atualiza a senha do usuário
-            userService.updatePassword(email, password);
+            userService.updatePassword(email, dataResetPassword.password());
             return ResponseEntity.ok("Senha atualizada com sucesso");
         } else {
             return ResponseEntity.badRequest().body("Token inválido ou expirado");
