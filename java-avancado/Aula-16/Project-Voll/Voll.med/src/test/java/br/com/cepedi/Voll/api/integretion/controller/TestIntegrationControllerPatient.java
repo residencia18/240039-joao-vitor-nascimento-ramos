@@ -102,13 +102,37 @@ public class TestIntegrationControllerPatient extends AbstractIntegrationTest {
     }
 
     @Test
-    @DisplayName("Test create user")
+    @DisplayName("Admin do login")
     @Order(1)
+    void loginAdmin(){
+
+        DataAuth data = new DataAuth("admin", "123456");
+
+        String valueToken = given().spec(specificationLogin)
+                .contentType(TestConfig.CONTENT_TYPE_JSON)
+                .body(data)
+                .when()
+                .post()
+                .then()
+                .statusCode(200)
+                .extract()
+                .jsonPath()
+                .getString("token");
+
+        token = valueToken;
+
+
+    }
+
+    @Test
+    @DisplayName("Test create user")
+    @Order(2)
     void registerUser(){
         DataRegisterUser data = new DataRegisterUser("teste", "teste@teste.com" , "teste","Teste123*");
 
         String details = given().spec(specificationRegisterUser)
                 .contentType(TestConfig.CONTENT_TYPE_JSON)
+                .header("Authorization", "Bearer " + token)
                 .body(data)
                 .when()
                 .post()
@@ -125,7 +149,7 @@ public class TestIntegrationControllerPatient extends AbstractIntegrationTest {
 
     @Test
     @DisplayName("Test requisition login")
-    @Order(2)
+    @Order(3)
     void login(){
         DataAuth data = new DataAuth("teste", "Teste123*");
 
@@ -147,7 +171,7 @@ public class TestIntegrationControllerPatient extends AbstractIntegrationTest {
 
     @Test
     @DisplayName("Test requisition post for create patient")
-    @Order(3)
+    @Order(4)
     void integrationTestGivenPatient_when_CreatePatient_then_returnDataDetails() throws JsonProcessingException {
         var content = given().spec(specification)
                 .contentType(TestConfig.CONTENT_TYPE_JSON)
@@ -177,7 +201,7 @@ public class TestIntegrationControllerPatient extends AbstractIntegrationTest {
 
     @Test
     @DisplayName("Test requisition update by id")
-    @Order(4)
+    @Order(5)
     void integrationTestGivenPatient_when_UpdatePatient_then_returnDataDetails() throws JsonProcessingException {
 
         String updateEndpoint = "/" + idPatient;
@@ -207,7 +231,7 @@ public class TestIntegrationControllerPatient extends AbstractIntegrationTest {
 
     @Test
     @DisplayName("Test requisition get patient by id")
-    @Order(5)
+    @Order(6)
     void integrationTestGivenPatient_when_ReadPatient_then_returnDataDetails() throws JsonProcessingException {
         String readEndpoint = "/" + idPatient;
 
@@ -232,7 +256,7 @@ public class TestIntegrationControllerPatient extends AbstractIntegrationTest {
 
     @Test
     @DisplayName("Test requisition disabled patient by id")
-    @Order(6)
+    @Order(7)
     void integrationTestGivenPatient_when_DisabledPatient_then_returnDataDetails() throws JsonProcessingException {
         String readEndpoint = "/" + idPatient;
 
@@ -267,7 +291,7 @@ public class TestIntegrationControllerPatient extends AbstractIntegrationTest {
 
     @Test
     @DisplayName("Test requisition get all patient by id")
-    @Order(7)
+    @Order(8)
     void integrationTestGivenPatient_when_ReadAllPatients_then_returnDataDetails() throws JsonProcessingException {
 
         for(int i = 1 ; i < 15 ; i++){

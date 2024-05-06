@@ -2,10 +2,7 @@ package br.com.cepedi.Voll.api.security.model.entitys;
 
 import br.com.cepedi.Voll.api.security.model.records.input.DataRegisterUser;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,6 +20,7 @@ import java.util.stream.Collectors;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Setter
 @EqualsAndHashCode(of = "id")
 
 public class User implements UserDetails {
