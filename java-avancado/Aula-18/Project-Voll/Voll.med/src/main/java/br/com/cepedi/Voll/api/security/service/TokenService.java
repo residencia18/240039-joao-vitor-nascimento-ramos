@@ -12,7 +12,9 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 @Service
 public class TokenService {
@@ -22,7 +24,11 @@ public class TokenService {
 
     private static final String ISSUER = "API Voll.med";
 
-    // Armazenamento temporário de tokens e e-mails
+    private final Set<String> revokedTokens = new HashSet<>();
+
+    public void revokeToken(String token) {
+        revokedTokens.add(token);
+    }
 
     public String generateToken(User user) {
         try {
@@ -40,6 +46,22 @@ public class TokenService {
         }
     }
 
+    public String generateTokenRecoverPassword(User user) {
+        try {
+            var algorithm = Algorithm.HMAC256(secret);
+            String token = JWT.create()
+                    .withIssuer("API Voll.med")
+                    .withSubject(user.getLogin())
+                    .withClaim("id", user.getId())
+                    .withClaim("email",user.getEmail())
+                    .withExpiresAt(expirationDateRecoverPassword())
+                    .sign(algorithm);
+            return token;
+        } catch (JWTCreationException exception){
+            throw new RuntimeException("Erro ao gerar o token JWT", exception);
+        }
+    }
+
     public boolean isValidToken(String token) {
         try {
             var algorithm = Algorithm.HMAC256(secret);
@@ -47,15 +69,20 @@ public class TokenService {
                     .withIssuer(ISSUER)
                     .build()
                     .verify(token);
-            return true;
+            return !revokedTokens.contains(token);
         } catch (JWTVerificationException exception) {
             return false;
         }
     }
 
 
+
     private Instant expirationDate () {
         return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-03:00"));
+    }
+
+    private Instant expirationDateRecoverPassword () {
+        return LocalDateTime.now().plusMinutes(10).toInstant(ZoneOffset.of("-03:00"));
     }
 
     public String getEmailByToken(String token) {
