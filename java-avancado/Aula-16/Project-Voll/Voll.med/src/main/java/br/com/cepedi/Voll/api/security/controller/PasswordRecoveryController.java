@@ -14,7 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.servlet.ModelAndView;
 
 
 @RestController
@@ -65,4 +65,22 @@ public class PasswordRecoveryController {
             return ResponseEntity.badRequest().body("Invalid or expired token");
         }
     }
+
+
+    //como seria utilizando uma tela
+//    @GetMapping("/validate-token")
+//    public ModelAndView validateToken(@RequestParam(name = "token", required = false) String token) {
+//        ModelAndView modelAndView = new ModelAndView();
+//        if (token == null || token.isEmpty()) {
+//            modelAndView.setViewName("error");
+//            modelAndView.addObject("message", "Token not provided");
+//        } else if (tokenService.isValidToken(token)) {
+//            System.out.println("OLA");
+//            modelAndView.setViewName("forward:/screen_to_request_new_password"); // ou "redirect:/reset-password-template"
+//        } else {
+//            modelAndView.setViewName("error");
+//            modelAndView.addObject("message", "Invalid or expired token");
+//        }
+//        return modelAndView;
+//    }
 }

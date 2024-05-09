@@ -69,7 +69,7 @@ public class UserServiceTest {
 
         // Então
         assertEquals(encodedNewPassword, existingUser.getPassword());
-        verify(userRepository, times(1)).save(existingUser);
+        verify(userRepository, times(1)).saveAndFlush(existingUser);
     }
 
 

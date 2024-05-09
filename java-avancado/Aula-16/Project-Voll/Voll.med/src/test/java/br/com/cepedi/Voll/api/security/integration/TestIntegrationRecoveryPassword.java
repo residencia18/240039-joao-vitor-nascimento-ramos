@@ -1,9 +1,13 @@
 package br.com.cepedi.Voll.api.security.integration;
 
 import br.com.cepedi.Voll.api.config.TestConfig;
+import br.com.cepedi.Voll.api.integretion.containers.AbstractIntegrationTest;
+import br.com.cepedi.Voll.api.security.model.entitys.User;
 import br.com.cepedi.Voll.api.security.model.records.input.DataAuth;
 import br.com.cepedi.Voll.api.security.model.records.input.DataRegisterUser;
 import br.com.cepedi.Voll.api.security.model.records.input.DataRequestResetPassword;
+import br.com.cepedi.Voll.api.security.model.records.input.DataResetPassword;
+import br.com.cepedi.Voll.api.security.service.UserService;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.builder.RequestSpecBuilder;
@@ -12,20 +16,24 @@ import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.util.ArrayList;
 
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @ActiveProfiles("test")
-public class TestIntegrationRecoveryPassword {
+public class TestIntegrationRecoveryPassword extends AbstractIntegrationTest {
 
-    private static RequestSpecification specification;
+    private static RequestSpecification specificationRequestUpdatePassword;
 
     private static RequestSpecification specificationLogin;
 
@@ -40,6 +48,12 @@ public class TestIntegrationRecoveryPassword {
     private static String emailUser;
 
     private static String newPasswordUser;
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @BeforeAll
     static void setup(){
@@ -64,7 +78,14 @@ public class TestIntegrationRecoveryPassword {
                 .build();
 
         specificationRequestRecoveryPassword = new RequestSpecBuilder()
-                .setBasePath("reset-password/request")
+                .setBasePath("/reset-password/request")
+                .setPort(TestConfig.SERVE_PORT)
+                .addFilter(new RequestLoggingFilter(LogDetail.ALL))
+                .addFilter(new ResponseLoggingFilter(LogDetail.ALL))
+                .build();
+
+        specificationRequestUpdatePassword = new RequestSpecBuilder()
+                .setBasePath("reset-password/reset")
                 .setPort(TestConfig.SERVE_PORT)
                 .addFilter(new RequestLoggingFilter(LogDetail.ALL))
                 .addFilter(new ResponseLoggingFilter(LogDetail.ALL))
@@ -75,7 +96,7 @@ public class TestIntegrationRecoveryPassword {
     @Test
     @DisplayName("Admin do login")
     @Order(1)
-    void loginAdmin(){
+    void loginAdminToRecoveryPassword(){
 
         DataAuth data = new DataAuth("admin", "123456");
 
@@ -153,9 +174,56 @@ public class TestIntegrationRecoveryPassword {
                 .post()
                 .then()
                 .statusCode(200)
-                .extract().toString();
+                .extract().asString();
 
-        System.out.println(sendEmail);
+        assertEquals("A password reset email has been sent to jvitorsb98@outlook.com",sendEmail);
+    }
+
+    @Test
+    @DisplayName("Test new requisiton for updated password")
+    @Order(5)
+    void requestUpdatePassword(){
+
+        DataResetPassword data = new DataResetPassword(token,"NewPassword123**");
+
+
+
+
+        String response = given().spec(specificationRequestUpdatePassword)
+                .contentType(TestConfig.CONTENT_TYPE_JSON)
+                .body(data)
+                .when()
+                .post()
+                .then()
+                .statusCode(200)
+                .extract().asString();
+
+
+        User user = userService.getUserActivatedByEmail("jvitorsb98@outlook.com");
+
+        assertEquals("Password updated successfully",response);
+
+
+
+    }
+
+    @Test
+    @DisplayName("Test login with new password")
+    @Order(6)
+    void requestLoginWithNewPassword(){
+
+        DataAuth data = new DataAuth("loginTest", "NewPassword123**");
+
+        String response = given().spec(specificationLogin)
+                .contentType(TestConfig.CONTENT_TYPE_JSON)
+                .body(data)
+                .when()
+                .post()
+                .then()
+                .statusCode(200)
+                .extract()
+                .jsonPath()
+                .getString("token");
     }
 
 }
