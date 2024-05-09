@@ -1,10 +1,7 @@
 package br.com.cepedi.Voll.api.security.model.entitys;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -15,6 +12,7 @@ import java.util.Set;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Setter
 @EqualsAndHashCode(of = "id")
 public class Role {
 
@@ -28,6 +26,12 @@ public class Role {
 
     @ManyToMany(mappedBy = "roles")
     private Set<User> users = new HashSet<>();
+
+    public Role(String name){
+        this.name = name;
+    }
+
+
 
 
 
