@@ -25,7 +25,7 @@ public class UserService {
         User user = userRepository.findUserByEmail(email);
         if (user != null) {
 ;            user.setPassword(passwordEncoder.encode(newPassword));
-            userRepository.save(user);
+            userRepository.saveAndFlush(user);
         } else {
             throw new RuntimeException("User not found");
         }

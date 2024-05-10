@@ -1,9 +1,7 @@
 package br.com.cepedi.Voll.api.model.entitys;
 
 import br.com.cepedi.Voll.api.model.records.appointment.enums.ReasonCancelAppointment;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.time.LocalDateTime;
 
@@ -11,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 
-@Order(2)
+@TestMethodOrder(MethodOrderer.Random.class)
 @DisplayName("Test entity appointment")
 public class TestAppointment {
 

@@ -1,0 +1,62 @@
+@startuml
+
+    class Address <<embeddable>> {
+        - publicPlace: String
+        - neighborhood: String
+        - cep: String
+        - city: String
+        - uf: String
+        - complement: String
+        - number: String
+
+        + Address(dataAddress: DataRegisterAddress)
+        + updateData(data: DataRegisterAddress): void
+    }
+
+    class Appointment {
+        - id: Long
+        - doctor: Doctor
+        - patient: Patient
+        - dateService: LocalDateTime
+        - reasonCancel: ReasonCancelAppointment
+
+        + toString(): String
+        + cancel(reason: ReasonCancelAppointment): void
+    }
+
+    class Doctor {
+        - id: Long
+        - name: String
+        - email: String
+        - phoneNumber: String
+        - crm: String
+        - specialty: Specialty
+        - address: Address
+        - activated: Boolean
+
+        + Doctor(data: DataRegisterDoctor)
+        + updateData(data: DataUpdateDoctor): void
+        + logicalDelete(): void
+    }
+
+    class Patient {
+        - id: Long
+        - name: String
+        - email: String
+        - phoneNumber: String
+        - cpf: String
+        - address: Address
+        - activated: Boolean
+
+        + Patient(data: DataRegisterPatient)
+        + updateData(data: DataUpdatePatient): void
+        + logicalDelete(): void
+    }
+
+    Address -- Doctor : has
+    Address -- Patient : has
+    Doctor -- Appointment : has
+    Patient -- Appointment : has
+}
+
+@enduml
