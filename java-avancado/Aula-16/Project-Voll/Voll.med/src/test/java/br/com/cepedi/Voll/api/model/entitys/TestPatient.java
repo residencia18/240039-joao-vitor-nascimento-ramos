@@ -3,14 +3,13 @@ package br.com.cepedi.Voll.api.model.entitys;
 import br.com.cepedi.Voll.api.model.records.address.input.DataRegisterAddress;
 import br.com.cepedi.Voll.api.model.records.patient.input.DataRegisterPatient;
 import br.com.cepedi.Voll.api.model.records.patient.input.DataUpdatePatient;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@Order(3)
+
 @DisplayName("Test entity patient")
+@TestMethodOrder(MethodOrderer.Random.class)
 public class TestPatient {
 
     @Test
@@ -36,6 +35,30 @@ public class TestPatient {
         assertEquals("123.456.789-10", patient.getCpf());
         assertEquals(true, patient.getActivated());
         assertNotNull(patient.getAddress());
+    }
+
+    @Test
+    @DisplayName("Test setters")
+    public void testSetters() {
+        // Given
+        Patient patient = new Patient();
+        DataRegisterAddress dataRegisterAddress = new DataRegisterAddress("123 Main St", "City", "12345", "State", "XX", null, null);
+
+        // When
+        patient.setName("John Doe");
+        patient.setEmail("john@example.com");
+        patient.setPhoneNumber("123456789");
+        patient.setCpf("123.456.789-10");
+        patient.setActivated(true);
+        patient.setAddress(new Address(dataRegisterAddress));
+
+        // Then
+        assertEquals("John Doe", patient.getName());
+        assertEquals("john@example.com", patient.getEmail());
+        assertEquals("123456789", patient.getPhoneNumber());
+        assertEquals("123.456.789-10", patient.getCpf());
+        assertEquals(true, patient.getActivated());
+        assertEquals(new Address(dataRegisterAddress), patient.getAddress());
     }
 
 //    @Test

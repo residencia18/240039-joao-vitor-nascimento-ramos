@@ -4,13 +4,11 @@ import br.com.cepedi.Voll.api.model.records.address.input.DataRegisterAddress;
 import br.com.cepedi.Voll.api.model.records.doctor.input.DataRegisterDoctor;
 import br.com.cepedi.Voll.api.model.records.doctor.input.DataUpdateDoctor;
 import br.com.cepedi.Voll.api.model.records.doctor.input.Specialty;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@Order(4)
+@TestMethodOrder(MethodOrderer.Random.class)
 @DisplayName("Test entity doctor")
 public class TestDoctor {
 

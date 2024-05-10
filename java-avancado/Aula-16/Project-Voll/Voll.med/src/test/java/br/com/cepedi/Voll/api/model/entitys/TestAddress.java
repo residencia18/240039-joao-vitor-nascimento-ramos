@@ -12,7 +12,6 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@Order(1)
 @TestMethodOrder(MethodOrderer.Random.class)
 @DisplayName("Test entity address")
 public class TestAddress {

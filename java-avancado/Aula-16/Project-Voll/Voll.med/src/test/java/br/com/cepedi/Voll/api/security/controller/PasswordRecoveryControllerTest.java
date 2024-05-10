@@ -71,6 +71,28 @@ public class PasswordRecoveryControllerTest {
     }
 
     @Test
+    @DisplayName("Test resetPasswordRequest with email where emailService throws exception")
+    public void testResetPasswordRequestEmailServiceException() throws MessagingException {
+        // Given
+        DataRequestResetPassword dataRequestResetPassword = new DataRequestResetPassword("exception@example.com");
+        User user = new User();
+        when(userService.getUserActivatedByEmail(dataRequestResetPassword.email())).thenReturn(user);
+        when(tokenService.generateTokenRecoverPassword(user)).thenReturn("token");
+
+        // Aqui está a correção: passar os argumentos corretos para o método de stubbing
+        doThrow(MessagingException.class).when(emailService).sendResetPasswordEmail(eq(user.getName()), eq(dataRequestResetPassword.email()), eq("token"));
+
+        // When
+        ResponseEntity<String> response = passwordRecoveryController.resetPasswordRequest(dataRequestResetPassword);
+
+        // Then
+        assertNotNull(response);
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+        assertTrue(response.getBody().contains("Failed to send email"));
+    }
+
+
+    @Test
     @DisplayName("Test resetPassword with valid token")
     public void testResetPasswordValidToken() {
         // Given
