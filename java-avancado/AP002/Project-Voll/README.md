@@ -40,6 +40,86 @@ Sensitive information such as database credentials and tokens are managed using 
 - `PUT /patients`: Update patient information.
 - `DELETE /patients/{id}`: Disable a patient.
 
+### Authentication
+
+#### Login Endpoint
+Endpoint for user authentication.
+
+- **URL:** `/login`
+- **Method:** `POST`
+- **Request Body:** 
+  ```json
+  {
+    "login": "example",
+    "password": "password"
+  }
+
+- **Response:**
+  ```json
+  {
+    "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJleGFtcGxlIiwiaWF0IjoxNTE2MjM5MDIyfQ.M41KNH0kkFj_QTcHcTCWJXGoYSn83bDjTfVr8d2wFSRpeWp0zAdmwIC35usgGwGyvOb4u64BFzV9u6GWqj34gQ"
+  }
+
+
+#### Registration
+Endpoint to register a new user.
+- **URL:** `/register`
+- **Method:** `POST`
+- **Request Body:** 
+  ```json
+  {
+    "username": "example",
+    "email": "example@example.com",
+    "password": "password"
+  }
+- **Response:**
+  ```json
+  {
+    "userId": 1,
+    "username": "example",
+    "email": "example@example.com"
+  }
+
+#### Password Recovery
+Endpoints for password recovery.
+
+- **URL:** ` /reset-password/request`
+- **Method:** `POST`
+- **Request Body:** 
+  ```json
+  {
+     "email": "example@example.com"
+  }
+- **Response:**
+  ```json
+  {
+     A password reset email has been sent to example@example.com
+  }
+
+
+- **URL:** `/reset-password/reset`
+- **Method:** `POST`
+- **Request Body:** 
+  ```json
+  {
+    "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJleGFtcGxlIiwiaWF0IjoxNTE2MjM5MDIyfQ.M41KNH0kkFj_QTcHcTCWJXGoYSn83bDjTfVr8d2wFSRpeWp0zAdmwIC35usgGwGyvOb4u64BFzV9u6GWqj34gQ",
+    "password": "newpassword"
+  }
+- **Response:**
+  ```json
+  {
+      Password updated successfully
+  }
+
+
+
+
+
+
+
+ 
+
+
 ## Logging
 Logging is implemented using SLF4J, providing insights into the execution flow of the application. Logs include information such as scheduling appointments, registering doctors and patients, and updating their details.
 
