@@ -25804,3 +25804,500 @@ java.lang.IllegalStateException: ApplicationContext failure threshold (1) exceed
 2024-05-09T21:50:21.835-03:00  INFO 15296 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-05-09T21:50:21.836-03:00  INFO 15296 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
 2024-05-09T21:50:21.920-03:00  INFO 15296 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2024-05-09T21:56:42.978-03:00  INFO 18720 --- [main] b.c.c.V.a.c.ControllerPatientV1Test      : Starting ControllerPatientV1Test using Java 17.0.9 with PID 18720 (started by joao in /home/joao/residencia18/java-avancado/Aula-16/Project-Voll/Voll.med)
+2024-05-09T21:56:42.981-03:00  INFO 18720 --- [main] b.c.c.V.a.c.ControllerPatientV1Test      : No active profile set, falling back to 1 default profile: "default"
+2024-05-09T21:56:45.092-03:00  INFO 18720 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-09T21:56:45.211-03:00  INFO 18720 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 104 ms. Found 5 JPA repository interfaces.
+2024-05-09T21:56:49.113-03:00  INFO 18720 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-09T21:56:50.787-03:00  INFO 18720 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@245237eb
+2024-05-09T21:56:50.793-03:00  INFO 18720 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-09T21:56:51.244-03:00  INFO 18720 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.22.3 by Redgate
+2024-05-09T21:56:51.244-03:00  INFO 18720 --- [main] o.f.c.internal.license.VersionPrinter    : See release notes here: https://rd.gt/416ObMi
+2024-05-09T21:56:51.245-03:00  INFO 18720 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2024-05-09T21:56:51.307-03:00  INFO 18720 --- [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/vollmed_api (MySQL 8.0)
+2024-05-09T21:56:51.424-03:00  INFO 18720 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 11 migrations (execution time 00:00.074s)
+2024-05-09T21:56:51.457-03:00  INFO 18720 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `vollmed_api`: 11
+2024-05-09T21:56:51.462-03:00  INFO 18720 --- [main] o.f.core.internal.command.DbMigrate      : Schema `vollmed_api` is up to date. No migration necessary.
+2024-05-09T21:56:51.888-03:00  INFO 18720 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-09T21:56:52.112-03:00  INFO 18720 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-09T21:56:52.237-03:00  INFO 18720 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-09T21:56:52.652-03:00  INFO 18720 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-09T21:56:55.597-03:00  INFO 18720 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-09T21:56:55.605-03:00  INFO 18720 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-09T21:56:56.718-03:00  INFO 18720 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-09T21:57:00.412-03:00  WARN 18720 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-09T21:57:02.619-03:00  INFO 18720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5847aa1, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7c18b6a3, org.springframework.security.web.context.SecurityContextHolderFilter@43702f05, org.springframework.security.web.header.HeaderWriterFilter@63bad0cd, org.springframework.web.filter.CorsFilter@3edba49b, org.springframework.security.web.authentication.logout.LogoutFilter@d276858, br.com.cepedi.Voll.api.security.infra.SecurityFilter@2bcd7026, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@34f0afea, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@81ec389, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@e6cd3f2, org.springframework.security.web.session.SessionManagementFilter@311c6336, org.springframework.security.web.access.ExceptionTranslationFilter@15266afa, org.springframework.security.web.access.intercept.AuthorizationFilter@632424a7]
+2024-05-09T21:57:03.939-03:00  INFO 18720 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-05-09T21:57:03.939-03:00  INFO 18720 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-05-09T21:57:03.943-03:00  INFO 18720 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 4 ms
+2024-05-09T21:57:03.996-03:00  INFO 18720 --- [main] b.c.c.V.a.c.ControllerPatientV1Test      : Started ControllerPatientV1Test in 21.589 seconds (process running for 24.439)
+2024-05-09T21:57:04.785-03:00  INFO 18720 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : Updating patient with ID: 1
+2024-05-09T21:57:04.790-03:00  INFO 18720 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : Patient with ID 1 updated successfully.
+2024-05-09T21:57:04.913-03:00  INFO 18720 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : Disabling patient with ID: 1
+2024-05-09T21:57:04.914-03:00  INFO 18720 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : Patient with ID 1 disabled successfully.
+2024-05-09T21:57:04.946-03:00  INFO 18720 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : Fetching details of patient with ID: 1
+2024-05-09T21:57:04.947-03:00  INFO 18720 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : Details of patient with ID 1 fetched successfully.
+2024-05-09T21:57:05.016-03:00  INFO 18720 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : Fetching list of patients...
+2024-05-09T21:57:05.017-03:00  INFO 18720 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : List of patients fetched successfully.
+2024-05-09T21:57:05.218-03:00  INFO 18720 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T21:57:05.219-03:00  INFO 18720 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: null
+2024-05-09T21:57:07.686-03:00  INFO 18720 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.cepedi.Voll.api.security.repository.UserRepositoryTest]: UserRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-05-09T21:57:07.727-03:00  INFO 18720 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.cepedi.Voll.api.Application for test class br.com.cepedi.Voll.api.security.repository.UserRepositoryTest
+2024-05-09T21:57:07.733-03:00  INFO 18720 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2024-05-09T21:57:07.787-03:00  INFO 18720 --- [main] b.c.c.V.a.s.r.UserRepositoryTest         : Starting UserRepositoryTest using Java 17.0.9 with PID 18720 (started by joao in /home/joao/residencia18/java-avancado/Aula-16/Project-Voll/Voll.med)
+2024-05-09T21:57:07.788-03:00  INFO 18720 --- [main] b.c.c.V.a.s.r.UserRepositoryTest         : The following 1 profile is active: "test"
+2024-05-09T21:57:07.957-03:00  INFO 18720 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-09T21:57:07.998-03:00  INFO 18720 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 5 JPA repository interfaces.
+2024-05-09T21:57:08.106-03:00  INFO 18720 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2024-05-09T21:57:08.135-03:00  INFO 18720 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5a3116df
+2024-05-09T21:57:08.136-03:00  INFO 18720 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2024-05-09T21:57:08.151-03:00  INFO 18720 --- [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/vollmed_api (MySQL 8.0)
+2024-05-09T21:57:08.182-03:00  INFO 18720 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 11 migrations (execution time 00:00.019s)
+2024-05-09T21:57:08.201-03:00  INFO 18720 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `vollmed_api`: 11
+2024-05-09T21:57:08.202-03:00  INFO 18720 --- [main] o.f.core.internal.command.DbMigrate      : Schema `vollmed_api` is up to date. No migration necessary.
+2024-05-09T21:57:08.238-03:00  INFO 18720 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-09T21:57:08.242-03:00  INFO 18720 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-09T21:57:08.249-03:00  INFO 18720 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-09T21:57:08.254-03:00  WARN 18720 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-09T21:57:08.254-03:00  WARN 18720 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-05-09T21:57:08.495-03:00  INFO 18720 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-09T21:57:08.634-03:00  INFO 18720 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-09T21:57:08.903-03:00  INFO 18720 --- [main] b.c.c.V.a.s.r.UserRepositoryTest         : Started UserRepositoryTest in 1.17 seconds (process running for 29.346)
+2024-05-09T21:57:09.800-03:00  INFO 18720 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.cepedi.Voll.api.integretion.containers.AbstractIntegrationTest]: AbstractIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-05-09T21:57:09.815-03:00  INFO 18720 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.cepedi.Voll.api.Application for test class br.com.cepedi.Voll.api.security.integration.TestIntegrationRecoveryPassword
+2024-05-09T21:57:10.329-03:00  INFO 18720 --- [main] org.testcontainers.images.PullPolicy     : Image pull policy will be performed by: DefaultPullPolicy()
+2024-05-09T21:57:10.333-03:00  INFO 18720 --- [main] o.t.utility.ImageNameSubstitutor         : Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2024-05-09T21:57:10.348-03:00  INFO 18720 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2024-05-09T21:57:10.753-03:00  INFO 18720 --- [testcontainers-lifecycle-0] o.t.d.DockerClientProviderStrategy       : Loaded org.testcontainers.dockerclient.UnixSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2024-05-09T21:57:11.298-03:00  INFO 18720 --- [testcontainers-lifecycle-0] o.t.d.DockerClientProviderStrategy       : Found Docker environment with local Unix socket (unix:///var/run/docker.sock)
+2024-05-09T21:57:11.300-03:00  INFO 18720 --- [testcontainers-lifecycle-0] org.testcontainers.DockerClientFactory   : Docker host IP address is localhost
+2024-05-09T21:57:11.328-03:00  INFO 18720 --- [testcontainers-lifecycle-0] org.testcontainers.DockerClientFactory   : Connected to docker: 
+  Server Version: 24.0.5
+  API Version: 1.43
+  Operating System: Ubuntu 22.04.4 LTS
+  Total Memory: 15694 MB
+2024-05-09T21:57:11.372-03:00  INFO 18720 --- [testcontainers-lifecycle-0] tc.testcontainers/ryuk:0.6.0             : Creating container for image: testcontainers/ryuk:0.6.0
+2024-05-09T21:57:11.384-03:00  INFO 18720 --- [testcontainers-lifecycle-0] o.t.utility.RegistryAuthLocator          : Failure when attempting to lookup auth config. Please ignore if you don't have images in an authenticated registry. Details: (dockerImageName: testcontainers/ryuk:0.6.0, configFile: /home/joao/.docker/config.json, configEnv: DOCKER_AUTH_CONFIG). Falling back to docker-java default behaviour. Exception message: Status 404: No config supplied. Checked in order: /home/joao/.docker/config.json (file not found), DOCKER_AUTH_CONFIG (not set)
+2024-05-09T21:57:11.529-03:00  INFO 18720 --- [testcontainers-lifecycle-0] tc.testcontainers/ryuk:0.6.0             : Container testcontainers/ryuk:0.6.0 is starting: e5102e6c16bf94ff14b2e411e98a735fea1587bf21695a8a80f7868a71f58e20
+2024-05-09T21:57:12.084-03:00  INFO 18720 --- [testcontainers-lifecycle-0] tc.testcontainers/ryuk:0.6.0             : Container testcontainers/ryuk:0.6.0 started in PT0.712550175S
+2024-05-09T21:57:12.088-03:00  INFO 18720 --- [testcontainers-lifecycle-0] o.t.utility.RyukResourceReaper           : Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2024-05-09T21:57:12.088-03:00  INFO 18720 --- [testcontainers-lifecycle-0] org.testcontainers.DockerClientFactory   : Checking the system...
+2024-05-09T21:57:12.089-03:00  INFO 18720 --- [testcontainers-lifecycle-0] org.testcontainers.DockerClientFactory   : ✔︎ Docker server version should be at least 1.6.0
+2024-05-09T21:57:12.096-03:00  INFO 18720 --- [testcontainers-lifecycle-0] tc.mysql:8.0.28                          : Creating container for image: mysql:8.0.28
+2024-05-09T21:57:12.155-03:00  INFO 18720 --- [testcontainers-lifecycle-0] tc.mysql:8.0.28                          : Container mysql:8.0.28 is starting: 450fe361b0fdcc2564fff070b457e414aa4eef9fe86362299e8f6d08679d72ca
+2024-05-09T21:57:12.461-03:00  INFO 18720 --- [testcontainers-lifecycle-0] tc.mysql:8.0.28                          : Waiting for database connection to become available at jdbc:mysql://localhost:32777/test using query 'SELECT 1'
+2024-05-09T21:57:22.993-03:00  INFO 18720 --- [testcontainers-lifecycle-0] tc.mysql:8.0.28                          : Container mysql:8.0.28 started in PT10.897253517S
+2024-05-09T21:57:22.994-03:00  INFO 18720 --- [testcontainers-lifecycle-0] tc.mysql:8.0.28                          : Container is started (JDBC URL: jdbc:mysql://localhost:32777/test)
+2024-05-09T21:57:22.995-03:00  INFO 18720 --- [main] .V.a.s.i.TestIntegrationRecoveryPassword : Starting TestIntegrationRecoveryPassword using Java 17.0.9 with PID 18720 (started by joao in /home/joao/residencia18/java-avancado/Aula-16/Project-Voll/Voll.med)
+2024-05-09T21:57:22.996-03:00  INFO 18720 --- [main] .V.a.s.i.TestIntegrationRecoveryPassword : The following 1 profile is active: "test"
+2024-05-09T21:57:23.242-03:00  INFO 18720 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-09T21:57:23.260-03:00  INFO 18720 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16 ms. Found 5 JPA repository interfaces.
+2024-05-09T21:57:23.590-03:00  INFO 18720 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2024-05-09T21:57:23.606-03:00  INFO 18720 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-09T21:57:23.607-03:00  INFO 18720 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-05-09T21:57:23.667-03:00  INFO 18720 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-09T21:57:23.668-03:00  INFO 18720 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 670 ms
+2024-05-09T21:57:23.738-03:00  INFO 18720 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2024-05-09T21:57:23.755-03:00  INFO 18720 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@69223f4
+2024-05-09T21:57:23.756-03:00  INFO 18720 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2024-05-09T21:57:23.769-03:00  INFO 18720 --- [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:32777/test (MySQL 8.0)
+2024-05-09T21:57:23.788-03:00  INFO 18720 --- [main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table `test`.`flyway_schema_history` does not exist yet
+2024-05-09T21:57:23.790-03:00  INFO 18720 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 11 migrations (execution time 00:00.008s)
+2024-05-09T21:57:23.809-03:00  INFO 18720 --- [main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table `test`.`flyway_schema_history` ...
+2024-05-09T21:57:23.874-03:00  INFO 18720 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `test`: << Empty Schema >>
+2024-05-09T21:57:23.880-03:00  INFO 18720 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema `test` to version "1 - create-table-doctors"
+2024-05-09T21:57:23.922-03:00  INFO 18720 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema `test` to version "2 - alter-table-doctors-add-column-phone-number"
+2024-05-09T21:57:23.960-03:00  INFO 18720 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema `test` to version "3 - alter-table-doctors-add-column-activated"
+2024-05-09T21:57:24.023-03:00  INFO 18720 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema `test` to version "4 - create-table-patients"
+2024-05-09T21:57:24.061-03:00  INFO 18720 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema `test` to version "5 - alter-table-patients-add-column-activated"
+2024-05-09T21:57:24.105-03:00  INFO 18720 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema `test` to version "6 - create-table-users"
+2024-05-09T21:57:24.143-03:00  INFO 18720 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema `test` to version "7 - create-table-appointments"
+2024-05-09T21:57:24.183-03:00  INFO 18720 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema `test` to version "8 - alter-table-appointments-add-column-reason-cancel"
+2024-05-09T21:57:24.217-03:00  INFO 18720 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema `test` to version "9 - create-table-audit-log"
+2024-05-09T21:57:24.246-03:00  INFO 18720 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema `test` to version "10 - create-table-roles"
+2024-05-09T21:57:24.277-03:00  INFO 18720 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema `test` to version "11 - create-table-user-roles"
+2024-05-09T21:57:24.309-03:00  INFO 18720 --- [main] o.f.core.internal.command.DbMigrate      : Successfully applied 11 migrations to schema `test`, now at version v11 (execution time 00:00.221s)
+2024-05-09T21:57:24.347-03:00  INFO 18720 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-09T21:57:24.350-03:00  INFO 18720 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-09T21:57:24.353-03:00  INFO 18720 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-09T21:57:24.361-03:00  WARN 18720 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-09T21:57:24.361-03:00  WARN 18720 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-05-09T21:57:24.538-03:00  INFO 18720 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-09T21:57:24.868-03:00  INFO 18720 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-09T21:57:25.510-03:00  WARN 18720 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-09T21:57:26.289-03:00  INFO 18720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7966c62f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@22ec3966, org.springframework.security.web.context.SecurityContextHolderFilter@6e5fe2a0, org.springframework.security.web.header.HeaderWriterFilter@7d08fd1f, org.springframework.web.filter.CorsFilter@4038e059, org.springframework.security.web.authentication.logout.LogoutFilter@3db0144, br.com.cepedi.Voll.api.security.infra.SecurityFilter@5cfd36ec, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6f3b7fc1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@55e1873c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@767430db, org.springframework.security.web.session.SessionManagementFilter@4220a0d6, org.springframework.security.web.access.ExceptionTranslationFilter@5d8b8ddf, org.springframework.security.web.access.intercept.AuthorizationFilter@6e2b0a37]
+2024-05-09T21:57:26.707-03:00  INFO 18720 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path ''
+2024-05-09T21:57:26.720-03:00  INFO 18720 --- [main] .V.a.s.i.TestIntegrationRecoveryPassword : Started TestIntegrationRecoveryPassword in 16.373 seconds (process running for 47.163)
+2024-05-09T21:57:27.880-03:00  INFO 18720 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-09T21:57:27.880-03:00  INFO 18720 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-09T21:57:27.883-03:00  INFO 18720 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2024-05-09T21:57:34.647-03:00  INFO 18720 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.cepedi.Voll.api.integretion.containers.AbstractIntegrationTest]: AbstractIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-05-09T21:57:34.666-03:00  INFO 18720 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.cepedi.Voll.api.Application for test class br.com.cepedi.Voll.api.repositorys.TestRepositoryAppointment
+2024-05-09T21:57:34.671-03:00  INFO 18720 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2024-05-09T21:57:34.689-03:00  INFO 18720 --- [main] b.c.c.V.a.r.TestRepositoryAppointment    : Starting TestRepositoryAppointment using Java 17.0.9 with PID 18720 (started by joao in /home/joao/residencia18/java-avancado/Aula-16/Project-Voll/Voll.med)
+2024-05-09T21:57:34.689-03:00  INFO 18720 --- [main] b.c.c.V.a.r.TestRepositoryAppointment    : The following 1 profile is active: "test"
+2024-05-09T21:57:34.779-03:00  INFO 18720 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-09T21:57:34.802-03:00  INFO 18720 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 5 JPA repository interfaces.
+2024-05-09T21:57:34.856-03:00  INFO 18720 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2024-05-09T21:57:34.870-03:00  INFO 18720 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@680f2217
+2024-05-09T21:57:34.870-03:00  INFO 18720 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2024-05-09T21:57:34.881-03:00  INFO 18720 --- [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:32777/test (MySQL 8.0)
+2024-05-09T21:57:34.899-03:00  INFO 18720 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 11 migrations (execution time 00:00.010s)
+2024-05-09T21:57:34.907-03:00  INFO 18720 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `test`: 11
+2024-05-09T21:57:34.909-03:00  INFO 18720 --- [main] o.f.core.internal.command.DbMigrate      : Schema `test` is up to date. No migration necessary.
+2024-05-09T21:57:34.936-03:00  INFO 18720 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-09T21:57:34.939-03:00  INFO 18720 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-09T21:57:34.944-03:00  INFO 18720 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-09T21:57:34.945-03:00  WARN 18720 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-09T21:57:34.945-03:00  WARN 18720 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-05-09T21:57:35.137-03:00  INFO 18720 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-09T21:57:35.196-03:00  INFO 18720 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-09T21:57:35.401-03:00  INFO 18720 --- [main] b.c.c.V.a.r.TestRepositoryAppointment    : Started TestRepositoryAppointment in 0.73 seconds (process running for 55.844)
+2024-05-09T21:57:35.590-03:00  INFO 18720 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.cepedi.Voll.api.integretion.containers.AbstractIntegrationTest]: AbstractIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-05-09T21:57:35.597-03:00  INFO 18720 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.cepedi.Voll.api.Application for test class br.com.cepedi.Voll.api.repositorys.TestRepositoryDoctor
+2024-05-09T21:57:36.591-03:00  INFO 18720 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.cepedi.Voll.api.integretion.containers.AbstractIntegrationTest]: AbstractIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-05-09T21:57:36.600-03:00  INFO 18720 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.cepedi.Voll.api.Application for test class br.com.cepedi.Voll.api.repositorys.TestRepositoryPatient
+2024-05-09T21:57:38.529-03:00  INFO 18720 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.cepedi.Voll.api.integretion.containers.AbstractIntegrationTest]: AbstractIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-05-09T21:57:38.546-03:00  INFO 18720 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.cepedi.Voll.api.Application for test class br.com.cepedi.Voll.api.integretion.controller.TestIntegrationControllerPatient
+2024-05-09T21:57:39.187-03:00  INFO 18720 --- [http-nio-8081-exec-6] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T21:57:39.196-03:00  INFO 18720 --- [http-nio-8081-exec-6] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 23
+2024-05-09T21:57:39.280-03:00  INFO 18720 --- [http-nio-8081-exec-7] b.c.c.V.a.c.V1.PatientControllerV1       : Updating patient with ID: 23
+2024-05-09T21:57:39.321-03:00  INFO 18720 --- [http-nio-8081-exec-7] b.c.c.V.a.c.V1.PatientControllerV1       : Patient with ID 23 updated successfully.
+2024-05-09T21:57:39.374-03:00  INFO 18720 --- [http-nio-8081-exec-8] b.c.c.V.a.c.V1.PatientControllerV1       : Fetching details of patient with ID: 23
+2024-05-09T21:57:39.387-03:00  INFO 18720 --- [http-nio-8081-exec-8] b.c.c.V.a.c.V1.PatientControllerV1       : Details of patient with ID 23 fetched successfully.
+2024-05-09T21:57:39.438-03:00  INFO 18720 --- [http-nio-8081-exec-9] b.c.c.V.a.c.V1.PatientControllerV1       : Disabling patient with ID: 23
+2024-05-09T21:57:39.456-03:00  INFO 18720 --- [http-nio-8081-exec-9] b.c.c.V.a.c.V1.PatientControllerV1       : Patient with ID 23 disabled successfully.
+2024-05-09T21:57:39.498-03:00  INFO 18720 --- [http-nio-8081-exec-10] b.c.c.V.a.c.V1.PatientControllerV1       : Fetching details of patient with ID: 23
+2024-05-09T21:57:39.508-03:00  INFO 18720 --- [http-nio-8081-exec-10] b.c.c.V.a.c.V1.PatientControllerV1       : Details of patient with ID 23 fetched successfully.
+2024-05-09T21:57:39.552-03:00  INFO 18720 --- [http-nio-8081-exec-1] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T21:57:39.558-03:00  INFO 18720 --- [http-nio-8081-exec-1] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 24
+2024-05-09T21:57:39.614-03:00  INFO 18720 --- [http-nio-8081-exec-2] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T21:57:39.623-03:00  INFO 18720 --- [http-nio-8081-exec-2] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 25
+2024-05-09T21:57:39.679-03:00  INFO 18720 --- [http-nio-8081-exec-3] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T21:57:39.684-03:00  INFO 18720 --- [http-nio-8081-exec-3] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 26
+2024-05-09T21:57:39.734-03:00  INFO 18720 --- [http-nio-8081-exec-4] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T21:57:39.739-03:00  INFO 18720 --- [http-nio-8081-exec-4] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 27
+2024-05-09T21:57:39.788-03:00  INFO 18720 --- [http-nio-8081-exec-5] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T21:57:39.795-03:00  INFO 18720 --- [http-nio-8081-exec-5] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 28
+2024-05-09T21:57:39.849-03:00  INFO 18720 --- [http-nio-8081-exec-6] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T21:57:39.855-03:00  INFO 18720 --- [http-nio-8081-exec-6] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 29
+2024-05-09T21:57:39.900-03:00  INFO 18720 --- [http-nio-8081-exec-7] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T21:57:39.907-03:00  INFO 18720 --- [http-nio-8081-exec-7] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 30
+2024-05-09T21:57:39.961-03:00  INFO 18720 --- [http-nio-8081-exec-8] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T21:57:39.966-03:00  INFO 18720 --- [http-nio-8081-exec-8] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 31
+2024-05-09T21:57:40.006-03:00  INFO 18720 --- [http-nio-8081-exec-9] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T21:57:40.012-03:00  INFO 18720 --- [http-nio-8081-exec-9] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 32
+2024-05-09T21:57:40.052-03:00  INFO 18720 --- [http-nio-8081-exec-10] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T21:57:40.057-03:00  INFO 18720 --- [http-nio-8081-exec-10] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 33
+2024-05-09T21:57:40.092-03:00  INFO 18720 --- [http-nio-8081-exec-1] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T21:57:40.097-03:00  INFO 18720 --- [http-nio-8081-exec-1] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 34
+2024-05-09T21:57:40.139-03:00  INFO 18720 --- [http-nio-8081-exec-2] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T21:57:40.146-03:00  INFO 18720 --- [http-nio-8081-exec-2] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 35
+2024-05-09T21:57:40.199-03:00  INFO 18720 --- [http-nio-8081-exec-3] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T21:57:40.205-03:00  INFO 18720 --- [http-nio-8081-exec-3] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 36
+2024-05-09T21:57:40.246-03:00  INFO 18720 --- [http-nio-8081-exec-1] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T21:57:40.253-03:00  INFO 18720 --- [http-nio-8081-exec-1] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 37
+2024-05-09T21:57:40.285-03:00  INFO 18720 --- [http-nio-8081-exec-8] b.c.c.V.a.c.V1.PatientControllerV1       : Fetching list of patients...
+2024-05-09T21:57:40.304-03:00  INFO 18720 --- [http-nio-8081-exec-8] b.c.c.V.a.c.V1.PatientControllerV1       : List of patients fetched successfully.
+2024-05-09T21:57:40.415-03:00  INFO 18720 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.cepedi.Voll.api.integretion.containers.AbstractIntegrationTest]: AbstractIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-05-09T21:57:40.432-03:00  INFO 18720 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.cepedi.Voll.api.Application for test class br.com.cepedi.Voll.api.integretion.containers.swagger.SwaggerIntegrationTest
+2024-05-09T21:57:40.490-03:00  INFO 18720 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-09T21:57:40.495-03:00  INFO 18720 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-09T21:57:40.501-03:00  INFO 18720 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-09T21:57:40.503-03:00  INFO 18720 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-09T21:57:40.503-03:00  INFO 18720 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2024-05-09T21:57:40.507-03:00  INFO 18720 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2024-05-09T21:57:40.910-03:00  INFO 18720 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-09T21:57:40.911-03:00  INFO 18720 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2024-05-09T21:57:40.915-03:00  INFO 18720 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2024-05-09T21:57:40.923-03:00  INFO 18720 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-09T21:57:40.923-03:00  INFO 18720 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2024-05-09T21:57:40.929-03:00  INFO 18720 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2024-05-09T22:01:17.582-03:00  INFO 20440 --- [main] b.c.c.V.a.c.ControllerPatientV1Test      : Starting ControllerPatientV1Test using Java 17.0.9 with PID 20440 (started by joao in /home/joao/residencia18/java-avancado/Aula-16/Project-Voll/Voll.med)
+2024-05-09T22:01:17.585-03:00  INFO 20440 --- [main] b.c.c.V.a.c.ControllerPatientV1Test      : No active profile set, falling back to 1 default profile: "default"
+2024-05-09T22:01:19.663-03:00  INFO 20440 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-09T22:01:19.785-03:00  INFO 20440 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 106 ms. Found 5 JPA repository interfaces.
+2024-05-09T22:01:23.407-03:00  INFO 20440 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-09T22:01:24.230-03:00  INFO 20440 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@69d92f73
+2024-05-09T22:01:24.236-03:00  INFO 20440 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-09T22:01:24.571-03:00  INFO 20440 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.22.3 by Redgate
+2024-05-09T22:01:24.572-03:00  INFO 20440 --- [main] o.f.c.internal.license.VersionPrinter    : See release notes here: https://rd.gt/416ObMi
+2024-05-09T22:01:24.573-03:00  INFO 20440 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2024-05-09T22:01:24.627-03:00  INFO 20440 --- [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/vollmed_api (MySQL 8.0)
+2024-05-09T22:01:24.755-03:00  INFO 20440 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 11 migrations (execution time 00:00.078s)
+2024-05-09T22:01:24.790-03:00  INFO 20440 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `vollmed_api`: 11
+2024-05-09T22:01:24.796-03:00  INFO 20440 --- [main] o.f.core.internal.command.DbMigrate      : Schema `vollmed_api` is up to date. No migration necessary.
+2024-05-09T22:01:25.176-03:00  INFO 20440 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-09T22:01:25.342-03:00  INFO 20440 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-09T22:01:25.447-03:00  INFO 20440 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-09T22:01:25.810-03:00  INFO 20440 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-09T22:01:28.549-03:00  INFO 20440 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-09T22:01:28.554-03:00  INFO 20440 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-09T22:01:29.607-03:00  INFO 20440 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-09T22:01:33.390-03:00  WARN 20440 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-09T22:01:35.801-03:00  INFO 20440 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@f98862a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2b181555, org.springframework.security.web.context.SecurityContextHolderFilter@54a6188a, org.springframework.security.web.header.HeaderWriterFilter@570354c5, org.springframework.web.filter.CorsFilter@e3cf5a0, org.springframework.security.web.authentication.logout.LogoutFilter@3d60931a, br.com.cepedi.Voll.api.security.infra.SecurityFilter@8f6d9ac, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7c6117e9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@307bc7a2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3808d740, org.springframework.security.web.session.SessionManagementFilter@169b4938, org.springframework.security.web.access.ExceptionTranslationFilter@3c43e8d8, org.springframework.security.web.access.intercept.AuthorizationFilter@16a664e2]
+2024-05-09T22:01:36.946-03:00  INFO 20440 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-05-09T22:01:36.947-03:00  INFO 20440 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-05-09T22:01:36.951-03:00  INFO 20440 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 3 ms
+2024-05-09T22:01:36.998-03:00  INFO 20440 --- [main] b.c.c.V.a.c.ControllerPatientV1Test      : Started ControllerPatientV1Test in 20.096 seconds (process running for 23.54)
+2024-05-09T22:01:37.772-03:00  INFO 20440 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : Updating patient with ID: 1
+2024-05-09T22:01:37.778-03:00  INFO 20440 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : Patient with ID 1 updated successfully.
+2024-05-09T22:01:37.897-03:00  INFO 20440 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : Disabling patient with ID: 1
+2024-05-09T22:01:37.898-03:00  INFO 20440 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : Patient with ID 1 disabled successfully.
+2024-05-09T22:01:37.936-03:00  INFO 20440 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : Fetching details of patient with ID: 1
+2024-05-09T22:01:37.936-03:00  INFO 20440 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : Details of patient with ID 1 fetched successfully.
+2024-05-09T22:01:38.008-03:00  INFO 20440 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : Fetching list of patients...
+2024-05-09T22:01:38.010-03:00  INFO 20440 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : List of patients fetched successfully.
+2024-05-09T22:01:38.202-03:00  INFO 20440 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T22:01:38.203-03:00  INFO 20440 --- [main] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: null
+2024-05-09T22:01:40.553-03:00  INFO 20440 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.cepedi.Voll.api.security.repository.UserRepositoryTest]: UserRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-05-09T22:01:40.603-03:00  INFO 20440 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.cepedi.Voll.api.Application for test class br.com.cepedi.Voll.api.security.repository.UserRepositoryTest
+2024-05-09T22:01:40.607-03:00  INFO 20440 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2024-05-09T22:01:40.670-03:00  INFO 20440 --- [main] b.c.c.V.a.s.r.UserRepositoryTest         : Starting UserRepositoryTest using Java 17.0.9 with PID 20440 (started by joao in /home/joao/residencia18/java-avancado/Aula-16/Project-Voll/Voll.med)
+2024-05-09T22:01:40.670-03:00  INFO 20440 --- [main] b.c.c.V.a.s.r.UserRepositoryTest         : The following 1 profile is active: "test"
+2024-05-09T22:01:40.829-03:00  INFO 20440 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-09T22:01:40.861-03:00  INFO 20440 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30 ms. Found 5 JPA repository interfaces.
+2024-05-09T22:01:40.971-03:00  INFO 20440 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2024-05-09T22:01:40.999-03:00  INFO 20440 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@df92cad
+2024-05-09T22:01:41.000-03:00  INFO 20440 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2024-05-09T22:01:41.017-03:00  INFO 20440 --- [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/vollmed_api (MySQL 8.0)
+2024-05-09T22:01:41.057-03:00  INFO 20440 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 11 migrations (execution time 00:00.022s)
+2024-05-09T22:01:41.080-03:00  INFO 20440 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `vollmed_api`: 11
+2024-05-09T22:01:41.083-03:00  INFO 20440 --- [main] o.f.core.internal.command.DbMigrate      : Schema `vollmed_api` is up to date. No migration necessary.
+2024-05-09T22:01:41.140-03:00  INFO 20440 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-09T22:01:41.144-03:00  INFO 20440 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-09T22:01:41.152-03:00  INFO 20440 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-09T22:01:41.158-03:00  WARN 20440 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-09T22:01:41.159-03:00  WARN 20440 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-05-09T22:01:41.405-03:00  INFO 20440 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-09T22:01:41.512-03:00  INFO 20440 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-09T22:01:41.735-03:00  INFO 20440 --- [main] b.c.c.V.a.s.r.UserRepositoryTest         : Started UserRepositoryTest in 1.128 seconds (process running for 28.278)
+2024-05-09T22:01:42.404-03:00  INFO 20440 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.cepedi.Voll.api.integretion.containers.AbstractIntegrationTest]: AbstractIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-05-09T22:01:42.419-03:00  INFO 20440 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.cepedi.Voll.api.Application for test class br.com.cepedi.Voll.api.security.integration.TestIntegrationRecoveryPassword
+2024-05-09T22:01:42.965-03:00  INFO 20440 --- [main] org.testcontainers.images.PullPolicy     : Image pull policy will be performed by: DefaultPullPolicy()
+2024-05-09T22:01:42.970-03:00  INFO 20440 --- [main] o.t.utility.ImageNameSubstitutor         : Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2024-05-09T22:01:42.987-03:00  INFO 20440 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2024-05-09T22:01:43.474-03:00  INFO 20440 --- [testcontainers-lifecycle-0] o.t.d.DockerClientProviderStrategy       : Loaded org.testcontainers.dockerclient.UnixSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2024-05-09T22:01:44.183-03:00  INFO 20440 --- [testcontainers-lifecycle-0] o.t.d.DockerClientProviderStrategy       : Found Docker environment with local Unix socket (unix:///var/run/docker.sock)
+2024-05-09T22:01:44.188-03:00  INFO 20440 --- [testcontainers-lifecycle-0] org.testcontainers.DockerClientFactory   : Docker host IP address is localhost
+2024-05-09T22:01:44.216-03:00  INFO 20440 --- [testcontainers-lifecycle-0] org.testcontainers.DockerClientFactory   : Connected to docker: 
+  Server Version: 24.0.5
+  API Version: 1.43
+  Operating System: Ubuntu 22.04.4 LTS
+  Total Memory: 15694 MB
+2024-05-09T22:01:44.267-03:00  INFO 20440 --- [testcontainers-lifecycle-0] tc.testcontainers/ryuk:0.6.0             : Creating container for image: testcontainers/ryuk:0.6.0
+2024-05-09T22:01:44.281-03:00  INFO 20440 --- [testcontainers-lifecycle-0] o.t.utility.RegistryAuthLocator          : Failure when attempting to lookup auth config. Please ignore if you don't have images in an authenticated registry. Details: (dockerImageName: testcontainers/ryuk:0.6.0, configFile: /home/joao/.docker/config.json, configEnv: DOCKER_AUTH_CONFIG). Falling back to docker-java default behaviour. Exception message: Status 404: No config supplied. Checked in order: /home/joao/.docker/config.json (file not found), DOCKER_AUTH_CONFIG (not set)
+2024-05-09T22:01:44.514-03:00  INFO 20440 --- [testcontainers-lifecycle-0] tc.testcontainers/ryuk:0.6.0             : Container testcontainers/ryuk:0.6.0 is starting: 2cd014a223b9123e6fbe05b7a2774528c3acf0e4697753cd7964930bf3586bdc
+2024-05-09T22:01:44.969-03:00  INFO 20440 --- [testcontainers-lifecycle-0] tc.testcontainers/ryuk:0.6.0             : Container testcontainers/ryuk:0.6.0 started in PT0.701671115S
+2024-05-09T22:01:44.972-03:00  INFO 20440 --- [testcontainers-lifecycle-0] o.t.utility.RyukResourceReaper           : Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2024-05-09T22:01:44.973-03:00  INFO 20440 --- [testcontainers-lifecycle-0] org.testcontainers.DockerClientFactory   : Checking the system...
+2024-05-09T22:01:44.974-03:00  INFO 20440 --- [testcontainers-lifecycle-0] org.testcontainers.DockerClientFactory   : ✔︎ Docker server version should be at least 1.6.0
+2024-05-09T22:01:44.979-03:00  INFO 20440 --- [testcontainers-lifecycle-0] tc.mysql:8.0.28                          : Creating container for image: mysql:8.0.28
+2024-05-09T22:01:45.070-03:00  INFO 20440 --- [testcontainers-lifecycle-0] tc.mysql:8.0.28                          : Container mysql:8.0.28 is starting: 41f8dbd06b81c66c566e3733cbb7920d55b717cc07edb3fe33155773dce15303
+2024-05-09T22:01:45.387-03:00  INFO 20440 --- [testcontainers-lifecycle-0] tc.mysql:8.0.28                          : Waiting for database connection to become available at jdbc:mysql://localhost:32779/test using query 'SELECT 1'
+2024-05-09T22:01:56.248-03:00  INFO 20440 --- [testcontainers-lifecycle-0] tc.mysql:8.0.28                          : Container mysql:8.0.28 started in PT11.268341158S
+2024-05-09T22:01:56.248-03:00  INFO 20440 --- [testcontainers-lifecycle-0] tc.mysql:8.0.28                          : Container is started (JDBC URL: jdbc:mysql://localhost:32779/test)
+2024-05-09T22:01:56.249-03:00  INFO 20440 --- [main] .V.a.s.i.TestIntegrationRecoveryPassword : Starting TestIntegrationRecoveryPassword using Java 17.0.9 with PID 20440 (started by joao in /home/joao/residencia18/java-avancado/Aula-16/Project-Voll/Voll.med)
+2024-05-09T22:01:56.250-03:00  INFO 20440 --- [main] .V.a.s.i.TestIntegrationRecoveryPassword : The following 1 profile is active: "test"
+2024-05-09T22:01:56.540-03:00  INFO 20440 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-09T22:01:56.567-03:00  INFO 20440 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 5 JPA repository interfaces.
+2024-05-09T22:01:57.096-03:00  INFO 20440 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2024-05-09T22:01:57.126-03:00  INFO 20440 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-09T22:01:57.127-03:00  INFO 20440 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-05-09T22:01:57.257-03:00  INFO 20440 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-09T22:01:57.258-03:00  INFO 20440 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1006 ms
+2024-05-09T22:01:57.385-03:00  INFO 20440 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2024-05-09T22:01:57.415-03:00  INFO 20440 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@c4ef20c
+2024-05-09T22:01:57.416-03:00  INFO 20440 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2024-05-09T22:01:57.441-03:00  INFO 20440 --- [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:32779/test (MySQL 8.0)
+2024-05-09T22:01:57.480-03:00  INFO 20440 --- [main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table `test`.`flyway_schema_history` does not exist yet
+2024-05-09T22:01:57.482-03:00  INFO 20440 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 11 migrations (execution time 00:00.012s)
+2024-05-09T22:01:57.512-03:00  INFO 20440 --- [main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table `test`.`flyway_schema_history` ...
+2024-05-09T22:01:57.598-03:00  INFO 20440 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `test`: << Empty Schema >>
+2024-05-09T22:01:57.625-03:00  INFO 20440 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema `test` to version "1 - create-table-doctors"
+2024-05-09T22:01:57.695-03:00  INFO 20440 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema `test` to version "2 - alter-table-doctors-add-column-phone-number"
+2024-05-09T22:01:57.761-03:00  INFO 20440 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema `test` to version "3 - alter-table-doctors-add-column-activated"
+2024-05-09T22:01:57.837-03:00  INFO 20440 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema `test` to version "4 - create-table-patients"
+2024-05-09T22:01:57.885-03:00  INFO 20440 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema `test` to version "5 - alter-table-patients-add-column-activated"
+2024-05-09T22:01:57.930-03:00  INFO 20440 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema `test` to version "6 - create-table-users"
+2024-05-09T22:01:57.978-03:00  INFO 20440 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema `test` to version "7 - create-table-appointments"
+2024-05-09T22:01:58.030-03:00  INFO 20440 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema `test` to version "8 - alter-table-appointments-add-column-reason-cancel"
+2024-05-09T22:01:58.079-03:00  INFO 20440 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema `test` to version "9 - create-table-audit-log"
+2024-05-09T22:01:58.116-03:00  INFO 20440 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema `test` to version "10 - create-table-roles"
+2024-05-09T22:01:58.158-03:00  INFO 20440 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema `test` to version "11 - create-table-user-roles"
+2024-05-09T22:01:58.204-03:00  INFO 20440 --- [main] o.f.core.internal.command.DbMigrate      : Successfully applied 11 migrations to schema `test`, now at version v11 (execution time 00:00.293s)
+2024-05-09T22:01:58.242-03:00  INFO 20440 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-09T22:01:58.245-03:00  INFO 20440 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-09T22:01:58.250-03:00  INFO 20440 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-09T22:01:58.261-03:00  WARN 20440 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-09T22:01:58.261-03:00  WARN 20440 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-05-09T22:01:58.464-03:00  INFO 20440 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-09T22:01:58.834-03:00  INFO 20440 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-09T22:01:59.359-03:00  WARN 20440 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-09T22:02:00.099-03:00  INFO 20440 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@59ea7943, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@439cb3ff, org.springframework.security.web.context.SecurityContextHolderFilter@4f21155d, org.springframework.security.web.header.HeaderWriterFilter@3f0b3f7d, org.springframework.web.filter.CorsFilter@49067783, org.springframework.security.web.authentication.logout.LogoutFilter@30855d3c, br.com.cepedi.Voll.api.security.infra.SecurityFilter@67607c2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4f5ce87f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@29cac63e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1ab1680c, org.springframework.security.web.session.SessionManagementFilter@65477349, org.springframework.security.web.access.ExceptionTranslationFilter@3ff7f14f, org.springframework.security.web.access.intercept.AuthorizationFilter@67b68a4d]
+2024-05-09T22:02:00.543-03:00  INFO 20440 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path ''
+2024-05-09T22:02:00.549-03:00  INFO 20440 --- [main] .V.a.s.i.TestIntegrationRecoveryPassword : Started TestIntegrationRecoveryPassword in 17.562 seconds (process running for 47.092)
+2024-05-09T22:02:01.723-03:00  INFO 20440 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-09T22:02:01.724-03:00  INFO 20440 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-09T22:02:01.725-03:00  INFO 20440 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-05-09T22:02:08.860-03:00  INFO 20440 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.cepedi.Voll.api.integretion.containers.AbstractIntegrationTest]: AbstractIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-05-09T22:02:08.884-03:00  INFO 20440 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.cepedi.Voll.api.Application for test class br.com.cepedi.Voll.api.repositorys.TestRepositoryAppointment
+2024-05-09T22:02:08.889-03:00  INFO 20440 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2024-05-09T22:02:08.908-03:00  INFO 20440 --- [main] b.c.c.V.a.r.TestRepositoryAppointment    : Starting TestRepositoryAppointment using Java 17.0.9 with PID 20440 (started by joao in /home/joao/residencia18/java-avancado/Aula-16/Project-Voll/Voll.med)
+2024-05-09T22:02:08.909-03:00  INFO 20440 --- [main] b.c.c.V.a.r.TestRepositoryAppointment    : The following 1 profile is active: "test"
+2024-05-09T22:02:08.994-03:00  INFO 20440 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-09T22:02:09.016-03:00  INFO 20440 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21 ms. Found 5 JPA repository interfaces.
+2024-05-09T22:02:09.067-03:00  INFO 20440 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2024-05-09T22:02:09.081-03:00  INFO 20440 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1afe6268
+2024-05-09T22:02:09.081-03:00  INFO 20440 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2024-05-09T22:02:09.092-03:00  INFO 20440 --- [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:32779/test (MySQL 8.0)
+2024-05-09T22:02:09.112-03:00  INFO 20440 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 11 migrations (execution time 00:00.011s)
+2024-05-09T22:02:09.122-03:00  INFO 20440 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `test`: 11
+2024-05-09T22:02:09.123-03:00  INFO 20440 --- [main] o.f.core.internal.command.DbMigrate      : Schema `test` is up to date. No migration necessary.
+2024-05-09T22:02:09.142-03:00  INFO 20440 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-09T22:02:09.145-03:00  INFO 20440 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-09T22:02:09.149-03:00  INFO 20440 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-09T22:02:09.150-03:00  WARN 20440 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-09T22:02:09.150-03:00  WARN 20440 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-05-09T22:02:09.343-03:00  INFO 20440 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-09T22:02:09.498-03:00  INFO 20440 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-09T22:02:09.687-03:00  INFO 20440 --- [main] b.c.c.V.a.r.TestRepositoryAppointment    : Started TestRepositoryAppointment in 0.799 seconds (process running for 56.229)
+2024-05-09T22:02:09.833-03:00  INFO 20440 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.cepedi.Voll.api.integretion.containers.AbstractIntegrationTest]: AbstractIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-05-09T22:02:09.845-03:00  INFO 20440 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.cepedi.Voll.api.Application for test class br.com.cepedi.Voll.api.repositorys.TestRepositoryDoctor
+2024-05-09T22:02:10.598-03:00  INFO 20440 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.cepedi.Voll.api.integretion.containers.AbstractIntegrationTest]: AbstractIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-05-09T22:02:10.608-03:00  INFO 20440 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.cepedi.Voll.api.Application for test class br.com.cepedi.Voll.api.repositorys.TestRepositoryPatient
+2024-05-09T22:02:12.444-03:00  INFO 20440 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.cepedi.Voll.api.integretion.containers.AbstractIntegrationTest]: AbstractIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-05-09T22:02:12.462-03:00  INFO 20440 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.cepedi.Voll.api.Application for test class br.com.cepedi.Voll.api.integretion.controller.TestIntegrationControllerPatient
+2024-05-09T22:02:13.056-03:00  INFO 20440 --- [http-nio-8081-exec-6] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T22:02:13.063-03:00  INFO 20440 --- [http-nio-8081-exec-6] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 23
+2024-05-09T22:02:13.135-03:00  INFO 20440 --- [http-nio-8081-exec-4] b.c.c.V.a.c.V1.PatientControllerV1       : Updating patient with ID: 23
+2024-05-09T22:02:13.174-03:00  INFO 20440 --- [http-nio-8081-exec-4] b.c.c.V.a.c.V1.PatientControllerV1       : Patient with ID 23 updated successfully.
+2024-05-09T22:02:13.221-03:00  INFO 20440 --- [http-nio-8081-exec-8] b.c.c.V.a.c.V1.PatientControllerV1       : Fetching details of patient with ID: 23
+2024-05-09T22:02:13.233-03:00  INFO 20440 --- [http-nio-8081-exec-8] b.c.c.V.a.c.V1.PatientControllerV1       : Details of patient with ID 23 fetched successfully.
+2024-05-09T22:02:13.275-03:00  INFO 20440 --- [http-nio-8081-exec-9] b.c.c.V.a.c.V1.PatientControllerV1       : Disabling patient with ID: 23
+2024-05-09T22:02:13.291-03:00  INFO 20440 --- [http-nio-8081-exec-9] b.c.c.V.a.c.V1.PatientControllerV1       : Patient with ID 23 disabled successfully.
+2024-05-09T22:02:13.326-03:00  INFO 20440 --- [http-nio-8081-exec-1] b.c.c.V.a.c.V1.PatientControllerV1       : Fetching details of patient with ID: 23
+2024-05-09T22:02:13.336-03:00  INFO 20440 --- [http-nio-8081-exec-1] b.c.c.V.a.c.V1.PatientControllerV1       : Details of patient with ID 23 fetched successfully.
+2024-05-09T22:02:13.384-03:00  INFO 20440 --- [http-nio-8081-exec-2] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T22:02:13.390-03:00  INFO 20440 --- [http-nio-8081-exec-2] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 24
+2024-05-09T22:02:13.451-03:00  INFO 20440 --- [http-nio-8081-exec-10] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T22:02:13.454-03:00  INFO 20440 --- [http-nio-8081-exec-10] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 25
+2024-05-09T22:02:13.501-03:00  INFO 20440 --- [http-nio-8081-exec-3] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T22:02:13.505-03:00  INFO 20440 --- [http-nio-8081-exec-3] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 26
+2024-05-09T22:02:13.548-03:00  INFO 20440 --- [http-nio-8081-exec-5] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T22:02:13.553-03:00  INFO 20440 --- [http-nio-8081-exec-5] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 27
+2024-05-09T22:02:13.602-03:00  INFO 20440 --- [http-nio-8081-exec-7] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T22:02:13.608-03:00  INFO 20440 --- [http-nio-8081-exec-7] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 28
+2024-05-09T22:02:13.654-03:00  INFO 20440 --- [http-nio-8081-exec-6] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T22:02:13.661-03:00  INFO 20440 --- [http-nio-8081-exec-6] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 29
+2024-05-09T22:02:13.706-03:00  INFO 20440 --- [http-nio-8081-exec-4] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T22:02:13.714-03:00  INFO 20440 --- [http-nio-8081-exec-4] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 30
+2024-05-09T22:02:13.760-03:00  INFO 20440 --- [http-nio-8081-exec-8] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T22:02:13.765-03:00  INFO 20440 --- [http-nio-8081-exec-8] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 31
+2024-05-09T22:02:13.814-03:00  INFO 20440 --- [http-nio-8081-exec-9] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T22:02:13.821-03:00  INFO 20440 --- [http-nio-8081-exec-9] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 32
+2024-05-09T22:02:13.864-03:00  INFO 20440 --- [http-nio-8081-exec-1] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T22:02:13.870-03:00  INFO 20440 --- [http-nio-8081-exec-1] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 33
+2024-05-09T22:02:13.913-03:00  INFO 20440 --- [http-nio-8081-exec-2] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T22:02:13.918-03:00  INFO 20440 --- [http-nio-8081-exec-2] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 34
+2024-05-09T22:02:13.958-03:00  INFO 20440 --- [http-nio-8081-exec-10] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T22:02:13.963-03:00  INFO 20440 --- [http-nio-8081-exec-10] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 35
+2024-05-09T22:02:14.005-03:00  INFO 20440 --- [http-nio-8081-exec-3] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T22:02:14.016-03:00  INFO 20440 --- [http-nio-8081-exec-3] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 36
+2024-05-09T22:02:14.057-03:00  INFO 20440 --- [http-nio-8081-exec-5] b.c.c.V.a.c.V1.PatientControllerV1       : Registering new patient...
+2024-05-09T22:02:14.062-03:00  INFO 20440 --- [http-nio-8081-exec-5] b.c.c.V.a.c.V1.PatientControllerV1       : New patient registered with ID: 37
+2024-05-09T22:02:14.090-03:00  INFO 20440 --- [http-nio-8081-exec-7] b.c.c.V.a.c.V1.PatientControllerV1       : Fetching list of patients...
+2024-05-09T22:02:14.112-03:00  INFO 20440 --- [http-nio-8081-exec-7] b.c.c.V.a.c.V1.PatientControllerV1       : List of patients fetched successfully.
+2024-05-09T22:02:14.218-03:00  INFO 20440 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.cepedi.Voll.api.integretion.containers.AbstractIntegrationTest]: AbstractIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-05-09T22:02:14.230-03:00  INFO 20440 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.cepedi.Voll.api.Application for test class br.com.cepedi.Voll.api.integretion.containers.swagger.SwaggerIntegrationTest
+2024-05-09T22:02:14.262-03:00 ERROR 20440 --- [main] b.c.c.V.a.infra.exception.ErrorsHandler  : Internal server error occurred.
+
+java.lang.Exception: Test Exception
+	at br.com.cepedi.Voll.api.infra.exception.ErrorsHandlerTest.testHandleOtherException(ErrorsHandlerTest.java:55) ~[test-classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728) ~[junit-platform-commons-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198) ~[junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169) ~[junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93) ~[junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58) ~[junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141) ~[junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57) ~[junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103) ~[junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85) ~[junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47) ~[junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56) ~[surefire-junit-platform-3.1.2.jar:3.1.2]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184) ~[surefire-junit-platform-3.1.2.jar:3.1.2]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148) ~[surefire-junit-platform-3.1.2.jar:3.1.2]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122) ~[surefire-junit-platform-3.1.2.jar:3.1.2]
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385) ~[surefire-booter-3.1.2.jar:3.1.2]
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162) ~[surefire-booter-3.1.2.jar:3.1.2]
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507) ~[surefire-booter-3.1.2.jar:3.1.2]
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495) ~[surefire-booter-3.1.2.jar:3.1.2]
+
+2024-05-09T22:02:14.273-03:00 ERROR 20440 --- [main] b.c.c.V.a.infra.exception.ErrorsHandler  : AccessDeniedException occurred.
+2024-05-09T22:02:14.276-03:00 ERROR 20440 --- [main] b.c.c.V.a.infra.exception.ErrorsHandler  : BadCredentialsException occurred.
+2024-05-09T22:02:14.277-03:00 ERROR 20440 --- [main] b.c.c.V.a.infra.exception.ErrorsHandler  : EntityNotFoundException occurred.
+2024-05-09T22:02:14.303-03:00  INFO 20440 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-09T22:02:14.307-03:00  INFO 20440 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-09T22:02:14.316-03:00  INFO 20440 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-09T22:02:14.319-03:00  INFO 20440 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-09T22:02:14.319-03:00  INFO 20440 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2024-05-09T22:02:14.324-03:00  INFO 20440 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2024-05-09T22:02:14.758-03:00  INFO 20440 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-09T22:02:14.759-03:00  INFO 20440 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2024-05-09T22:02:14.765-03:00  INFO 20440 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2024-05-09T22:02:14.771-03:00  INFO 20440 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-09T22:02:14.771-03:00  INFO 20440 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2024-05-09T22:02:14.847-03:00  INFO 20440 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.

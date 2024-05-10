@@ -9,8 +9,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.Random.class)
 @DisplayName("Test entity address")
@@ -207,6 +206,27 @@ public class TestAddress {
 
         String expectedToString = "Address(publicPlace=Rua Teste, neighborhood=Neighborhood Test, cep=12345678, city=City Test, uf=UF Test, complement=Complement Test, number=123)";
         assertEquals(expectedToString, address.toString());
+    }
+
+
+    @Test
+    @DisplayName("Test equals method")
+    public void testEquals() {
+        Address address1 = new Address("Rua Teste", "Bairro Teste", "12345678", "City Test", "UF Test", "Complement Test", "123");
+        Address address2 = new Address("Rua Teste", "Bairro Teste", "12345678", "City Test", "UF Test", "Complement Test", "123");
+        Address address3 = new Address("Rua Teste 2", "Bairro Teste 2", "87654321", "City Test 2", "UF Test 2", "Complement Test 2", "456");
+
+        assertEquals(address1, address2); // address1 should be equal to address2
+        assertNotEquals(address1, address3); // address1 should not be equal to address3
+    }
+
+    @Test
+    @DisplayName("Test hashCode method")
+    public void testHashCode() {
+        Address address1 = new Address("Rua Teste", "Bairro Teste", "12345678", "City Test", "UF Test", "Complement Test", "123");
+        Address address2 = new Address("Rua Teste", "Bairro Teste", "12345678", "City Test", "UF Test", "Complement Test", "123");
+
+        assertEquals(address1.hashCode(), address2.hashCode()); // address1 and address2 should have the same hash code
     }
 
 
