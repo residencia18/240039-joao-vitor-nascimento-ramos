@@ -53,12 +53,14 @@ Endpoint for user authentication.
     "login": "example",
     "password": "password"
   }
+  ```
 
 - **Response:**
   ```json
   {
     "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJleGFtcGxlIiwiaWF0IjoxNTE2MjM5MDIyfQ.M41KNH0kkFj_QTcHcTCWJXGoYSn83bDjTfVr8d2wFSRpeWp0zAdmwIC35usgGwGyvOb4u64BFzV9u6GWqj34gQ"
   }
+  ```
 
 
 #### Registration
@@ -72,6 +74,8 @@ Endpoint to register a new user.
     "email": "example@example.com",
     "password": "password"
   }
+  ```
+
 - **Response:**
   ```json
   {
@@ -79,6 +83,7 @@ Endpoint to register a new user.
     "username": "example",
     "email": "example@example.com"
   }
+  ```
 
 #### Password Recovery
 Endpoints for password recovery.
@@ -90,12 +95,14 @@ Endpoints for password recovery.
   {
      "email": "example@example.com"
   }
+  ```
+
 - **Response:**
-  ```json
+  ```
   {
      A password reset email has been sent to example@example.com
   }
-
+  ```
 
 - **URL:** `/reset-password/reset`
 - **Method:** `POST`
@@ -106,10 +113,11 @@ Endpoints for password recovery.
     "password": "newpassword"
   }
 - **Response:**
-  ```json
+  ```
   {
       Password updated successfully
   }
+  ```
 
 
 
