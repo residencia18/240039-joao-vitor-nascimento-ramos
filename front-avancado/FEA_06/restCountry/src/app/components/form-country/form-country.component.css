@@ -1,0 +1,28 @@
+.form-grid {
+    display: grid;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-field {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    align-items: center;
+}
+
+label {
+    text-align: right;
+    padding-right: 10px;
+}
+
+input {
+    width: 100%;
+}
+
+button {
+    grid-column: 1 / -1;
+    justify-self: center;
+    padding: 10px 20px;
+    margin-top: 20px;
+}

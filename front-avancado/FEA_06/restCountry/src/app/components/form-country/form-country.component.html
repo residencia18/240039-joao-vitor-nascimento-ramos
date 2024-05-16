@@ -1,0 +1,9 @@
+<h3>Rest Countries</h3>
+
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()" class="form-grid">
+    <div *ngFor="let campo of campos_form" class="form-field">
+        <label>{{campo.rotulo}}</label>
+        <input [type]="campo.tipo" [formControlName]="campo.nome">
+    </div>
+    <button type="submit">Enviar</button>
+</form>
