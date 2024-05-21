@@ -1,0 +1,69 @@
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-item {
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #ffebcd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  font-size: 1.2em;
+  color: #ff7f50;
+  transition: all 0.3s ease;
+}
+
+.task-item:hover {
+  background-color: #ffe4b5;
+}
+
+.task-item:active {
+  background-color: #ffdead;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.15);
+}
+
+.remove-button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  font-size: 0.8em;
+  color: #fff;
+  background-color: #be0000;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.remove-button:hover {
+  background-color: #d80101;
+}
+
+.remove-button:active {
+  background-color: #850101;
+}
+
+.editar-button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  font-size: 0.8em;
+  color: #fff;
+  background-color: #1e68b8;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.editar-button:hover {
+  background-color:#007BFF;
+}
+
+.editar-button:active {
+  background-color:#396FAA;
+}

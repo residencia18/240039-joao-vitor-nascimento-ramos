@@ -35,7 +35,6 @@ public class LoggingAspect {
     @Before("execution(* br.com.cepedi.Voll.api.services..*(..)) || execution(* br.com.cepedi.Voll.api.security.service..*(..))")
     public void logServiceAccess(JoinPoint joinPoint) {
         String methodName = joinPoint.getSignature().getName();
-        System.out.println(joinPoint.getTarget().toString());
         String description = "Method execution";
         String username = null;
         Long userId = null;

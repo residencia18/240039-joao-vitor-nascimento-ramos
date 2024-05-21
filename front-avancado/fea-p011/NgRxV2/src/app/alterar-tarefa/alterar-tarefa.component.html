@@ -1,0 +1,16 @@
+<div [ngClass]="{'form-visible': open, 'form-hidden': !open}">
+  <div class="form-container">
+      <div class="form-content">
+          <div class="form-close">
+              <span (click)="closeForm()"><img src="../../assets/close-button-svgrepo-com.svg" alt="close button"></span>
+          </div>
+          <div class="form-field">
+              <label for="description">Altere a descrição da tarefa</label>
+              <input type="text" [(ngModel)]="descricao" id="description" />
+          </div>
+          <button (click)="alterarTarefa()" class="form-button">
+              Confirmar
+          </button>
+      </div>
+  </div>
+</div>

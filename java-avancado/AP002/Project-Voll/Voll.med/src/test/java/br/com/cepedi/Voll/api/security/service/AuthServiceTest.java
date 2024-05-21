@@ -6,7 +6,9 @@ import br.com.cepedi.Voll.api.security.model.records.details.DataDetailsRegister
 import br.com.cepedi.Voll.api.security.model.records.input.DataRegisterUser;
 import br.com.cepedi.Voll.api.security.repository.UserRepository;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -18,6 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
+@TestMethodOrder(MethodOrderer.Random.class)
 public class AuthServiceTest {
 
     @Mock

@@ -29,8 +29,6 @@ public class DoctorService {
 
 
 
-
-
     public DataDetailsDoctor register(DataRegisterDoctor data){
         Doctor doctor = new Doctor(data);
         repository.save(doctor);
