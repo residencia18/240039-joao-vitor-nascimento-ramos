@@ -1,0 +1,12 @@
+<div class="container">
+  <div>
+      <h1>Lista de Produtos</h1>
+      <a [routerLink]="['/cart']">Visualizar o carrinho</a>
+  </div>
+  <div class="header">
+      Preço
+  </div>
+  <div class="body">
+      <app-item *ngFor=" let item of items" [item]="item"></app-item>
+  </div>
+</div>

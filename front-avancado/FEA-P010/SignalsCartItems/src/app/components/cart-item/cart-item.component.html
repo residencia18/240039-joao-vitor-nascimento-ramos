@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="check">
+    <p-checkbox [binary]="true" [disabled]="false"></p-checkbox>
+  </div>
+  <div class="image">
+    <img
+      [src]="item.imageURL"
+      alt="JavaScript: O Guia Definitivo Capa comum – 1 janeiro 2012"
+      width="150"
+      height="150"
+    />
+  </div>
+  <div class="details">
+    <div>
+      <div class="title text-medium">
+        {{ item.name }}
+      </div>
+      <ul class="list">
+        <li>
+          <span
+            class="text-small"
+            [ngClass]="{
+              'in-stock': item.inStock,
+              'out-of-stock': !item.inStock
+            }"
+          >
+            {{ item.inStock ? "Em estoque" : "Indisponível" }}
+          </span>
+        </li>
+      </ul>
+    </div>
+    <div class="price">
+      <span class="text-medium text-bold">{{
+        item.price | currency : "R$"
+      }}</span>
+    </div>
+    <div class="actions text-small">
+      <div class="quantity p-fluid">
+        <p-inputNumber
+          [(ngModel)]="item.quantity"
+          [showButtons]="true"
+          inputId="stacked"
+          mode="decimal"
+          [min]="1"
+          (onInput)="quantity()"
+        />
+      </div>
+      <div class="separator"></div>
+      <div>
+        <p-button label="Excluir" [link]="true" (onClick)="remove()" />
+      </div>
+      <div class="separator"></div>
+      <div>
+        <p-button label="Salvar para mais tarde" [link]="true" disabled="true" />
+      </div>
+      <div class="separator"></div>
+      <div>
+        <p-button label="Compartilhar" [link]="true" disabled="true" />
+      </div>
+    </div>
+  </div>
+</div>

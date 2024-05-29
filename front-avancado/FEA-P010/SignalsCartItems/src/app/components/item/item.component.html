@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="image">
+      <img [src]="item.imageURL" alt="Image Items" height="150" />
+  </div>
+  <div class="details-container">
+      <div class="details">
+          <div>
+              <div class="title text-medium">
+                  {{item.name}}
+              </div>
+              <ul class="list">
+                  <li>
+                      <span class="text-small" [ngClass]="{'in-stock': item.inStock, 'out-of-stock': !item.inStock}">
+                          {{item.inStock ? 'Em estoque' : 'Indisponível'}}
+                      </span>
+                  </li>
+              </ul>
+          </div>
+          <div class="price">
+              <span class="text-medium text-bold">{{item.price | currency:'R$'}}</span>
+          </div>
+      </div>
+      <div class="actions">
+          <button class="btn btn-primary" (click)="addToCart()">Adicionar ao carrinho</button>
+      </div>
+  </div>
+</div>

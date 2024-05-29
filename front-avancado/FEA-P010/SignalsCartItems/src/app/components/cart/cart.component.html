@@ -1,0 +1,20 @@
+<div class="container">
+  <div>
+    <h1>Carrinho de compras</h1>
+    <a>Desmarcar todos os itens</a>
+  </div>
+  <div class="header">
+      Preço
+  </div>
+  <div class="body">
+      <app-cart-item *ngFor=" let item of service.items()" [item]="item"></app-cart-item>
+  </div>
+  <div class="footer">
+      <div>Subtotal ({{quantity()}} {{quantity() > 1 ? 'produtos' : 'produto'}}): <span
+              class="price text-medium text-bold">{{total() | currency:'R$'}}</span></div>
+      <div class="actions">
+          <button class="btn btn-primary" [routerLink]="['/']">Continuar Comprando</button>
+          <button class="btn btn-primary" [disabled]="true"> Finalizar Compra</button>
+      </div>
+  </div>
+</div>

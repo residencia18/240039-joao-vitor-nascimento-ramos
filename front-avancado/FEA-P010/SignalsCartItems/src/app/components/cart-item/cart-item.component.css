@@ -1,0 +1,126 @@
+.container {
+  display: flex;
+  padding: 12px 0;
+  border-bottom: 1px solid #dadada;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+  padding: 5px;
+}
+
+.image {
+  display: flex;
+  align-items: center;
+  margin-right: 12px;
+}
+
+.details {
+  display: grid;
+  flex-grow: 1;
+  grid-template-columns: 1fr minmax(13ch, 100px);
+  grid-template-rows: 1fr auto;
+  margin-bottom: 10px;
+}
+
+.details .price {
+  text-align: end;
+  color: #0F1111;
+}
+
+.details .list {
+  list-style: none;
+  padding: 0;
+}
+
+.details .list .in-stock {
+  color: #007600;
+}
+
+.details .list .out-of-stock {
+  color: #FF0000;
+}
+
+.details .list li {
+  padding: 1px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.actions .quantity {
+  width: 100px;
+}
+
+.quantity ::ng-deep .p-inputnumber-button-up,
+.quantity ::ng-deep .p-inputnumber-button-down {
+  width: 2rem;
+  padding: 0;
+}
+
+.quantity ::ng-deep .p-inputnumber-input {
+  padding: 0.3rem 0 0.3rem 0.3rem;
+}
+
+.separator {
+  display: inline-block;
+  width: 1px;
+  height: 14px;
+  background-color: lightgray;
+  margin: 0 10px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .check {
+    justify-content: center;
+  }
+
+  .container>div,
+  .details,
+  .details>div,
+  .details-container {
+    width: 100%;
+  }
+
+  .image {
+    margin-right: 0;
+    justify-content: center;
+  }
+
+  .details,
+  .details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .details .list li {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .actions {
+    gap: 10px;
+  }
+
+  .actions,
+  .actions>div {
+    width: 100%;
+  }
+
+  .separator {
+    display: none;
+  }
+
+}

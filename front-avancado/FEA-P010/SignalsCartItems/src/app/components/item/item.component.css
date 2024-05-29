@@ -1,0 +1,95 @@
+.container {
+  display: flex;
+  padding: 12px 0;
+  border-bottom: 1px solid #dadada;
+}
+
+.image {
+  display: flex;
+  align-items: center;
+  margin-right: 12px;
+}
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.details {
+  display: grid;
+  flex-grow: 1;
+  grid-template-columns: 1fr minmax(13ch, 100px);
+  margin-bottom: 10px;
+}
+
+.details .price {
+  text-align: end;
+  color: #0F1111;
+}
+
+.details .list {
+  list-style: none;
+  padding: 0;
+}
+
+.details .list .in-stock {
+  color: #007600;
+}
+
+.details .list .out-of-stock {
+  color: #FF0000;
+}
+
+.details .list li {
+  padding: 1px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: end;
+}
+
+.btn-insert {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container>div,
+  .details,
+  .details>div,
+  .details-container {
+    width: 100%;
+  }
+
+  .image {
+    margin-right: 0;
+    justify-content: center;
+  }
+
+  .details,
+  .details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .details .list li {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .actions,
+  .actions>div {
+    width: 100%;
+  }
+}

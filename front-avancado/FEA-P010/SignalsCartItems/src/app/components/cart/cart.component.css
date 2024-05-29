@@ -1,0 +1,32 @@
+.container {
+  background-color: white;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.header {
+  border-bottom: 1px solid #dadada;
+  color: #565959;
+  text-align: end;
+  padding-bottom: 5px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  text-align: end;
+  font-size: 18px;
+  padding-top: 10px;
+  gap: 10px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
