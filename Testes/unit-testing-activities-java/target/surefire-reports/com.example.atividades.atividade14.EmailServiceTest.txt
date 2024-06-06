@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.example.atividades.atividade14.EmailServiceTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.699 s -- in com.example.atividades.atividade14.EmailServiceTest

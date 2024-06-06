@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DetectTextImage.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">unit-testing-activities-java</a> &gt; <a href="index.source.html" class="el_package">com.example.atividades.atividade15</a> &gt; <span class="el_source">DetectTextImage.java</span></div><h1>DetectTextImage.java</h1><pre class="source lang-java linenums">package com.example.atividades.atividade15;
+
+/**
+*  To run this code example, ensure that you perform the Prerequisites as stated in the Amazon Rekognition Guide:
+*  https://docs.aws.amazon.com/rekognition/latest/dg/video-analyzing-with-sqs.html
+*
+* Also, ensure that set up your development environment, including your credentials.
+*
+* For information, see this documentation topic:
+*
+* https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/get-started.html
+*/
+
+/**
+ * Link for the code example
+ * https://docs.aws.amazon.com/rekognition/latest/dg/text-detecting-text-procedure.html
+*/
+
+//snippet-start:[rekognition.java2.detect_text.import]
+import software.amazon.awssdk.auth.credentials.ProfileCredentialsProvider;
+import software.amazon.awssdk.core.SdkBytes;
+import software.amazon.awssdk.regions.Region;
+import software.amazon.awssdk.services.rekognition.RekognitionClient;
+import software.amazon.awssdk.services.rekognition.model.DetectTextRequest;
+import software.amazon.awssdk.services.rekognition.model.Image;
+import software.amazon.awssdk.services.rekognition.model.DetectTextResponse;
+import software.amazon.awssdk.services.rekognition.model.TextDetection;
+import software.amazon.awssdk.services.rekognition.model.RekognitionException;
+
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+//snippet-end:[rekognition.java2.detect_text.import]
+
+/**
+* Before running this Java V2 code example, set up your development environment, including your credentials.
+*
+* For more information, see the following documentation topic:
+*
+* https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/get-started.html
+*/
+public class DetectTextImage {
+	public String sourceImage;
+	public Region region;
+	public RekognitionClient rekClient;
+
+<span class="fc" id="L51">	 public DetectTextImage() {</span>
+<span class="fc" id="L52">	     this.sourceImage = &quot;data/img-example-for-aws-task.jpg&quot;;</span>
+<span class="fc" id="L53">	     this.region = Region.US_WEST_2;</span>
+<span class="fc" id="L54">	     this.rekClient = RekognitionClient.builder()</span>
+<span class="fc" id="L55">	         .region(region)</span>
+<span class="fc" id="L56">	         .credentialsProvider(ProfileCredentialsProvider.create(&quot;default&quot;))</span>
+<span class="fc" id="L57">	         .build();	 </span>
+<span class="fc" id="L58">	 }</span>
+	 
+	 // Construtor para injeção de dependências (útil para testes)
+<span class="fc" id="L61">	 public DetectTextImage(String sourceImage, RekognitionClient rekClient) {</span>
+<span class="fc" id="L62">	     this.sourceImage = sourceImage;</span>
+<span class="fc" id="L63">	     this.rekClient = rekClient;</span>
+<span class="fc" id="L64">	 }</span>
+	
+	 public void detectTextLabels(String resultFilePath) {
+		 // String resultFilePath = = &quot;data/detected_text_results.txt&quot;;
+<span class="fc" id="L68">         List&lt;TextDetection&gt; textCollection = null;</span>
+	     try {
+<span class="fc" id="L70">	         InputStream sourceStream = new FileInputStream(this.sourceImage);</span>
+<span class="fc" id="L71">	         SdkBytes sourceBytes = SdkBytes.fromInputStream(sourceStream);</span>
+<span class="fc" id="L72">	         Image souImage = Image.builder()</span>
+<span class="fc" id="L73">	             .bytes(sourceBytes)</span>
+<span class="fc" id="L74">	             .build();</span>
+	
+<span class="fc" id="L76">	         DetectTextRequest textRequest = DetectTextRequest.builder()</span>
+<span class="fc" id="L77">	             .image(souImage)</span>
+<span class="fc" id="L78">	             .build();</span>
+	
+<span class="fc" id="L80">	         DetectTextResponse textResponse = this.rekClient.detectText(textRequest);</span>
+<span class="fc" id="L81">	         textCollection = textResponse.textDetections();</span>
+	         
+	 		// Salva o resultado em um arquivo TXT
+<span class="fc" id="L84">	 		saveResultToTextFile(textCollection, resultFilePath);</span>
+	
+<span class="nc" id="L86">	     } catch (RekognitionException | FileNotFoundException e) {</span>
+<span class="nc" id="L87">	         System.out.println(e.getMessage());</span>
+<span class="nc" id="L88">	         System.exit(1);</span>
+	     } finally {
+<span class="fc" id="L90">	    	 rekClient.close();</span>
+		}
+<span class="fc" id="L92">	 }</span>
+	 
+	 private void saveResultToTextFile(List&lt;TextDetection&gt; textCollection, String fileName) {
+<span class="fc" id="L95">			try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">				for (TextDetection text : textCollection) {</span>
+<span class="fc" id="L97">					writer.write(&quot;Detected: &quot; + text.detectedText() + &quot;\n&quot;);</span>
+<span class="fc" id="L98">					writer.write(&quot;Confidence: &quot; + text.confidence().toString() + &quot;\n&quot;);</span>
+<span class="fc" id="L99">	                writer.write(&quot;Id: &quot; + text.id() + &quot;\n&quot;);</span>
+<span class="fc" id="L100">	                writer.write(&quot;Parent Id: &quot; + text.parentId() + &quot;\n&quot;);</span>
+<span class="fc" id="L101">	                writer.write(&quot;Type: &quot; + text.type() + &quot;\n&quot;);</span>
+<span class="fc" id="L102">	            	writer.write(&quot;\n&quot;);</span>
+<span class="fc" id="L103">				}</span>
+<span class="fc" id="L104">				System.out.println(&quot;Results saved to &quot; + fileName);</span>
+<span class="fc" id="L105">			} catch (IOException e) {</span>
+<span class="fc" id="L106">				e.printStackTrace();</span>
+<span class="fc" id="L107">			}</span>
+<span class="fc" id="L108">		}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
