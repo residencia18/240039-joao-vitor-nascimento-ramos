@@ -1,0 +1,194 @@
+.home {
+	padding: 0;
+	margin: 0;
+}
+
+#banner {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	.img-logo-custom {
+		max-width: 100%;
+		height: auto;
+	}
+
+	h1 {
+		color: white;
+		font-size: 2.6rem;
+		text-align: center;
+		text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+		line-height: 1;
+	}
+
+	.banner-text {
+		color: white;
+		font-size: 1.4rem;
+		text-align: center;
+		text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+		margin: 20px 0;
+		line-height: 1.3;
+	}
+
+	.btn-primary {
+		width: 13rem;
+		font-size: 1.2rem;
+		padding: 1.3rem 2rem;
+		border: none;
+		background: #009EC6;
+		color: white;
+		margin-block: 2rem;
+		border-radius: 1rem;
+		cursor: pointer;
+		box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+	}
+
+	.btn-primary:hover {
+		background-color: #0099C2;
+	}
+}
+
+#servicos, #dicas{
+	color: white;
+	text-align: center;
+	padding: 2rem 1rem;
+
+	h2 {
+		font-size: 2.5rem;
+		margin-bottom: 30px;
+	}
+
+	.card-servico {
+		display: inline-block;
+		width: 100%;
+		padding: 20px;
+		margin-bottom: 10px;
+		background: none;
+		border: none;
+		font-size: 1.1rem;
+		text-align: center;
+	}
+}
+
+.busca-eletropostos {
+	color: white;
+	padding: 30px;
+	text-align: center;
+
+	h3 {
+		font-size: 1.8rem;
+		font-weight: bold;
+		margin-bottom: 15px;
+	}
+
+	p {
+		font-size: 1.2rem;
+		line-height: 1.5;
+	}
+
+	#img-mapa {
+		margin-top: 20px;
+		width: 20%;
+	}
+}
+
+.vh-50{
+	height: 30vh !important;
+}
+
+
+
+.parallax {
+	position: relative;
+	background-image: url('../../../../assets/images/e-drive-background.png');
+	height: 100vh;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed; /* Fundamental para o efeito parallax */  }
+  
+  @supports (-webkit-touch-callout: none) and (not (translate: none)) {
+	.parallax {
+	  background-attachment: scroll; /* Fallback para iOS */
+	}
+  }
+  
+
+
+
+.parallax::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 1;
+}
+
+#banner > * {
+	position: relative;
+	z-index: 2;
+}
+
+@media (min-width: 768px) {
+	h1 {
+		font-size: 3rem;
+	}
+
+	p {
+		text-align: center;
+	}
+
+	#img-mapa {
+		width: 20%;
+	}
+
+	.servicos {
+		display: flex;
+	}
+
+	.card-servico {
+		display: inline-block;
+		background: none;
+		width: 100%;
+		padding: 20px;
+		margin-bottom: 10px;
+		border: none;
+		font-size: 1.1rem;
+
+		p {
+			display: flex;
+			text-align: justify;
+			word-break: break-word;
+			hyphens: auto;
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	h1 {
+		font-size: 2rem;
+	}
+
+	.banner-text {
+		font-size: 1.5rem;
+		text-align: justify;
+	}
+
+	#img-mapa {
+		width: 50% !important;
+	}
+}
+
+.fade-in {
+	opacity: 0;
+	transform: translateY(20px);
+	transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.show {
+	opacity: 1;
+	transform: translateY(0);
+}

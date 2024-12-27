@@ -1,0 +1,186 @@
+@import './scss/map-stations-map.scss';
+@import './scss/map-stations.modal.scss';
+@import './scss/map-stations.details-modal.scss';
+
+
+/* Global Styles */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+.top-bar {
+    position: fixed;
+    width: 100%;
+    background-color: #19B6DD;
+    padding: 1.2rem 0;
+    z-index: 100;
+}
+
+
+.cancel-route-button {
+    position: absolute;
+    /* Para posicionamento absoluto */
+    top: 85%;
+    /* 50% do topo da tela */
+    left: 50%;
+    /* 50% da esquerda da tela */
+    transform: translate(-50%, -20%);
+    /* Ajusta o botão para ficar 20% abaixo do centro */
+    background-color: #FF4C4C;
+    /* Cor de fundo vermelho */
+    color: white;
+    /* Cor do texto */
+    border: none;
+    /* Remove bordas */
+    border-radius: 5px;
+    /* Borda arredondada */
+    padding: 10px 15px;
+    /* Espaçamento interno */
+    cursor: pointer;
+    /* Cursor de ponteiro ao passar o mouse */
+    transition: background-color 0.3s;
+    /* Efeito de transição para hover */
+    z-index: 1000;
+    /* Garante que o botão fique acima de outros elementos */
+}
+
+.cancel-route-button:hover {
+    background-color: #D43B3B;
+    /* Cor do botão ao passar o mouse */
+}
+
+.button-active {
+    opacity: 1;
+    /* Totalmente visível quando a rota está ativa */
+}
+
+.button-inactive {
+    opacity: 0.5;
+    /* Menos visível quando a rota não está ativa */
+    cursor: not-allowed;
+    /* Muda o cursor para indicar que não é interativo */
+}
+
+/* Adicione uma classe para esconder os elementos ao invés de removê-los do DOM */
+.hidden {
+    display: none;
+}
+
+.planejamento-button {
+    background-color: #8b9298 !important;
+    color: #fff;
+    padding: 1px !important;
+    /* Padding mínimo */
+    font-size: 0.875rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 50px !important;
+
+    &:hover {
+        background-color: #19B6DD !important;
+    }
+}
+
+/* CSS para manipular o tamanho do botão */
+.route-button {
+    width: 60px;
+    /* ajuste a largura conforme necessário */
+    height: 86px;
+    /* ajuste a altura conforme necessário */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-size: 24px;
+    /* ajuste o tamanho do ícone conforme necessário */
+}
+
+.icon-container {
+    position: absolute;
+    top: 72%;
+    left: 67.5%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+.icon-button {
+    color: #000;
+    /* Cor inicial */
+    transition: color 0.3s, box-shadow 0.3s;
+    border-radius: 50%;
+    /* Garante que o botão fique redondo */
+    outline: none;
+    /* Remove o foco padrão */
+
+    &:hover {
+        cursor: pointer;
+        color: #19B6DD;
+        box-shadow: 0px 0px 5px 3px rgba(25, 182, 221, 0.5);
+    }
+
+    /* Estilos para forçar a cor inicial ao terminar o arraste */
+    &:active,
+    &:focus {
+        color: #000;
+    }
+}
+
+.travel-planning-btn {
+    // background-image: url('../../../../../../assets/images/3D-icon-of-an-electric-car-route.ico');
+    // background-image: url('../../../../../../assets/images/icons-bussola.ico');
+    background-image: url('../../../../../../assets/images/icons-compass.ico');
+    // background-image: url('../../../../../../assets/images/icons-bussola-94.ico');
+    background-color: transparent;
+    /* Remove qualquer fundo sólido */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 10px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    /* Remove bordas */
+    box-shadow: none;
+    /* Remove qualquer sombra padrão */
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+
+}
+
+/* Clareia a imagem em 5% ao passar o cursor */
+.travel-planning-btn:hover {
+    filter: brightness(1.06);
+}
+
+.travel-planning-cancel-btn {
+    background-image: url('../../../../../../assets/images/cancelar-rota-de-carros-elétricos.png');
+    // background-image: url('../../../../../../assets/images/icons-bussola-cancel.ico');
+    // background-image: url('../../../../../../assets/images/icons8-cancelar-101.ico');
+    background-color: transparent;
+    /* Remove qualquer fundo sólido */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 10px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    /* Remove bordas */
+    box-shadow: none;
+    /* Remove qualquer sombra padrão */
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+
+}
+
+@media(max-width: 400px) {
+    .icon-container {
+        top: 72%;
+        left: 87%;
+    }
+}

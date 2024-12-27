@@ -1,0 +1,34 @@
+<!-- <button [ngClass]="{'pulse-animation': pulseAnimation}"  [attr.disabled]="disabled ? true : null" [attr.type]="typeBtn">{{ text }}</button> -->
+
+<a
+  *ngIf="routerLink"
+  [routerLink]="routerLink"
+  class="btn"
+  [attr.disabled]="disabled ? true : null"
+  [ngClass]="{
+    'pulse-animation': pulseAnimation,
+    'disabled': disabled,
+    'icon-btn': icon && !text
+  }"
+  (click)="onClick()"
+>
+  <ng-content></ng-content>
+  <i *ngIf="icon" [class]="icon"></i>
+</a>
+
+<button
+  *ngIf="!routerLink"
+  class="btn"
+  [attr.type]="typeBtn"
+  [attr.disabled]="disabled ? true : null"
+  [ngClass]="{
+    'pulse-animation': pulseAnimation,
+    'disabled': disabled,
+    'icon-btn': icon && !text
+  }"
+  (click)="onClick()"
+>
+  <ng-content></ng-content>
+  <i *ngIf="icon" [class]="icon"></i>
+  {{ text }}
+</button>

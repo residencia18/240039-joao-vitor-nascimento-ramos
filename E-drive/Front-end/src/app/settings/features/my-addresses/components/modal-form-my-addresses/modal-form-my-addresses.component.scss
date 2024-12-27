@@ -1,0 +1,170 @@
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.col-12 {
+  flex: 1;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+#Help {
+  color: #b5abab;
+}
+
+.mat-hint-text {
+  font-size: 10px;
+  line-height: 1.5;
+  text-align: left;
+  margin-left: -14px;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  button{
+    background-color: #19B6DD;
+  }
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.titulo {
+  font-size: 1rem;
+  color: #19B6DD;
+  margin: 0;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.icon {
+  width: 20px;
+}
+
+.mat-error-text {
+  font-size: 10px;
+  line-height: 1.5;
+  text-align: left;
+  margin-left: -15px;
+}
+
+.mat-error-text-minlength {
+  font-size: 10px;
+  line-height: 1.5;
+  text-align: left;
+  margin-left: 0px;
+}
+
+.filtro {
+  width: 20px;
+  transform: rotate(0deg);
+  transition: 0.3s linear all;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 5px 3px #19B6DD;
+    transform: translateX(10px);
+  }
+}
+
+.custom-select {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: auto;
+}
+
+.mat-autocomplete-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  z-index: 1000;
+}
+
+.autocomplete-icon {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #19B6DD;
+  pointer-events: none;
+  margin-right: 5px;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.custom-icon {
+  color: #19B6DD;
+  font-size: 24px;
+  margin-right: 8px;
+}
+
+.custom-form-field {
+  position: relative;
+}
+
+.custom-suffix {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: #19B6DD;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.form-check {
+  display: inline-flex;
+  align-items: center;
+}
+
+.form-check-label {
+  font-size: 10px;
+  color: #484242;
+  margin-right: 0.3rem;
+}
+
+.form-check-input {
+  margin-top: 0;
+  margin-right: 0.5rem;
+  border: 1px solid #19B6DD;
+  border-radius: 0.25rem;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.form-check-input:hover {
+  background-color: rgba(25, 182, 221, 0.2);
+  border-color: #19B6DD;
+}
+
+.form-check .form-check-input:checked {
+  margin-top: 0;
+  margin-right: 0.5rem;
+  background-color: #19B6DD;
+  border-color: #19B6DD;
+}
+
+@media (max-width: 350px) {
+  .mat-autocomplete-panel {
+    top: calc(100% + 4px);
+  }
+}

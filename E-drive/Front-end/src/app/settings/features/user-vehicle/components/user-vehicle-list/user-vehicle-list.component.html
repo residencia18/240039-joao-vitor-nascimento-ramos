@@ -1,0 +1,106 @@
+<div class="top-bar pt-3">
+  <div class="d-flex justify-content-between container-fluid">
+    <div class="justify-content-start">
+      <mat-icon class="arrow-back-icon" routerLink="/e-driver/dashboard">arrow_back</mat-icon>
+    </div>
+    <div class="flex-grow-1 text-center">
+      <h1 class="text-white">Meus Veículos</h1>
+    </div>
+  </div>
+</div>
+<div class="conteudo">
+  <!-- Container para o filtro de busca -->
+  <div class="container col-12 col-md-12 col-sm-12 col-lg-12">
+    <div class="custom-filter">
+      <mat-form-field class="d-flex w-100">
+        <!-- Label do campo de busca -->
+        <mat-label>Busca por versão</mat-label>
+        <!-- Campo de entrada para busca com evento de digitação -->
+        <input matInput (keyup)="applyFilter($event)" placeholder="Digite sua busca" #input>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="container col-12 col-md-12 col-sm-12 col-lg-12" id="table-container">
+    <div class="row">
+      <div class="container-table">
+        <table class="mat-elevation-z2 fixed-header" mat-table [dataSource]="dataSource" matSort>
+          <ng-container matColumnDef="icon">
+            <th class="th-table" mat-header-cell *matHeaderCellDef mat-sort-header>
+              <mat-icon
+                matTooltip="Estes ícones representam cada carro listado abaixo. Clique para ver detalhes de cada um.">directions_car
+              </mat-icon>
+            </th>
+
+            <td class="td-table" mat-cell *matCellDef="let userVehicle">
+              <mat-icon class="icone-carro" [matTooltip]=" 'Autonomia/cidade: ' + userVehicle.autonomy.mileagePerLiterCity + ' km/l'
+              + '\nAutonomia/estrada: ' + userVehicle.autonomy.mileagePerLiterRoad + ' km/l'
+              + '\nAno: ' + userVehicle.year" matTooltipClass="multi-line-tooltip"> directions_car
+              </mat-icon>
+            </td>
+          </ng-container>
+
+				<ng-container matColumnDef="mark">
+					<th class="th-table" mat-header-cell *matHeaderCellDef mat-sort-header><strong>Marca</strong></th>
+					<td class="td-table truncate" mat-cell *matCellDef="let userVehicle">
+						<strong >
+                			{{userVehicle.model.brand.name}}
+            			</strong>
+					</td>
+				</ng-container>
+
+				<ng-container matColumnDef="model">
+					<th class="th-table" mat-header-cell *matHeaderCellDef mat-sort-header><strong>Modelo</strong></th>
+					<td class="td-table truncate" mat-cell *matCellDef="let userVehicle">
+						<strong >
+                			{{userVehicle.model.name}}
+            			</strong>
+					</td>
+				</ng-container>
+
+				<ng-container matColumnDef="version">
+					<th class="th-table" mat-header-cell *matHeaderCellDef mat-sort-header><strong>Versão</strong></th>
+					<td class="td-table truncate" mat-cell *matCellDef="let userVehicle">
+						<strong >
+							{{userVehicle.version}}
+            			</strong>
+					</td>
+				</ng-container>
+
+				<!-- Actions Column -->
+				<ng-container matColumnDef="actions">
+					<th class="th-table" mat-header-cell *matHeaderCellDef mat-sort-header><strong>Ações</strong></th>
+					<td class="td-table" mat-cell *matCellDef="let userVehicle">
+						<div class="d-flex align-items-center">
+							<mat-icon class="icone-table" (click)="openModalViewVehicle(userVehicle)">visibility</mat-icon>
+							<mat-icon class="icone-table" (click)="openModalEditUserVehicle(userVehicle)">edit</mat-icon>
+							<mat-icon class="icone-table" (click)="deleteUserVehicle(userVehicle)">delete</mat-icon>
+						</div>
+					</td>
+				</ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          <div *ngIf="[dataSource.data.length != 0]">
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell no-data" colspan="4">Não foram encontrados dados para a
+                pesquisa:
+                "{{input.value}}"
+              </td>
+            </tr>
+          </div>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Container para o paginador e botão para adicionar nova marca -->
+  <div class="container col-12 col-md-12 col-sm-12 col-lg-12">
+    <!-- Paginador para navegação entre páginas -->
+    <mat-paginator class="shadow-sn" [length]="total" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20, 30, 40, 50]"
+      (page)="onPageChange($event)" aria-label="Selecione veículos por página"></mat-paginator>
+    <!-- Botão para abrir modal de adição de nova marca -->
+    <app-ui-button class="custom-button" typeBtn="vivid-sky-blue" (click)="openModalAddUserVehicle()"
+      text="Novo Veículo"></app-ui-button>
+  </div>
+</div>

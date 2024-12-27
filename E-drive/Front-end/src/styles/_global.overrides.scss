@@ -1,0 +1,144 @@
+@import '_variables.scss';
+// Importando o tema do Angular Material
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Montserrat", sans-serif; }
+
+@media (max-height: 500px) {
+  .conteudo {
+    height: 100vh;
+    padding-bottom: 9%;
+  }
+}
+@media (max-height: 380px) {
+  .conteudo {
+    height: 100vh;
+    padding-bottom: 11%;
+  }
+}
+
+.bkg-degrad-primary {
+  background: linear-gradient(to right, $btn-primary,$btn-secondary);
+}
+
+.btn-secundary {
+  width: 100%;
+  height: 40px;
+  background-color: $btn-primary !important;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 1rem;
+}
+
+.icon-row {
+  width: 100%;
+  display: flex; /* Usa flexbox para alinhar os ícones */
+  justify-content: space-between; /* Distribui os ícones com espaço entre eles */
+}
+
+.arrow-back-icon{
+  cursor: pointer;
+  color: $icon-arrow-back;
+}
+
+.address-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+// Customização de Botões
+button[type="button-confirm"], button[type="submit"] {
+  background-color: #19B6DD !important;
+  color: #FFF;
+
+  &:hover {
+    background-color: #32aecd;
+  }
+}
+
+button[type="button-cancel"] {
+  background-color: #721c24;
+  color: #FFF;
+}
+// NOTE: Customização de Alertas Swal erro
+// .custom-swal-popup-error {
+//   background-color: #f8d7da;
+//   border-color: #f5c6cb;
+//   color: #721c24;
+// }
+
+.custom-swal-confirm-button-error {
+  background-color: #721c24;
+  color: #FFF;
+}
+
+.custom-swal-confirm-button-error:hover {
+  background-color: #f8d7da;
+  border-color: #f8d7da;
+  color: #721c24;
+}
+
+.custom-swal-confirm-button-success {
+  background-color: $btn-primary;
+  border-color: $btn-secondary;
+  color: white;
+}
+
+.custom-swal-confirm-button-success:hover {
+  background-color: $btn-secondary;
+  border-color: $btn-secondary;
+  color: white;
+}
+// NOTE: Customização de Alertas Swal sucesso
+// .custom-swal-popup-success{
+//   background-color: #d4edda;
+//   border-color: #c3e6cb;
+// }
+
+.custom-radio-button .mat-radio-outer-circle {
+  border-color: #4caf50 !important; /* Cor da borda */
+  width: 24px; /* Tamanho do círculo externo */
+  height: 24px;
+}
+
+.custom-radio-button.mat-radio-checked .mat-radio-outer-circle {
+  background-color: #4caf50 !important; /* Cor do círculo externo quando selecionado */
+}
+
+.custom-radio-button .mat-radio-inner-circle {
+  background-color: #4caf50 !important; /* Cor do círculo interno */
+}
+
+.custom-radio-button {
+  font-size: 18px !important; /* Tamanho do texto ao lado do rádio */
+}
+
+// NOTE: Customização de Alertas Swal tabela
+.swal-table-container {
+  max-height: 300px;  /* Define a altura máxima */
+  overflow-y: auto;   /* Ativa a rolagem vertical */
+  // overflow-x: hidden; /* Evita rolagem horizontal, se possível */
+  margin: 10px 0;
+}
+
+.swal-table {
+  width: 100%;        /* Garante que a tabela ocupe toda a largura */
+  border-collapse: collapse;
+}
+
+.swal-thead th {
+  position: sticky;   /* Mantém o cabeçalho fixo durante a rolagem */
+  top: 0;
+  background-color: #343a40;
+  color: white;
+  z-index: 1;
+}
+
+.swal-tbody td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd;
+}

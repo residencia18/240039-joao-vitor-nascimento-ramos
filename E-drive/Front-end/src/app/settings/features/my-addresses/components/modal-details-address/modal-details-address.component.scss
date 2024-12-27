@@ -1,0 +1,47 @@
+.titulo {
+  font-size: 15px;
+  font-weight: 500;
+  padding: 0;
+  color: #19B6DD;
+  margin: 0;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.hover:hover {
+  cursor: pointer;
+}
+
+.subtitulo {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 2px 0px 14px 0px;
+  margin: -10px 0 14px 0;
+  color: #747474;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.titulo-informacao {
+  font-size: 14px;
+  font-weight: 500;
+  color: #19B6DD;
+  margin: 0;
+}
+
+.informacao {
+  font-size: 12px;
+  font-weight: 500;
+  color: #747474;
+  margin-bottom: 12px;
+}
+
+/* Estilos para o ícone de sucesso (check), com cor verde. */
+.check {
+  color: green;
+}
+
+/* Estilos para mensagens de erro, com cor vermelha (#ac2828). */
+.error {
+  color: #ac2828;
+}

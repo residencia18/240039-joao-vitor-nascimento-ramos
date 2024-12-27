@@ -1,0 +1,64 @@
+<div>
+  <div>
+    <!-- Exibe o top-bar quando logado; caso contrário, exibe o app-navbar-intro -->
+    <div *ngIf="isLoggedIn; else navbar">
+      <div class="top-bar pt-3">
+        <div class="d-flex justify-content-between container-fluid">
+          <div class="justify-content-start">
+            <mat-icon class="arrow-back-icon" routerLink="/e-driver/dashboard">arrow_back</mat-icon>
+          </div>
+          <div class="flex-grow-1 text-center">
+            <h1 class="text-white">Boas Práticas</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #navbar>
+      <app-navbar-intro></app-navbar-intro>
+    </ng-template>
+  </div>
+  <div class="container-fluid home article-container">
+    <div class="d-flex align-items-center">
+      <button (click)="toggleRead()" id="read-btn" aria-hidden="true">
+        <mat-icon>{{ isReading ? 'stop' : 'play_arrow' }}</mat-icon>
+      </button>
+      <span class="ms-2">{{ isReading ? 'Parar leitura' : 'Iniciar leitura' }}</span>
+    </div>
+
+    <div class="container my-4" #fullContent>
+      <h1>Dicas e Boas Práticas para Otimizar o Uso de Carros Elétricos.</h1>
+
+      <p class="intro">
+        Os carros elétricos estão ganhando popularidade como uma alternativa sustentável aos veículos movidos a
+        combustíveis fósseis. Aqui estão algumas dicas e práticas recomendadas para você aproveitar ao máximo seu carro
+        elétrico, otimizando sua autonomia e melhorando sua experiência de uso.
+      </p>
+
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let tip of tips">
+          <mat-expansion-panel-header>
+            <mat-icon>{{ tip.icon }}</mat-icon>
+            <mat-panel-title>{{ tip.title }}.</mat-panel-title>
+          </mat-expansion-panel-header>
+          <p>{{ tip.description }}</p>
+          <ul class="custom-list">
+            <li *ngFor="let point of tip.points">
+              <mat-icon class="custom-icon">directions_car</mat-icon>
+              {{ point }}
+            </li>
+          </ul>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+
+      <p class="conclusion">
+        Usar um carro elétrico requer algumas adaptações em comparação aos veículos tradicionais. Com um pouco de
+        planejamento e práticas sustentáveis, você pode maximizar a autonomia do seu carro, prolongar a vida útil da
+        bateria e desfrutar de uma experiência de condução mais ecológica.
+      </p>
+    </div>
+  </div>
+
+  <!-- Componente de rodapé personalizado -->
+  <app-footer *ngIf="!isLoggedIn"></app-footer>
+</div>

@@ -1,0 +1,162 @@
+/* Barra superior fixa */
+.top-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #19B6DD;
+  padding: 0.5rem 0;
+  z-index: 10;
+  text-align: center;
+}
+
+.top-bar h1 {
+  color: white;
+  font-size: 1.8rem;
+}
+
+/* Container centralizado */
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+/* Card principal */
+.profile-card {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 500px; /* Limita o tamanho máximo */
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  margin-bottom: 3rem !important;
+  margin-top: 2rem !important;
+}
+
+/* Header do card */
+.profile-header {
+  position: relative;
+  background-color: #19B6DD;
+  padding: 1.5rem;
+  border-radius: 15px 15px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Ícone de edição */
+.edit-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.edit-button img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Imagem do perfil */
+.profile-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid white;
+  margin-top: 10px;
+}
+
+/* Informações do usuário */
+.profile-info {
+  margin-bottom: 20px;
+}
+.profile-info h2 {
+  margin: 15px 0 5px;
+  font-size: 1.6rem;
+  color: #333;
+  text-align: center;
+}
+
+.profile-info p {
+  margin: 0;
+  font-size: 1rem;
+  color: #777;
+}
+
+/* Contatos */
+.contact-info {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #666;
+}
+
+.mat-icon {
+  font-size: 1.4rem;
+}
+
+/* Grupo de botões */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+}
+
+button {
+  width: 100%;
+  background-color: #19B6DD !important;
+  color: white !important;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #17a3c7 !important;
+}
+
+/* Link de desativar conta */
+.delete-account {
+  color: #ff5252;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* Ajuste responsivo para telas menores */
+@media (max-width: 768px) {
+  .profile-card {
+    width: 95%;
+    padding: 1rem;
+  }
+
+  .profile-image {
+    width: 80px;
+    height: 80px;
+  }
+
+  button {
+    font-size: 0.9rem;
+  }
+
+  .mat-icon {
+    font-size: 1.2rem;
+  }
+}

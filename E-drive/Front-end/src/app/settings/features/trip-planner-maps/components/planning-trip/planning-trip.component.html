@@ -1,0 +1,32 @@
+<div class="top-bar d-flex justify-content-between container-fluid">
+  <div class="flex-grow-1 text-center">
+    <h1 class="text-white">Planejamento de Viagem</h1>
+  </div>
+</div>
+
+<div class="input-overlay">
+  <div [ngClass]="{'d-flex align-items-start': inputsVisible, 'hidden': !inputsVisible}">
+    <!-- Contêiner para os inputs, dispostos em coluna -->
+    <div class="d-flex flex-column flex-grow-1">
+      <input #startLocationInput class="mb-1" id="startLocation" type="text" placeholder="Escolha o local de partida" />
+      <input #endLocationInput class="mb-3" id="endLocation" type="text" placeholder="Escolha o local de destino" />
+    </div>
+
+    <!-- Botão para traçar a rota ao lado dos inputs -->
+    <button class="route-button ms-2" (click)="planTrip()">
+      <mat-icon>route</mat-icon>
+    </button>
+  </div>
+</div>
+
+<!-- Botão para alternar a exibição dos campos de entrada e do botão de rota, exibido apenas se isRouteActive for false -->
+<div *ngIf="!isRouteActive" class="icon-container" cdkDrag>
+  <button class="travel-planning-btn" (click)="toggleInputs()"></button>
+</div>
+
+<div #mapContainer id="map"></div>
+
+<!-- Botão de Cancelar Rota, exibido apenas se isRouteActive for true -->
+<div class="icon-container" cdkDrag *ngIf="isRouteActive">
+  <button class="travel-planning-cancel-btn" (click)="cancelRoute()"></button>
+</div>

@@ -1,0 +1,49 @@
+{
+  "name": "e-drive",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "broadcast": "ng serve --host 0.0.0.0 --port 4200 --proxy-config proxy.conf.json --ssl --ssl-key ./src/environments/key.pem --ssl-cert ./src/environments/cert.pem",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "jest"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^17.3.0",
+    "@angular/cdk": "^17.3.10",
+    "@angular/common": "^17.3.0",
+    "@angular/compiler": "^17.3.0",
+    "@angular/core": "^17.3.12",
+    "@angular/forms": "^17.3.0",
+    "@angular/material": "^17.3.10",
+    "@angular/platform-browser": "^17.3.0",
+    "@angular/platform-browser-dynamic": "^17.3.0",
+    "@angular/router": "^17.3.0",
+    "@types/jwt-decode": "^3.1.0",
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
+    "e-drive": "file:",
+    "jwt-decode": "^4.0.0",
+    "ngx-mask": "^17.0.4",
+    "rxjs": "~7.8.0",
+    "sweetalert2": "^11.14.1",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.3"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^17.3.6",
+    "@angular/cli": "^17.3.6",
+    "@angular/compiler-cli": "^17.3.0",
+    "@types/google.maps": "^3.55.12",
+    "@types/jasmine": "~5.1.0",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.7.4",
+    "jest": "^29.7.0",
+    "jest-preset-angular": "^14.2.4",
+    "ng-mocks": "^14.13.1",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.4.2"
+  }
+}

@@ -1,0 +1,44 @@
+services:
+  backend:
+    build:
+      context: ./Back-end  # Caminho correto para o diretório do backend
+      dockerfile: Dockerfile
+    ports:
+      - "8443:8443"  # Mapear a porta HTTPS do container para o host
+      - "8082:8082"  # Mapeia a porta HTTP do contêiner para a porta 8082 do host
+    env_file:
+      - backend.env  # Referenciando o arquivo backend.env
+    networks:
+      - e_drive_network  # Adiciona à rede personalizada
+
+  db:
+    image: postgres:16
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    env_file:
+      - db.env  # Referenciando o arquivo db.env
+    networks:
+      - e_drive_network  # Adiciona à rede personalizada
+
+  frontend:
+    build:
+      context: ./Front-end
+      dockerfile: Dockerfile
+    ports:
+      - "443:443"  # HTTPS no frontend
+      - "80:80"    # HTTP no frontend
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - backend
+    networks:
+      - e_drive_network
+    volumes:
+      - ./certs:/etc/nginx/certs  # Montar certificados SSL
+
+volumes:
+  db_data: {}
+
+networks:
+  e_drive_network:
+    driver: bridge  # Usando o driver de rede padrão para contêineres

@@ -1,0 +1,62 @@
+.ingenico-logo {
+  width: 7.5rem;
+  height: 3rem;
+  position: relative;
+  z-index: 1001;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3);
+}
+
+.nav-link {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  background-color: #1389a72c;
+}
+
+.navbar-toggler {
+  border: none !important;
+}
+
+.navbar-nav{
+  margin-left: auto;
+}
+
+/* Estilos para telas menores */
+@media (max-width: 767px) {
+  .navbar-collapse {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    width: 100vw;
+    height: 93vh;
+    background-color: #fff;
+    z-index: 1000;
+    padding-top: 2rem;
+  }
+
+  .close-button {
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: #5b5b5b;
+  }
+
+  .navbar-nav {
+    display: flex;
+    margin-left: 0;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .nav-item .nav-link {
+    font-size: 1.6rem;
+    color: #5b5b5b;
+  }
+}
